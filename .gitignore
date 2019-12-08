@@ -1,6 +1,8 @@
 # Jupyter notebook temp files, training data and exported models
 ModelTraining/ARCoreToLive2DParamNet/.ipynb_checkpoints/*
 ModelTraining/ARCoreToLive2DParamNet/*.h5
+ModelTraining/ARCoreToLive2DParamNet/*.nn
+ModelTraining/ARCoreToLive2DParamNet/*.png
 ModelTraining/ARCoreToLive2DParamNet/training_data/*.csv
 
 [Ll]ibrary/
