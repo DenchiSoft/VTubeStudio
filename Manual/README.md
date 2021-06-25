@@ -1,8 +1,0 @@
-
-# Vtube Studio Manaual
-
-## Contents
-
-### ...
-
-### ...
