@@ -366,6 +366,7 @@ This includes all regular parameters and all custom parameters created by plugin
 This will return an error if no model is loaded.
 
 **`REQUEST`**
+```json
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
