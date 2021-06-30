@@ -15,7 +15,7 @@
   - [Requesting execution of hotkeys](#requesting-execution-of-hotkeys)
   - [Requesting list of available tracking parameters](#requesting-list-of-available-tracking-parameters)
   - [Get the value for one specific parameter, default or custom](#get-the-value-for-one-specific-parameter-default-or-custom)
-  - [Get the value for all Live2D parameters in the current model:](#get-the-value-for-all-live2d-parameters-in-the-current-model)
+  - [Get the value for all Live2D parameters in the current model](#get-the-value-for-all-live2d-parameters-in-the-current-model)
   - [Adding new tracking parameters ("custom parameters")](#adding-new-tracking-parameters-custom-parameters)
   - [Delete custom parameters](#delete-custom-parameters)
   - [Feeding in data for default or custom parameters](#feeding-in-data-for-default-or-custom-parameters)
