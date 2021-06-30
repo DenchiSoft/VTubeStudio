@@ -406,7 +406,7 @@ This will return an error if no model is loaded.
 
 You can also add your own new tracking parameters and use them in your VTube Studio models. They are called "custom" parameters. After being added by your plugin, the user can select your parameters as inputs for Live2D parameter mappings.
 
-Parameter names have to be unique, alphanumeric and have to be between 4 and 32 characters in length. New tracking parameters are created like this:
+Parameter names have to be unique, alphanumeric (no spaces allowed) and have to be between 4 and 32 characters in length. New tracking parameters are created like this:
 
 **`REQUEST`**
 ```json
