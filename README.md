@@ -8,6 +8,7 @@
 - [General Info](#general-info)
 - [Status](#status)
 - [API Details](#api-details)
+  - [Authentication](#authentication)
   - [Getting the currently loaded model](#getting-the-currently-loaded-model)
   - [Getting a list of available VTS models](#getting-a-list-of-available-vts-models)
   - [Loading a VTS model by its ID](#loading-a-vts-model-by-its-id)
@@ -99,6 +100,11 @@ If any other API request fails, this payload will also be returned with the resp
 All possible error IDs are listed on the page "Errors" (will be created later).
 
 Once connected, the client can poll information about the current app state at any time.
+
+## Authentication
+
+To be added. Do something similar to OBS websocket authentication.
+https://github.com/Palakis/obs-websocket/blob/4.x-current/docs/generated/protocol.md#authentication
 
 ## Getting the currently loaded model
 
