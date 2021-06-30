@@ -104,6 +104,7 @@ Once connected, the client can poll information about the current app state at a
 ## Authentication
 
 To be added. Do something similar to OBS websocket authentication.
+
 https://github.com/Palakis/obs-websocket/blob/4.x-current/docs/generated/protocol.md#authentication
 
 ## Getting the currently loaded model
