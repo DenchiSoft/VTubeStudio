@@ -3,6 +3,24 @@
 
 [![VTube Studio Discord](https://discordapp.com/api/guilds/652602255748497449/widget.png?style=banner2)](https://discord.gg/VTubeStudio)
 
+## Contents
+
+- [General Info](#general-info)
+- [Status](#status)
+- [API Details](#api-details)
+  - [Getting the currently loaded model](#getting-the-currently-loaded-model)
+  - [Getting a list of available VTS models](#getting-a-list-of-available-vts-models)
+  - [Loading a VTS model by its ID](#loading-a-vts-model-by-its-id)
+  - [Requesting list of hotkeys available in the currently loaded VTS model](#requesting-list-of-hotkeys-available-in-the-currently-loaded-vts-model)
+  - [Requesting execution of hotkeys](#requesting-execution-of-hotkeys)
+  - [Requesting list of available tracking parameters](#requesting-list-of-available-tracking-parameters)
+  - [Get the value for one specific parameter, default or custom](#get-the-value-for-one-specific-parameter-default-or-custom)
+  - [Get the value for all Live2D parameters in the current model:](#get-the-value-for-all-live2d-parameters-in-the-current-model)
+  - [Adding new tracking parameters ("custom parameters")](#adding-new-tracking-parameters-custom-parameters)
+  - [Delete custom parameters](#delete-custom-parameters)
+  - [Feeding in data for default or custom parameters](#feeding-in-data-for-default-or-custom-parameters)
+
+
 ## General Info
 
 VTube Studio will get a **public API**. This means you will be able to write plugins/scripts that can trigger hotkeys, feed in face tracking data or receive face tracking data from VTube Studio.
@@ -13,10 +31,9 @@ Afterwards, if you develop a plugin or any app that can be used with VTube Studi
 
 ## Status
 
-:warning: <b>Currently setting up details. No need to give feedback yet.</b> :warning: 
+:warning: <b>First draft finished. If you have feedback, please post it in the public API channel in the VTS Discord.</b> :warning: 
 
 # API Details
-
 
 The VTube Studio websocket server runs on `ws://localhost:8001`. This is the default, but users can also change the port in the app.
 If your plugin cannot connect to the websocket server, tell the users to check if the port is correct or if there are any firewall/antivirus settings that may prevent the connection.
@@ -262,9 +279,9 @@ This includes all regular parameters and all custom parameters created by plugin
 	"requestID": "SomeID",
 	"messageType": "ParameterListResponse",
 	"data": {
-		"specialParameters": [
+		"customParameters": [
 			{
-				"name": "MySpecialParamName1",
+				"name": "MyCustomParamName1",
 				"addedBy": "My Plugin Name",
 				"value": 12.4,
 				"min": -30,
@@ -272,7 +289,7 @@ This includes all regular parameters and all custom parameters created by plugin
 				"default": 0
 			},
 			{
-				"name": "MySpecialParamName2",
+				"name": "MyCustomParamName2",
 				"addedBy": "My Plugin Name",
 				"value": 0.833,
 				"min": -10,
@@ -280,7 +297,7 @@ This includes all regular parameters and all custom parameters created by plugin
 				"default": 0
 			},
 			{
-				"name": "MySpecialParamName3",
+				"name": "MyCustomParamName3",
 				"addedBy": "My Other Plugin Name",
 				"value": 0,
 				"min": 0,
@@ -311,7 +328,7 @@ This includes all regular parameters and all custom parameters created by plugin
 ```
 **Note:** The `"defaultParameters"` array is incomplete in this example payload. This will contain all default face/mouse/etc. tracking parameters offered by VTube Studio 
 
-## Get the value for one specific parameter, default or special
+## Get the value for one specific parameter, default or custom
 
 **`REQUEST`**
 ```json
@@ -321,7 +338,7 @@ This includes all regular parameters and all custom parameters created by plugin
 	"requestID": "SomeID",
 	"messageType": "ParameterValueRequest",
 	"data": {
-		"name": "MySpecialParamName1"
+		"name": "MyCustomParamName1"
 	}
 }
 ```
@@ -334,7 +351,7 @@ This includes all regular parameters and all custom parameters created by plugin
 	"requestID": "SomeID",
 	"messageType": "ParameterValueResponse",
 	"data": {
-		"name": "MySpecialParamName1",
+		"name": "MyCustomParamName1",
 		"addedBy": "My Plugin Name",
 		"value": 12.4,
 		"min": -30,
@@ -344,7 +361,7 @@ This includes all regular parameters and all custom parameters created by plugin
 }
 ```
 
-## Get the value for all Live2D parameters in the current model:
+## Get the value for all Live2D parameters in the current model
 
 This will return an error if no model is loaded.
 
@@ -385,9 +402,9 @@ This will return an error if no model is loaded.
 }
 ```
 
-## Adding new tracking parameters ("special parameters")
+## Adding new tracking parameters ("custom parameters")
 
-You can also add your own new tracking parameters and use them in your VTube Studio models. They are called "special" (or "custom") parameters. After being added by your plugin, the user can select your parameters as inputs for Live2D parameter mappings.
+You can also add your own new tracking parameters and use them in your VTube Studio models. They are called "custom" parameters. After being added by your plugin, the user can select your parameters as inputs for Live2D parameter mappings.
 
 Parameter names have to be unique, alphanumeric and have to be between 4 and 32 characters in length. New tracking parameters are created like this:
 
@@ -429,9 +446,9 @@ Min/Max/Default values have to be floating-point numbers between `-1000000` and 
 
 These custom parameters you create are stored as part of the VTube Studio configuration in a file called `custom_parameters.json` in the `Config` folder, which is located in the VTube Studio `StreamingAssets` folder.
 
-## Delete special parameters
+## Delete custom parameters
 
-You can delete special parameters. Default parameters cannot be deleted.
+You can delete custom parameters. Default parameters cannot be deleted.
 
 **`REQUEST`**
 ```json
@@ -459,9 +476,9 @@ You can delete special parameters. Default parameters cannot be deleted.
 }
 ```
 
-## Feeding in data for default or special parameters
+## Feeding in data for default or custom parameters
 
-You can feed in data for any default or special parameter like this:
+You can feed in data for any default or custom parameter like this:
 
 **`REQUEST`**
 ```json
