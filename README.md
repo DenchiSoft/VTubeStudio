@@ -67,7 +67,7 @@ If you can connect, the first thing to do is check if the user has enabled the A
 ```
 
 Every request has to contain `"apiName" : "VTubeStudioPublicAPI"` and the used API version, which will be `"1.0"` at the time of the first release.
-This API version will stay the same until incompatible changes are made to the behavior/payloads. This means that new functionality may be added to the API (including new fields in existing payloads) without increasing the version. Make sure your API can handle this and doesn't break if it encounters unknown fields during deserialization.
+This API version will stay the same until incompatible changes are made to the behavior/payloads. This means that new functionality may be added to the API (including new fields in existing payloads) without increasing the version. Make sure your app can handle this and doesn't break if it encounters unknown fields during deserialization.
 
 An example for an incompatible change would be renaming an existing field or removing it from the payload altogether. If there are any incompatible changes, the API version will be increased for them so the old APIs can still be used as they are.
 
