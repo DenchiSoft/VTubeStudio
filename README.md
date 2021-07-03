@@ -156,7 +156,7 @@ If they deny access, you will get the following error:
 ```
 Users can revoke API access from your plugin at ay point from within VTube Studio. If they do, you will also get this error when trying to send any requests. You may try to re-authenticate in this case.
 
-You only need to obtain the token once. With this token, you can now authenticate for this session. In the next session (for example when VTS is restartet or your plugin has to re-connect to VTS for some reason), you can use the same token to authenticate again so you don't have to send the requests to get a token again so the user will only be asked about allowing your plugin once.
+You only need to obtain the token once. With this token, you can now authenticate for this session. In the next session (for example when VTS is restarted or your plugin has to re-connect to VTS for some reason), you can use the same token to authenticate again so you don't have to send the requests to get a token again so the user will only be asked about allowing your plugin once.
 
 To authenticate for one session, send the following request with your token:
 
@@ -186,6 +186,8 @@ If the token is valid and API access has not been revoked by the user, you will 
 ```
 
 Congratulations, you are authenticated. You now use the VTube Studio API.
+
+**Note:** Some requests include a `data` JSON object field and some don't. To make things easier for you, you can also include this field in requests that don't need it. It will just be ignored by VTube Studio, even if you leave it empty or set it to `null`/`undefined`.
 
 ## Getting the currently loaded model
 
