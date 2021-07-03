@@ -33,6 +33,7 @@ Afterwards, if you develop a plugin or any app that can be used with VTube Studi
 ## Status
 
 :warning: <b>First draft finished. If you have feedback, please post it in the public API channel in the [VTS Discord](https://discord.gg/VTubeStudio).</b> :warning: 
+
 :warning: <b>None of this is final yet, so if you plan to use this API, you might want to wait a bit before starting with your implementation.</b> :warning: 
 
 # API Details
