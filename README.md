@@ -113,7 +113,7 @@ This is done by requesting a token for your plugin. Send the following request:
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
-	"messageType": "AuthenticationTokenRequest"
+	"messageType": "AuthenticationTokenRequest",
 	"data": {
 		"pluginName": "My Cool Plugin",
 		"pluginDeveloper": "My Name"
@@ -164,7 +164,7 @@ To authenticate for one session, send the following request with your token:
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
-	"messageType": "AuthenticationRequest"
+	"messageType": "AuthenticationRequest",
 	"data": {
 		"authenticationToken": "adcd-123-ef09-some-token-string-abcd"
 	}
