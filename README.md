@@ -103,9 +103,87 @@ Once connected, the client can poll information about the current app state at a
 
 ## Authentication
 
-To be added. Do something similar to OBS websocket authentication.
+Before using the API, you have to authenticate once. For this, you'll have to provide your plugin name and the name of the developer. They should both be shorter than 32 characters.
 
-https://github.com/Palakis/obs-websocket/blob/4.x-current/docs/generated/protocol.md#authentication
+This is done by requesting a token for your plugin. Send the following request:
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "AuthenticationTokenRequest"
+	"data": {
+		"pluginName": "My Cool Plugin",
+		"pluginDeveloper": "My Name"
+	}
+}
+```
+
+If the user has activated API access, this will trigger a popup inside of VTS asking the user if they want to allow the plugin `"My Cool Plugin"` by `"My Name"` to control VTube Studio. If they click "Allow", you will get the following response:
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "AuthenticationTokenResponse",
+	"data": {
+		"authenticationToken": "adcd-123-ef09-some-token-string-abcd"
+	}
+}
+```
+
+The field `"authenticationToken"` contais an ASCII string which will serve as the token for authenticating with the API. It is at most 64 characters in length.
+If they deny access, you will get the following error:
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "Error",
+	"data": {
+		"errorID": 1,
+		"message": "User has denied API access for your plugin."
+	}
+}
+```
+Users can revoke API access from your plugin at ay point from within VTube Studio. If they do, you will also get this error when trying to send any requests. You may try to re-authenticate in this case.
+
+You only need to obtain the token once. With this token, you can now authenticate for this session. In the next session (for example when VTS is restartet or your plugin has to re-connect to VTS for some reason), you can use the same token to authenticate again so you don't have to send the requests to get a token again so the user will only be asked about allowing your plugin once.
+
+To authenticate for one session, send the following request with your token:
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "AuthenticationRequest"
+	"data": {
+		"authenticationToken": "adcd-123-ef09-some-token-string-abcd"
+	}
+}
+```
+
+If the token is valid and API access has not been revoked by the user, you will get the follwing response:
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "AuthenticationResponse"
+}
+```
+
+Congratulations, you are authenticated. You now use the VTube Studio API.
 
 ## Getting the currently loaded model
 
