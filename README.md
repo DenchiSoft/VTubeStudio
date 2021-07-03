@@ -185,7 +185,7 @@ If the token is valid and API access has not been revoked by the user, you will 
 }
 ```
 
-Congratulations, you are authenticated. You now use the VTube Studio API.
+Congratulations, you are authenticated and can use the VTube Studio API.
 
 **Note:** Some requests include a `data` JSON object field and some don't. To make things easier for you, you can also include this field in requests that don't need it. It will just be ignored by VTube Studio, even if you leave it empty or set it to `null`/`undefined`.
 
