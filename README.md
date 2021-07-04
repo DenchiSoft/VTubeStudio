@@ -59,6 +59,7 @@ If you can connect, the first thing to do is check if the user has enabled the A
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"messageType": "ApiStateResponse",
 	"requestID": "MyIDWithLessThan64Characters",
 	"data": {
@@ -86,6 +87,7 @@ If the user has turned off the API functionality, all API requests other than th
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "Error",
 	"data": {
@@ -131,6 +133,7 @@ If the user has activated API access, this will trigger a popup inside of VTS as
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "AuthenticationTokenResponse",
 	"data": {
@@ -147,6 +150,7 @@ If they deny access, you will get the following error:
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "Error",
 	"data": {
@@ -181,6 +185,7 @@ If the token is valid and API access has not been revoked by the user, you will 
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "AuthenticationResponse",
 	"data": { }
@@ -189,7 +194,38 @@ If the token is valid and API access has not been revoked by the user, you will 
 
 Congratulations, you are authenticated and can use the VTube Studio API.
 
-**Note:** Some requests include a `data` JSON object field and some don't. To make things easier for you, you can also include this field in requests that don't need it. It will just be ignored by VTube Studio, even if you leave it empty or set it to `null`/`undefined`. VTube Studio will return this field with every request to make deserialization easier for your plugin. If the response doesn't have data, the field will contain an empty JSON object.
+**Note about `data` field:** Some requests include a `data` JSON object field and some don't. To make things easier for you, you can also include this field in requests that don't need it. It will just be ignored by VTube Studio, even if you leave it empty or set it to `null`/`undefined`. VTube Studio will return this field with every request to make deserialization easier for your plugin. If the response doesn't have data, the field will contain an empty JSON object.
+
+**Note about `timestamp` field:** All responses also have a `"timestamp"` field that contains the UNIX millisecond timestamp at which your request was processed. You may include a `"timestamp"` field in your requests, but it will be ignored.
+
+## Getting current VTS statistics
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "StatisticsRequest"
+}
+```
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "StatisticsResponse",
+	"data": {
+		"uptime": 1439384,
+		"framerate": 73
+	}
+}
+```
+
+`"uptime"` contains the number of milliseconds since VTube Studio has been started. `"framerate"` is the current render FPS value.
 
 ## Getting the currently loaded model
 
@@ -208,6 +244,7 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "ModelNameResponse",
 	"data": {
@@ -236,6 +273,7 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "AvailableModelsResponse",
 	"data": {
@@ -277,6 +315,7 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "ModelLoadResponse",
 	"data": { }
@@ -302,6 +341,7 @@ This may fail and return an error if the app is currently in a state where no mo
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "HotkeysInCurrentModelResponse",
 	"data": {
@@ -347,6 +387,7 @@ This may fail and return an error if the app is currently in a state where no mo
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "HotkeyTriggerRespose",
 	"data": { }
@@ -375,6 +416,7 @@ This includes all regular parameters and all custom parameters created by plugin
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "ParameterListResponse",
 	"data": {
@@ -447,6 +489,7 @@ This includes all regular parameters and all custom parameters created by plugin
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "ParameterValueResponse",
 	"data": {
@@ -479,6 +522,7 @@ This will return an error if no model is loaded.
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "Live2DParameterListResponse",
 	"data": {
@@ -530,6 +574,7 @@ Parameter names have to be unique, alphanumeric (no spaces allowed) and have to 
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "ParameterCreationResponse",
 	"data": {
@@ -568,6 +613,7 @@ You can delete custom parameters. Default parameters cannot be deleted.
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "ParameterDeletionResponse",
 	"data": {
@@ -607,6 +653,7 @@ You can feed in data for any default or custom parameter like this:
 {
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "InjectParameterDataResponse",
 	"data": { }
