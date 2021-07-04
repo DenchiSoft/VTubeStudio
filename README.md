@@ -220,12 +220,15 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 	"messageType": "StatisticsResponse",
 	"data": {
 		"uptime": 1439384,
-		"framerate": 73
+		"framerate": 73,
+		"vTubeStudioVersion": "1.9.0",
+		"activePlugins": 3,
+		"startedWithSteam": true
 	}
 }
 ```
 
-`"uptime"` contains the number of milliseconds since VTube Studio has been started. `"framerate"` is the current render FPS value.
+`"uptime"` contains the number of milliseconds since VTube Studio has been started. `"framerate"` is the current render FPS value. `"activePlugins"` is the number of plugins that the user has currently allowed to use VTube Studio. `"startedWithSteam"` is true if the app has been started using Steam, false otherwise (if the `.bat` file has been used to start VTS without Steam).
 
 ## Getting the currently loaded model
 
