@@ -118,12 +118,13 @@ This is done by requesting a token for your plugin. Send the following request:
 	"messageType": "AuthenticationTokenRequest",
 	"data": {
 		"pluginName": "My Cool Plugin",
-		"pluginDeveloper": "My Name"
+		"pluginDeveloper": "My Name",
+		"pluginIcon": "iVBORw0.........KGgoA="
 	}
 }
 ```
 
-If the user has activated API access, this will trigger a popup inside of VTS asking the user if they want to allow the plugin `"My Cool Plugin"` by `"My Name"` to control VTube Studio. If they click "Allow", you will get the following response:
+If the user has activated API access, this will trigger a popup inside of VTS asking the user if they want to allow the plugin `"My Cool Plugin"` by `"My Name"` to control VTube Studio. `"pluginIcon"` can be added optionally. This has to be a base64 encoded image with the exact dimensions 128x128 pixels. If you add this, the icon will be used in the plugin access request popup shown to the user. If they click "Allow", you will get the following response:
 
 **`RESPONSE`**
 ```json
@@ -210,7 +211,9 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 	"messageType": "ModelNameResponse",
 	"data": {
 		"modelName": "My Currently Loaded Model",
-		"modelID": "UniqueIDToIdentifyThisModelBy"
+		"modelID": "UniqueIDToIdentifyThisModelBy",
+		"vtsModelPath": "C:\Path\To\Model.vtube.json",
+		"live2DModelPath": "C:\Path\To\Model.model3.json"
 	}
 }
 ```
@@ -238,11 +241,15 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 		"availableModels": [
 			{
 				"modelName": "My First Model",
-				"modelID": "UniqueIDToIdentifyThisModelBy1"
+				"modelID": "UniqueIDToIdentifyThisModelBy1",
+				"vtsModelPath": "C:\Path\To\Model_1.vtube.json",
+				"live2DModelPath": "C:\Path\To\Model_1.model3.json"
 			},
 			{
 				"modelName": "My Second Model",
-				"modelID": "UniqueIDToIdentifyThisModelBy2"
+				"modelID": "UniqueIDToIdentifyThisModelBy2",
+				"vtsModelPath": "C:\Path\To\Model_2.vtube.json",
+				"live2DModelPath": "C:\Path\To\Model_2.model3.json"
 			}
 		]
 	}
