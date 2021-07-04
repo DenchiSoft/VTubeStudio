@@ -212,8 +212,8 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 	"data": {
 		"modelName": "My Currently Loaded Model",
 		"modelID": "UniqueIDToIdentifyThisModelBy",
-		"vtsModelPath": "C:\Path\To\Model.vtube.json",
-		"live2DModelPath": "C:\Path\To\Model.model3.json"
+		"vtsModelPath": "C:\\Path\\To\\Model.vtube.json",
+		"live2DModelPath": "C:\\Path\\To\\Model.model3.json"
 	}
 }
 ```
@@ -242,14 +242,14 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 			{
 				"modelName": "My First Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy1",
-				"vtsModelPath": "C:\Path\To\Model_1.vtube.json",
-				"live2DModelPath": "C:\Path\To\Model_1.model3.json"
+				"vtsModelPath": "C:\\Path\\To\\Model_1.vtube.json",
+				"live2DModelPath": "C:\\Path\\To\\Model_1.model3.json"
 			},
 			{
 				"modelName": "My Second Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy2",
-				"vtsModelPath": "C:\Path\To\Model_2.vtube.json",
-				"live2DModelPath": "C:\Path\To\Model_2.model3.json"
+				"vtsModelPath": "C:\\Path\\To\\Model_2.vtube.json",
+				"live2DModelPath": "C:\\Path\\To\Model_2.model3.json"
 			}
 		]
 	}
