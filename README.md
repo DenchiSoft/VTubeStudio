@@ -249,7 +249,7 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 				"modelName": "My Second Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy2",
 				"vtsModelPath": "C:\\Path\\To\\Model_2.vtube.json",
-				"live2DModelPath": "C:\\Path\\To\Model_2.model3.json"
+				"live2DModelPath": "C:\\Path\\To\\Model_2.model3.json"
 			}
 		]
 	}
