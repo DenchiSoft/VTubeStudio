@@ -182,13 +182,14 @@ If the token is valid and API access has not been revoked by the user, you will 
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
-	"messageType": "AuthenticationResponse"
+	"messageType": "AuthenticationResponse",
+	"data": { }
 }
 ```
 
 Congratulations, you are authenticated and can use the VTube Studio API.
 
-**Note:** Some requests include a `data` JSON object field and some don't. To make things easier for you, you can also include this field in requests that don't need it. It will just be ignored by VTube Studio, even if you leave it empty or set it to `null`/`undefined`.
+**Note:** Some requests include a `data` JSON object field and some don't. To make things easier for you, you can also include this field in requests that don't need it. It will just be ignored by VTube Studio, even if you leave it empty or set it to `null`/`undefined`. VTube Studio will return this field with every request to make deserialization easier for your plugin. If the response doesn't have data, the field will contain an empty JSON object.
 
 ## Getting the currently loaded model
 
@@ -277,7 +278,8 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
-	"messageType": "ModelLoadResponse"
+	"messageType": "ModelLoadResponse",
+	"data": { }
 }
 ```
 
@@ -346,7 +348,8 @@ This may fail and return an error if the app is currently in a state where no mo
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
-	"messageType": "HotkeyTriggerRespose"
+	"messageType": "HotkeyTriggerRespose",
+	"data": { }
 }
 ```
 This may return an error if the hotkey couldn't be executed for some reason.
@@ -605,7 +608,8 @@ You can feed in data for any default or custom parameter like this:
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
-	"messageType": "InjectParameterDataResponse"
+	"messageType": "InjectParameterDataResponse",
+	"data": { }
 }
 ```
 
