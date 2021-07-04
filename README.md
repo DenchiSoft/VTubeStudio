@@ -235,7 +235,7 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
-	"messageType": "ModelNameRequest"
+	"messageType": "CurrentModelRequest"
 }
 ```
 
@@ -246,15 +246,24 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 	"apiVersion": "1.0",
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
-	"messageType": "ModelNameResponse",
+	"messageType": "CurrentModelResponse",
 	"data": {
 		"modelName": "My Currently Loaded Model",
 		"modelID": "UniqueIDToIdentifyThisModelBy",
 		"vtsModelPath": "C:\\Path\\To\\Model.vtube.json",
-		"live2DModelPath": "C:\\Path\\To\\Model.model3.json"
+		"live2DModelPath": "C:\\Path\\To\\Model.model3.json",
+		"modelLoadTime": 3021,
+		"timeSinceModelLoaded": 419903,
+		"numberOfLive2DParameters": 29,
+		"numberOfLive2DArtmeshes": 136,
+		"hasPhysicsFile": true,
+		"numberOfTextures": 2,
+		"textureResolution": 4096
 	}
 }
 ```
+
+`"modelLoadTime"` is the time in milliseconds it took to load the current model. `"timeSinceModelLoaded"` contains the time in milliseconds since the model has been loaded.
 
 ## Getting a list of available VTS models
 
@@ -281,14 +290,12 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 			{
 				"modelName": "My First Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy1",
-				"vtsModelPath": "C:\\Path\\To\\Model_1.vtube.json",
-				"live2DModelPath": "C:\\Path\\To\\Model_1.model3.json"
+				"vtsModelPath": "C:\\Path\\To\\Model_1.vtube.json"
 			},
 			{
 				"modelName": "My Second Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy2",
-				"vtsModelPath": "C:\\Path\\To\\Model_2.vtube.json",
-				"live2DModelPath": "C:\\Path\\To\\Model_2.model3.json"
+				"vtsModelPath": "C:\\Path\\To\\Model_2.vtube.json"
 			}
 		]
 	}
