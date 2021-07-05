@@ -437,7 +437,7 @@ This includes all regular parameters and all custom parameters created by plugin
 				"value": 12.4,
 				"min": -30,
 				"max": 30,
-				"default": 0
+				"defaultValue": 0
 			},
 			{
 				"name": "MyCustomParamName2",
@@ -445,7 +445,7 @@ This includes all regular parameters and all custom parameters created by plugin
 				"value": 0.833,
 				"min": -10,
 				"max": 10,
-				"default": 0
+				"defaultValue": 0
 			},
 			{
 				"name": "MyCustomParamName3",
@@ -453,7 +453,7 @@ This includes all regular parameters and all custom parameters created by plugin
 				"value": 0,
 				"min": 0,
 				"max": 1,
-				"default": 0
+				"defaultValue": 0
 			}
 		],
 		"defaultParameters": [
@@ -463,7 +463,7 @@ This includes all regular parameters and all custom parameters created by plugin
 				"value": 45.78,
 				"min": -30,
 				"max": 30,
-				"default": 0
+				"defaultValue": 0
 			},
 			{
 				"name": "FacePositionX",
@@ -471,7 +471,7 @@ This includes all regular parameters and all custom parameters created by plugin
 				"value": 8.33,
 				"min": -10,
 				"max": 10,
-				"default": 0
+				"defaultValue": 0
 			}
 		]
 	}
@@ -508,7 +508,7 @@ This includes all regular parameters and all custom parameters created by plugin
 		"value": 12.4,
 		"min": -30,
 		"max": 30,
-		"default": 0
+		"defaultValue": 0
 	}
 }
 ```
@@ -542,14 +542,14 @@ This will return an error if no model is loaded.
 				"value": 12.4,
 				"min": -30,
 				"max": 30,
-				"default": 0
+				"defaultValue": 0
 			},
 			{
 				"name": "MyLive2DParameterID2",
 				"value": 0,
 				"min": 0,
 				"max": 1,
-				"default": 0
+				"defaultValue": 0
 			}
 		]
 	}
@@ -574,7 +574,7 @@ Parameter names have to be unique, alphanumeric (no spaces allowed) and have to 
 		"createdBy": "My Plugin Name",
 		"min": -50,
 		"max": 50,
-		"default": 10
+		"defaultValue": 10
 	}
 }
 ```
@@ -595,7 +595,7 @@ Parameter names have to be unique, alphanumeric (no spaces allowed) and have to 
 
 The request may fail and return an error if the parameter name is invalid.
 
-It will also fail if a parameter with the same name created by a different plugin already exists. If you create a parameter multiple times with the same plugin name, the request will succeed. You can also overwrite the `min`, `max` and `default` values that way
+It will also fail if a parameter with the same name created by a different plugin already exists. If you create a parameter multiple times with the same plugin name, the request will succeed. You can also overwrite the `min`, `max` and `defaultValue` values that way
 
 Min/Max/Default values have to be floating-point numbers between `-1000000` and `1000000`. The min/max values aren't actually the minimum and maximum values allowed for the parameter. They're the values that will be used as default lower and upper value when a new parameter mapping is created using this parameter.
 
