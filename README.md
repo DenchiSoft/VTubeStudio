@@ -159,7 +159,7 @@ If they deny access, you will get the following error:
 	}
 }
 ```
-Users can revoke API access from your plugin at ay point from within VTube Studio. If they do, you will also get this error when trying to send any requests. You may try to re-authenticate in this case.
+Users can revoke API access from your plugin at any point from within VTube Studio. If they do, you will also get this error when trying to send any requests. You may try to re-authenticate in this case.
 
 You only need to obtain the token once. With this token, you can now authenticate for this session. In the next session (for example when VTS is restarted or your plugin has to re-connect to VTS for some reason), you can use the same token to authenticate again so you don't have to send the requests to get a token again so the user will only be asked about allowing your plugin once.
 
