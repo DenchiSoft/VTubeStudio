@@ -173,10 +173,14 @@ To authenticate for one session, send the following request with your token:
 	"requestID": "SomeID",
 	"messageType": "AuthenticationRequest",
 	"data": {
+		"pluginName": "My Cool Plugin",
+		"pluginDeveloper": "My Name",
 		"authenticationToken": "adcd-123-ef09-some-token-string-abcd"
 	}
 }
 ```
+
+`"pluginName"` and `"pluginDeveloper"` have to match the values you used when requesting the token, otherwise the authentication request will fail.
 
 If the token is valid and API access has not been revoked by the user, you will get the follwing response:
 
@@ -251,9 +255,11 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 	"requestID": "SomeID",
 	"messageType": "CurrentModelResponse",
 	"data": {
+		"modelLoaded": true,
 		"modelName": "My Currently Loaded Model",
 		"modelID": "UniqueIDToIdentifyThisModelBy",
 		"vtsModelPath": "C:\\Path\\To\\Model.vtube.json",
+		"vtsModelIconPath": "C:\\Path\\To\\ModelIconPNGorJPG.png",
 		"live2DModelPath": "C:\\Path\\To\\Model.model3.json",
 		"modelLoadTime": 3021,
 		"timeSinceModelLoaded": 419903,
@@ -266,7 +272,11 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 }
 ```
 
+`"modelLoaded"` will be `true` if a model is currently loaded. If no model is loaded or a model is currently in the process of being loaded, this will be false. In this case, all other values will be empty (or zero in case of integers).
+
 `"modelLoadTime"` is the time in milliseconds it took to load the current model. `"timeSinceModelLoaded"` contains the time in milliseconds since the model has been loaded.
+
+`"vtsModelIconPath"` contains the full path to the icon used for this model in the model selection bar in VTube Studio. If the model has no icon set, this will be an empty string.
 
 ## Getting a list of available VTS models
 
