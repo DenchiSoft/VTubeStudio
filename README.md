@@ -299,16 +299,19 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 	"requestID": "SomeID",
 	"messageType": "AvailableModelsResponse",
 	"data": {
+		"numberOfModels": 2,
 		"availableModels": [
 			{
 				"modelName": "My First Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy1",
-				"vtsModelPath": "C:\\Path\\To\\Model_1.vtube.json"
+				"vtsModelPath": "C:\\Path\\To\\Model_1.vtube.json",
+				"vtsModelIconPath": "C:\\Path\\To\\ModelIconPNGorJPG_1.png"
 			},
 			{
 				"modelName": "My Second Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy2",
-				"vtsModelPath": "C:\\Path\\To\\Model_2.vtube.json"
+				"vtsModelPath": "C:\\Path\\To\\Model_2.vtube.json",
+				"vtsModelIconPath": "C:\\Path\\To\\ModelIconPNGorJPG_1.png"
 			}
 		]
 	}
