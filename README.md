@@ -338,11 +338,13 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "ModelLoadResponse",
-	"data": { }
+	"data": {
+		"modelID": "UniqueIDOfModelThatWasJustLoaded"
+	}
 }
 ```
 
-This may fail and return an error if the app is currently in a state where no model can be loaded. This includes having config windows open or a model load operation currently already being in progress.
+This may fail and return an error if the app is currently in a state where no model can be loaded. This includes having config windows open or a model load operation currently already being in progress. There is also a 2 second cooldown for this requests.
 
 ## Requesting list of hotkeys available in the currently loaded VTS model
 
