@@ -107,7 +107,7 @@ Once connected, the client can poll information about the current app state at a
 
 ## Authentication
 
-Before using the API, you have to authenticate once. For this, you'll have to provide your plugin name and the name of the developer. They should both be shorter than 32 characters.
+Before using the API, you have to authenticate once. For this, you'll have to provide your plugin name and the name of the developer. They should both be between 3 and 32 characters.
 
 This is done by requesting a token for your plugin. Send the following request:
 
