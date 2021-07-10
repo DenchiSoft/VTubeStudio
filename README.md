@@ -302,12 +302,14 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 		"numberOfModels": 2,
 		"availableModels": [
 			{
+				"modelLoaded": false,
 				"modelName": "My First Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy1",
 				"vtsModelPath": "C:\\Path\\To\\Model_1.vtube.json",
 				"vtsModelIconPath": "C:\\Path\\To\\ModelIconPNGorJPG_1.png"
 			},
 			{
+				"modelLoaded": true,
 				"modelName": "My Second Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy2",
 				"vtsModelPath": "C:\\Path\\To\\Model_2.vtube.json",
@@ -317,6 +319,8 @@ Congratulations, you are authenticated and can use the VTube Studio API.
 	}
 }
 ```
+
+`"modelLoaded"` is `true` if the respective model is currently loaded in VTube Studio, `false` otherwise. 
 
 ## Loading a VTS model by its ID
 
