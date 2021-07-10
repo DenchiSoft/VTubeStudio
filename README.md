@@ -182,7 +182,7 @@ To authenticate for one session, send the following request with your token:
 
 `"pluginName"` and `"pluginDeveloper"` have to match the values you used when requesting the token, otherwise the authentication request will fail.
 
-If the token is valid and API access has not been revoked by the user, you will get the follwing response:
+If the token is valid and API access has not been revoked by the user, you will get the following response:
 
 **`RESPONSE`**
 ```json
