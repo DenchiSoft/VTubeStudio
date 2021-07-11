@@ -427,7 +427,7 @@ This may fail and return an error if the app is currently in a state where no mo
 	"apiVersion": "1.0",
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
-	"messageType": "HotkeyTriggerRespose",
+	"messageType": "HotkeyTriggerResponse",
 	"data": { }
 }
 ```
