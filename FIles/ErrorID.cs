@@ -10,21 +10,26 @@ public enum ErrorID
     APINameInvalid = 3,
     APIVersionInvalid = 4,
     RequestIDInvalid = 5,
-    RequestTypeNull = 6,
+    RequestTypeMissingOrEmpty = 6,
     RequestTypeUnknown = 7,
+    RequestRequiresAuthetication = 8,
 
-    // Errors related to Authentication.
-    AuthDenied = 50,
-    AuthCurrentlyOngoing = 51,
-    AuthPluginNameInvalid = 52,
-    AuthDeveloperNameInvalid = 53,
-    AuthPluginIconInvalid = 54,
-    AuthTokenMissing = 55,
+    // Errors related to AuthenticationTokenRequest
+    TokenRequestDenied = 50,
+    TokenRequestCurrentlyOngoing = 51,
+    TokenRequestPluginNameInvalid = 52,
+    TokenRequestDeveloperNameInvalid = 53,
+    TokenRequestPluginIconInvalid = 54,
+
+    // Errors related to AuthenticationRequest
+    AuthenticationTokenMissing = 100,
+    AuthenticationPluginNameMissing = 101,
+    AuthenticationPluginDeveloperMissing = 102,
 
     // Errors related to ModelLoadRequest
-    ModelIDMissing = 100,
-    ModelIDInvalid = 101,
-    ModelIDNotFound = 102,
-    ModelLoadCooldownNotOver = 103,
-    CannotCurrentlyChangeModel = 104,
+    ModelIDMissing = 150,
+    ModelIDInvalid = 151,
+    ModelIDNotFound = 152,
+    ModelLoadCooldownNotOver = 153,
+    CannotCurrentlyChangeModel = 154
 }
