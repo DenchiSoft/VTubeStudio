@@ -50,7 +50,7 @@ If you can connect, the first thing to do is check if the user has enabled the A
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "MyIDWithLessThan64Characters",
-	"messageType": "ApiStateRequest"
+	"messageType": "APIStateRequest"
 }
 ```
 
@@ -60,7 +60,7 @@ If you can connect, the first thing to do is check if the user has enabled the A
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"timestamp": 1625405710728,
-	"messageType": "ApiStateResponse",
+	"messageType": "APIStateResponse",
 	"requestID": "MyIDWithLessThan64Characters",
 	"data": {
 		"active": true,
@@ -92,7 +92,7 @@ If the user has turned off the API functionality, all API requests other than th
 	"apiVersion": "1.0",
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
-	"messageType": "Error",
+	"messageType": "APIError",
 	"data": {
 		"errorID": 1,
 		"message": "VTube Studio is running and API is online but user has deactivated API access."
@@ -155,7 +155,7 @@ If they deny access, you will get the following error:
 	"apiVersion": "1.0",
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
-	"messageType": "Error",
+	"messageType": "APIError",
 	"data": {
 		"errorID": 50,
 		"message": "User has denied API access for your plugin."
