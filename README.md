@@ -91,7 +91,7 @@ If the user has turned off the API functionality, all API requests other than th
 	"requestID": "SomeID",
 	"messageType": "Error",
 	"data": {
-		"errorID": 0,
+		"errorID": 1,
 		"message": "VTube Studio is running and API is online but user has deactivated API access."
 	}
 }
@@ -154,7 +154,7 @@ If they deny access, you will get the following error:
 	"requestID": "SomeID",
 	"messageType": "Error",
 	"data": {
-		"errorID": 1,
+		"errorID": 50,
 		"message": "User has denied API access for your plugin."
 	}
 }
@@ -192,11 +192,16 @@ If the token is valid and API access has not been revoked by the user, you will 
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "AuthenticationResponse",
-	"data": { }
+	"data": {
+		"authenticated": true,
+		"reason": "Token valid. The plugin is authenticated for the duration of this session."
+	}
 }
 ```
 
 Congratulations, you are authenticated and can use the VTube Studio API.
+
+If required fields are missing, you'll get an error response. If all fields are there and properly formatted but the token is invalid or has been revoked by the user, `"authenticated"` will be returned as `false`.
 
 **Note about `data` field:** Some requests include a `data` JSON object field and some don't. To make things easier for you, you can also include this field in requests that don't need it. It will just be ignored by VTube Studio, even if you leave it empty or set it to `null`/`undefined`. VTube Studio will return this field with every request to make deserialization easier for your plugin. If the response doesn't have data, the field will contain an empty JSON object.
 
