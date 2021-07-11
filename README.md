@@ -64,7 +64,8 @@ If you can connect, the first thing to do is check if the user has enabled the A
 	"requestID": "MyIDWithLessThan64Characters",
 	"data": {
 		"active": true,
-		"vTubeStudioVersion": "1.9.0"
+		"vTubeStudioVersion": "1.9.0",
+		"currentSessionAuthenticated": false
 	}
 }
 ```
@@ -79,6 +80,8 @@ This ID will also be used to log the request in the VTube Studio logs along with
 
 You can use the same ID or different IDs for each request. If provided, IDs should only contain ASCII characters and be at least 1 and at most 64 characters in length.
 If you don't add the `"requestID"` field, VTube Studio will add a randomly generated UUID for the request and return it with the response.
+
+The `"currentSessionAuthenticated"` will tell you if the current session has already been authenticated.
 
 If the user has turned off the API functionality, all API requests other than the API state request will fail with the following response.
 
