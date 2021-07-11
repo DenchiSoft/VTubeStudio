@@ -360,7 +360,7 @@ If required fields are missing, you'll get an error response. If all fields are 
 }
 ```
 
-This may fail and return an error if the app is currently in a state where no model can be loaded. This includes having config windows open or a model load operation currently already being in progress. There is also a 2 second cooldown for this requests.
+This may fail and return an error if the app is currently in a state where no model can be loaded. This includes having config windows open or a model load operation currently already being in progress. There is also a global 2 second cooldown for this requests.
 
 ## Requesting list of hotkeys available in the currently loaded VTS model
 
@@ -428,10 +428,12 @@ This may fail and return an error if the app is currently in a state where no mo
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "HotkeyTriggerResponse",
-	"data": { }
+	"data": {
+		"hotkeyID": "UniqueIdOfHotkeyThatWasExecuted"
+	}
 }
 ```
-This may return an error if the hotkey couldn't be executed for some reason.
+This may return an error if the hotkey ID wasn't found or the hotkey couldn't be executed for some reason.
 
 ## Requesting list of available tracking parameters
 
