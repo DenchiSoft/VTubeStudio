@@ -395,7 +395,7 @@ This may fail and return an error if the app is currently in a state where no mo
 			{
 				"name": "My second hotkey",
 				"type": "TriggerAnimation",
-				"file": "myAnimation.anim3.json",
+				"file": "myAnimation.motion3.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith2"
 			},
 			{
