@@ -447,7 +447,8 @@ All hotkey type strings can be found on the page [HotkeyActions.cs](https://gith
 	}
 }
 ```
-This may return an error if the hotkey ID wasn't found or the hotkey couldn't be executed for some reason.
+
+This may return an error if the hotkey ID wasn't found or the hotkey couldn't be executed for some reason. Reasons include no model being currently loaded or the hotkey cooldown not being over (one specific hotkey can only be triggered once every 5 frames). You may send different hotkeys in quick succession, which will result in them getting queued. Once every 5 frames, one hotkey is take from the queue and executed. The queue holds 32 hotkeys. When the queue is full but you try to send in more hotkeys, an error will be returned.
 
 ## Requesting list of available tracking parameters
 
