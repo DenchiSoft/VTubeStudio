@@ -104,7 +104,7 @@ If the user has turned off the API functionality, all API requests other than th
 If this is the case, you should ask the user to `"Allow Plugin API access"` in VTube Studio. It's an option on the main config page in VTS.
 If any other API request fails, this payload will also be returned with the respective error ID and message.
 
-All possible error IDs are listed on the page "Errors" (will be created later).
+All possible error IDs are listed on the page [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs).
 
 Once connected, the client can poll information about the current app state at any time.
 
