@@ -31,5 +31,10 @@ public enum ErrorID
     ModelIDInvalid = 151,
     ModelIDNotFound = 152,
     ModelLoadCooldownNotOver = 153,
-    CannotCurrentlyChangeModel = 154
+    CannotCurrentlyChangeModel = 154,
+
+    // Errors related to HotkeyTriggerRequest
+    HotkeyQueueFull = 200,
+    HotkeyExecutionFailedBecauseNoModelLoaded = 201,
+    HotkeyIDNotFoundInModel = 202
 }
