@@ -389,24 +389,35 @@ This may fail and return an error if the app is currently in a state where no mo
 			{
 				"name": "My first hotkey",
 				"type": "ToggleExpression",
+				"file": "myExpression_1.exp3.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith1"
 			},
 			{
 				"name": "My second hotkey",
-				"type": "PlayAnimation",
+				"type": "TriggerAnimation",
+				"file": "myAnimation.anim3.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith2"
 			},
 			{
 				"name": "My third hotkey",
-				"type": "MoveModel",
+				"type": "ChangeVTSModel",
+				"file": "someOtherModel.vtube.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith3"
+			},
+			{
+				"name": "My fourth hotkey",
+				"type": "MoveModel",
+				"file": "",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith4"
 			}
 		]
 	}
 }
 ```
 
-If `"modelLoaded"` is false, the `"availableHotkeys"` array will be empty.
+If `"modelLoaded"` is false, the `"availableHotkeys"` array will be empty. The `"file"` field contains the expression/animation/model filename for hotkeys of type `TriggerAnimation`, `ChangeIdleAnimation`, `ToggleExpression`, `ChangeBackground` and `ChangeVTSModel`. For all other types, this contains an empty string.
+
+All hotkey type strings can be found on the page [HotkeyActions.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
 
 ## Requesting execution of hotkeys
 
