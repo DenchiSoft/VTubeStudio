@@ -383,6 +383,7 @@ This may fail and return an error if the app is currently in a state where no mo
 	"requestID": "SomeID",
 	"messageType": "HotkeysInCurrentModelResponse",
 	"data": {
+		"modelLoaded": true,
 		"modelName": "My Currently Loaded Model",
 		"availableHotkeys": [
 			{
@@ -404,6 +405,8 @@ This may fail and return an error if the app is currently in a state where no mo
 	}
 }
 ```
+
+If `"modelLoaded"` is false, the `"availableHotkeys"` array will be empty.
 
 ## Requesting execution of hotkeys
 
