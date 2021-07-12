@@ -415,7 +415,7 @@ This may fail and return an error if the app is currently in a state where no mo
 }
 ```
 
-If `"modelLoaded"` is false, the `"availableHotkeys"` array will be empty. The `"file"` field contains the expression/animation/model filename for hotkeys of type `TriggerAnimation`, `ChangeIdleAnimation`, `ToggleExpression`, `ChangeBackground` and `ChangeVTSModel`. For all other types, this contains an empty string.
+If `"modelLoaded"` is false, the `"availableHotkeys"` array will be empty. The `"file"` field contains the expression/animation/model filename for hotkeys of type `TriggerAnimation`, `ChangeIdleAnimation`, `ToggleExpression` and `ChangeVTSModel`. For `ChangeBackground` hotkeys, this contains the backgroudn name without the file extension. For all other types, it contains an empty string.
 
 All hotkey type strings can be found on the page [HotkeyActions.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
 
