@@ -385,6 +385,7 @@ This may fail and return an error if the app is currently in a state where no mo
 	"data": {
 		"modelLoaded": true,
 		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
 		"availableHotkeys": [
 			{
 				"name": "My first hotkey",
@@ -581,6 +582,9 @@ This will return an error if no model is loaded.
 	"requestID": "SomeID",
 	"messageType": "Live2DParameterListResponse",
 	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
 		"parameters": [
 			{
 				"name": "MyLive2DParameterID1",
@@ -600,6 +604,8 @@ This will return an error if no model is loaded.
 	}
 }
 ```
+
+If no model is loaded, `"modelLoaded"` will be false and the parameter array will be empty. All other fields will be empty strings.
 
 ## Adding new tracking parameters ("custom parameters")
 
