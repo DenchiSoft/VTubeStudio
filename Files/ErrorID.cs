@@ -34,7 +34,11 @@ public enum ErrorID
     CannotCurrentlyChangeModel = 154,
 
     // Errors related to HotkeyTriggerRequest
-    HotkeyQueueFull = 200,
+    HotkeyQueueFull = 200, // 
     HotkeyExecutionFailedBecauseNoModelLoaded = 201,
-    HotkeyIDNotFoundInModel = 202
+    HotkeyIDNotFoundInModel = 202,
+    HotkeyCooldownNotOver = 203, // Individual hotkeys have a global 5 second cooldown
+    HotkeyIDFoundButHotkeyDataInvalid = 204, // For example missing files for expression/animation hotkey
+    HotkeyExecutionFailedBecauseBadState = 205, // For example when trying to load a model and the user has certain config windows open that temporarily prevent that
+    HotkeyUnknownExecutionFailure = 206
 }
