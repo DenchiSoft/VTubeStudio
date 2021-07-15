@@ -269,7 +269,7 @@ If required fields are missing, you'll get an error response. If all fields are 
 	"messageType": "VTSFolderInfoResponse",
 	"data": {
 		"baseFolder": "C:\\Path\\To\\BaseFolder\\StreamingAssets",
-		"models": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Items",
+		"models": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Live2DModels",
 		"backgrounds": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Backgrounds",
 		"items": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Items",
 		"config": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Config",
