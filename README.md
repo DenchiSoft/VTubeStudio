@@ -370,9 +370,14 @@ This may fail and return an error if the app is currently in a state where no mo
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
-	"messageType": "HotkeysInCurrentModelRequest"
+	"messageType": "HotkeysInCurrentModelRequest",
+	"data": {
+		"modelID": "Optional_UniqueIDOfModel",
+	}
 }
 ```
+
+The `"modelID"` (and `"data"` object in general here) is optional. If it's not provided, the hotkeys for the current model are returned. If the model ID is provided, the hotkeys of the model with the give model ID are returned. If no model with that ID is found, an error is returned (see [ErrorID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs), `ModelIDNotFound`).
 
 **`RESPONSE`**
 ```json
@@ -410,6 +415,12 @@ This may fail and return an error if the app is currently in a state where no mo
 				"type": "MoveModel",
 				"file": "",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith4"
+			},
+			{
+				"name": "My fifth hotkey",
+				"type": "Unset",
+				"file": "",
+				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith5"
 			}
 		]
 	}
