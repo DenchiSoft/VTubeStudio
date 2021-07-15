@@ -463,7 +463,7 @@ This includes all regular parameters and all custom parameters created by plugin
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
-	"messageType": "ParameterListRequest"
+	"messageType": "InputParameterListRequest"
 }
 ```
 
@@ -474,8 +474,11 @@ This includes all regular parameters and all custom parameters created by plugin
 	"apiVersion": "1.0",
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
-	"messageType": "ParameterListResponse",
+	"messageType": "InputParameterListResponse",
 	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
 		"customParameters": [
 			{
 				"name": "MyCustomParamName1",
