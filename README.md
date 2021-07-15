@@ -9,6 +9,8 @@
 - [Status](#status)
 - [API Details](#api-details)
   - [Authentication](#authentication)
+  - [Getting current VTS statistics](#getting-current-vts-statistics)
+  - [Getting list of VTS folders](#getting-list-of-vts-folders)
   - [Getting the currently loaded model](#getting-the-currently-loaded-model)
   - [Getting a list of available VTS models](#getting-a-list-of-available-vts-models)
   - [Loading a VTS model by its ID](#loading-a-vts-model-by-its-id)
@@ -20,6 +22,8 @@
   - [Adding new tracking parameters ("custom parameters")](#adding-new-tracking-parameters-custom-parameters)
   - [Delete custom parameters](#delete-custom-parameters)
   - [Feeding in data for default or custom parameters](#feeding-in-data-for-default-or-custom-parameters)
+
+
 
 
 ## General Info
@@ -242,6 +246,37 @@ If required fields are missing, you'll get an error response. If all fields are 
 ```
 
 `"uptime"` contains the number of milliseconds since VTube Studio has been started. `"framerate"` is the current render FPS value. `"allowedPlugins"` is the number of plugins that the user has currently allowed to use VTube Studio, `"connectedPlugins"` is the number of plugins that are currently connected to the VTube Studio API. `"startedWithSteam"` is true if the app has been started using Steam, false otherwise (if the `.bat` file has been used to start VTS without Steam).
+
+## Getting list of VTS folders
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "VTSFolderInfoRequest"
+}
+```
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "VTSFolderInfoResponse",
+	"data": {
+		"baseFolder": "C:\\Path\\To\\BaseFolder\\StreamingAssets",
+		"models": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Items",
+		"backgrounds": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Backgrounds",
+		"items": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Items",
+		"config": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Config",
+		"logs": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Logs"
+	}
+}
+```
 
 ## Getting the currently loaded model
 
