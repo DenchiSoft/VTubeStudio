@@ -12,7 +12,7 @@
   - [Getting the currently loaded model](#getting-the-currently-loaded-model)
   - [Getting a list of available VTS models](#getting-a-list-of-available-vts-models)
   - [Loading a VTS model by its ID](#loading-a-vts-model-by-its-id)
-  - [Requesting list of hotkeys available in the currently loaded VTS model](#requesting-list-of-hotkeys-available-in-the-currently-loaded-vts-model)
+  - [Requesting list of hotkeys available in current or other VTS model](#requesting-list-of-hotkeys-available-in-current-or-other-vts-model)
   - [Requesting execution of hotkeys](#requesting-execution-of-hotkeys)
   - [Requesting list of available tracking parameters](#requesting-list-of-available-tracking-parameters)
   - [Get the value for one specific parameter, default or custom](#get-the-value-for-one-specific-parameter-default-or-custom)
@@ -362,7 +362,7 @@ If required fields are missing, you'll get an error response. If all fields are 
 
 This may fail and return an error if the app is currently in a state where no model can be loaded. This includes having config windows open or a model load operation currently already being in progress. There is also a global 2 second cooldown for this requests.
 
-## Requesting list of hotkeys available in the currently loaded VTS model
+## Requesting list of hotkeys available in current or other VTS model
 
 **`REQUEST`**
 ```json
