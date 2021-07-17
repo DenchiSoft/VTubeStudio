@@ -6,6 +6,7 @@
 ## Contents
 
 - [General Info](#general-info)
+- [Available Plugins and Examples](#available-plugins-and-examples)
 - [Status](#status)
 - [API Details](#api-details)
   - [Authentication](#authentication)
@@ -35,6 +36,16 @@ VTube Studio will get a **public API**. This means you will be able to write plu
 As a first step, a proposal for the API setup and payloads will be published on this page. Once that's available, please review the proposal and leave feedback. After this process, the API will be implemented as documented in this repository.
 
 Afterwards, if you develop a plugin or any app that can be used with VTube Studio, please open a PR and I will add it to the list that will be created on this page.
+
+## Available Plugins and Examples
+
+The following is a list of finished plugins you can use and examples/libraries for you to look at that make it easier to integrate the VTube Studio API into your app. 
+
+:warning: **If you made something you want to have included here, please open a pull request with the modified table!!** :warning:
+
+| Plugin | Developer | Type | Explanation |
+| --- | --- | --- | --- |
+| [My Plugin](https://link-to-plugin.com) | [Denchi](https://twitter.com/DenchiSoft) | Plugin/Example | This is an example entry. |
 
 ## Status
 
