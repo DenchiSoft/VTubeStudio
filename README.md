@@ -57,7 +57,8 @@ The following is a list of finished plugins you can use and examples/libraries f
 
 # API Details
 
-The VTube Studio websocket server runs on `ws://localhost:8001`. This is the default, but users can also change the port in the app.
+The VTube Studio websocket server runs on `ws://localhost:8001`. This is the default, but users can also change the port in the app. Websockets in general support `binary` and `text` messages. VTube Studio will always respond with `text` messages and it is recommended to also send `text` messages to the API. You may also send `binary` messages but if you do, make sure they are encoded in UTF-8.
+
 If your plugin cannot connect to the websocket server, tell the users to check if the port is correct or if there are any firewall/antivirus settings that may prevent the connection.
 You should also make sure your plugin supports configuring the port used for the connection.
 
