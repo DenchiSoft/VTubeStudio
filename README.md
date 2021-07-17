@@ -16,6 +16,8 @@
   - [Loading a VTS model by its ID](#loading-a-vts-model-by-its-id)
   - [Requesting list of hotkeys available in current or other VTS model](#requesting-list-of-hotkeys-available-in-current-or-other-vts-model)
   - [Requesting execution of hotkeys](#requesting-execution-of-hotkeys)
+  - [Requesting list of ArtMeshes in current model](#requesting-list-of-artmeshes-in-current-model)
+  - [Tint ArtMeshes with color](#tint-artmeshes-with-color)
   - [Requesting list of available tracking parameters](#requesting-list-of-available-tracking-parameters)
   - [Get the value for one specific parameter, default or custom](#get-the-value-for-one-specific-parameter-default-or-custom)
   - [Get the value for all Live2D parameters in the current model](#get-the-value-for-all-live2d-parameters-in-the-current-model)
@@ -498,6 +500,92 @@ All hotkey type strings can be found on the page [HotkeyActions.cs](https://gith
 ```
 
 This may return an error if the hotkey ID wasn't found or the hotkey couldn't be executed for some reason. Reasons include no model being currently loaded or the hotkey cooldown not being over (one specific hotkey can only be triggered once every 5 frames). You may send different hotkeys in quick succession, which will result in them getting queued. Once every 5 frames, one hotkey is take from the queue and executed. The queue holds 32 hotkeys. When the queue is full but you try to send in more hotkeys, an error will be returned.
+
+## Requesting list of ArtMeshes in current model
+
+The API uses the term `ArtMesh Name`, but this actually refers to the ArtMesh ID which will be unique per model as enforced by the Live2D Cubism Editor. `ArtMesh Tags` can be added by selecting an ArtMesh and writing into the UserData field. If you want to use tags, make sure that you check `Export UserData file (userdata3.json)`. You should then include the `.userdata3.json` file when copying the model to the VTube Studio Live2DModels-folder.
+
+ArtMesh tags returned in the `"artMeshTags"` array will not contain duplicate tags.
+
+If no model is loaded, `"modelLoaded"` will be `false` and the arrays will be empty.
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ArtMeshListRequest"
+}
+```
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ArtMeshListResponse",
+	"data": {
+		"modelLoaded": true,
+		"numberOfArtMeshNames": 5,
+		"numberOfArtMeshTags": 2,
+		"artMeshNames": ["ArtMesh1", "ArtMesh2", "HairFront1", "HairFront2", "SomeArtMesh"],
+		"artMeshTags": ["my artmesh tag 1", "my artmesh tag 2"]
+	}
+}
+```
+
+## Tint ArtMeshes with color
+
+You can tint ArtMeshes by providing a color and matching criteria. Any ArtMesh matching any of the given criteria will be tinted with the given color. To reset the ArtMesh color, tint it white (R=G=B=A=255). You cannot turn an ArtMesh white with this request, only darker.
+
+Not providing one of the color values or any being outside the 0-255 range will return an error. Trying to send this request when no model is loaded will also return an error.
+
+All arrays included in the `"artMeshMatcher"` object are optional. If you include them, it will select ArtMeshes based on whether or not the ArtMesh names or tags match any of the given strings exactly or contain them (when using the `"nameContains"`/`"tagContains"` arrays). The `"artMeshNumber"` array lets you select ArtMeshes based on their order within the model. If you just want to tint the whole model, don't include any of the matcher arrays and instead set `"tintAll"` to true.
+
+When the session is disconnected, all ArtMeshes that have been tinted in this session will be reset to their default (fully opaque white). When multiple plugins/sessions overwrite the color of an ArtMesh, it will have the color set by the most recent request.
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ColorTintRequest",
+	"data": {
+		"colorTint": {
+			"colorR": 255,
+			"colorG": 150,
+			"colorB": 0,
+			"colorA": 255
+		},
+		"artMeshMatcher": {
+			"tintAll": false,
+			"artMeshNumber": [1, 3, 5],
+			"nameExact": ["eye_white_left", "eye_white_right"],
+			"nameContains": ["mouth"],
+			"tagExact": [],
+			"tagContains": ["MyTag"]
+		},
+	}
+}
+```
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ColorTintResponse",
+	"data": {
+		"matchedArtMeshes": 3
+	}
+}
+```
 
 ## Requesting list of available tracking parameters
 
