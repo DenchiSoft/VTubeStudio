@@ -586,6 +586,8 @@ When the session is disconnected, all ArtMeshes that have been tinted in this se
 }
 ```
 
+**Super secret note:** If you add `"jeb_": true` to the `"colorTint"` object, it'll activate the rainbow animation mode for the matched ArtMeshes.
+
 **`RESPONSE`**
 ```json
 {
