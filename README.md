@@ -605,6 +605,8 @@ When the session is disconnected, all ArtMeshes that have been tinted in this se
 
 ## Requesting list of available tracking parameters
 
+:warning: <b>Not yet implemented</b> :warning: 
+
 You can request a list of parameters currently available in VTube Studio.
 This includes all regular parameters and all custom parameters created by plugins. Parameters created by plugins will be marked as such when you select them from the parameter list in VTube Studio. It will also show the name of the plugin that created them.
 
@@ -681,6 +683,8 @@ This includes all regular parameters and all custom parameters created by plugin
 **Note:** The `"defaultParameters"` array is incomplete in this example payload. This will contain all default face/mouse/etc. tracking parameters offered by VTube Studio 
 
 ## Get the value for one specific parameter, default or custom
+
+:warning: <b>Not yet implemented</b> :warning: 
 
 **`REQUEST`**
 ```json
@@ -764,6 +768,8 @@ If no model is loaded, `"modelLoaded"` will be false and the parameter array wil
 
 ## Adding new tracking parameters ("custom parameters")
 
+:warning: <b>Not yet implemented</b> :warning: 
+
 You can also add your own new tracking parameters and use them in your VTube Studio models. They are called "custom" parameters. After being added by your plugin, the user can select your parameters as inputs for Live2D parameter mappings.
 
 Parameter names have to be unique, alphanumeric (no spaces allowed) and have to be between 4 and 32 characters in length. New tracking parameters are created like this:
@@ -809,6 +815,8 @@ These custom parameters you create are stored as part of the VTube Studio config
 
 ## Delete custom parameters
 
+:warning: <b>Not yet implemented</b> :warning: 
+
 You can delete custom parameters. Default parameters cannot be deleted.
 
 **`REQUEST`**
@@ -839,6 +847,8 @@ You can delete custom parameters. Default parameters cannot be deleted.
 ```
 
 ## Feeding in data for default or custom parameters
+
+:warning: <b>Not yet implemented</b> :warning: 
 
 You can feed in data for any default or custom parameter like this:
 
