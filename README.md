@@ -587,7 +587,7 @@ When the session is disconnected, all ArtMeshes that have been tinted in this se
 			"nameContains": ["mouth"],
 			"tagExact": [],
 			"tagContains": ["MyTag"]
-		},
+		}
 	}
 }
 ```
