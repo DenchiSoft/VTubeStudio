@@ -15,6 +15,7 @@
   - [Getting the currently loaded model](#getting-the-currently-loaded-model)
   - [Getting a list of available VTS models](#getting-a-list-of-available-vts-models)
   - [Loading a VTS model by its ID](#loading-a-vts-model-by-its-id)
+  - [Moving the currently loaded VTS model](#moving-the-currently-loaded-vts-model)
   - [Requesting list of hotkeys available in current or other VTS model](#requesting-list-of-hotkeys-available-in-current-or-other-vts-model)
   - [Requesting execution of hotkeys](#requesting-execution-of-hotkeys)
   - [Requesting list of ArtMeshes in current model](#requesting-list-of-artmeshes-in-current-model)
@@ -425,6 +426,10 @@ The `"modelPosition"` array contains the current model position, rotation and si
 ```
 
 This may fail and return an error if the app is currently in a state where no model can be loaded. This includes having config windows open or a model load operation currently already being in progress. There is also a global 2 second cooldown for this requests.
+
+## Moving the currently loaded VTS model
+
+![The VTS Coordinate System](/Images/coordinate_explanation.png)
 
 ## Requesting list of hotkeys available in current or other VTS model
 
