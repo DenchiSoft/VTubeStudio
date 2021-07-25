@@ -332,7 +332,13 @@ Window width and height is in pixels.
 		"numberOfLive2DArtmeshes": 136,
 		"hasPhysicsFile": true,
 		"numberOfTextures": 2,
-		"textureResolution": 4096
+		"textureResolution": 4096,
+		"modelPosition": {
+			"positionX": -0.1,
+			"positionY": 0.4,
+			"rotation": 9.33,
+			"size": -61.9
+		}
 	}
 }
 ```
@@ -342,6 +348,8 @@ Window width and height is in pixels.
 `"modelLoadTime"` is the time in milliseconds it took to load the current model. `"timeSinceModelLoaded"` contains the time in milliseconds since the model has been loaded.
 
 `"vtsModelIconPath"` contains the full path to the icon used for this model in the model selection bar in VTube Studio. If the model has no icon set, this will be an empty string.
+
+The `"modelPosition"` array contains the current model position, rotation and size. For more info on how to interpret these values, see `MoveModelRequest`.
 
 ## Getting a list of available VTS models
 
