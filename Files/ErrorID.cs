@@ -40,5 +40,15 @@ public enum ErrorID
     HotkeyCooldownNotOver = 203, // Individual hotkeys have a global 5 second cooldown
     HotkeyIDFoundButHotkeyDataInvalid = 204, // For example missing files for expression/animation hotkey
     HotkeyExecutionFailedBecauseBadState = 205, // For example when trying to load a model and the user has certain config windows open that temporarily prevent that
-    HotkeyUnknownExecutionFailure = 206
+    HotkeyUnknownExecutionFailure = 206,
+    
+    // Errors related to ColorTintRequest
+    ColorTintRequestNoModelLoaded = 250,
+    ColorTintRequestMatchOrColorMissing = 251,
+    ColorTintRequestInvalidColorValue = 252,
+
+    // Errors related to MoveModelRequest
+    MoveModelRequestNoModelLoaded = 300,
+    MoveModelRequestMissingFields = 301,
+    MoveModelRequestValuesOutOfRange = 302
 }
