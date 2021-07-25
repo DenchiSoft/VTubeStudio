@@ -429,6 +429,36 @@ This may fail and return an error if the app is currently in a state where no mo
 
 ## Moving the currently loaded VTS model
 
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "MoveModelRequest",
+	"data": {
+		"timeInSeconds": 0.2,
+		"valuesAreRelativeToModel": false,
+		"positionX": 0.1,
+		"positionY": -0.7,
+		"rotation": 16.3,
+		"size": -22.5
+	}
+}
+```
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "MoveModelResponse",
+	"data": { }
+}
+```
+
 ![The VTS Coordinate System](/Images/coordinate_explanation.png)
 
 ## Requesting list of hotkeys available in current or other VTS model
