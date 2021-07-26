@@ -429,6 +429,26 @@ This may fail and return an error if the app is currently in a state where no mo
 
 ## Moving the currently loaded VTS model
 
+If a model is loaded, this allows you to change its position, rotation and size. If no model is loaded, this will return an error, see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)
+
+The required fields in this requests are `"timeInSeconds"` and `"valuesAreRelativeToModel"`. `"timeInSeconds"` is the time in seconds the movement should take and has to be a float value between 0 and 2. If this is set to 0, the model will instantly appear the the given position. A value higher than that will make the model move, rotate and grow/shrink smoothly to the given position (faded in/out). While the movement is going on, the user cannot move the model manually by dragging it. That will be possible again about half a second after the model has finished moving to the destination.
+
+Subsequent `MoveModelRequest` can be sent without waiting for the ongoing one to finish. If one is ongoing, it will be interrupted and replaced by the new one. You can even take complete control over the movement by sending one request each frame with 0 as `"timeInSeconds"`.
+
+The `"size"` is given as a float between -100 (smallest) and +100 (biggest). For `"positionX"`, `"positionY"` and `"rotation"`, please refer to the following image:
+
+![The VTS Coordinate System](/Images/coordinate_explanation.png)
+
+The numbers in the cats represent the **[X/Y]** coordinates you can pass in using `"positionX"` and `"positionY"`. For example, sending [0/0] will position the middle of the model in the middle of the screen. What the "middle of the model" is can be set freely in Live2D Cubism and may vary between models. You can of course also send much bigger/smaller values to move the model off-screen. `"positionX"` and `"positionY"` have to be between -1000 and 1000.
+
+The numbers around the circle represent the angles you can set using `"rotation"`. Values for this parameter have to be between -360 and 360. Please note how there are two representations for each angle: positive when rotating clickwise, negative when rotating counterclockwise. Which one you use is up to you, there is no difference. When you send a `CurrentModelRequest`, the response will also contain the position/rotation/size of the model. In this response, the angle will always be represented in the positive notation.
+
+You don't have to provide all values in the request. For example, you could just provide positions or just a rotation or any other combination. All values that are not included in the request will be ignored when setting the position/rotation/size. Like this, you could for example only change the X-coordinate of the model while leaving everything else as it is.
+
+If `"valuesAreRelativeToModel"` is set to `false`, the values from your request will be taken as absolute values and the model will be moved to that position. If `"valuesAreRelativeToModel"` is set to `true`, the values are considered relative to the current model position. Let's assume you set it to `true` and only include a rotation of `10` in your request. That would rotate the model clockwise by 10 degrees, from whatever rotation it is at right now while not touching the position and size at all. This can be very useful for implementing effects that should move the model in place, like shake it independently of where it is on the screen.
+
+If you want to move the model by a fixed pixel position, you'll have to calculate the respective coordinates yourself. You can do so by getting the window width and height in pixels using the `StatisticsRequest`.
+
 **`REQUEST`**
 ```json
 {
@@ -459,7 +479,7 @@ This may fail and return an error if the app is currently in a state where no mo
 }
 ```
 
-![The VTS Coordinate System](/Images/coordinate_explanation.png)
+
 
 ## Requesting list of hotkeys available in current or other VTS model
 
