@@ -431,7 +431,7 @@ This may fail and return an error if the app is currently in a state where no mo
 
 If a model is loaded, this allows you to change its position, rotation and size. If no model is loaded, this will return an error, see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)
 
-The required fields in this requests are `"timeInSeconds"` and `"valuesAreRelativeToModel"`. `"timeInSeconds"` is the time in seconds the movement should take and has to be a float value between 0 and 2. If this is set to 0, the model will instantly appear the the given position. A value higher than that will make the model move, rotate and grow/shrink smoothly to the given position (faded in/out). While the movement is going on, the user cannot move the model manually by dragging it. That will be possible again about half a second after the model has finished moving to the destination.
+The required fields in this request are `"timeInSeconds"` and `"valuesAreRelativeToModel"`. `"timeInSeconds"` is the time in seconds the movement should take and has to be a float value between 0 and 2. If this is set to 0, the model will instantly appear the the given position. A value higher than that will make the model move, rotate and grow/shrink smoothly to the given position (faded in/out). While the movement is going on, the user cannot move the model manually by dragging it. That will be possible again about half a second after the model has finished moving to the destination.
 
 Subsequent `MoveModelRequest` can be sent without waiting for the ongoing one to finish. If one is ongoing, it will be interrupted and replaced by the new one. You can even take complete control over the movement by sending one request each frame with 0 as `"timeInSeconds"`.
 
