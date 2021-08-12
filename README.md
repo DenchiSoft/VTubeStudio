@@ -591,6 +591,8 @@ ArtMesh tags returned in the `"artMeshTags"` array will not contain duplicate ta
 
 If no model is loaded, `"modelLoaded"` will be `false` and the arrays will be empty.
 
+**Note about "tags":** Tags can be added to ArtMeshes in the "data" field in the Live2D Cubism. You can add any text into that field in the editor. VTube Studio will split that text at spaces and newline characters. This means if your tag text is "my tag", it will become two tags in VTS: "my" and "tag". You can add as many tags to each ArtMesh as you want.
+
 **`REQUEST`**
 ```json
 {
@@ -614,7 +616,7 @@ If no model is loaded, `"modelLoaded"` will be `false` and the arrays will be em
 		"numberOfArtMeshNames": 5,
 		"numberOfArtMeshTags": 2,
 		"artMeshNames": ["ArtMesh1", "ArtMesh2", "HairFront1", "HairFront2", "SomeArtMesh"],
-		"artMeshTags": ["my artmesh tag 1", "my artmesh tag 2"]
+		"artMeshTags": ["my_tag", "SomeOtherTag"]
 	}
 }
 ```
@@ -628,6 +630,8 @@ Not providing one of the color values or any being outside the 0-255 range will 
 All arrays included in the `"artMeshMatcher"` object are optional. If you include them, it will select ArtMeshes based on whether or not the ArtMesh names or tags match any of the given strings exactly or contain them (when using the `"nameContains"`/`"tagContains"` arrays). The `"artMeshNumber"` array lets you select ArtMeshes based on their order within the model. If you just want to tint the whole model, don't include any of the matcher arrays and instead set `"tintAll"` to true.
 
 When the session is disconnected, all ArtMeshes that have been tinted in this session will be reset to their default (fully opaque white). When multiple plugins/sessions overwrite the color of an ArtMesh, it will have the color set by the most recent request.
+
+Matching is always executed **case-insensitive**.
 
 **`REQUEST`**
 ```json
