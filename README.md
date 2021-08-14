@@ -47,7 +47,9 @@ The following is a list of finished plugins you can use and examples/libraries f
 | Plugin | Developer | Type | Explanation |
 | --- | --- | --- | --- |
 | [Cheers Bot](https://cheers.hawk.bar/) | [Hawkbar](https://twitter.com/HawkbarGaming) | Plugin | A web-based Twitch integration platform which can trigger actions in VTube Studio when chatters redeem channel points, among many other features. |
-| [VTubeStudioJS](https://github.com/Hawkbat/VTubeStudioJS) | [Hawkbar](https://twitter.com/HawkbarGaming) | Library | A JavaScript library for use by other plugin authors which implements the VTube Studio WebSocket API. Compatible with both NodeJS and the browser. |
+| [VTubeStudioJS](https://github.com/Hawkbat/VTubeStudioJS) | [Hawkbar](https://twitter.com/HawkbarGaming) | Library | A JavaScript library for use by other plugin authors which implements the VTube Studio WebSocket API. Compatible with both NodeJS and the browser. 
+| [VTS Linker - SMB1](https://github.com/Renpona/VTStudio-Linker-SMB1) | [Renpona](https://twitter.com/renpona) | Example | A prototype for reading data from an emulated copy of Super Mario Bros, and using that data to automatically move and recolor a Live2D model in VTS based on what's happening in the game.
+|
 <!-- | [My Plugin](https://link-to-plugin.com) | [Denchi](https://twitter.com/DenchiSoft) | Plugin/Example | This is an example entry. | -->
 
 ## Status
