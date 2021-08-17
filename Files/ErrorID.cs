@@ -51,4 +51,19 @@ public enum ErrorID
     MoveModelRequestNoModelLoaded = 300,
     MoveModelRequestMissingFields = 301,
     MoveModelRequestValuesOutOfRange = 302
+    
+    // Errors related to ParameterCreationRequest
+    CustomParamNameInvalid = 350,
+    CustomParamValuesInvalid = 351,
+    CustomParamAlreadyCreatedByOtherPlugin = 352,
+    CustomParamExplanationTooLong = 353,
+    CustomParamDefaultParamNameNotAllowed = 354, // When you use names of default param names, like MouthX, FaceAngleZ, MouthSmile, ...
+    CustomParamLimitPerPluginExceeded = 355,
+    CustomParamLimitTotalExceeded = 356,
+
+    // Errors related to ParameterDeletionRequest
+    CustomParamDeletionNameInvalid = 400,
+    CustomParamDeletionNotFound = 401, // Trying to delete a parameter that doesn't exist
+    CustomParamDeletionCreatedByOtherPlugin = 402, // Trying to delete a parameter created by another plugin
+    CustomParamDeletionCannotDeleteDefaultParam = 403
 }
