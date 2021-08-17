@@ -854,7 +854,7 @@ Parameter names have to be unique, alphanumeric (no spaces allowed) and have to 
 	"messageType": "ParameterCreationRequest",
 	"data": {
 		"parameterName": "MyNewParamName",
-		"explanation": "This is my new parameter."
+		"explanation": "This is my new parameter.",
 		"min": -50,
 		"max": 50,
 		"defaultValue": 10
