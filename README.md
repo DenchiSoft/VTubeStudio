@@ -884,6 +884,8 @@ Min/Max/Default values have to be floating-point numbers between `-1000000` and 
 
 The explanation is an optional, short (less than 256 characters) explanation stating what the parameter does and how users should use it in their models. If you provide this in the request, it will be shown when the user views the details of this custom parameter.
 
+There is a global limit in VTS of 300 custom parameters and a limit of 100 custom parameters per plugin. If you try to create more, an error will be returned.
+
 These custom parameters you create are stored as part of the VTube Studio configuration in a file called `custom_parameters.json` in the `Config` folder, which is located in the VTube Studio `StreamingAssets` folder. If you revoke the authentication token from a plugin, all custom parameters that this plugin create will also be deleted. They will still be set in the VTube Studio models that have used them, but will be shown in red text to indicate that the input parameter no longer exists. Plugins can get another token and recreate these parameters at any time and they will continue to work.
 
 ## Delete custom parameters
