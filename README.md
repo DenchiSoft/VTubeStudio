@@ -841,8 +841,6 @@ If no model is loaded, `"modelLoaded"` will be false and the parameter array wil
 
 ## Adding new tracking parameters ("custom parameters")
 
-:warning: <b>Not yet implemented</b> :warning: 
-
 You can also add your own new tracking parameters and use them in your VTube Studio models. They are called "custom" parameters. After being added by your plugin, the user can select your parameters as inputs for Live2D parameter mappings.
 
 Parameter names have to be unique, alphanumeric (no spaces allowed) and have to be between 4 and 32 characters in length. New tracking parameters are created like this:
@@ -856,6 +854,7 @@ Parameter names have to be unique, alphanumeric (no spaces allowed) and have to 
 	"messageType": "ParameterCreationRequest",
 	"data": {
 		"parameterName": "MyNewParamName",
+		"explanation": "This is my new parameter."
 		"min": -50,
 		"max": 50,
 		"defaultValue": 10
@@ -883,13 +882,15 @@ It will also fail if a parameter with the same name created by a different plugi
 
 Min/Max/Default values have to be floating-point numbers between `-1000000` and `1000000`. The min/max values aren't actually the minimum and maximum values allowed for the parameter. They're the values that will be used as default lower and upper value when a new parameter mapping is created using this parameter.
 
-These custom parameters you create are stored as part of the VTube Studio configuration in a file called `custom_parameters.json` in the `Config` folder, which is located in the VTube Studio `StreamingAssets` folder.
+The explanation is an optional, short (less than 256 characters) explanation stating what the parameter does and how users should use it in their models. If you provide this in the request, it will be shown when the user views the details of this custom parameter.
+
+These custom parameters you create are stored as part of the VTube Studio configuration in a file called `custom_parameters.json` in the `Config` folder, which is located in the VTube Studio `StreamingAssets` folder. If you revoke the authentication token from a plugin, all custom parameters that this plugin create will also be deleted. They will still be set in the VTube Studio models that have used them, but will be shown in red text to indicate that the input parameter no longer exists. Plugins can get another token and recreate these parameters at any time and they will continue to work.
 
 ## Delete custom parameters
 
 :warning: <b>Not yet implemented</b> :warning: 
 
-You can delete custom parameters. Default parameters cannot be deleted.
+You can delete custom parameters. Default parameters cannot be deleted. You also cannot delete parameters created by plugins other than the one you have used to authenticate this session.
 
 **`REQUEST`**
 ```json
