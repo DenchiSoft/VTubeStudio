@@ -330,9 +330,9 @@ Returns the name of various VTube Studio folders. They are in the `StreamingAsse
 		"modelLoaded": true,
 		"modelName": "My Currently Loaded Model",
 		"modelID": "UniqueIDToIdentifyThisModelBy",
-		"vtsModelPath": "C:\\Path\\To\\Model.vtube.json",
-		"vtsModelIconPath": "C:\\Path\\To\\ModelIconPNGorJPG.png",
-		"live2DModelPath": "C:\\Path\\To\\Model.model3.json",
+		"vtsModelName": "Model.vtube.json",
+		"vtsModelIconName": "ModelIconPNGorJPG.png",
+		"live2DModelName": "Model.model3.json",
 		"modelLoadTime": 3021,
 		"timeSinceModelLoaded": 419903,
 		"numberOfLive2DParameters": 29,
@@ -354,7 +354,7 @@ Returns the name of various VTube Studio folders. They are in the `StreamingAsse
 
 `"modelLoadTime"` is the time in milliseconds it took to load the current model. `"timeSinceModelLoaded"` contains the time in milliseconds since the model has been loaded.
 
-`"vtsModelIconPath"` contains the full path to the icon used for this model in the model selection bar in VTube Studio. If the model has no icon set, this will be an empty string.
+`"vtsModelIconName"` contains the name of the icon used for this model in the model selection bar in VTube Studio. If the model has no icon set, this will be an empty string. All file names returned in this request are relative to the respective model folder.
 
 The `"modelPosition"` array contains the current model position, rotation and size. For more info on how to interpret these values, see `MoveModelRequest`.
 
@@ -385,15 +385,15 @@ The `"modelPosition"` array contains the current model position, rotation and si
 				"modelLoaded": false,
 				"modelName": "My First Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy1",
-				"vtsModelPath": "C:\\Path\\To\\Model_1.vtube.json",
-				"vtsModelIconPath": "C:\\Path\\To\\ModelIconPNGorJPG_1.png"
+				"vtsModelName": "Model_1.vtube.json",
+				"vtsModelIconName": "ModelIconPNGorJPG_1.png"
 			},
 			{
 				"modelLoaded": true,
 				"modelName": "My Second Model",
 				"modelID": "UniqueIDToIdentifyThisModelBy2",
-				"vtsModelPath": "C:\\Path\\To\\Model_2.vtube.json",
-				"vtsModelIconPath": "C:\\Path\\To\\ModelIconPNGorJPG_1.png"
+				"vtsModelName": "Model_2.vtube.json",
+				"vtsModelIconName": "ModelIconPNGorJPG_1.png"
 			}
 		]
 	}
