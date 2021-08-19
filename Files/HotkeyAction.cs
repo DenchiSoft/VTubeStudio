@@ -14,5 +14,5 @@ public enum HotkeyAction
     ReloadTextures = 7,          // Reload the model texture.
     CalibrateCam = 8,            // Calibrate Camera.
     ChangeVTSModel = 9,          // Change VTS Model.
-    TakeScreenshot = 10
+    TakeScreenshot = 10          // Takes a screenshot with the screenshot settings previously set in the UI.
 }
