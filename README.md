@@ -925,8 +925,6 @@ You can delete custom parameters. Default parameters cannot be deleted. You also
 
 ## Feeding in data for default or custom parameters
 
-:warning: <b>Not yet implemented</b> :warning: 
-
 You can feed in data for any default or custom parameter like this:
 
 **`REQUEST`**
@@ -944,6 +942,7 @@ You can feed in data for any default or custom parameter like this:
 			},
 			{
 				"id": "MyNewParamName",
+				"weight": 0.8,
 				"value": 0.7
 			}
 		]
@@ -968,6 +967,12 @@ If one or more of the parameters don't exist, an error payload will be returned.
 Values have to be floating-point numbers between `-1000000` and `1000000`. Values outside of that range will also return an error.
 
 If values exist for those parameters from webcam/iOS/Android tracking, the values from the API will overwrite those for as long as you keep sending data over the API.
-You have to re-send data for a parameter you want to control with your plugin **at least once every 3 seconds**. Failure to do so will result in the parameter being considered "lost" and it will go back to the value of whatever was controlling it before. If nothing else is controlling it, it will return to its default value. 
+You have to re-send data for a parameter you want to control with your plugin **at least once every second**. Failure to do so will result in the parameter being considered "lost" and it will go back to the value of whatever was controlling it before. If nothing else is controlling it, it will return to its default value.
+
+If another plugin is already controlling this (default or custom) parameter, an error will be returned.
+
+You can also add an optional `"weight"` parameter between 0 and 1. This can be used used to mix the `"value"` you send in for the parameter with the value that has been set for the parameter from face tracking. You could for example control a parameter 50% with face tracking and 50% using the API. Only one API plugin can write to one parameter at a time though. One use-case for this would be to fade in/out control of a face tracking parameter so it doesn't "jump" the moment you take control of it via the API. If you don't include the `"weight"` parameter in your request for a parameter, it will be considered to have the value 1, meaning the target parameter will instantly be set to the value provided by your plugin.
+
+It should also be noted that these parameters are treated similar to normal tracking parameters. As such, you can select them as normal inputs for VTube Studio parameter mappings and apply smoothing via the sliders on the UI. Deleting custom parameters while they are being used by a model also does not cause any issues and they can be recreated at any time.
 
 
