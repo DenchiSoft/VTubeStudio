@@ -892,8 +892,6 @@ These custom parameters you create are stored as part of the VTube Studio config
 
 ## Delete custom parameters
 
-:warning: <b>Not yet implemented</b> :warning: 
-
 You can delete custom parameters. Default parameters cannot be deleted. You also cannot delete parameters created by plugins other than the one you have used to authenticate this session.
 
 **`REQUEST`**
