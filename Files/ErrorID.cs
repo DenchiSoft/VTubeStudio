@@ -50,7 +50,7 @@ public enum ErrorID
     // Errors related to MoveModelRequest
     MoveModelRequestNoModelLoaded = 300,
     MoveModelRequestMissingFields = 301,
-    MoveModelRequestValuesOutOfRange = 302
+    MoveModelRequestValuesOutOfRange = 302,
     
     // Errors related to ParameterCreationRequest
     CustomParamNameInvalid = 350,
