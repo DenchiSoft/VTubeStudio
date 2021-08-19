@@ -275,6 +275,8 @@ Window width and height is in pixels.
 
 ## Getting list of VTS folders
 
+Returns the name of various VTube Studio folders. They are in the `StreamingAssets` folder in the game files.
+
 **`REQUEST`**
 ```json
 {
@@ -294,12 +296,12 @@ Window width and height is in pixels.
 	"requestID": "SomeID",
 	"messageType": "VTSFolderInfoResponse",
 	"data": {
-		"baseFolder": "C:\\Path\\To\\BaseFolder\\StreamingAssets",
-		"models": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Live2DModels",
-		"backgrounds": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Backgrounds",
-		"items": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Items",
-		"config": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Config",
-		"logs": "C:\\Path\\To\\BaseFolder\\StreamingAssets\\Logs"
+		"models": "Live2DModels",
+		"backgrounds": "Backgrounds",
+		"items": "Items",
+		"config": "Config",
+		"logs": "Logs",
+		"backup": "Backup"
 	}
 }
 ```
