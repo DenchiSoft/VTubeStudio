@@ -65,5 +65,12 @@ public enum ErrorID
     CustomParamDeletionNameInvalid = 400,
     CustomParamDeletionNotFound = 401, // Trying to delete a parameter that doesn't exist
     CustomParamDeletionCreatedByOtherPlugin = 402, // Trying to delete a parameter created by another plugin
-    CustomParamDeletionCannotDeleteDefaultParam = 403
+    CustomParamDeletionCannotDeleteDefaultParam = 403,
+    
+    // Errors related to InjectParameterDataRequest
+    InjectDataNoDataProvided = 450,
+    InjectDataValueInvalid = 451,
+    InjectDataWeightInvalid = 452,
+    InjectDataParamNameNotFound = 453, // Trying to send data for parameter that doesn't exist
+    InjectDataParamControlledByOtherPlugin = 454 // Only one plugin can send data for a parameter at a time
 }
