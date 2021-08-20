@@ -20,6 +20,7 @@
   - [Requesting execution of hotkeys](#requesting-execution-of-hotkeys)
   - [Requesting list of ArtMeshes in current model](#requesting-list-of-artmeshes-in-current-model)
   - [Tint ArtMeshes with color](#tint-artmeshes-with-color)
+  - [Checking if face is currently found by tracker](#checking-if-face-is-currently-found-by-tracker)
   - [Requesting list of available tracking parameters](#requesting-list-of-available-tracking-parameters)
   - [Get the value for one specific parameter, default or custom](#get-the-value-for-one-specific-parameter-default-or-custom)
   - [Get the value for all Live2D parameters in the current model](#get-the-value-for-all-live2d-parameters-in-the-current-model)
@@ -675,6 +676,34 @@ Matching is always executed **case-insensitive**.
 	"messageType": "ColorTintResponse",
 	"data": {
 		"matchedArtMeshes": 3
+	}
+}
+```
+
+## Checking if face is currently found by tracker
+
+Returns whether or not the face is currently found by the active tracker (smartphone via network/USB or webcam tracker).
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "FaceFoundRequest"
+}
+```
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "FaceFoundResponse",
+	"data": {
+		"found": true
 	}
 }
 ```
