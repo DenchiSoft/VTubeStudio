@@ -683,11 +683,10 @@ Matching is always executed **case-insensitive**.
 
 ## Requesting list of available tracking parameters
 
-:warning: <b>Not yet implemented</b> :warning: 
-
 You can request a list of parameters currently available in VTube Studio.
 This includes all regular parameters and all custom parameters created by plugins. Parameters created by plugins will be marked as such when you select them from the parameter list in VTube Studio. It will also show the name of the plugin that created them.
 
+**Important:** This may return a lot of data. It is not recommended to send this request at high frequencies (60+ FPS), as it may cause performance issues on slower PCs.
 
 **`REQUEST`**
 ```json
