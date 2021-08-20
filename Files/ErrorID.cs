@@ -72,5 +72,8 @@ public enum ErrorID
     InjectDataValueInvalid = 451,
     InjectDataWeightInvalid = 452,
     InjectDataParamNameNotFound = 453, // Trying to send data for parameter that doesn't exist
-    InjectDataParamControlledByOtherPlugin = 454 // Only one plugin can send data for a parameter at a time
+    InjectDataParamControlledByOtherPlugin = 454, // Only one plugin can send data for a parameter at a time
+    
+    // Errors related to ParameterValueRequest
+    ParameterValueRequestParameterNotFound = 500
 }
