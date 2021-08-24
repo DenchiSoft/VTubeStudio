@@ -52,7 +52,7 @@ The following is a list of finished plugins you can use and examples/libraries f
 | [VTS Linker - SMB1](https://github.com/Renpona/VTStudio-Linker-SMB1) | [Renpona](https://twitter.com/renpona) | Example | A prototype for reading data from an emulated copy of Super Mario Bros, and using that data to automatically move and recolor a Live2D model in VTS based on what's happening in the game.
 | [VTchaos](https://github.com/Raelice/VTchaos) | [Raelice](https://twitter.com/theraelice) | App | A program that reads YouTube chat to perform functions like model swapping, rotation, and movement in vtube studio through simple chat commands.
 | [Mix It Up](https://mixitupapp.com/) | [Mix It Up](https://twitter.com/mixitupapp) | App | Streaming Software Bot for Chat, Events, and other awesome features!
-| [VsPyYt](https://github.com/mlo40/VsPyYt) | [emlo40](https://emlo40.com) | App/Framework | VsPyYt is a command prompt program that can read youtube chat and execute commands saved in token.json, you can also use it as a base for python programs that interacts with VtubeStudio |
+| [VsPyYt](https://github.com/mlo40/VsPyYt) | [emlo40](https://emlo40.com) | App/Framework | VsPyYt is a command prompt app that can read YouTube chat and execute commands saved in token.json. You can also use it as a base for python programs that interact with VTube Studio. |
 
 
 
