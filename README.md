@@ -136,7 +136,7 @@ Once connected, the client can poll information about the current app state at a
 
 ## API Server Discovery (UDP)
 
-VTube Studio also broadcasts the API state on the local network via UDP on port 47779. This is done once a second even if the user has turned off the API.
+VTube Studio also broadcasts the API state on the local network via UDP on port 47779. This is done once every two seconds even if the user has turned off the API.
 The `instanceID` is a random ID that gets generated for a VTube Studio instance when it is started. It doesn't change while this instance is running so two VTube Studio instances would have different IDs.
 
 The `windowTitle` is the title text of the window. On Windows, this will be different for different VTS instances. When more than one instance is started, the first instance will have tie title `VTube Studio`, the second instance will have the title `VTube Studio Window 2` and so on. On macOS, all instances will have the title `VTube Studio`
