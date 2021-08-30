@@ -13,7 +13,7 @@ Check out this page: https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins
 
 ## Are you a developer who wants to learn about creating VTube Studio Plugins?
 
-Everything you're looking for is on this page.
+Everything you're looking for is on this page. If you have any questions, please ask in the [Discord](https://discord.gg/VTubeStudio).
 
 ## Contents
 
