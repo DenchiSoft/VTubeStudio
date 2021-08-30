@@ -3,6 +3,18 @@
 
 [![VTube Studio Discord](https://discordapp.com/api/guilds/652602255748497449/widget.png?style=banner2)](https://discord.gg/VTubeStudio)
 
+## Are you looking for the VTube Studio Manual?
+
+That can be found here: https://github.com/DenchiSoft/VTubeStudio/wiki
+
+## Are you looking for a list of VTube Studio Plugins?
+
+Check out this page: https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins
+
+## Are you a developer who wants to learn about creating VTube Studio Plugins?
+
+Everything you're looking for is on this page.
+
 ## Contents
 
 - [General Info](#general-info)
