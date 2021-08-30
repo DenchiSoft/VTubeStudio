@@ -3,11 +3,11 @@
 
 [![VTube Studio Discord](https://discordapp.com/api/guilds/652602255748497449/widget.png?style=banner2)](https://discord.gg/VTubeStudio)
 
-## Are you looking for the VTube Studio Manual?
+## Are you looking for the [VTube Studio Manual](https://github.com/DenchiSoft/VTubeStudio/wiki)?
 
 That can be found here: https://github.com/DenchiSoft/VTubeStudio/wiki
 
-## Are you looking for a list of VTube Studio Plugins?
+## Are you looking for a [list of VTube Studio Plugins](https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins)?
 
 Check out this page: https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins
 
