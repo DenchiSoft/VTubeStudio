@@ -67,6 +67,7 @@ The following is a list of finished plugins you can use and examples/libraries f
 | [Mix It Up](https://mixitupapp.com/) | [Mix It Up](https://twitter.com/mixitupapp) | App | Streaming Software Bot for Chat, Events, and other awesome features!
 | [VsPyYt](https://github.com/mlo40/VsPyYt) | [emlo40](https://emlo40.com) | App/Framework | VsPyYt is a command prompt app that can read YouTube chat and execute commands saved in token.json. You can also use it as a base for python programs that interact with VTube Studio. |
 | [VTS-Sharp](https://github.com/FomTarro/VTS-Sharp) | [Skeletom](https://www.twitter.com/FomTarro) | Library | A Unity/C# library for use by other plugin authors which implements the VTube Studio WebSocket API. |
+| [node-red-contrib-vts](https://github.com/eslym/node-red-contrib-vts) | [0nepeop1e](https://github.com/eslym) | Library | A library package which provides node for Node-RED to integrate with VTube Studio |
 
 
 
