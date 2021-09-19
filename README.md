@@ -606,7 +606,7 @@ All hotkey type strings can be found on the page [HotkeyActions.cs](https://gith
 	"requestID": "SomeID",
 	"messageType": "HotkeyTriggerRequest",
 	"data": {
-		"hotkeyID": "UniqueIdOfHotkeyToExecute"
+		"hotkeyID": "HotkeyNameOrUniqueIdOfHotkeyToExecute"
 	}
 }
 ```
@@ -625,7 +625,9 @@ All hotkey type strings can be found on the page [HotkeyActions.cs](https://gith
 }
 ```
 
-This may return an error if the hotkey ID wasn't found or the hotkey couldn't be executed for some reason. Reasons include no model being currently loaded or the hotkey cooldown not being over (one specific hotkey can only be triggered once every 5 frames). You may send different hotkeys in quick succession, which will result in them getting queued. Once every 5 frames, one hotkey is take from the queue and executed. The queue holds 32 hotkeys. When the queue is full but you try to send in more hotkeys, an error will be returned.
+You can trigger hotkeys either by their unique ID or the hotkey name (case-insensitive). If multiple hotkeys have the same name, only the first one will be executed (order is the order they show up in the UI).
+
+This may return an error if the hotkey ID or name wasn't found or the hotkey couldn't be executed for some reason. Reasons include no model being currently loaded or the hotkey cooldown not being over (one specific hotkey can only be triggered once every 5 frames). You may send different hotkeys in quick succession, which will result in them getting queued. Once every 5 frames, one hotkey is take from the queue and executed. The queue holds 32 hotkeys. When the queue is full but you try to send in more hotkeys, an error will be returned.
 
 ## Requesting list of ArtMeshes in current model
 
