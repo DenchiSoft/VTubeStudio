@@ -33,6 +33,7 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Requesting execution of hotkeys](#requesting-execution-of-hotkeys)
   - [Requesting list of ArtMeshes in current model](#requesting-list-of-artmeshes-in-current-model)
   - [Tint ArtMeshes with color](#tint-artmeshes-with-color)
+  - [Getting scene lighting overlay color](#getting-scene-lighting-overlay-color)
   - [Checking if face is currently found by tracker](#checking-if-face-is-currently-found-by-tracker)
   - [Requesting list of available tracking parameters](#requesting-list-of-available-tracking-parameters)
   - [Get the value for one specific parameter, default or custom](#get-the-value-for-one-specific-parameter-default-or-custom)
@@ -723,6 +724,58 @@ Matching is always executed **case-insensitive**.
 	}
 }
 ```
+
+## Getting scene lighting overlay color
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "SceneColorOverlayInfoRequest"
+}
+```
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "SceneColorOverlayInfoResponse",
+	"data": {
+		"active": true,
+		"itemsIncluded": false,
+		"colorOverlayR": 301,
+		"colorOverlayG": 104,
+		"colorOverlayB": 125,		
+		"colorAvgR": 201,
+		"colorAvgG": 4,
+		"colorAvgB": 25,		
+		"leftCapturePart": {
+			"active": true
+			"colorR": 200,
+			"colorG": 3,
+			"colorB": 24
+		},
+		"middleCapturePart": {
+			"active": true
+			"colorR": 202,
+			"colorG": 5,
+			"colorB": 26
+		},
+		"rightCapturePart": {
+			"active": false
+			"colorR": 255,
+			"colorG": 0,
+			"colorB": 120
+		},
+
+	}
+}
+```
+
 
 ## Checking if face is currently found by tracker
 
