@@ -741,7 +741,9 @@ The average color calculated from all activated screen parts can be found in the
 
 The final color that will be used to overlay the ArtMeshes is in the `colorOverlay` fields (R, G and B between 0 and 459). Note that this allows values higher than 255. The final color is calculated as follows:
 
+`colorAvg` *  (`colorBoost` / 50) + `WHITE_COLOR` * (`baseBrightness` / 100)
 
+When the lighting overlay system is turned off, `active` on the top payload level will be `false` and all colors will be returned as white.
 
 **`REQUEST`**
 ```json
