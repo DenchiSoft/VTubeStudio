@@ -757,7 +757,7 @@ When the lighting overlay system is turned off, `active` on the top payload leve
 }
 ```
 
-**`REQUEST`**
+**`RESPONSE`**
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
