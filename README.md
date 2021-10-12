@@ -727,6 +727,12 @@ Matching is always executed **case-insensitive**.
 
 ## Getting scene lighting overlay color
 
+VTube Studio has functionality to overlay the model with the average color captured from a screen (macOS/Windows) or specific window (Windows only). For more info, see [this page in the documentation](https://github.com/DenchiSoft/VTubeStudio/wiki/Display-Light-Overlay).
+
+You can get the current user configuration and color for the scene lighting overlay system via the API.
+
+In the response, 
+
 **`REQUEST`**
 ```json
 {
