@@ -752,32 +752,35 @@ In the response,
 	"messageType": "SceneColorOverlayInfoResponse",
 	"data": {
 		"active": true,
-		"itemsIncluded": false,
-		"colorOverlayR": 301,
-		"colorOverlayG": 104,
-		"colorOverlayB": 125,		
-		"colorAvgR": 201,
-		"colorAvgG": 4,
-		"colorAvgB": 25,		
+		"itemsIncluded": true,
+		"isWindowCapture": false,
+		"baseBrightness": 16,
+		"colorBoost": 35,
+		"smoothing": 6,
+		"colorOverlayR": 206,
+		"colorOverlayG": 150,
+		"colorOverlayB": 153,
+		"colorAvgR": 237,
+		"colorAvgG": 157,
+		"colorAvgB": 162,
 		"leftCapturePart": {
 			"active": true,
-			"colorR": 200,
-			"colorG": 3,
-			"colorB": 24
+			"colorR": 243,
+			"colorG": 231,
+			"colorB": 234
 		},
 		"middleCapturePart": {
 			"active": true,
-			"colorR": 202,
-			"colorG": 5,
-			"colorB": 26
+			"colorR": 230,
+			"colorG": 83,
+			"colorB": 89
 		},
 		"rightCapturePart": {
 			"active": false,
-			"colorR": 255,
-			"colorG": 0,
-			"colorB": 120
-		},
-
+			"colorR": 235,
+			"colorG": 95,
+			"colorB": 101
+		}
 	}
 }
 ```
