@@ -754,19 +754,19 @@ Matching is always executed **case-insensitive**.
 		"colorAvgG": 4,
 		"colorAvgB": 25,		
 		"leftCapturePart": {
-			"active": true
+			"active": true,
 			"colorR": 200,
 			"colorG": 3,
 			"colorB": 24
 		},
 		"middleCapturePart": {
-			"active": true
+			"active": true,
 			"colorR": 202,
 			"colorG": 5,
 			"colorB": 26
 		},
 		"rightCapturePart": {
-			"active": false
+			"active": false,
 			"colorR": 255,
 			"colorG": 0,
 			"colorB": 120
