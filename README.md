@@ -743,6 +743,8 @@ The final color that will be used to overlay the ArtMeshes is in the `colorOverl
 
 `colorAvg` *  (`colorBoost` / 50) + `WHITE_COLOR` * (`baseBrightness` / 100)
 
+This may produce values as high as 2 * 255 for R, G and B. The values are capped at 1.8 * 255 = 459.
+
 When the lighting overlay system is turned off, `active` on the top payload level will be `false` and all colors will be returned as white.
 
 **`REQUEST`**
