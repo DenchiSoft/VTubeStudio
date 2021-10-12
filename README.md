@@ -731,7 +731,17 @@ VTube Studio has functionality to overlay the model with the average color captu
 
 You can get the current user configuration and color for the scene lighting overlay system via the API.
 
-In the response, 
+In the top level of the response, you have the `active` field, which tells you whether or not the lighting overlay is on. If `itemsIncluded` is true, all items are also affected by the lighting overlay. If `isWindowCapture` is `true`, VTube Studio is set to capture the average color of a window. If this is `false`, the capture is set to a screen. 
+
+`baseBrightness` (between 0 and 100), `colorBoost` (between 0 and 100) and `smoothing` (between 0 and 60) are the three values users can select using sliders on the UI. For an explanation, please check [documentation page about this feature](https://github.com/DenchiSoft/VTubeStudio/wiki/Display-Light-Overlay).
+
+`leftCapturePart`, `middleCapturePart` and `rightCapturePart` describe the average colors of the respective parts of the captured window or screen. Their `active` field tells you whether or not the screen part has been activated by the user.
+
+The average color calculated from all activated screen parts can be found in the `colorAvg` fields (R, G and B between 0 and 255).
+
+The final color that will be used to overlay the ArtMeshes is in the `colorOverlay` fields (R, G and B between 0 and 459). Note that this allows values higher than 255. The final color is calculated as follows:
+
+
 
 **`REQUEST`**
 ```json
