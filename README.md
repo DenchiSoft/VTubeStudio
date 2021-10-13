@@ -53,9 +53,11 @@ As a first step, a proposal for the API setup and payloads will be published on 
 
 Afterwards, if you develop a plugin or any app that can be used with VTube Studio, please open a PR and I will add it to the list that will be created on this page.
 
-## Available Plugins and Examples
+## Available Examples
 
-The following is a list of finished plugins you can use and examples/libraries for you to look at that make it easier to integrate the VTube Studio API into your app. 
+If you're a user of VTube Studio looking for plugins you can use, check out the [plugin list wiki page](https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins).
+
+If you're a developer looking for examples/libraries for you to look at that make it easier to integrate the VTube Studio API into your app, please take a look at the following table. 
 
 :warning: **If you made something you want to have included here, please open a pull request with the modified table!!** :warning:
 
@@ -70,11 +72,6 @@ The following is a list of finished plugins you can use and examples/libraries f
 | [VTS-Sharp](https://github.com/FomTarro/VTS-Sharp) | [Skeletom](https://www.twitter.com/FomTarro) | Library | A Unity/C# library for use by other plugin authors which implements the VTube Studio WebSocket API. |
 | [node-red-contrib-vts](https://github.com/eslym/node-red-contrib-vts) | [0nepeop1e](https://github.com/eslym) | Library | A library package which provides node for Node-RED to integrate with VTube Studio |
 
-
-
-## Status
-
-:warning: <b>API documentation is finalized and fully implemented. You can currently use the API with the beta version of VTube Studio. If you have questions or feedback, please post in the public API channel in the [VTS Discord](https://discord.gg/VTubeStudio).</b> :warning: 
 
 # API Details
 
