@@ -71,7 +71,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [VsPyYt](https://github.com/mlo40/VsPyYt) | [emlo40](https://emlo40.com) | App/Framework | VsPyYt is a command prompt app that can read YouTube chat and execute commands saved in token.json. You can also use it as a base for python programs that interact with VTube Studio. |
 | [VTS-Sharp](https://github.com/FomTarro/VTS-Sharp) | [Skeletom](https://www.twitter.com/FomTarro) | Library | A Unity/C# library for use by other plugin authors which implements the VTube Studio WebSocket API. |
 | [node-red-contrib-vts](https://github.com/eslym/node-red-contrib-vts) | [0nepeop1e](https://github.com/eslym) | Library | A library package which provides node for Node-RED to integrate with VTube Studio |
-| [VTS Mod](https://github.com/MechaWolfVtuberShin/VTS-Mod/releases/tag/vts-mod) | [MechaWolfVtuber_Shin](https://github.com/MechaWolfVtuberShin) | App | A program that allows user to change the surface color of the model or becoming RGB and changing the rotation of the model |
+| [VTS Mod](https://github.com/MechaWolfVtuberShin/VTS-Mod/releases/tag/vts-mod) | [MechaWolfVtuber_Shin](https://github.com/MechaWolfVtuberShin) | App | A program that allows users to change the surface color of the model including RGB. It can also change the rotation of the model. |
 
 
 # API Details
