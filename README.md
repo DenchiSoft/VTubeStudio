@@ -72,6 +72,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [VTS-Sharp](https://github.com/FomTarro/VTS-Sharp) | [Skeletom](https://www.twitter.com/FomTarro) | Library | A Unity/C# library for use by other plugin authors which implements the VTube Studio WebSocket API. |
 | [node-red-contrib-vts](https://github.com/eslym/node-red-contrib-vts) | [0nepeop1e](https://github.com/eslym) | Library | A library package which provides node for Node-RED to integrate with VTube Studio |
 | [VTS Mod](https://github.com/MechaWolfVtuberShin/VTS-Mod/releases/tag/vts-mod) | [MechaWolfVtuber_Shin](https://github.com/MechaWolfVtuberShin) | App | A program that allows users to change the surface color of the model including RGB. It can also change the rotation of the model. |
+| [Tie Tools: VTS Color Editor](https://tie-tools.tiberiusx.me) | [Prof. Tiberius](https://www.twitter.com/prof_tiberius) | App | Web App that gives in depth control of the colors and opacity of specifc parts of your model. |
 
 
 # API Details
