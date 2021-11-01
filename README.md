@@ -72,7 +72,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [VTS-Sharp](https://github.com/FomTarro/VTS-Sharp) | [Skeletom](https://www.twitter.com/FomTarro) | Library | A Unity/C# library for use by other plugin authors which implements the VTube Studio WebSocket API. |
 | [node-red-contrib-vts](https://github.com/eslym/node-red-contrib-vts) | [0nepeop1e](https://github.com/eslym) | Library | A library package which provides node for Node-RED to integrate with VTube Studio |
 | [VTS Mod](https://github.com/MechaWolfVtuberShin/VTS-Mod/releases/tag/vts-mod) | [MechaWolfVtuber_Shin](https://github.com/MechaWolfVtuberShin) | App | A program that allows users to change the surface color of the model including RGB. It can also change the rotation of the model. |
-| [Tie Tools: VTS Color Editor](https://tie-tools.tiberiusx.me) | [Prof. Tiberius](https://www.twitter.com/prof_tiberius) | App | Web App that gives in depth control of the colors and opacity of specifc parts of your model. |
+| [Tie Tools: VTS Color Editor](https://tie-tools.tiberiusx.me) | [Prof. Tiberius](https://www.twitter.com/prof_tiberius) | App | Web App that gives in depth control of the colors and opacity of specific parts of your model. |
 
 
 # API Details
@@ -82,7 +82,7 @@ The VTube Studio websocket server runs on `ws://localhost:8001`. This is the def
 If your plugin cannot connect to the websocket server, tell the users to check if the port is correct or if there are any firewall/antivirus settings that may prevent the connection.
 You should also make sure your plugin supports configuring the port used for the connection.
 
-If you can connect, the first thing to do is check if the user has enabled the API. 
+If you can connect, the first thing to do is check if the user has enabled the API.
 
 **`REQUEST`**
 ```json
@@ -208,7 +208,7 @@ If the user has activated API access, this will trigger a popup inside of VTS as
 }
 ```
 
-The field `"authenticationToken"` contais an ASCII string which will serve as the token for authenticating with the API. It is at most 64 characters in length.
+The field `"authenticationToken"` contains an ASCII string which will serve as the token for authenticating with the API. It is at most 64 characters in length.
 If they deny access, you will get the following error:
 
 **`RESPONSE`**
@@ -475,7 +475,7 @@ This may fail and return an error if the app is currently in a state where no mo
 
 If a model is loaded, this allows you to change its position, rotation and size. If no model is loaded, this will return an error, see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)
 
-The required fields in this request are `"timeInSeconds"` and `"valuesAreRelativeToModel"`. `"timeInSeconds"` is the time in seconds the movement should take and has to be a float value between 0 and 2. If this is set to 0, the model will instantly appear the the given position. A value higher than that will make the model move, rotate and grow/shrink smoothly to the given position (faded in/out). While the movement is going on, the user cannot move the model manually by dragging it. That will be possible again about half a second after the model has finished moving to the destination.
+The required fields in this request are `"timeInSeconds"` and `"valuesAreRelativeToModel"`. `"timeInSeconds"` is the time in seconds the movement should take and has to be a float value between 0 and 2. If this is set to 0, the model will instantly appear in the given position. A value higher than that will make the model move, rotate and grow/shrink smoothly to the given position (faded in/out). While the movement is going on, the user cannot move the model manually by dragging it. That will be possible again about half a second after the model has finished moving to the destination.
 
 Subsequent `MoveModelRequest` can be sent without waiting for the ongoing one to finish. If one is ongoing, it will be interrupted and replaced by the new one. You can even take complete control over the movement by sending one request each frame with 0 as `"timeInSeconds"`.
 
@@ -592,7 +592,7 @@ The `"modelID"` (and `"data"` object in general here) is optional. If it's not p
 
 If no model ID was specified in the request and no model is loaded, `"modelLoaded"` will be false and the `"availableHotkeys"` array will be empty. If an ID was specified, the `"modelLoaded"` field will be `true` or `false` depending on whether or not the model with the given ID is currently loaded.
 
-The `"file"` field contains the expression/animation/model filename for hotkeys of type `TriggerAnimation`, `ChangeIdleAnimation`, `ToggleExpression` and `ChangeVTSModel`. For `ChangeBackground` hotkeys, this contains the backgroudn name without the file extension. For all other types, it contains an empty string.
+The `"file"` field contains the expression/animation/model filename for hotkeys of type `TriggerAnimation`, `ChangeIdleAnimation`, `ToggleExpression` and `ChangeVTSModel`. For `ChangeBackground` hotkeys, this contains the background name without the file extension. For all other types, it contains an empty string.
 
 All hotkey type strings can be found on the page [HotkeyActions.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
 
