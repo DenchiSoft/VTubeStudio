@@ -559,30 +559,35 @@ The `"modelID"` (and `"data"` object in general here) is optional. If it's not p
 			{
 				"name": "My first hotkey",
 				"type": "ToggleExpression",
+				"description": "Toggles an expression",
 				"file": "myExpression_1.exp3.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith1"
 			},
 			{
 				"name": "My second hotkey",
 				"type": "TriggerAnimation",
+				"description": "Triggers an animation",
 				"file": "myAnimation.motion3.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith2"
 			},
 			{
 				"name": "My third hotkey",
 				"type": "ChangeVTSModel",
+				"description": "Changes the VTS model",
 				"file": "someOtherModel.vtube.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith3"
 			},
 			{
 				"name": "My fourth hotkey",
 				"type": "MoveModel",
+				"description": "Moves the Live2D model",
 				"file": "",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith4"
 			},
 			{
 				"name": "My fifth hotkey",
 				"type": "Unset",
+				"description": "No action set for hotkey",
 				"file": "",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith5"
 			}
@@ -594,6 +599,8 @@ The `"modelID"` (and `"data"` object in general here) is optional. If it's not p
 If no model ID was specified in the request and no model is loaded, `"modelLoaded"` will be false and the `"availableHotkeys"` array will be empty. If an ID was specified, the `"modelLoaded"` field will be `true` or `false` depending on whether or not the model with the given ID is currently loaded.
 
 The `"file"` field contains the expression/animation/model filename for hotkeys of type `TriggerAnimation`, `ChangeIdleAnimation`, `ToggleExpression` and `ChangeVTSModel`. For `ChangeBackground` hotkeys, this contains the background name without the file extension. For all other types, it contains an empty string.
+
+The `"description"` field contains a description of what the hotkey does. You can show this string on your plugin UI when you encounter a hotkey type that your plugin doesn't know, for example because the hotkey type was newly added to VTube Studio. 
 
 All hotkey type strings can be found on the page [HotkeyActions.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
 
