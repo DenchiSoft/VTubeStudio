@@ -15,5 +15,6 @@ public enum HotkeyAction
     CalibrateCam = 8,            // Calibrate Camera.
     ChangeVTSModel = 9,          // Change VTS Model.
     TakeScreenshot = 10,         // Takes a screenshot with the screenshot settings previously set in the UI.
-    ScreenColorOverlay = 11      // Activates/Deactivates model screen color overlay.
+    ScreenColorOverlay = 11,     // Activates/Deactivates model screen color overlay.
+    RemoveAllItems = 12          // Removes all items from the scene.
 }
