@@ -80,10 +80,10 @@ If you're a developer looking for examples/libraries for you to look at that mak
 
 The VTube Studio websocket server runs on `ws://localhost:8001`. This is the default, but users can also change the port in the app. Websockets in general support `binary` and `text` messages. VTube Studio will always respond with `text` messages and it is recommended to also send `text` messages to the API. You may also send `binary` messages but if you do, make sure they are encoded in UTF-8.
 
-If your plugin cannot connect to the websocket server, tell the users to check if the port is correct or if there are any firewall/antivirus settings that may prevent the connection.
+If your plugin cannot connect to the websocket server, tell the users to check if the port is correct or if there are any firewall/antivirus settings that may prevent the connection. Most importantly, you should ask the users to `"Allow Plugin API access"` in VTube Studio. It's an option on the main config page in VTS.
 You should also make sure your plugin supports configuring the port used for the connection.
 
-If you can connect, the first thing to do is check if the user has enabled the API.
+If you can connect, the first thing you can try is check the status of your session.
 
 **`REQUEST`**
 ```json
@@ -123,27 +123,6 @@ You can use the same ID or different IDs for each request. If provided, IDs shou
 If you don't add the `"requestID"` field, VTube Studio will add a randomly generated UUID for the request and return it with the response.
 
 The `"currentSessionAuthenticated"` will tell you if the current session has already been authenticated.
-
-If the user has turned off the API functionality, all API requests other than the API state request will fail with the following response.
-
-**`RESPONSE`**
-```json
-{
-	"apiName": "VTubeStudioPublicAPI",
-	"apiVersion": "1.0",
-	"timestamp": 1625405710728,
-	"requestID": "SomeID",
-	"messageType": "APIError",
-	"data": {
-		"errorID": 1,
-		"message": "VTube Studio is running and API is online but user has deactivated API access."
-	}
-}
-```
-
-
-If this is the case, you should ask the user to `"Allow Plugin API access"` in VTube Studio. It's an option on the main config page in VTS.
-If any other API request fails, this payload will also be returned with the respective error ID and message.
 
 All possible error IDs are listed on the page [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs).
 
