@@ -75,5 +75,9 @@ public enum ErrorID
     InjectDataParamControlledByOtherPlugin = 454, // Only one plugin can send data for a parameter at a time
     
     // Errors related to ParameterValueRequest
-    ParameterValueRequestParameterNotFound = 500
+    ParameterValueRequestParameterNotFound = 500,
+
+    // Errors related to NDIConfigRequest
+    NDIConfigCooldownNotOver = 550,
+    NDIConfigResolutionInvalid = 551
 }
