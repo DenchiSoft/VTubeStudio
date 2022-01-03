@@ -1118,7 +1118,9 @@ If you set `"setNewConfig"` to `false`, this only returns the current config. Al
 
 `"ndiActive"` turns NDI on/off. If NDI is on, `"useNDI5"` uses NDI 5 instead of NDI 4 (I recommend using NDI 5).
 
-Setting `"useCustomResolution"` to `true` means the NDI stream will no longer have the same resolution as the VTube Studio window but instead use the custom resolution set via the UI. This resolution can also be changed via the API using the `"customWidthNDI"` and `"customHeightNDI"` fields. Both have to be between 256 and 8192. The width has to be a multiple of 16 and the height has to be a multiple of 8. Setting them both to `-1` in the request will skip setting them and instead only set the boolean fields. That way you can for example turn NDI on/off without changing the resolution. 
+Setting `"useCustomResolution"` to `true` means the NDI stream will no longer have the same resolution as the VTube Studio window but instead use the custom resolution set via the UI. This resolution can also be changed via the API using the `"customWidthNDI"` and `"customHeightNDI"` fields. Both have to be between 256 and 8192. The width has to be a multiple of 16 and the height has to be a multiple of 8. Setting them both to `-1` in the request will skip setting them and instead only set the boolean fields. That way you can for example turn NDI on/off without changing the resolution.
+
+**Important:** This request has a cooldown period of 3 seconds. Triggering it too fast will return an error of type `NDIConfigCooldownNotOver` (see ["ErrorID.cs"](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
 
 **`REQUEST`**
 ```json
@@ -1137,6 +1139,8 @@ Setting `"useCustomResolution"` to `true` means the NDI stream will no longer ha
 	}
 }
 ```
+
+The response will just contain the current settings (the new ones if you requested a new config to be set). The `"setNewConfig"` field does not have any significance in the response.
 
 **`RESPONSE`**
 ```json
