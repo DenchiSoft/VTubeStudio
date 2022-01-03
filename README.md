@@ -1120,7 +1120,7 @@ If you set `"setNewConfig"` to `false`, this only returns the current config. Al
 
 Setting `"useCustomResolution"` to `true` means the NDI stream will no longer have the same resolution as the VTube Studio window but instead use the custom resolution set via the UI. This resolution can also be changed via the API using the `"customWidthNDI"` and `"customHeightNDI"` fields. Both have to be between 256 and 8192. The width has to be a multiple of 16 and the height has to be a multiple of 8. Setting them both to `-1` in the request will skip setting them and instead only set the boolean fields. That way you can for example turn NDI on/off without changing the resolution.
 
-**Important:** This request has a cooldown period of 3 seconds. Triggering it too fast will return an error of type `NDIConfigCooldownNotOver` (see ["ErrorID.cs"](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
+**Important:** This request has a cooldown period of 3 seconds. Triggering it too fast will return an error of type `NDIConfigCooldownNotOver` (see "[ErrorID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)").
 
 **`REQUEST`**
 ```json
