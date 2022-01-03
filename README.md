@@ -41,7 +41,7 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Adding new tracking parameters ("custom parameters")](#adding-new-tracking-parameters-custom-parameters)
   - [Delete custom parameters](#delete-custom-parameters)
   - [Feeding in data for default or custom parameters](#feeding-in-data-for-default-or-custom-parameters)
-
+  - [Get and/or set NDI settings](#get-and-set-ndi-settings)
 
 
 
@@ -1108,4 +1108,51 @@ You can also add an optional `"weight"` parameter between 0 and 1. This can be u
 
 It should also be noted that these parameters are treated similar to normal tracking parameters. As such, you can select them as normal inputs for VTube Studio parameter mappings and apply smoothing via the sliders on the UI. Deleting custom parameters while they are being used by a model also does not cause any issues and they can be recreated at any time.
 
+## Get and set NDI settings
 
+You can request the current NDI settings and change them via the API. This allows you to turn NDI on/off, set a custom fixed resolution and more.
+
+Information about NDI and how to use it in VTube Studio can be found on this page: https://github.com/DenchiSoft/VTubeStudio/wiki/Streaming-to-Mac-PC
+
+If you set `"setNewConfig"` to `false`, this only returns the current config. All other fields are ignored in that case. If it's set to `true`, the given config will be set if it's valid.
+
+`"ndiActive"` turns NDI on/off. If NDI is on, `"useNDI5"` uses NDI 5 instead of NDI 4 (I recommend using NDI 5).
+
+Setting `"useCustomResolution"` to `true` means the NDI stream will no longer have the same resolution as the VTube Studio window but instead use the custom resolution set via the UI. This resolution can also be changed via the API using the `"customWidthNDI"` and `"customHeightNDI"` fields. Both have to be between 256 and 8192. The width has to be a multiple of 16 and the height has to be a multiple of 8. Setting them both to `-1` in the request will skip setting them and instead only set the boolean fields. That way you can for example turn NDI on/off without changing the resolution. 
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "NDIConfigRequest",
+	"data": {
+		"setNewConfig": true,
+		"ndiActive": true,
+		"useNDI5": true,
+		"useCustomResolution": true,
+		"customWidthNDI": 1024,
+		"customHeightNDI": 512
+	}
+}
+```
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "NDIConfigResponse",
+	"data": {
+		"setNewConfig": true,
+		"ndiActive": true,
+		"useNDI5": true,
+		"useCustomResolution": true,
+		"customWidthNDI": 1024,
+		"customHeightNDI": 512
+	}
+}
+```
