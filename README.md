@@ -687,7 +687,7 @@ This may return an error if the hotkey ID or name wasn't found or the hotkey cou
 	"messageType": "ExpressionActivationRequest",
 	"data": {
 		"expressionFile": "myExpression_1.exp3.json",
-		"active": True
+		"active": true
 	}
 }
 ```
