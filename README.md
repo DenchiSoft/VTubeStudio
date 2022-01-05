@@ -623,14 +623,56 @@ This may return an error if the hotkey ID or name wasn't found or the hotkey cou
 **`REQUEST`**
 ```json
 {
-
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ExpressionStateRequest",
+	"data": {
+		"details": true,
+		"expressionFile": "myExpression_optional_1.exp3.json",
+	}
 }
 ```
 
 **`RESPONSE`**
 ```json
 {
-
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ExpressionStateResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"expressions": [
+			{
+				"name": "myExpression_optional_1",
+				"file": "myExpression_optional_1 .exp3.json",
+				"active": false,
+				"deactivateWhenKeyIsLetGo": false,
+				"autoDeactivateAfterSeconds": false,
+				"secondsRemaining": 0,
+				"usedInHotkeys": [
+					{
+						"name": "Some Hotkey",
+						"id": "SomeUniqueIdToIdentifyHotkeyWith1"
+					},
+					{
+						"name": "Some other Hotkey",
+						"id": "SomeUniqueIdToIdentifyHotkeyWith2"
+					}
+				],
+				"parameters": [
+					{
+						"id": "SomeLive2DParamID",
+						"target": 0
+					}
+				]
+			}
+		]
+	}
 }
 ```
 
@@ -639,14 +681,26 @@ This may return an error if the hotkey ID or name wasn't found or the hotkey cou
 **`REQUEST`**
 ```json
 {
-
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ExpressionActivationRequest",
+	"data": {
+		"expressionFile": "myExpression_1.exp3.json",
+		"active": True
+	}
 }
 ```
 
 **`RESPONSE`**
 ```json
 {
-
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ExpressionActivationResponse",
+	"data": { }
 }
 ```
 
