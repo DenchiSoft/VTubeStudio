@@ -31,6 +31,10 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Moving the currently loaded VTS model](#moving-the-currently-loaded-vts-model)
   - [Requesting list of hotkeys available in current or other VTS model](#requesting-list-of-hotkeys-available-in-current-or-other-vts-model)
   - [Requesting execution of hotkeys](#requesting-execution-of-hotkeys)
+  - 
+  - [Requesting list of ](#requesting-execution-of-hotkeys)
+  - [Requesting execution of hotkeys](#requesting-execution-of-hotkeys)
+  - 
   - [Requesting list of ArtMeshes in current model](#requesting-list-of-artmeshes-in-current-model)
   - [Tint ArtMeshes with color](#tint-artmeshes-with-color)
   - [Getting scene lighting overlay color](#getting-scene-lighting-overlay-color)
