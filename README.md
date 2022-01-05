@@ -32,7 +32,7 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Requesting list of hotkeys available in current or other VTS model](#requesting-list-of-hotkeys-available-in-current-or-other-vts-model)
   - [Requesting execution of hotkeys](#requesting-execution-of-hotkeys)
   - [Requesting list of expressions and their states](#requesting-expression-state-list)
-  - [Requesting activation/deactivation of expressions](#requesting-activation-or-deactivation-of-hotkeys)
+  - [Requesting activation/deactivation of expressions](#requesting-activation-or-deactivation-of-expressions)
   - [Requesting list of ArtMeshes in current model](#requesting-list-of-artmeshes-in-current-model)
   - [Tint ArtMeshes with color](#tint-artmeshes-with-color)
   - [Getting scene lighting overlay color](#getting-scene-lighting-overlay-color)
@@ -617,6 +617,38 @@ All hotkey type strings can be found on the page [HotkeyActions.cs](https://gith
 You can trigger hotkeys either by their unique ID or the hotkey name (case-insensitive). If multiple hotkeys have the same name, only the first one will be executed (order is the order they show up in the UI). Hotkeys with empty name can only be triggered by ID.
 
 This may return an error if the hotkey ID or name wasn't found or the hotkey couldn't be executed for some reason. Reasons include no model being currently loaded or the hotkey cooldown not being over (one specific hotkey can only be triggered once every 5 frames). You may send different hotkeys in quick succession, which will result in them getting queued. Once every 5 frames, one hotkey is take from the queue and executed. The queue holds 32 hotkeys. When the queue is full but you try to send in more hotkeys, an error will be returned.
+
+## Requesting current expression state list
+
+**`REQUEST`**
+```json
+{
+
+}
+```
+
+**`RESPONSE`**
+```json
+{
+
+}
+```
+
+## Requesting activation or deactivation of expressions
+
+**`REQUEST`**
+```json
+{
+
+}
+```
+
+**`RESPONSE`**
+```json
+{
+
+}
+```
 
 ## Requesting list of ArtMeshes in current model
 
