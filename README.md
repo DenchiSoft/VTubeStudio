@@ -624,7 +624,7 @@ You can get the current state (active or inactive) of one specific expression or
 
 If you include a filename but it's invalid (doesn't end in `.exp3.json`) or not found in the current model, an error is returned (see "[ErrorID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)").
 
-Setting `"details"` to true will return a few more details in the response (specifically, the `usedInHotkeys` and `parameters` arrays will be empty if `"details"` is set to false).
+Setting `"details"` to true will return a few more details in the response (specifically, the `"usedInHotkeys"` and `"parameters"` arrays will be empty if `"details"` is set to false).
 
 **`REQUEST`**
 ```json
@@ -640,7 +640,13 @@ Setting `"details"` to true will return a few more details in the response (spec
 }
 ```
 
-The `expressions` array will be empty if no model is loaded. 
+The `expressions` array will be empty if no model is loaded. Otherwise, this will contain information about the available expressions for the currently loaded model.
+
+The `"file"` field is the filename of the expression as it is stored in the model folder. `"name"` is the same just without the `.exp3.json` extension. `"active"` tells you whether or not the expression is currently active.
+
+If the expression was activated using a hotkey, `"deactivateWhenKeyIsLetGo"` and `"autoDeactivateAfterSeconds"` will tell you whether or not those options were activated for the expression hotkey. If `"autoDeactivateAfterSeconds"` is `true`, the remaining time until the expression is automatically deactivated will be returned in `"secondsRemaining"` (otherwise it will be 0).
+
+If `"details"` was set to `true` in the request the `"usedInHotkeys"` array will contain a list of all hotkeys that this expression is used in. Also, the `"parameters"` array will contain the contents of the expression, meaning the Live2D parameter IDs and target values of all parameters used in the expression.
 
 **`RESPONSE`**
 ```json
@@ -686,7 +692,7 @@ The `expressions` array will be empty if no model is loaded.
 
 ## Requesting activation or deactivation of expressions
 
-asd
+It's recommended to activate expressions via hotkeys since otherwise users could end up with activated expressions they can't deactivate because they don't have hotkeys set up for them. However, you can also activate and deactivate hotkeys directly if that's required for your plugin. You do this by passing in an expression file name and whether the expression should be activated or deactivated.
 
 **`REQUEST`**
 ```json
@@ -701,6 +707,8 @@ asd
 	}
 }
 ```
+
+You will get this empty response if the request was successful. If the filename is invalid (doesn't end in `.exp3.json`) or not found in the current model or no model is loaded, an error is returned (see "[ErrorID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)").
 
 **`RESPONSE`**
 ```json
