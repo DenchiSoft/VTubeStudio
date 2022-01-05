@@ -620,6 +620,12 @@ This may return an error if the hotkey ID or name wasn't found or the hotkey cou
 
 ## Requesting current expression state list
 
+You can get the current state (active or inactive) of one specific expression or all expressions. If you include `"expressionFile"`, only the state of that expression will be returned. If you don't include it or leave it as an empty string, the state of all expressions in the current model will be returned.
+
+If you include a filename but it's invalid (doesn't end in `.exp3.json`) or not found in the current model, an error is returned (see "[ErrorID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)").
+
+Setting `"details"` to true will return a few more details in the response (specifically, the `usedInHotkeys` and `parameters` arrays will be empty if `"details"` is set to false).
+
 **`REQUEST`**
 ```json
 {
@@ -633,6 +639,8 @@ This may return an error if the hotkey ID or name wasn't found or the hotkey cou
 	}
 }
 ```
+
+The `expressions` array will be empty if no model is loaded. 
 
 **`RESPONSE`**
 ```json
@@ -677,6 +685,8 @@ This may return an error if the hotkey ID or name wasn't found or the hotkey cou
 ```
 
 ## Requesting activation or deactivation of expressions
+
+asd
 
 **`REQUEST`**
 ```json
