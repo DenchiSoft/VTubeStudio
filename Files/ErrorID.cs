@@ -79,5 +79,14 @@ public enum ErrorID
 
     // Errors related to NDIConfigRequest
     NDIConfigCooldownNotOver = 550,
-    NDIConfigResolutionInvalid = 551
+    NDIConfigResolutionInvalid = 551,
+
+    // Errors related to ExpressionStateRequest
+    ExpressionStateRequestInvalidFilename = 600,
+    ExpressionStateRequestFileNotFound = 601,
+
+    // Errors related to ExpressionStateRequest
+    ExpressionActivationRequestInvalidFilename = 650,
+    ExpressionActivationRequestFileNotFound = 651,
+    ExpressionActivationRequestNoModelLoaded = 652
 }
