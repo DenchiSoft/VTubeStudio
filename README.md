@@ -76,6 +76,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [VTS Mod](https://github.com/MechaWolfVtuberShin/VTS-Mod/releases/tag/vts-mod) | [MechaWolfVtuber_Shin](https://github.com/MechaWolfVtuberShin) | App | A program that allows users to change the surface color of the model including RGB. It can also change the rotation of the model. |
 | [Tie Tools: VTS Color Editor](https://tie-tools.tiberiusx.me) | [Prof. Tiberius](https://www.twitter.com/prof_tiberius) | App | Web App that gives in depth control of the colors and opacity of specific parts of your model. |
 | [vtubestudio-rs](https://github.com/walfie/vtubestudio-rs) | [Walfie](https://www.twitter.com/walfieee) | Library | A Rust library for use by other plugin authors which implements the VTube Studio WebSocket API. |
+| [vts-heartrate](https://skeletom-ch.itch.io/vts-heartrate) | [Skeletom](https://www.twitter.com/FomTarro) | App | A plugin that connects real-time heartrate data to VTube Studio, allowing for dynamic model tinting and providing custom tracking parameters based on pulse. |
 
 
 # API Details
