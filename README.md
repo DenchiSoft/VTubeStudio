@@ -681,8 +681,8 @@ If `"details"` was set to `true` in the request the `"usedInHotkeys"` array will
 				],
 				"parameters": [
 					{
-						"id": "SomeLive2DParamID",
-						"target": 0
+						"name": "SomeLive2DParamID",
+						"value": 0
 					}
 				]
 			}
