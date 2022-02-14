@@ -1219,8 +1219,8 @@ It should also be noted that these parameters are treated similar to normal trac
 
 Users can customize physics settings in VTube Studio. They can change the following settings:
 
-- **Physics strength (per model):** Integer between 0 (off) and 100 (max). Default is 50, which means physics will behave like in the Live2D Cubism Editor. 
-- **Wind strength (per model):** Integer between 0 (off) and 100 (max). Default is 0. 
+- **Base physics strength (per model):** Integer between 0 (off) and 100 (max). Default is 50, which means physics will behave like in the Live2D Cubism Editor. 
+- **Base wind strength (per model):** Integer between 0 (off) and 100 (max). Default is 0. 
 - **Physics Multiplier (per physics group):** For each physics group (can be set up in Live2D Cubism), users can set a multiplier. The base physics value will be multiplied by this value when processing the respective physics group. Float between 0 and 2, default is 1 meaning the base value stays unchanged.
 - **Wind Multiplier (per physics group):** For each physics group (can be set up in Live2D Cubism), users can set a multiplier. The base wind value will be multiplied by this value when processing the respective physics group. Float between 0 and 2, default is 1 meaning the base value stays unchanged.
 
@@ -1281,7 +1281,7 @@ If no model is loaded, `modelLoaded` will be `false`. All other values do not ha
 
 If a model is loaded, the `modelHasPhysics` field will tell you whether or not the model has a valid physics setup. Some models don't have physics set up or have a broken physics file which will cause the physics system to not start correctly. `physicsSwitchedOn` will be true if the `Use Physics` toggle has been activated for this model by the user in VTube Studio. `usingLegacyPhysics` is the state of the `Legacy Physics` toggle.
 
-`physicsFPSSetting` contains the physics FPS setting for this model and can be 30, 60, 120 or -1, which indicated that the user has selected `Use same FPS as app`.
+`physicsFPSSetting` contains the physics FPS setting for this model and can be 30, 60, 120 or -1, which indicates that the user has selected `Use same FPS as app`.
 
 The `apiPhysicsOverrideActive` and `apiPhysicsOverridePluginName` fields indicate whether or not a plugin is currently overriding some of the physics settings. If it's active field is true, the name field will contain the name of the plugin. Only one plugin can take control of the physics system at a time. This will also be explained as part of the `SetCurrentModelPhysicsRequest` request. 
 
@@ -1289,7 +1289,9 @@ Nore for the `physicsGroup` array: Every group has an ID but not every group has
 
 ## Overriding physics settings of currently loaded VTS model
 
-You can override the physics settings of the currently loaded model using this request.
+You can override the physics settings of the currently loaded model using this request. Once one plugin has taken control of the physics system via this API, no other plugin can use this API until the first plugin has given up control. Trying to do so will return the respective error, see "[ErrorID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)" (`SetCurrentModelPhysicsRequestPhysicsControlledByOtherPlugin`). This will also return an error if no model is loaded, if any of your provided physics group IDs don't exist in the current model or if you forgot to add a value to your overrides.
+
+If the user has turned off physics for the currently loaded model, you cannot turn physics on using this API. You can only use this API to override physics/wind base values and multipliers.
 
 **`REQUEST`**
 ```json
@@ -1297,7 +1299,25 @@ You can override the physics settings of the currently loaded model using this r
 	"apiName": "VTubeStudioPublicAPI",
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
-	"messageType": "SetCurrentModelPhysicsRequest"
+	"messageType": "SetCurrentModelPhysicsRequest",
+	"data": {
+		"strengthOverrides": [
+			{
+				"id": "PhysicsSetting1",
+				"value": 1.5,
+				"setBaseValue": false,
+				"overrideSeconds": 2
+			}
+		],
+		"windOverrides": [
+			{
+				"id": "",
+				"value": 85,
+				"setBaseValue": true,
+				"overrideSeconds": 5
+			}
+		]
+	}
 }
 ```
 
