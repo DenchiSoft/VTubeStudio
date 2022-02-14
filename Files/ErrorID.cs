@@ -88,5 +88,14 @@ public enum ErrorID
     // Errors related to ExpressionStateRequest
     ExpressionActivationRequestInvalidFilename = 650,
     ExpressionActivationRequestFileNotFound = 651,
-    ExpressionActivationRequestNoModelLoaded = 652
+    ExpressionActivationRequestNoModelLoaded = 652,
+    
+    // Errors related to SetCurrentModelPhysicsRequest
+    SetCurrentModelPhysicsRequestNoModelLoaded = 700,
+    SetCurrentModelPhysicsRequestModelHasNoPhysics = 701,
+    SetCurrentModelPhysicsRequestPhysicsControlledByOtherPlugin = 702, 
+    SetCurrentModelPhysicsRequestNoOverridesProvided = 703,
+    SetCurrentModelPhysicsRequestPhysicsGroupIDNotFound = 704,
+    SetCurrentModelPhysicsRequestNoOverrideValueProvided = 705,
+    SetCurrentModelPhysicsRequestDuplicatePhysicsGroupID = 706
 }
