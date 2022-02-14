@@ -1217,7 +1217,74 @@ It should also be noted that these parameters are treated similar to normal trac
 
 ## Getting physics settings of currently loaded VTS model
 
-TODO: Document API
+Users can customize physics settings in VTube Studio. They can change the following settings:
+
+- **Physics strength (per model):** Between 0 (off) and 100 (max). Default is 50, which means physics will behave like in the Live2D Cubism Editor. 
+- **Wind strength (per model):** Between 0 (off) and 100 (max). Default is 0. 
+- **Physics Multiplier (per physics group):** For each physics group (can be set up in Live2D Cubism), users can set a multiplier. The base physics value will be multiplied by this value when processing the respective physics group.
+- **Wind Multiplier (per physics group):** For each physics group (can be set up in Live2D Cubism), users can set a multiplier. The base wind value will be multiplied by this value when processing the respective physics group.
+
+These values set by the user can be read via the API and also overridden temporarily (see `SetCurrentModelPhysicsRequest`).
+
+To read the values of the currently loaded model, use this request:
+
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "GetCurrentModelPhysicsRequest"
+}
+```
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "GetCurrentModelPhysicsResponse",
+	"data": {
+		"modelLoaded": true,
+		"modelName": "My Currently Loaded Model",
+		"modelID": "UniqueIDOfModel",
+		"modelHasPhysics": true,
+		"physicsSwitchedOn": true,
+		"usingLegacyPhysics": false,
+		"physicsFPSSetting": -1,
+		"baseStrength": 50,
+		"baseWind": 17,
+		"apiPhysicsOverrideActive": false,
+		"apiPhysicsOverridePluginName": "",
+		"physicsGroups": [
+			{
+				"groupID": "PhysicsSetting1",
+				"groupName": "Hair Front Physics",
+				"strengthMultiplier": 1.5,
+				"windMultiplier": 0.3
+			},
+			{
+				"groupID": "PhysicsSetting2",
+				"groupName": "Clothes Physics",
+				"strengthMultiplier": 1,
+				"windMultiplier": 2
+			}
+		]
+	}
+}
+```
+
+If no model is loaded, `modelLoaded` will be `false`. All other values do not have any significance in that case and the `physicsGroups` array will be empty.
+
+If a model is loaded, the `modelHasPhysics` field will tell you whether or not the model has a valid physics setup. Some models don't have physics set up or have a broken physics file which will cause the physics system to not start correctly. `physicsSwitchedOn` will be true if the `Use Physics` toggle has been activated for this model by the user in VTube Studio. `usingLegacyPhysics` is the state of the `Legacy Physics` toggle.
+
+`physicsFPSSetting` contains the physics FPS setting for this model and can be 30, 60, 120 or -1, which indicated that the user has selected `Use same FPS as app`.
+
+The `apiPhysicsOverrideActive` and `apiPhysicsOverridePluginName` fields indicate whether or not a plugin is currently overriding some of the physics settings. If it's active field is true, the name field will contain the name of the plugin. Only one plugin can take control of the physics system at a time. This will also be explained as part of the `SetCurrentModelPhysicsRequest` request. 
+
 
 ## Overriding physics settings of currently loaded VTS model
 
