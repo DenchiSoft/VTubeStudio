@@ -1285,7 +1285,9 @@ If a model is loaded, the `modelHasPhysics` field will tell you whether or not t
 
 The `apiPhysicsOverrideActive` and `apiPhysicsOverridePluginName` fields indicate whether or not a plugin is currently overriding some of the physics settings. If it's active field is true, the name field will contain the name of the plugin. Only one plugin can take control of the physics system at a time. This will also be explained as part of the `SetCurrentModelPhysicsRequest` request. 
 
-Nore for the `physicsGroup` array: Every group has an ID but not every group has to have a name. In that case, the respective `groupName` field will be an empty string.
+If you use the `SetCurrentModelPhysicsRequest` to override physics or wind base values or multipliers, these changes will **NOT** be reflected in this Get-Request. You have to remember your own physics overrides.
+
+Note for the `physicsGroup` array: Every group has an ID but not every group has to have a name. In that case, the respective `groupName` field will be an empty string.
 
 ## Overriding physics settings of currently loaded VTS model
 
