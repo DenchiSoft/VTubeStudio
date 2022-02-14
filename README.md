@@ -1219,10 +1219,10 @@ It should also be noted that these parameters are treated similar to normal trac
 
 Users can customize physics settings in VTube Studio. They can change the following settings:
 
-- **Physics strength (per model):** Between 0 (off) and 100 (max). Default is 50, which means physics will behave like in the Live2D Cubism Editor. 
-- **Wind strength (per model):** Between 0 (off) and 100 (max). Default is 0. 
-- **Physics Multiplier (per physics group):** For each physics group (can be set up in Live2D Cubism), users can set a multiplier. The base physics value will be multiplied by this value when processing the respective physics group.
-- **Wind Multiplier (per physics group):** For each physics group (can be set up in Live2D Cubism), users can set a multiplier. The base wind value will be multiplied by this value when processing the respective physics group.
+- **Physics strength (per model):** Integer between 0 (off) and 100 (max). Default is 50, which means physics will behave like in the Live2D Cubism Editor. 
+- **Wind strength (per model):** Integer between 0 (off) and 100 (max). Default is 0. 
+- **Physics Multiplier (per physics group):** For each physics group (can be set up in Live2D Cubism), users can set a multiplier. The base physics value will be multiplied by this value when processing the respective physics group. Float between 0 and 2, default is 1 meaning the base value stays unchanged.
+- **Wind Multiplier (per physics group):** For each physics group (can be set up in Live2D Cubism), users can set a multiplier. The base wind value will be multiplied by this value when processing the respective physics group. Float between 0 and 2, default is 1 meaning the base value stays unchanged.
 
 These values set by the user can be read via the API and also overridden temporarily (see `SetCurrentModelPhysicsRequest`).
 
@@ -1285,10 +1285,33 @@ If a model is loaded, the `modelHasPhysics` field will tell you whether or not t
 
 The `apiPhysicsOverrideActive` and `apiPhysicsOverridePluginName` fields indicate whether or not a plugin is currently overriding some of the physics settings. If it's active field is true, the name field will contain the name of the plugin. Only one plugin can take control of the physics system at a time. This will also be explained as part of the `SetCurrentModelPhysicsRequest` request. 
 
+Nore for the `physicsGroup` array: Every group has an ID but not every group has to have a name. In that case, the respective `groupName` field will be an empty string.
 
 ## Overriding physics settings of currently loaded VTS model
 
-TODO: Document API
+You can override the physics settings of the currently loaded model using this request.
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "SetCurrentModelPhysicsRequest"
+}
+```
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "SetCurrentModelPhysicsResponse",
+	"data": { }
+}
+```
 
 ## Get and set NDI settings
 
