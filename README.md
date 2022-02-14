@@ -43,9 +43,10 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Adding new tracking parameters ("custom parameters")](#adding-new-tracking-parameters-custom-parameters)
   - [Delete custom parameters](#delete-custom-parameters)
   - [Feeding in data for default or custom parameters](#feeding-in-data-for-default-or-custom-parameters)
+  - [Getting physics settings of currently loaded VTS model](#getting-physics-settings-of-currently-loaded-vts-model)
+  - [Overriding physics settings of currently loaded VTS model](#overriding-physics-settings-of-currently-loaded-vts-model)
   - [Get and/or set NDI settings](#get-and-set-ndi-settings)
-
-
+  - [Get and/or set NDI settings](#get-and-set-ndi-settings)
 
 ## General Info
 
