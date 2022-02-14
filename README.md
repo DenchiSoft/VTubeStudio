@@ -1293,6 +1293,16 @@ You can override the physics settings of the currently loaded model using this r
 
 If the user has turned off physics for the currently loaded model, you cannot turn physics on using this API. You can only use this API to override physics/wind base values and multipliers.
 
+As explained in the `GetCurrentModelPhysicsRequest` section above, values for physics/wind multipliers should be between 0 and 2 while values for physics/wind base values should be integers between 0 and 100 (because that's also how they're shown to the user in the app). Values outside that range will automatically be clamped.
+
+If you want to set multipliers for strength or wind for a specific physics group, use the `strengthOverrides` and `windOverrides` arrays with the respective group ID and `setBaseValue` set to false. If you set `setBaseValue` to true, the provided value will be set as base value for physics strength or wind instead of a specific group. You can leave the group ID (`id`) empty in that case. 
+
+Generally, the values set using this API are used to override the values set by the user in the app. They're not actually shown to the user on the UI and are not saved. Override values set using this API are automatically unset when their timer runs out (the value you set using `overrideSeconds`). If you want to keep overriding values, you have to repeatedly send this request.
+
+When all timers run out, the API will no longer consider your plugin as controlling the physics system so another plugin could start controlling the physics system.
+
+Override timer values have to be between 0.5 and 5 seconds.  Values outside that range will automatically be clamped.
+
 **`REQUEST`**
 ```json
 {
