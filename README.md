@@ -1216,6 +1216,14 @@ You can also add an optional `"weight"` parameter between 0 and 1. This can be u
 
 It should also be noted that these parameters are treated similar to normal tracking parameters. As such, you can select them as normal inputs for VTube Studio parameter mappings and apply smoothing via the sliders on the UI. Deleting custom parameters while they are being used by a model also does not cause any issues and they can be recreated at any time.
 
+## Getting physics settings of currently loaded VTS model
+
+TODO: Document API
+
+## Overriding physics settings of currently loaded VTS model
+
+TODO: Document API
+
 ## Get and set NDI settings
 
 You can request the current NDI settings and change them via the API. This allows you to turn NDI on/off, set a custom fixed resolution and more.
