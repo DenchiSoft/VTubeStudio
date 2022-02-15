@@ -77,7 +77,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [Tie Tools: VTS Color Editor](https://tie-tools.tiberiusx.me) | [Prof. Tiberius](https://www.twitter.com/prof_tiberius) | App | Web App that gives in depth control of the colors and opacity of specific parts of your model. |
 | [vtubestudio-rs](https://github.com/walfie/vtubestudio-rs) | [Walfie](https://www.twitter.com/walfieee) | Library | A Rust library for use by other plugin authors which implements the VTube Studio WebSocket API. |
 | [vts-heartrate](https://skeletom-ch.itch.io/vts-heartrate) | [Skeletom](https://www.twitter.com/FomTarro) | App | A plugin that connects real-time heartrate data to VTube Studio, allowing for dynamic model tinting and providing custom tracking parameters based on pulse. |
-| [vts-chameleon](https://satetsu888.github.io/vts-chameleon/) | [satetsu888](https://www.twitter.com/satetsu888) | App | A plugin for generic tint color. Let's play by changing tones of hair, skin, uniform, etc... of your models. |
+| [vts-chameleon](https://satetsu888.github.io/vts-chameleon/) | [satetsu888](https://www.twitter.com/satetsu888) | App | A plugin for applying color tints. You can play around by changing color tones of hair, skin, uniform, etc. of your models. |
 
 
 # API Details
