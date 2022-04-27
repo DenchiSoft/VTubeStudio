@@ -1177,6 +1177,7 @@ You can feed in data for any default or custom parameter like this:
 	"requestID": "SomeID",
 	"messageType": "InjectParameterDataRequest",
 	"data": {
+		"faceFound": false
 		"parameterValues": [
 			{
 				"id": "FaceAngleX",
@@ -1216,6 +1217,8 @@ If another plugin is already controlling this (default or custom) parameter, an 
 You can also add an optional `"weight"` parameter between 0 and 1. This can be used used to mix the `"value"` you send in for the parameter with the value that has been set for the parameter from face tracking. You could for example control a parameter 50% with face tracking and 50% using the API. Only one API plugin can write to one parameter at a time though. One use-case for this would be to fade in/out control of a face tracking parameter so it doesn't "jump" the moment you take control of it via the API. If you don't include the `"weight"` parameter in your request for a parameter, it will be considered to have the value 1, meaning the target parameter will instantly be set to the value provided by your plugin.
 
 It should also be noted that these parameters are treated similar to normal tracking parameters. As such, you can select them as normal inputs for VTube Studio parameter mappings and apply smoothing via the sliders on the UI. Deleting custom parameters while they are being used by a model also does not cause any issues and they can be recreated at any time.
+
+Optionally, you can pass in `"faceFound": true`, which will tell VTube Studio to consider the user face as found. That way, you can control when the "tracking lost" animation is played.
 
 ## Getting physics settings of currently loaded VTS model
 
