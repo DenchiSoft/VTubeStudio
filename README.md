@@ -547,7 +547,8 @@ The `"modelID"` (and `"data"` object in general here) is optional. If it's not p
 				"file": "myExpression_1.exp3.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith1",
 				"keyCombination": [
-                    			"N1",
+                    			"X",
+                    			"Y",
                     			"LeftControl"
                 		],
                 		"onScreenButtonID": 8
@@ -559,7 +560,8 @@ The `"modelID"` (and `"data"` object in general here) is optional. If it's not p
 				"file": "myAnimation.motion3.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith2",
 				"keyCombination": [
-                    			"N4"
+                    			"N1",
+                    			"N2"
                 		],
                 		"onScreenButtonID": -1
 			},
