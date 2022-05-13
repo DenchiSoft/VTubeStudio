@@ -546,11 +546,7 @@ The `"modelID"` (and `"data"` object in general here) is optional. If it's not p
 				"description": "Toggles an expression",
 				"file": "myExpression_1.exp3.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith1",
-				"keyCombination": [
-                    			"X",
-                    			"Y",
-                    			"LeftControl"
-                		],
+				"keyCombination": [],
                 		"onScreenButtonID": 8
 			},
 			{
@@ -559,10 +555,7 @@ The `"modelID"` (and `"data"` object in general here) is optional. If it's not p
 				"description": "Triggers an animation",
 				"file": "myAnimation.motion3.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith2",
-				"keyCombination": [
-                    			"N1",
-                    			"N2"
-                		],
+				"keyCombination": [],
                 		"onScreenButtonID": -1
 			},
 			{
@@ -571,9 +564,7 @@ The `"modelID"` (and `"data"` object in general here) is optional. If it's not p
 				"description": "Changes the VTS model",
 				"file": "someOtherModel.vtube.json",
 				"hotkeyID": "SomeUniqueIdToIdentifyHotkeyWith3",
-				"keyCombination": [
-                    			"A"
-                		],
+				"keyCombination": [],
                 		"onScreenButtonID": -1
 			},
 			{
@@ -605,7 +596,9 @@ The `"file"` field contains the expression/animation/model filename for hotkeys 
 
 The `"description"` field contains a description of what the hotkey does. You can show this string on your plugin UI when you encounter a hotkey type that your plugin doesn't know, for example because the hotkey type was newly added to VTube Studio. 
 
-The `"keyCombination"` field contains the keyboard (or mouse key) combination that will trigger they hotkey. See [RestrictedRawKey.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/RestrictedRawKey.cs) for all possible values. If the array is empty, no key combination has been set. The `"onScreenButtonID"` field contains all on-screen button IDs that will trigger the hotkey (1 (top) to 8 (bottom) or -1). If the value is `-1`, no on-screen button has been set for this hotkey.
+The `"keyCombination"` array contains the keyboard (or mouse key) combination that will trigger they hotkey. See [RestrictedRawKey.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/RestrictedRawKey.cs) for all possible values. If the array is empty, no key combination has been set. **IMPORTANT:** For security reasons, the `"keyCombination"` array will currently **always be empty**, so this data won't be available to plugins for now. May be re-added in a future update.
+
+The `"onScreenButtonID"` field contains all on-screen button IDs that will trigger the hotkey (1 (top) to 8 (bottom) or -1). If the value is `-1`, no on-screen button has been set for this hotkey.
 
 All hotkey type strings can be found on the page [HotkeyActions.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
 
