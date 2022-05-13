@@ -603,7 +603,7 @@ The `"file"` field contains the expression/animation/model filename for hotkeys 
 
 The `"description"` field contains a description of what the hotkey does. You can show this string on your plugin UI when you encounter a hotkey type that your plugin doesn't know, for example because the hotkey type was newly added to VTube Studio. 
 
-The `keyCombination` field contains the keyboard (or mouse key) combination that will trigger they hotkey. See "[RestrictedRawkey.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/RestrictedRawKey.cs)" for all possible values. The `onScreenButtonID` field contains all on-screen button IDs that will trigger the hotkey. If the value is `-1`, no on-screen button has been set for this hotkey.
+The `keyCombination` field contains the keyboard (or mouse key) combination that will trigger they hotkey. See "[RestrictedRawKey.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/RestrictedRawKey.cs)" for all possible values. The `onScreenButtonID` field contains all on-screen button IDs that will trigger the hotkey. If the value is `-1`, no on-screen button has been set for this hotkey.
 
 All hotkey type strings can be found on the page [HotkeyActions.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
 
