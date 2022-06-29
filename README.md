@@ -530,6 +530,8 @@ The `"modelID"` (and `"data"` object in general here) is optional. If it's not p
 
 This can also return the hotkeys of any available Live2D item. To do that, just pass in the filename of the item in the `"live2DItemFileName"` field. You can get the (unique) filenames of all available Live2D items using the `ItemListRequest`.
 
+If both `"modelID"` and `"live2DItemFileName"` are provided, only `"modelID"` is used and the other field will be ignored.
+
 **`RESPONSE`**
 ```json
 {
