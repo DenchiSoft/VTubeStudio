@@ -521,11 +521,14 @@ If you want to move the model to a fixed pixel position or by a certain amount o
 	"messageType": "HotkeysInCurrentModelRequest",
 	"data": {
 		"modelID": "Optional_UniqueIDOfModel",
+		"live2DItemFileName": "Optional_Live2DItemFileName"
 	}
 }
 ```
 
 The `"modelID"` (and `"data"` object in general here) is optional. If it's not provided, the hotkeys for the current model are returned. If the model ID is provided, the hotkeys of the model with the give model ID are returned. If no model with that ID is found, an error is returned (see [ErrorID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs), `ModelIDNotFound`).
+
+This can also return the hotkeys of any available Live2D item. To do that, just pass in the filename of the item in the `"live2DItemFileName"` field. You can get the (unique) filenames of all available Live2D items using the `ItemListRequest`.
 
 **`RESPONSE`**
 ```json
