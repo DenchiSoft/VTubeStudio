@@ -1644,7 +1644,17 @@ The response contains the instance ID of the newly loaded item in the `instanceI
 
 ## Remove item from the scene
 
-You 
+You can use this request to unload any item that is currently loaded in the scene.
+
+Setting `"unloadAllInScene"` to `true` unloads all items. All other fields are ignored in that case.
+
+Setting `"unloadAllLoadedByThisPlugin"` to `true` unloads all items that have been loaded by this plugin.
+
+If you want to prevent this request from unloading items that have been loaded by the user or other plugins, set `"allowUnloadingItemsLoadedByUserOrOtherPlugins"` to `false`.
+
+You can also request specific item instances or item instances that have been loaded from certain filenames by using the optional `"instanceIDs"` and `"fileNames"` arrays. Even if those items aren't found in the scene, the request will not return an error. It will just return a response with an empty array.
+
+This may return an error of type `CannotCurrentlyUnloadItem` if the user currently has menus open that prevent VTS from loading/unloading items.
 
 **`REQUEST`**
 ```json
@@ -1669,7 +1679,7 @@ You
 }
 ```
 
-TODO
+The response contains the instance IDs and filenames of the unloaded items.
 
 **`RESPONSE`**
 ```json
@@ -1708,7 +1718,15 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemAnimationControlRequest",
 	"data": {
-		"TODO": true
+		"itemInstanceID": "ItemInstanceId",
+		"framerate": 12,
+		"frame": 3,
+		"brightness": 1,
+		"opacity": 1,
+		"setAutoStopFrames": true,
+		"autoStopFrames": [0, 7, 26],
+		"setAnimationPlayState": true,
+		"animationPlayState": true
 	}
 }
 ```
@@ -1724,7 +1742,8 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemAnimationControlResponse",
 	"data": {
-		"TODO": true
+		"frame": 3,
+		"animationPlaying": true
 	}
 }
 ```
