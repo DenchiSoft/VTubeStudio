@@ -1450,21 +1450,169 @@ The response will just contain the current settings (the new ones if you request
 
 TODO
 
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemListRequest",
+	"data": {
+		"aaaaaaaaaaaaaaaaa": aaaaaaaaaaa
+	}
+}
+```
+
+TODO
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemListResponse",
+	"data": {
+		"aaaaaaaaaaaa": aaaaaaaaaaa,
+	}
+}
+```
+
 ## Load item into the scene
 
 TODO
 
-## Remove item from the scene
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemLoadRequest",
+	"data": {
+		"aaaaaaaaaaaaaaaaa": aaaaaaaaaaa
+	}
+}
+```
 
 TODO
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemLoadResponse",
+	"data": {
+		"aaaaaaaaaaaa": aaaaaaaaaaa,
+	}
+}
+```
+
+## Remove item from the scene
+
+
+TODO
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemUnloadRequest",
+	"data": {
+		"aaaaaaaaaaaaaaaaa": aaaaaaaaaaa
+	}
+}
+```
+
+TODO
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemUnloadResponse",
+	"data": {
+		"aaaaaaaaaaaa": aaaaaaaaaaa,
+	}
+}
+```
 
 ## Control items and item animations
 
+
 TODO
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemAnimationControlRequest",
+	"data": {
+		"aaaaaaaaaaaaaaaaa": aaaaaaaaaaa
+	}
+}
+```
+
+TODO
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemAnimationControlResponse",
+	"data": {
+		"aaaaaaaaaaaa": aaaaaaaaaaa,
+	}
+}
+```
 
 ## Move items in the scene
 
+
 TODO
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemMoveRequest",
+	"data": {
+		"aaaaaaaaaaaaaaaaa": aaaaaaaaaaa
+	}
+}
+```
+
+TODO
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemMoveResponse",
+	"data": {
+		"aaaaaaaaaaaa": aaaaaaaaaaa,
+	}
+}
+```
 
 
 
