@@ -1451,7 +1451,19 @@ The response will just contain the current settings (the new ones if you request
 
 This request lets you request a list of items that are currently in the scene. It also lets you request a list of item files that are available to be loaded on the user's PC, including Live2D items, animation folders, ...
 
+If you want to know which order-spots are available to load items into right now, set `"includeAvailableSpots"` to `true`. Otherwise, the `"availableSpots"` array in the response will be empty.
 
+If you want to know which items are loaded in the scene into right now, set `"includeItemInstancesInScene"` to `true`. Otherwise, the `"itemInstancesInScene"` array in the response will be empty.
+
+If you want to know which item files are available to be loaded, set `"includeAvailableItemFiles"` to `true`. Otherwise, the `"availableItemFiles"` array in the response will be empty. **IMPORTANT:** This reads the full list of item files from the user's PC. This may lag the app for a small moment, so do not use this request with `"includeAvailableItemFiles"` set to `true` often. Only use it if you really need to refresh the list of available item files. Set it to `false` in any other case.
+
+#### Filtering for specific items
+
+If you only want the item lists to contain items with a certain item instance ID or a certain filename, you can provide them in the `"onlyItemsWithInstanceID"` and `"onlyItemsWithFileName"` fields respectively.
+
+There will only ever be at most one item with a certain instance ID in the scene, but there could be many items with the same filename because you can load many item instances based on the same item file.
+
+Please also note that **item filenames are unique**, meaning there cannot be two item files with the same filename.
 
 **`REQUEST`**
 ```json
@@ -1470,7 +1482,19 @@ This request lets you request a list of items that are currently in the scene. I
 }
 ```
 
-TODO
+The fields in the response should me mostly self-explanatory.
+
+The filename is the name of the item file. This is the name you can use to load an instance of the item into the scene. For JPG/PNG/GIF items, this is the full filename (without path) including the file extension (for example "my_item.jpg"). For animation folders, it's the folder name. For Live2D items, it is also the folder name.
+
+The item type can be found in the `"type"` field. Possible values are `PNG`, `JPG`, `GIF`, `AnimationFolder` or `Live2D`. Another possible value is `Unknown`. This would only happen if there is another item type is added to VTube Studio before the API is updated, so it should never happen. 
+
+`"canLoadItemsRightNow"` may be `false` if the user has certain menus or dialogs open in VTube Studio. This generally prevents actions such as loading items, using hotkeys and more.
+
+`"framerate"` and `"frameCount"` are only available for animated items (GIFs and animation frame folders).
+
+If `"pinnedToModel"` is true, `"pinnedModelID"` will contain the model ID of the model the item is pinned to (which will be the currently loaded model) and `"pinnedArtMeshID"` will contain the ID of the ArtMesh the item is pinned to.
+
+If you set `"includeAvailableItemFiles"` to `true`, the `"availableItemFiles"` will contain a list of all item files in the user's `Items` folder. You can use the filenames returned here to load items into the scene using the `ItemLoadRequest`.
 
 **`RESPONSE`**
 ```json
