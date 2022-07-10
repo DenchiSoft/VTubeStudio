@@ -18,6 +18,7 @@ Everything you're looking for is on this page. If you have any questions, please
 ## Contents
 
 - [General Info](#general-info)
+- [Legal Info](#legal-info)
 - [Available Plugins and Examples](#available-plugins-and-examples)
 - [Status](#status)
 - [API Details](#api-details)
@@ -60,6 +61,10 @@ VTube Studio will get a **public API**. This means you will be able to write plu
 As a first step, a proposal for the API setup and payloads will be published on this page. Once that's available, please review the proposal and leave feedback. After this process, the API will be implemented as documented in this repository.
 
 Afterwards, if you develop a plugin or any app that can be used with VTube Studio, please open a PR and I will add it to the list that will be created on this page.
+
+## Legal Info
+
+You are free to write, publish and sell any plugin you want for VTube Studio. No permission is required and there are no licensing fees or royalties.
 
 ## Available Examples
 
