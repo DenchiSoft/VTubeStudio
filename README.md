@@ -1759,7 +1759,22 @@ The response contains the current frame index and whether or not the animation i
 
 ## Moving items in the scene
 
-You can move items around in the scene.
+You can move items around in the scene. If you want to set the position instantly (for example when you want to set a new position every frame), set `"timeInSeconds"` to `0`. Otherwise, you can use this field to set the time used for the movement fade (clamped between 0 and 30 seconds).
+
+If you want to set the flip state of the item, set `"setFlip"` to true. The flip state can then be set using the `"flip"` field.
+
+For the fields that set the target of the movement (`"positionX"`, `"positionY"`, `"size"` and `"rotation"`), please refer to the documentation of the `ItemLoadRequest`. The only difference is that this `ItemMoveRequest` will not return an error if the given values are too high/low. Instead, you can set values of `-1000` or lower if you want a respective field to be ignored. If you do that, this field will not be included in the movement and instead the respective current value will be used.
+
+
+#### Item movement transition fade types
+
+You can set the movement type for the position/rotation/size fade using the `"fadeMode"` field. Accepted values are `"linear"`, `"easeIn"`, `"easeOut"`, `"easeBoth"`, `"overshoot"` and `"zip"`. They will only be used if the `"timeInSeconds"` field was set higher than `0`.
+
+If you want the user to be able to stop the movement by clicking/dragging the item while it's moving, set `"userCanStop"` to `true`. If you set it to `false`, users will not be able to interact with the item while the movement is ongoing.
+
+Here's a visual representation of the movement modes:
+
+![VTube Studio Movement Modes](/Images/vts_movement_modes.png)
 
 **`REQUEST`**
 ```json
@@ -1770,8 +1785,8 @@ You can move items around in the scene.
 	"messageType": "ItemMoveRequest",
 	"data": {
 		"itemInstanceID": "ItemInstanceId",
-		"timeInSeconds": ,	
-		"fadeMode": "ItemInstanceId",
+		"timeInSeconds": 1,	
+		"fadeMode": "easeOut",
 		"positionX": 0.2,
 		"positionY": -0.8,
 		"size": 0.6,
