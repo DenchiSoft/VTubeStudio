@@ -1449,9 +1449,9 @@ The response will just contain the current settings (the new ones if you request
 
 ## Request list of available items or items in scene
 
-TODO
+This request lets you request a list of items that are currently in the scene. It also lets you request a list of item files that are available to be loaded on the user's PC, including Live2D items, animation folders, ...
 
-[test](#the-vts-coordinate-system)
+
 
 **`REQUEST`**
 ```json
@@ -1488,7 +1488,7 @@ TODO
 
 ## Load item into the scene
 
-TODO
+Please refer to the image showing the [VTube Studio coordinate system](#the-vts-coordinate-system).
 
 **`REQUEST`**
 ```json
