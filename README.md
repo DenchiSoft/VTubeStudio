@@ -1779,7 +1779,7 @@ If you want the user to be able to stop the movement by clicking/dragging the it
 
 Here's a visual representation of the movement modes:
 
-![VTube Studio Movement Modes](/Images/vts_movement_modes.png)
+![VTube Studio Movement Modes](/Images/vts_movement_modes_smooth.png)
 
 **`REQUEST`**
 ```json
