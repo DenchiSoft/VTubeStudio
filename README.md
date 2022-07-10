@@ -1196,7 +1196,8 @@ You can feed in data for any default or custom parameter like this:
 	"requestID": "SomeID",
 	"messageType": "InjectParameterDataRequest",
 	"data": {
-		"faceFound": false
+		"faceFound": false,
+		"mode": "set",
 		"parameterValues": [
 			{
 				"id": "FaceAngleX",
@@ -1231,13 +1232,17 @@ Values have to be floating-point numbers between `-1000000` and `1000000`. Value
 If values exist for those parameters from webcam/iOS/Android tracking, the values from the API will overwrite those for as long as you keep sending data over the API.
 You have to re-send data for a parameter you want to control with your plugin **at least once every second**. Failure to do so will result in the parameter being considered "lost" and it will go back to the value of whatever was controlling it before. If nothing else is controlling it, it will return to its default value.
 
-If another plugin is already controlling this (default or custom) parameter, an error will be returned.
-
 You can also add an optional `"weight"` parameter between 0 and 1. This can be used used to mix the `"value"` you send in for the parameter with the value that has been set for the parameter from face tracking. You could for example control a parameter 50% with face tracking and 50% using the API. Only one API plugin can write to one parameter at a time though. One use-case for this would be to fade in/out control of a face tracking parameter so it doesn't "jump" the moment you take control of it via the API. If you don't include the `"weight"` parameter in your request for a parameter, it will be considered to have the value 1, meaning the target parameter will instantly be set to the value provided by your plugin.
 
 It should also be noted that these parameters are treated similar to normal tracking parameters. As such, you can select them as normal inputs for VTube Studio parameter mappings and apply smoothing via the sliders on the UI. Deleting custom parameters while they are being used by a model also does not cause any issues and they can be recreated at any time.
 
 Optionally, you can pass in `"faceFound": true`, which will tell VTube Studio to consider the user face as found. That way, you can control when the "tracking lost" animation is played.
+
+### Controlling one parameter with multiple plugins
+
+Generally, if another plugin is already controlling one (default or custom) parameter, an error will be returned. This happens because only one plugin can "set" (override) a given parameter at a time, which is the default mode for this request. This is the mode that is used when you don't provide a value in the `"mode"` field or set the value to `"set"`.
+
+Alternatively, you can set the `"mode"` field to `"add"`. This will instead add the values you send to whatever the current parameter values are. The `"weight"` values aren't used in that case. Any number of plugins can use the `"add"` mode for a given parameter at the same time. This can be useful for *bonk/throwing* type plugins and other use-cases.
 
 ## Getting physics settings of currently loaded VTS model
 
