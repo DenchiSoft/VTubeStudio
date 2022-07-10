@@ -1476,8 +1476,8 @@ Please also note that **item filenames are unique**, meaning there cannot be two
 		"includeAvailableSpots": true,
 		"includeItemInstancesInScene": true,
 		"includeAvailableItemFiles": false,
-		"onlyItemsWithFileName": "my_item_filename.png",
-		"onlyItemsWithInstanceID": "InstanceIdOfItemInScene"
+		"onlyItemsWithFileName": "OPTIONAL_my_item_filename.png",
+		"onlyItemsWithInstanceID": "OPTIONAL_InstanceIdOfItemInScene"
 	}
 }
 ```
@@ -1587,7 +1587,15 @@ If you set `"includeAvailableItemFiles"` to `true`, the `"availableItemFiles"` w
 
 ## Load item into the scene
 
-Please refer to the image showing the [VTube Studio coordinate system](#the-vts-coordinate-system).
+With this request, you can load items into the scene. Items are loaded from the "Items" folder on the user's PC.
+
+To get the list of available item files, use the `ItemListRequest`. You can use those names in the `"fileName"` field.
+
+Items can be positioned/scaled/rotated using the `"positionX/Y"`, `"size"` and `"rotation"` fields. Please refer to the image showing the [VTube Studio coordinate system](#the-vts-coordinate-system) for more info on how to use these values.
+
+
+
+There are also limits to some of the values. Specifically, the size has to be between 0 and 1, the positions have to be between -1000 and 1000, the fade time has to be between 0 and 2 and smoothing has to be between 0 and 1.
 
 **`REQUEST`**
 ```json
@@ -1597,12 +1605,22 @@ Please refer to the image showing the [VTube Studio coordinate system](#the-vts-
 	"requestID": "SomeID",
 	"messageType": "ItemLoadRequest",
 	"data": {
-		"TODO": true
+		"fileName": "some_item_name.jpg",
+		"positionX": 0,
+		"positionY": 0.5,
+		"size": 0.33,
+		"rotation": 90,
+		"fadeTime": 0.5,
+		"order": true,
+		"failIfOrderTaken": false,
+		"smoothing": 0,
+		"censored": false,
+		"flipped": false,
+		"locked": false,
+		"unloadWhenPluginDisconnects": true
 	}
 }
 ```
-
-TODO
 
 **`RESPONSE`**
 ```json
@@ -1613,7 +1631,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemLoadResponse",
 	"data": {
-		"TODO": true
+		"instanceID": "SomeUniqueItemInstanceId"
 	}
 }
 ```
