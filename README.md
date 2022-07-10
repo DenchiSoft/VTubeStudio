@@ -1463,7 +1463,7 @@ If you only want the item lists to contain items with a certain item instance ID
 
 There will only ever be at most one item with a certain instance ID in the scene, but there could be many items with the same filename because you can load many item instances based on the same item file.
 
-Please also note that **item filenames are unique**, meaning there cannot be two item files with the same filename.
+Please also note that **item filenames are unique**, meaning there cannot be two item files with the same filename. They are also **case-sensitive**, so if you want to refer to one specific file, make sure to not change the capitalization.
 
 **`REQUEST`**
 ```json
