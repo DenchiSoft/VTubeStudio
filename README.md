@@ -46,11 +46,11 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Getting physics settings of currently loaded VTS model](#getting-physics-settings-of-currently-loaded-vts-model)
   - [Overriding physics settings of currently loaded VTS model](#overriding-physics-settings-of-currently-loaded-vts-model)
   - [Get and/or set NDI settings](#get-and-set-ndi-settings)
-  - [Requesting list of available items or items in scene](#request-list-of-available-items-or-items-in-scene)
-  - [Loading item into the scene](#load-item-into-the-scene)
-  - [Removing item from the scene](#remove-item-from-the-scene)
-  - [Controling items and item animations](#control-items-and-item-animations)
-  - [Moving items in the scene](#move-items-in-the-scene)
+  - [Requesting list of available items or items in scene](#requesting-list-of-available-items-or-items-in-scene)
+  - [Loading item into the scene](#loading-item-into-the-scene)
+  - [Removing item from the scene](#removing-item-from-the-scene)
+  - [Controling items and item animations](#controling-items-and-item-animations)
+  - [Moving items in the scene](#moving-items-in-the-scene)
 
 
 ## General Info
