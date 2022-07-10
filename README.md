@@ -1242,7 +1242,7 @@ Optionally, you can pass in `"faceFound": true`, which will tell VTube Studio to
 
 Generally, if another plugin is already controlling one (default or custom) parameter, an error will be returned. This happens because only one plugin can "set" (override) a given parameter at a time, which is the default mode for this request. This is the mode that is used when you don't provide a value in the `"mode"` field or set the value to `"set"`.
 
-Alternatively, you can set the `"mode"` field to `"add"`. This will instead add the values you send to whatever the current parameter values are. The `"weight"` values aren't used in that case. Any number of plugins can use the `"add"` mode for a given parameter at the same time. This can be useful for *bonk/throwing* type plugins and other use-cases.
+Alternatively, you can set the `"mode"` field to `"add"`. This will instead add the values you send to whatever the current parameter values are. The `"weight"` values aren't used in that case. Any number of plugins can use the `"add"` mode for a given parameter at the same time. This can be useful for **bonk/throwing** type plugins and other use-cases.
 
 ## Getting physics settings of currently loaded VTS model
 
