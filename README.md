@@ -46,6 +46,12 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Getting physics settings of currently loaded VTS model](#getting-physics-settings-of-currently-loaded-vts-model)
   - [Overriding physics settings of currently loaded VTS model](#overriding-physics-settings-of-currently-loaded-vts-model)
   - [Get and/or set NDI settings](#get-and-set-ndi-settings)
+  - [Request list of available items or items in scene](#request-list-of-available-items-or-items-in-scene)
+  - [Load item into the scene](#load-item-into-the-scene)
+  - [Remove item from the scene](#remove-item-from-the-scene)
+  - [Control items and item animations](#control-items-and-item-animations)
+  - [Move items in the scene](#move-items-in-the-scene)
+
 
 ## General Info
 
@@ -1195,7 +1201,9 @@ You can delete custom parameters. Default parameters cannot be deleted. You also
 
 ## Feeding in data for default or custom parameters
 
-You can feed in data for any default or custom parameter like this:
+You can feed in data for any default or custom parameter. These tracking parameters will then be used as inputs for the loaded VTube Studio model and any loaded [Live2D Items](https://github.com/DenchiSoft/VTubeStudio/wiki/Live2D-Items).
+
+The payload looks like this:
 
 **`REQUEST`**
 ```json
@@ -1437,3 +1445,27 @@ The response will just contain the current settings (the new ones if you request
 	}
 }
 ```
+
+## Request list of available items or items in scene
+
+TODO
+
+## Load item into the scene
+
+TODO
+
+## Remove item from the scene
+
+TODO
+
+## Control items and item animations
+
+TODO
+
+## Move items in the scene
+
+TODO
+
+
+
+
