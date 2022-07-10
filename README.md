@@ -1458,7 +1458,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemListRequest",
 	"data": {
-		"aaaaaaaaaaaaaaaaa": aaaaaaaaaaa
+		"TODO": true
 	}
 }
 ```
@@ -1474,7 +1474,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemListResponse",
 	"data": {
-		"aaaaaaaaaaaa": aaaaaaaaaaa,
+		"TODO": true
 	}
 }
 ```
@@ -1491,7 +1491,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemLoadRequest",
 	"data": {
-		"aaaaaaaaaaaaaaaaa": aaaaaaaaaaa
+		"TODO": true
 	}
 }
 ```
@@ -1507,7 +1507,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemLoadResponse",
 	"data": {
-		"aaaaaaaaaaaa": aaaaaaaaaaa,
+		"TODO": true
 	}
 }
 ```
@@ -1525,7 +1525,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemUnloadRequest",
 	"data": {
-		"aaaaaaaaaaaaaaaaa": aaaaaaaaaaa
+		"TODO": true
 	}
 }
 ```
@@ -1541,7 +1541,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemUnloadResponse",
 	"data": {
-		"aaaaaaaaaaaa": aaaaaaaaaaa,
+		"TODO": true
 	}
 }
 ```
@@ -1559,7 +1559,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemAnimationControlRequest",
 	"data": {
-		"aaaaaaaaaaaaaaaaa": aaaaaaaaaaa
+		"TODO": true
 	}
 }
 ```
@@ -1575,7 +1575,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemAnimationControlResponse",
 	"data": {
-		"aaaaaaaaaaaa": aaaaaaaaaaa,
+		"TODO": true
 	}
 }
 ```
@@ -1593,7 +1593,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemMoveRequest",
 	"data": {
-		"aaaaaaaaaaaaaaaaa": aaaaaaaaaaa
+		"TODO": true
 	}
 }
 ```
@@ -1609,7 +1609,7 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemMoveResponse",
 	"data": {
-		"aaaaaaaaaaaa": aaaaaaaaaaa,
+		"TODO": true
 	}
 }
 ```
