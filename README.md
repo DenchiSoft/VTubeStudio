@@ -472,6 +472,7 @@ Subsequent `MoveModelRequest` can be sent without waiting for the ongoing one to
 
 The `"size"` is given as a float between -100 (smallest) and +100 (biggest). For `"positionX"`, `"positionY"` and `"rotation"`, please refer to the following image:
 
+#### The VTS Coordinate System
 ![The VTS Coordinate System](/Images/coordinate_explanation.png)
 
 The numbers in the cats represent the **[X/Y]** coordinates you can pass in using `"positionX"` and `"positionY"`. For example, sending [0/0] will position the middle of the model in the middle of the screen. What the "middle of the model" is can be set freely in Live2D Cubism and may vary between models. You can of course also send much bigger/smaller values to move the model off-screen. `"positionX"` and `"positionY"` have to be between -1000 and 1000.
