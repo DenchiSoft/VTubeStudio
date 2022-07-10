@@ -1591,7 +1591,7 @@ With this request, you can load items into the scene. Items are loaded from the 
 
 To get the list of available item files, use the `ItemListRequest`. You can use those names in the `"fileName"` field.
 
-Items can be positioned/scaled/rotated using the `"positionX/Y"`, `"size"` and `"rotation"` fields. Please refer to the image showing the [VTube Studio coordinate system](#the-vts-coordinate-system) for more info on how to use these values.
+Items can be positioned/scaled/rotated using the `"positionX/Y"`, `"size"` and `"rotation"` fields. Please refer to the image showing the [VTube Studio coordinate system](#the-vts-coordinate-system) for more info on how to use these values. As for the size, it has to be between `0` and `1`, with `0.32` being roughly the "default" size that items will have when the user loads them manually.
 
 You should make sure that your plugin cleans up its items. You should absolutely never leave any items outside of the visible scene where the user can't access them anymore without using the **"Delete all items in the scene"** button. To make this easier for you, you can set `"unloadWhenPluginDisconnects"` to true.
 
@@ -1707,9 +1707,9 @@ The response contains the instance IDs and filenames of the unloaded items.
 
 ## Controling items and item animations
 
-You can control certain aspects of items in the scene. This request allows you to make items darker (black overlay), change the opacity, and control the animation of animated items. This request does not work with Live2D items and will return an error of type `ItemAnimationControlUnsupportedItemType` if you try (see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
+You can control certain aspects of items in the scene. This request allows you to make items darker (black overlay), change the opacity, and control the animation of animated items. This request does not work with Live2D items and will return an error of type `ItemAnimationControlUnsupportedItemType` if you try (see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)). This can be useful for "reactive PNG"-type plugins and more.
 
-For animated items, you can set the framerate (in frames-per-second, will automatically be clamped between `0.1` and `120`). You can also manually make the animation jump to a certain frame using the `"frame"` field. An error will get returned if that frame index is invalid. For an animated item with (for example) 20 frames, valid frame indices go from 0 (first frame) to 19 (last frame). Frame counts for animated items can be requested using the `ItemListRequest`. Trying to do this for normal JPG/PNG items will return an error.
+For animated items, you can set the framerate (in frames-per-second, will automatically be clamped between `0.1` and `120`). You can also manually make the animation jump to a certain frame using the `"frame"` field. An error will get returned if that frame index is invalid. For an animated item with (for example) 20 frames, valid frame indices go from 0 (first frame) to 19 (last frame). Frame counts for animated items can be requested using the `ItemListRequest`. Trying to do this for normal JPG/PNG items will return an error of type `ItemAnimationControlSimpleImageDoesNotSupportAnim`.
 
 You can start/stop the animation using the `"animationPlayState"` field (`true` = play animation, `false` = stop animation). This field is only used if you set `"setAnimationPlayState"` to `true`, otherwise the animation play state will not be changed.
 
@@ -1759,8 +1759,7 @@ The response contains the current frame index and whether or not the animation i
 
 ## Moving items in the scene
 
-
-TODO
+You can move items around in the scene.
 
 **`REQUEST`**
 ```json
@@ -1770,12 +1769,21 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemMoveRequest",
 	"data": {
-		"TODO": true
+		"itemInstanceID": "ItemInstanceId",
+		"timeInSeconds": ,	
+		"fadeMode": "ItemInstanceId",
+		"positionX": 0.2,
+		"positionY": -0.8,
+		"size": 0.6,
+		"rotation": 180,
+		"setFlip": true,
+		"flip": false,
+		"userCanStop": true,	
 	}
 }
 ```
 
-TODO
+If the request was successful, you will just receive an empty response.
 
 **`RESPONSE`**
 ```json
@@ -1785,9 +1793,7 @@ TODO
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "ItemMoveResponse",
-	"data": {
-		"TODO": true
-	}
+	"data": { }
 }
 ```
 
