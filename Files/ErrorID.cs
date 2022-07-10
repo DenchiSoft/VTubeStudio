@@ -106,23 +106,23 @@ public enum ErrorID
     ItemFileNameMissing = 750,
     ItemFileNameNotFound = 751,
     ItemLoadLoadCooldownNotOver = 752,
-    CannotCurrentlyLoadItem = 753,
+    CannotCurrentlyLoadItem = 753, // This is usually because the user has menus open that prevent items from being loaded.
     CannotLoadItemSceneFull = 754,
     ItemOrderInvalid = 755,
     ItemOrderAlreadyTaken = 756,
-    ItemLoadValuesInvalid = 757,
+    ItemLoadValuesInvalid = 757, // Invalid values for fields like size, position, ...
 
     // Errors related to ItemUnloadRequest
-    CannotCurrentlyUnloadItem = 800,
+    CannotCurrentlyUnloadItem = 800,  // This is usually because the user has menus open that prevent items from being unloaded.
 
     // Errors related to ItemAnimationControlRequest
     ItemAnimationControlInstanceIDNotFound = 850,
-    ItemAnimationControlUnsupportedItemType = 851,
-    ItemAnimationControlAutoStopFramesInvalid = 852,
-    ItemAnimationControlTooManyAutoStopFrames = 853,
-    ItemAnimationControlSimpleImageDoesNotSupportAnim = 854,
+    ItemAnimationControlUnsupportedItemType = 851, // Returned when trying to use this request for Live2D items.
+    ItemAnimationControlAutoStopFramesInvalid = 852, // Auto-stop frames indices have to be between 0 and the last frame index of the animated item.
+    ItemAnimationControlTooManyAutoStopFrames = 853, // Maximum allowed number per item is 1024.
+    ItemAnimationControlSimpleImageDoesNotSupportAnim = 854, // You can set stuff like transparency and brightness for normal PNG/JPG items, but nothing animation-related.
 
-    // Errors related to ItemAnimationControlRequest
+    // Errors related to ItemMoveRequest
     ItemMoveRequestInstanceIDNotFound = 900,
     ItemMoveRequestInvalidFadeMode = 901
 }
