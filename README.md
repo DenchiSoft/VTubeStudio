@@ -1450,6 +1450,8 @@ The response will just contain the current settings (the new ones if you request
 
 TODO
 
+[test](#the-vts-coordinate-system)
+
 **`REQUEST`**
 ```json
 {
