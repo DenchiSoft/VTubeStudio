@@ -1458,7 +1458,11 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ItemListRequest",
 	"data": {
-		"TODO": true
+		"includeAvailableSpots": true,
+		"includeItemInstancesInScene": true,
+		"includeAvailableItemFiles": false,
+		"onlyItemsWithFileName": "my_item_filename.png",
+		"onlyItemsWithInstanceID": "InstanceIdOfItemInScene"
 	}
 }
 ```
