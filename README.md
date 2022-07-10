@@ -1653,9 +1653,19 @@ You
 	"apiVersion": "1.0",
 	"requestID": "SomeID",
 	"messageType": "ItemUnloadRequest",
-	"data": {
-		"TODO": true
-	}
+    	"data": {
+		"unloadAllInScene": false,
+		"unloadAllLoadedByThisPlugin": false,
+		"allowUnloadingItemsLoadedByUserOrOtherPlugins": true,
+		"instanceIDs":
+		[
+			"SomeInstanceIdOfItemToUnload", "SomeOtherInstanceIdOfItemToUnload"
+		],
+		"fileNames":
+		[
+			"UnloadAllItemInstancesWithThisFileName", "SomeOtherFileName"
+		]
+    	}
 }
 ```
 
@@ -1669,9 +1679,19 @@ TODO
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "ItemUnloadResponse",
-	"data": {
-		"TODO": true
-	}
+    	"data": {
+		"unloadedItems":
+		[
+		    {
+			"instanceID": "SomeInstanceId",
+			"fileName": "SomeFileName"
+		    },
+		    {
+			"instanceID": "SomeOtherInstanceId",
+			"fileName": "SomeFileName"
+		    }
+		]
+    	}
 }
 ```
 
