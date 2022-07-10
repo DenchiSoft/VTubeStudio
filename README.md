@@ -46,11 +46,11 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Getting physics settings of currently loaded VTS model](#getting-physics-settings-of-currently-loaded-vts-model)
   - [Overriding physics settings of currently loaded VTS model](#overriding-physics-settings-of-currently-loaded-vts-model)
   - [Get and/or set NDI settings](#get-and-set-ndi-settings)
-  - [Request list of available items or items in scene](#request-list-of-available-items-or-items-in-scene)
-  - [Load item into the scene](#load-item-into-the-scene)
-  - [Remove item from the scene](#remove-item-from-the-scene)
-  - [Control items and item animations](#control-items-and-item-animations)
-  - [Move items in the scene](#move-items-in-the-scene)
+  - [Requesting list of available items or items in scene](#request-list-of-available-items-or-items-in-scene)
+  - [Loading item into the scene](#load-item-into-the-scene)
+  - [Removing item from the scene](#remove-item-from-the-scene)
+  - [Controling items and item animations](#control-items-and-item-animations)
+  - [Moving items in the scene](#move-items-in-the-scene)
 
 
 ## General Info
@@ -1447,7 +1447,7 @@ The response will just contain the current settings (the new ones if you request
 }
 ```
 
-## Request list of available items or items in scene
+## Requesting list of available items or items in scene
 
 This request lets you request a list of items that are currently in the scene. It also lets you request a list of item files that are available to be loaded on the user's PC, including Live2D items, animation folders, ...
 
@@ -1585,7 +1585,7 @@ If you set `"includeAvailableItemFiles"` to `true`, the `"availableItemFiles"` w
 }
 ```
 
-## Load item into the scene
+## Loading item into the scene
 
 With this request, you can load items into the scene. Items are loaded from the "Items" folder on the user's PC.
 
@@ -1642,7 +1642,7 @@ The response contains the instance ID of the newly loaded item in the `instanceI
 }
 ```
 
-## Remove item from the scene
+## Removing item from the scene
 
 You can use this request to unload any item that is currently loaded in the scene.
 
@@ -1705,10 +1705,19 @@ The response contains the instance IDs and filenames of the unloaded items.
 }
 ```
 
-## Control items and item animations
+## Controling items and item animations
 
+You can control certain aspects of items in the scene. This request allows you to make items darker (black overlay), change the opacity, and control the animation of animated items. This request does not work with Live2D items and will return an error of type `ItemAnimationControlUnsupportedItemType` if you try (see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
 
-TODO
+For animated items, you can set the framerate (in frames-per-second, will automatically be clamped between `0.1` and `120`). You can also manually make the animation jump to a certain frame using the `"frame"` field. An error will get returned if that frame index is invalid. For an animated item with (for example) 20 frames, valid frame indices go from 0 (first frame) to 19 (last frame). Frame counts for animated items can be requested using the `ItemListRequest`. Trying to do this for normal JPG/PNG items will return an error.
+
+You can start/stop the animation using the `"animationPlayState"` field (`true` = play animation, `false` = stop animation). This field is only used if you set `"setAnimationPlayState"` to `true`, otherwise the animation play state will not be changed.
+
+#### Using auto-stop frames
+
+You can set a list of frame indices that the animation will automatically stop playing on using the `"autoStopFrames"` array. This array is only used if you set `"setAutoStopFrames"` to true, otherwise the auto-stop frames will not be changed. If you want to remove the auto-stop frames, set `"setAutoStopFrames"` to true and set an empty array in `"autoStopFrames"`. You can have a maximum of 1024 auto-stop frames.
+
+Once the animation reaches one of those frames, it will stop playing and can only be started again via the API using this request to set the animation play state to `true` (see above). 
 
 **`REQUEST`**
 ```json
@@ -1731,7 +1740,7 @@ TODO
 }
 ```
 
-TODO
+The response contains the current frame index and whether or not the animation is currently playing (only for animated items, for other item types these fields should be ignored).
 
 **`RESPONSE`**
 ```json
@@ -1748,7 +1757,7 @@ TODO
 }
 ```
 
-## Move items in the scene
+## Moving items in the scene
 
 
 TODO
