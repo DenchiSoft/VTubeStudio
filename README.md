@@ -1593,9 +1593,13 @@ To get the list of available item files, use the `ItemListRequest`. You can use 
 
 Items can be positioned/scaled/rotated using the `"positionX/Y"`, `"size"` and `"rotation"` fields. Please refer to the image showing the [VTube Studio coordinate system](#the-vts-coordinate-system) for more info on how to use these values.
 
+You should make sure that your plugin cleans up its items. You should absolutely never leave any items outside of the visible scene where the user can't access them anymore without using the **"Delete all items in the scene"** button. To make this easier for you, you can set `"unloadWhenPluginDisconnects"` to true.
 
+You can use the `"fadeTime"` field to specify a fade in/out time between 0 and 2 seconds for the item. If you set it to 0, the item will just appear instantly.
 
-There are also limits to some of the values. Specifically, the size has to be between 0 and 1, the positions have to be between -1000 and 1000, the fade time has to be between 0 and 2 and smoothing has to be between 0 and 1.
+You can specify the sorting order that the item should get loaded at in the scene using the `"order"` field. If that order is taken, the item will automatically be loaded at the next higher available order and if all higher orders are full, it will check lower orders. If you want the item loading to fail if the requested order is taken, use `failIfOrderTaken` to `true`. In that case an error of type `ItemOrderAlreadyTaken` is returned (see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
+
+There are also limits to some of the values. Specifically, the size has to be between `0` and `1`, the positions have to be between `-1000` and `1000` (although `-1`/`1` are the screen edges), the fade time has to be between `0` and `2` seconds and smoothing has to be between `0` and `1`. If you go beyond those limits, an error of type `ItemLoadValuesInvalid` is returned.
 
 **`REQUEST`**
 ```json
@@ -1622,6 +1626,8 @@ There are also limits to some of the values. Specifically, the size has to be be
 }
 ```
 
+The response contains the instance ID of the newly loaded item in the `instanceID` field.
+
 **`RESPONSE`**
 ```json
 {
@@ -1638,8 +1644,7 @@ There are also limits to some of the values. Specifically, the size has to be be
 
 ## Remove item from the scene
 
-
-TODO
+You 
 
 **`REQUEST`**
 ```json
