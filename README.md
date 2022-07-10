@@ -1475,14 +1475,87 @@ TODO
 **`RESPONSE`**
 ```json
 {
-	"apiName": "VTubeStudioPublicAPI",
-	"apiVersion": "1.0",
-	"timestamp": 1625405710728,
-	"requestID": "SomeID",
-	"messageType": "ItemListResponse",
-	"data": {
-		"TODO": true
-	}
+    "apiName": "VTubeStudioPublicAPI",
+    "apiVersion": "1.0",
+    "timestamp": 1625405710728,
+    "messageType": "ItemListResponse",
+    "requestID": "SomeID",
+    "data": {
+        "itemsInSceneCount": 2,
+        "totalItemsAllowedCount": 60,
+        "canLoadItemsRightNow": true,
+        "availableSpots": [
+			-30,-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,
+			-4,-3,-2,-1,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30
+        ],
+        "itemInstancesInScene": [
+            {
+                "fileName": "Ribbon (@denchisoft)",
+                "instanceID": "18de53dc47154b00afdd382a6ebd2194",
+                "order": 1,
+                "type": "Live2D",
+                "censored": false,
+                "flipped": false,
+                "locked": false,
+                "smoothing": 0.0,
+                "framerate": 0.0,
+                "frameCount": -1,
+                "currentFrame": -1,
+                "pinnedToModel": true,
+                "pinnedModelID": "47c71722c5304a039b0570b60a189875",
+                "pinnedArtMeshID": "D_FACE_00",
+                "groupName": "",
+                "sceneName": "",
+                "fromWorkshop": false
+            },
+            {
+                "fileName": "akari_fly (@walfieee)",
+                "instanceID": "716cddf2e12a438ab5da05bbbf8b341c",
+                "order": 2,
+                "type": "AnimationFolder",
+                "censored": false,
+                "flipped": false,
+                "locked": false,
+                "smoothing": 0.0,
+                "framerate": 15.0,
+                "frameCount": 7,
+                "currentFrame": 0,
+                "pinnedToModel": false,
+                "pinnedModelID": "",
+                "pinnedArtMeshID": "",
+                "groupName": "",
+                "sceneName": "",
+                "fromWorkshop": false
+            }
+        ],
+        "availableItemFiles": [
+            {
+                "fileName": "Ribbon (@denchisoft)",
+                "type": "Live2D",
+                "loadedCount": 1
+            },
+            {
+                "fileName": "ANIM_headpat",
+                "type": "AnimationFolder",
+                "loadedCount": 0
+            },
+            {
+                "fileName": "workshop_2801215328_ANIM_loading gif",
+                "type": "AnimationFolder",
+                "loadedCount": 0
+            },
+            {
+                "fileName": "akari_fly (@walfieee)",
+                "type": "AnimationFolder",
+                "loadedCount": 1
+            },
+            {
+                "fileName": "b_woozy (@denchisoft).png",
+                "type": "PNG",
+                "loadedCount": 0
+            }
+        ]
+    }
 }
 ```
 
