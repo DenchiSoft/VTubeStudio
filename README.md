@@ -1620,7 +1620,7 @@ There are also limits to some of the values. Specifically, the size has to be be
 		"size": 0.33,
 		"rotation": 90,
 		"fadeTime": 0.5,
-		"order": true,
+		"order": 4,
 		"failIfOrderTaken": false,
 		"smoothing": 0,
 		"censored": false,
