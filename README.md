@@ -1716,6 +1716,8 @@ You can control certain aspects of items in the scene. This request allows you t
 
 For animated items, you can set the framerate (in frames-per-second, will automatically be clamped between `0.1` and `120`). You can also manually make the animation jump to a certain frame using the `"frame"` field. An error will get returned if that frame index is invalid. For an animated item with (for example) 20 frames, valid frame indices go from 0 (first frame) to 19 (last frame). Frame counts for animated items can be requested using the `ItemListRequest`. Trying to do this for normal JPG/PNG items will return an error of type `ItemAnimationControlSimpleImageDoesNotSupportAnim`.
 
+If you want to not change the framerate, current frame, brightness or opacity, you can pass in `-1` for those fields (which is also their default if you omit the fields from the payload).
+
 You can start/stop the animation using the `"animationPlayState"` field (`true` = play animation, `false` = stop animation). This field is only used if you set `"setAnimationPlayState"` to `true`, otherwise the animation play state will not be changed.
 
 #### Using auto-stop frames
