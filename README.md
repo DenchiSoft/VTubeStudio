@@ -1766,7 +1766,7 @@ The response contains the current frame index and whether or not the animation i
 
 ## Moving items in the scene
 
-You can move items around in the scene. To do that, fill the `"itemsToMove"` array with all items you want to move. The response array (`"movedItems"`) will contain one entry for each requested item, showing whether or not the move request was successful for it (see respective `"success"` field). If it was not successful, the `"error"` field will contain the error code, which will tell you what went wrong (see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
+You can move items around in the scene. To do that, fill the `"itemsToMove"` array with all items you want to move. The response array (`"movedItems"`) will contain one entry for each requested item, showing whether or not the move request was successful for it (see respective `"success"` field). If it was not successful, the `"errorID"` field will contain the error code, which will tell you what went wrong (see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)). If it was successful, `"success"` will be `true` and `"errorID"` will be `-1`.
 
 The `"itemsToMove"` array can have up to 64 entries. All entries beyond that will be ignored. If the array has entries with duplicate item instance IDs, the last entry in the array for that ID will be used.
 
@@ -1842,12 +1842,12 @@ If the request was successful, you will just receive an empty response.
 			{
 				"itemInstanceID": "ItemInstanceId",
 				"success": true,
-				"error": -1
+				"errorID": -1
 			},
 			{
 				"itemInstanceID": "SomeOther_ItemInstanceId",
 				"success": false,
-				"error": 900
+				"errorID": 900
 			}
 		]
 	}
