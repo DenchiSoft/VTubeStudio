@@ -1791,10 +1791,11 @@ Here's a visual representation of the movement modes:
 	"requestID": "SomeID",
 	"messageType": "ItemMoveRequest",
 	"data": {
+		"itemsToMove":
 		[
 			{
 				"itemInstanceID": "ItemInstanceId",
-				"timeInSeconds": 1,	
+				"timeInSeconds": 1,
 				"fadeMode": "easeOut",
 				"positionX": 0.2,
 				"positionY": -0.8,
@@ -1803,6 +1804,18 @@ Here's a visual representation of the movement modes:
 				"setFlip": true,
 				"flip": false,
 				"userCanStop": true
+			},
+			{
+				"itemInstanceID": "SomeOther_ItemInstanceId",
+				"timeInSeconds": 0.5,
+				"fadeMode": "zip",
+				"positionX": 1,
+				"positionY": 1,
+				"size": 0.3,
+				"rotation": 0,
+				"setFlip": false,
+				"flip": false,
+				"userCanStop": false
 			}
 		]
 	}
@@ -1819,7 +1832,21 @@ If the request was successful, you will just receive an empty response.
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "ItemMoveResponse",
-	"data": { }
+	"data": {
+		"movedItems":
+		[
+			{
+				"itemInstanceID": "ItemInstanceId",
+				"success": true,
+				"error": "-1
+			},
+			{
+				"itemInstanceID": "SomeOther_ItemInstanceId",
+				"success": false,
+				"error": 900
+			}
+		]
+	}
 }
 ```
 
