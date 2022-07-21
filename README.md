@@ -1774,6 +1774,8 @@ If you want to set the position instantly (for example when you want to set a ne
 
 If you want to set the flip state of the item, set `"setFlip"` to true. The flip state can then be set using the `"flip"` field.
 
+If you want to change the order of an item, you can use the `"order"` field. You can only change the order to order spots that are not taken (see `ItemListResponse`). If you don't want to change the order, set this field to -1000 or lower or alternatively you can set it to the current order value of the item. Also, you cannot change the order when the user has any config windows open.
+
 For the fields that set the target of the movement (`"positionX"`, `"positionY"`, `"size"` and `"rotation"`), please refer to the documentation of the `ItemLoadRequest`. The only difference is that this `ItemMoveRequest` will not return an error if the given values are too high/low. Instead, you can set values of `-1000` or lower if you want a respective field to be ignored. If you do that, this field will not be included in the movement and instead the respective current value will be used.
 
 
@@ -1805,6 +1807,7 @@ Here's a visual representation of the movement modes:
 				"positionY": -0.8,
 				"size": 0.6,
 				"rotation": 180,
+				"order": -1000,
 				"setFlip": true,
 				"flip": false,
 				"userCanStop": true
@@ -1817,6 +1820,7 @@ Here's a visual representation of the movement modes:
 				"positionY": 1,
 				"size": 0.3,
 				"rotation": 0,
+				"rotation": 25,
 				"setFlip": false,
 				"flip": false,
 				"userCanStop": false
