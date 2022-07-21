@@ -1791,16 +1791,20 @@ Here's a visual representation of the movement modes:
 	"requestID": "SomeID",
 	"messageType": "ItemMoveRequest",
 	"data": {
-		"itemInstanceID": "ItemInstanceId",
-		"timeInSeconds": 1,	
-		"fadeMode": "easeOut",
-		"positionX": 0.2,
-		"positionY": -0.8,
-		"size": 0.6,
-		"rotation": 180,
-		"setFlip": true,
-		"flip": false,
-		"userCanStop": true,	
+		[
+			{
+				"itemInstanceID": "ItemInstanceId",
+				"timeInSeconds": 1,	
+				"fadeMode": "easeOut",
+				"positionX": 0.2,
+				"positionY": -0.8,
+				"size": 0.6,
+				"rotation": 180,
+				"setFlip": true,
+				"flip": false,
+				"userCanStop": true
+			}
+		]
 	}
 }
 ```
