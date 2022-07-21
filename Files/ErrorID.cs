@@ -124,5 +124,7 @@ public enum ErrorID
 
     // Errors related to ItemMoveRequest
     ItemMoveRequestInstanceIDNotFound = 900,
-    ItemMoveRequestInvalidFadeMode = 901
+    ItemMoveRequestInvalidFadeMode = 901,
+    ItemMoveRequestItemOrderTakenOrInvalid = 902,
+    ItemMoveRequestCannotCurrentlyChangeOrder = 903 // Cannot change order when any windows are open.
 }
