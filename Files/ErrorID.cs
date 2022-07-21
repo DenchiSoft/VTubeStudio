@@ -105,7 +105,7 @@ public enum ErrorID
     // Errors related to ItemLoadRequest
     ItemFileNameMissing = 750,
     ItemFileNameNotFound = 751,
-    ItemLoadLoadCooldownNotOver = 752,
+    ItemLoadLoadCooldownNotOver = 752, // Not used anymore. The cooldown for loading items has been removed.
     CannotCurrentlyLoadItem = 753, // This is usually because the user has menus open that prevent items from being loaded.
     CannotLoadItemSceneFull = 754,
     ItemOrderInvalid = 755,
