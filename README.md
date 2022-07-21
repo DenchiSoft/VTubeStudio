@@ -1820,7 +1820,7 @@ Here's a visual representation of the movement modes:
 				"positionY": 1,
 				"size": 0.3,
 				"rotation": 0,
-				"rotation": 25,
+				"order": 25,
 				"setFlip": false,
 				"flip": false,
 				"userCanStop": false
