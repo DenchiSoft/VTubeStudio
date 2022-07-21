@@ -1826,7 +1826,7 @@ Here's a visual representation of the movement modes:
 }
 ```
 
-If the request was successful, you will just receive an empty response.
+If the request was successful, you will receive a response containing the status of all requested items.
 
 **`RESPONSE`**
 ```json
