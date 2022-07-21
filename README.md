@@ -1766,7 +1766,11 @@ The response contains the current frame index and whether or not the animation i
 
 ## Moving items in the scene
 
-You can move items around in the scene. If you want to set the position instantly (for example when you want to set a new position every frame), set `"timeInSeconds"` to `0`. Otherwise, you can use this field to set the time used for the movement fade (clamped between 0 and 30 seconds).
+You can move items around in the scene. To do that, fill the `"itemsToMove"` array with all items you want to move. The response array (`"movedItems"`) will contain one entry for each requested item, showing whether or not the move request was successful for it (see respective `"success"` field). If it was not successful, the `"error"` field will contain the error code, which will tell you what went wrong (see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
+
+The `"itemsToMove"` array can have up to 64 entries. All entries beyond that will be ignored. If the array has entries with duplicate item instance IDs, the last entry in the array for that ID will be used.
+
+If you want to set the position instantly (for example when you want to set a new position every frame), set `"timeInSeconds"` to `0`. Otherwise, you can use this field to set the time used for the movement fade (clamped between 0 and 30 seconds).
 
 If you want to set the flip state of the item, set `"setFlip"` to true. The flip state can then be set using the `"flip"` field.
 
@@ -1838,7 +1842,7 @@ If the request was successful, you will just receive an empty response.
 			{
 				"itemInstanceID": "ItemInstanceId",
 				"success": true,
-				"error": "-1
+				"error": -1
 			},
 			{
 				"itemInstanceID": "SomeOther_ItemInstanceId",
