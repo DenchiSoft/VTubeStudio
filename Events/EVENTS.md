@@ -9,7 +9,7 @@
 - [General Info](#general-info)
 - [Subscribing and unsubscribing](#subscribing-and-unsubscribing)
 - [Events](#events)
-  - [Model loaded/unloaded](#model-loaded-unloaded)
+  - [Model loaded/unloaded](#model-loaded/unloaded)
 
 ## General Info
 
