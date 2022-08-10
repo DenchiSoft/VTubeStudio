@@ -19,6 +19,11 @@ TODO
 
 TODO
 
+#### Subscription Flow
+![The VTS Event System Subscription Flow](/Images/events_explanation.png)
+
+TODO
+
 ## Events
 
 TODO
