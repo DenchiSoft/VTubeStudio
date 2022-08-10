@@ -13,7 +13,7 @@
 
 ## General Info
 
-Using the **VTube Studio Event API**, you can subscribe to various events to make sure your plugin gets a message when something happens in VTube Studio. That way, you can for example get notified every time a hotkey is activated, a model/item is loaded/unloaded, the model is clicked and many more.
+Using the **VTube Studio Event API**, you can subscribe to various events to make sure your plugin gets a message when something happens in VTube Studio. That way, you can for example get notified every time a hotkey is activated, a model/item is loaded/unloaded, the model is clicked and much more.
 
 To receive events of a certain type, you have to **subscribe** to them. When you don't want to receive events anymore, you have to **unsubscribe**. When your plugin disconnects from the VTube Studio API, all events your plugin had subscribed to are automatically unsubscribed as well.
 
@@ -32,7 +32,7 @@ You can also unsubscribe at any time if you no longer wish to receive the events
 
 ## Events
 
-The following sections describe all available events in detail. For a more compact list of all currently available events, please check the top of this page.
+The following sections describe all available events in detail. For a more compact list of all currently available events, please check the **"Contents"** section at the top of this page.
 
 ## Model loaded/unloaded
 
