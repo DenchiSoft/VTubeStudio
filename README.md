@@ -24,6 +24,7 @@ Everything you're looking for is on this page. If you have any questions, please
 - [API Details](#api-details)
   - [API Server Discovery (UDP)](#api-server-discovery-udp)
   - [Authentication](#authentication)
+  - [Subscribing to and unsubscribing from events](#subscribing-to-and-unsubscribing-from-events)
   - [Getting current VTS statistics](#getting-current-vts-statistics)
   - [Getting list of VTS folders](#getting-list-of-vts-folders)
   - [Getting the currently loaded model](#getting-the-currently-loaded-model)
@@ -268,6 +269,12 @@ If required fields are missing, you'll get an error response. If all fields are 
 **Note about `data` field:** Some requests include a `data` JSON object field and some don't. To make things easier for you, you can also include this field in requests that don't need it. It will just be ignored by VTube Studio, even if you leave it empty or set it to `null`/`undefined`. VTube Studio will return this field with every request to make deserialization easier for your plugin. If the response doesn't have data, the field will contain an empty JSON object.
 
 **Note about `timestamp` field:** All responses also have a `"timestamp"` field that contains the UNIX millisecond timestamp at which your request was processed. You may include a `"timestamp"` field in your requests, but it will be ignored.
+
+## Subscribing to and unsubscribing from events
+
+In previous API versions, information like the loaded model or items had to be polled repeatedly by plugins. Now, VTube Studio supports subscribing to **"events"**, which will make VTube Studio send you messages whenever something relevant to your plugin is happening. Events include getting notified when items are loaded, when tracking is lost/regained, when the model is clicked and many more.
+
+Please check out the page about events [right here](events/EVENTS.md).
 
 ## Getting current VTS statistics
 
