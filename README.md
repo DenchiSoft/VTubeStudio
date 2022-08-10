@@ -274,7 +274,7 @@ If required fields are missing, you'll get an error response. If all fields are 
 
 In previous API versions, information like the loaded model or items had to be polled repeatedly by plugins. Now, VTube Studio supports subscribing to **"events"**, which will make VTube Studio send you messages whenever something relevant to your plugin is happening. Events include getting notified when items are loaded, when tracking is lost/regained, when the model is clicked and many more.
 
-Please check out the page about events [right here](events/EVENTS.md).
+Please check out the page about events [right here](Events/EVENTS.md).
 
 ## Getting current VTS statistics
 
