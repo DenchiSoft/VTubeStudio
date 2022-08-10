@@ -7,7 +7,22 @@
 ## Contents
 
 - [General Info](#general-info)
-- [API Details](#event-details)
-  - [API Server Discovery (UDP)](#api-server-discovery-udp)
+- [Subscribing and unsubscribing](#subscribing-and-unsubscribing)
+- [Events](#events)
+  - [Model loaded/unloaded](#model-loaded-unloaded)
 
 ## General Info
+
+TODO
+
+## Subscribing and unsubscribing
+
+TODO
+
+## Events
+
+TODO
+
+## Model loaded/unloaded
+
+TODO
