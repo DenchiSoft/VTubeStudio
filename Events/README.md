@@ -119,4 +119,33 @@ This is what you will receive every time the event is triggered (once a second).
 
 ## Model loaded/unloaded
 
-TODO
+An event that is triggered every time a VTube Studio model is loaded or unloaded.
+
+You can pass in a model ID in `modelID` (optional). If you do, an event will only be sent every time the model with that specific ID is loaded or unloaded. If you pass in a model ID, it has to have the correct format (32 characters, only hex characters), otherwise an error is returned.
+
+**`CONFIG`** for **`ModelLoadedEvent`**
+```json
+"config": {
+    "modelID": "OPTIONAL_model_ID_to_filter_for"
+}
+```
+
+The event will be triggered every time a model (or the specified model) is loaded or unloaded. Depending on wether it was loaded or unloaded, `modelLoaded` will be `true` or `false`.
+
+**`EVENT`**
+```json
+{
+    "apiName": "VTubeStudioPublicAPI",
+    "apiVersion": "1.0",
+    "timestamp": 1625405710728,
+    "requestID": "SomeID",
+    "messageType": "ModelLoadedEvent",
+    "data": {
+        "modelLoaded": true,
+        "modelName": "My VTS Model Name",
+        "modelID": "165131471d8a4e42aae01a9738f255ef"
+    }
+}
+```
+
+
