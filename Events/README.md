@@ -9,6 +9,7 @@
 - [General Info](#general-info)
 - [Subscribing and unsubscribing](#subscribing-and-unsubscribing)
 - [Events](#events)
+  - [Test event](#test-event)
   - [Model loaded/unloaded](#model-loadedunloaded)
 
 ## General Info
@@ -33,6 +34,10 @@ You can also unsubscribe at any time if you no longer wish to receive the events
 ## Events
 
 The following sections describe all available events in detail. For a more compact list of all currently available events, please check the **"Contents"** section at the top of this page.
+
+## Test event
+
+TODO
 
 ## Model loaded/unloaded
 
