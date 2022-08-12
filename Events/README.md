@@ -29,6 +29,50 @@ The following chart explains the subscription flow:
 
 You can also unsubscribe at any time if you no longer wish to receive the events.
 
+The event to subscribe/unsubscribe looks like this: (here with the `ModelLoadedEvent` as an example)
+
+**`REQUEST`**
+```json
+{
+  "apiName": "VTubeStudioPublicAPI",
+  "apiVersion": "1.0",
+  "requestID": "SomeID",
+  "messageType": "EventSubscriptionRequest",
+  "data": {
+    "eventName": "ModelLoadedEvent",
+    "subscribe": true,
+    "config": {
+          
+    }
+	}
+}
+```
+
+In the `eventName` field, pass in the name of the event you want to subscribe to. Set `subscribe` to `true` if you want to subscribe to the event or `false` if you want to unsubscribe from it. If you set `subscribe` to `false`, you can also leave out the `eventName` field (or leave it empty) to unsubscribe the current plugin session from all events.
+
+Some events offer extra configuration parameters, which you can specify in the `config` part of the payload. Different events require different parameters there, some may be optional.
+
+The response will contain the number and list of now subscribed events for this plugin session.
+
+If the event type you tried to subscribe to or unsubscribe from is unknown, an error will be returned insted. If any of the config parameters you provided for the specific event are invalid, there will also be an error. All possible error IDs are listed on the page [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs). Errors related to specific event configs have an offset of `100000`, as you can see on that page.
+
+**`RESPONSE`**
+```json
+{
+  "apiName": "VTubeStudioPublicAPI",
+  "apiVersion": "1.0",
+  "timestamp": 1625405710728,
+  "requestID": "SomeID",
+  "messageType": "EventSubscriptionResponse",
+  "data": {
+    "subscribedEventCount": 3,
+    "subscribedEvents": [
+      "TestEvent",
+      "ModelLoadedEvent"
+    ]
+  }
+}
+```
 
 
 ## Events
