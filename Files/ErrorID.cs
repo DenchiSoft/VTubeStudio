@@ -132,10 +132,12 @@ public enum ErrorID
     EventSubscriptionRequestEventTypeUnknown = 950,
     
     // -------------- EVENT CONFIG ERRORS --------------
+    
+    EVENT_OFFSET = 100000,
 
     // Event subscription errors for TestEvent
-    Event_TestEvent_TestMessageTooLong = 100000 + 0,
+    Event_TestEvent_TestMessageTooLong = EVENT_OFFSET + 0,
 
     // Event subscription errors for ModelLoadedEvent
-    Event_ModelLoadedEvent_ModelIDInvalid = 100000 + 50
+    Event_ModelLoadedEvent_ModelIDInvalid = EVENT_OFFSET + 50
 }
