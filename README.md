@@ -20,7 +20,7 @@ Everything you're looking for is on this page. If you have any questions, please
 - [General Info](#general-info)
 - [Legal Info](#legal-info)
 - [Available Plugins and Examples](#available-plugins-and-examples)
-- [Status](#status)
+- [Event API](#event-api)
 - [API Details](#api-details)
   - [API Server Discovery (UDP)](#api-server-discovery-udp)
   - [Authentication](#authentication)
@@ -92,6 +92,9 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [vts-chameleon](https://satetsu888.github.io/vts-chameleon/) | [satetsu888](https://www.twitter.com/satetsu888) | App | A plugin for applying color tints. You can play around by changing color tones of hair, skin, uniform, etc. of your models. |
 | [ViewLink](https://kawaentertainment.itch.io/viewlink) | [KawaEntertainment](https://twitter.com/kawa_entertain) | App | Are you a VTuber that wants to stream VR games, but only have a Live2D model? With ViewLink, you can have your Live2D avatar react to VR gameplay without any fancy setup or additional hardware! |
 
+# Event API
+
+There is another wiki page that describes the **Event API**, which you can use to subscribe events happening in VTube Studio, such as models being loaded or hotkeys being executed. Please check out the page about events [right here](Events/).
 
 # API Details
 
