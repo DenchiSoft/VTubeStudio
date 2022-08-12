@@ -16,13 +16,15 @@
 
 Using the **VTube Studio Event API**, you can subscribe to various events to make sure your plugin gets a message when something happens in VTube Studio. That way, you can for example get notified every time a hotkey is activated, a model/item is loaded/unloaded, the model is clicked and much more.
 
-To receive events of a certain type, you have to **subscribe** to them. When you don't want to receive events anymore, you have to **unsubscribe**. When your plugin disconnects from the VTube Studio API, all events your plugin had subscribed to are automatically unsubscribed as well.
+To receive events of a certain type, you have to **subscribe** to them. When you don't want to receive events anymore, you have to **unsubscribe** from that event or all events. When your plugin disconnects from the VTube Studio API, all events your plugin session is subscribed to are automatically unsubscribed as well.
 
 ## Subscribing and unsubscribing
 
 You can subscribe to specific events to get notified every time the event occurs. You subscribe using the `EventSubscriptionRequest`, which will return an `EventSubscriptionResponse` if successful. Once subscribed, you will receive a message every time the event is triggered.
 
-The following chart explains the subscription flow:
+If you subscribe to an event multiple times, the new config you provide will overwrite the old config. You can also unsubscribe multiple times or unsubscribe from an event you're not subscribed to. This will return successfully (no error) but will do nothing.
+
+The following chart explains the subscription/event flow:
 
 #### Subscription Flow
 ![The VTS Event System Subscription Flow](/Images/events_explanation.png)
@@ -65,7 +67,7 @@ If the event type you tried to subscribe to or unsubscribe from is unknown, an e
     "requestID": "SomeID",
     "messageType": "EventSubscriptionResponse",
     "data": {
-        "subscribedEventCount": 3,
+        "subscribedEventCount": 2,
         "subscribedEvents": [
             "TestEvent",
             "ModelLoadedEvent"
@@ -79,9 +81,41 @@ If the event type you tried to subscribe to or unsubscribe from is unknown, an e
 
 The following sections describe all available events in detail. For a more compact list of all currently available events, please check the **"Contents"** section at the top of this page.
 
+The payloads listed here only have the relevant section for the event (the `config` part). Some events do not have any config. For those, you can either leave the config section empty or leave it out of the payload altogether.
+
 ## Test event
 
-TODO
+An event for testing the event API.
+
+You can pass in a string in `testMessageForEvent` (optional). It has to be 32 characters or shorter, otherwise an error will be returned (you can use this to test event error handling).
+
+When you're subscribed to this event, the string you provided will be returned every second along with a counter that counts the seconds since VTube Studio has been started (so the counter will be increased by 1 in every event message).
+
+Keep in mind that you can subscribe with a message in `testMessageForEvent` and then subscribe with a different message. This will overwrite the old config and you should receive the new message.
+
+**`CONFIG`** for **`TestEvent`**
+```json
+"config": {
+    "testMessageForEvent": "text the event will return"
+}
+```
+
+This is what you will receive every time the event is triggered (once a second).
+
+**`EVENT`**
+```json
+{
+    "apiName": "VTubeStudioPublicAPI",
+    "apiVersion": "1.0",
+    "timestamp": 1625405710728,
+    "requestID": "SomeID",
+    "messageType": "TestEvent",
+    "data": {
+        "yourTestMessage": "text the event will return",
+        "counter": 672
+    }
+}
+```
 
 ## Model loaded/unloaded
 
