@@ -126,5 +126,16 @@ public enum ErrorID
     ItemMoveRequestInstanceIDNotFound = 900,
     ItemMoveRequestInvalidFadeMode = 901,
     ItemMoveRequestItemOrderTakenOrInvalid = 902,
-    ItemMoveRequestCannotCurrentlyChangeOrder = 903 // Cannot change order when any windows are open.
+    ItemMoveRequestCannotCurrentlyChangeOrder = 903, // Cannot change order when any windows are open.
+    
+    // Errors related to EventSubscriptionRequest
+    EventSubscriptionRequestEventTypeUnknown = 950,
+    
+    // -------------- EVENT CONFIG ERRORS --------------
+
+    // Event subscription errors for TestEvent
+    Event_TestEvent_TestMessageTooLong = 100000 + 0,
+
+    // Event subscription errors for ModelLoadedEvent
+    Event_ModelLoadedEvent_ModelIDInvalid = 100000 + 50
 }
