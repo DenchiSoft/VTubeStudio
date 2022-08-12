@@ -93,14 +93,17 @@ When you're subscribed to this event, the string you provided will be returned e
 
 Keep in mind that you can subscribe with a message in `testMessageForEvent` and then subscribe with a different message. This will overwrite the old config and you should receive the new message.
 
-**`CONFIG`** for **`TestEvent`**
+**`CONFIG`**
 ```json
+"eventName": "TestEvent",
 "config": {
     "testMessageForEvent": "text the event will return"
 }
 ```
 
 This is what you will receive every time the event is triggered (once a second).
+
+The outer payload will be omitted for the other event payload examples.
 
 **`EVENT`**
 ```json
@@ -123,8 +126,9 @@ An event that is triggered every time a VTube Studio model is loaded or unloaded
 
 You can pass in a model ID in `modelID` (optional). If you do, an event will only be sent every time the model with that specific ID is loaded or unloaded. If you pass in a model ID, it has to have the correct format (32 characters, only hex characters), otherwise an error is returned.
 
-**`CONFIG`** for **`ModelLoadedEvent`**
+**`CONFIG`**
 ```json
+"eventName": "ModelLoadedEvent",
 "config": {
     "modelID": "OPTIONAL_model_ID_to_filter_for"
 }
@@ -134,17 +138,11 @@ The event will be triggered every time a model (or the specified model) is loade
 
 **`EVENT`**
 ```json
-{
-    "apiName": "VTubeStudioPublicAPI",
-    "apiVersion": "1.0",
-    "timestamp": 1625405710728,
-    "requestID": "SomeID",
-    "messageType": "ModelLoadedEvent",
-    "data": {
-        "modelLoaded": true,
-        "modelName": "My VTS Model Name",
-        "modelID": "165131471d8a4e42aae01a9738f255ef"
-    }
+"messageType": "ModelLoadedEvent",
+"data": {
+    "modelLoaded": true,
+    "modelName": "My VTS Model Name",
+    "modelID": "165131471d8a4e42aae01a9738f255ef"
 }
 ```
 
