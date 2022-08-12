@@ -73,7 +73,7 @@ If you're a user of VTube Studio looking for plugins you can use, check out the 
 
 If you're a developer looking for examples/libraries for you to look at that make it easier to integrate the VTube Studio API into your app, please take a look at the following table. 
 
-:warning: **If you made something you want to have included here, please open a pull request with the modified table!!** :warning:
+:warning: **If you made something you want to have included here, open a pull request with the modified table!!** :warning:
 
 | Plugin | Developer | Type | Explanation |
 | --- | --- | --- | --- |
