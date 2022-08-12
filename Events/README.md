@@ -34,17 +34,17 @@ The event to subscribe/unsubscribe looks like this: (here with the `ModelLoadedE
 **`REQUEST`**
 ```json
 {
-  "apiName": "VTubeStudioPublicAPI",
-  "apiVersion": "1.0",
-  "requestID": "SomeID",
-  "messageType": "EventSubscriptionRequest",
-  "data": {
-    "eventName": "ModelLoadedEvent",
-    "subscribe": true,
-    "config": {
-          
+    "apiName": "VTubeStudioPublicAPI",
+    "apiVersion": "1.0",
+    "requestID": "SomeID",
+    "messageType": "EventSubscriptionRequest",
+    "data": {
+        "eventName": "ModelLoadedEvent",
+        "subscribe": true,
+        "config": {
+            
+        }
     }
-	}
 }
 ```
 
@@ -59,18 +59,18 @@ If the event type you tried to subscribe to or unsubscribe from is unknown, an e
 **`RESPONSE`**
 ```json
 {
-  "apiName": "VTubeStudioPublicAPI",
-  "apiVersion": "1.0",
-  "timestamp": 1625405710728,
-  "requestID": "SomeID",
-  "messageType": "EventSubscriptionResponse",
-  "data": {
-    "subscribedEventCount": 3,
-    "subscribedEvents": [
-      "TestEvent",
-      "ModelLoadedEvent"
-    ]
-  }
+    "apiName": "VTubeStudioPublicAPI",
+    "apiVersion": "1.0",
+    "timestamp": 1625405710728,
+    "requestID": "SomeID",
+    "messageType": "EventSubscriptionResponse",
+    "data": {
+        "subscribedEventCount": 3,
+        "subscribedEvents": [
+            "TestEvent",
+            "ModelLoadedEvent"
+        ]
+    }
 }
 ```
 
