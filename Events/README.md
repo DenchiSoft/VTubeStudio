@@ -29,7 +29,7 @@ The following chart explains the subscription flow:
 
 You can also unsubscribe at any time if you no longer wish to receive the events.
 
-The event to subscribe/unsubscribe looks like this: (here with the `ModelLoadedEvent` as an example)
+The request to subscribe/unsubscribe looks like this: (here with the `ModelLoadedEvent` as an example)
 
 **`REQUEST`**
 ```json
