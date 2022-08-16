@@ -124,13 +124,16 @@ The outer payload will be omitted for the other event payload examples.
 
 An event that is triggered every time a VTube Studio model is loaded or unloaded.
 
-You can pass in a model ID in `modelID` (optional). If you do, an event will only be sent every time the model with that specific ID is loaded or unloaded. If you pass in a model ID, it has to have the correct format (32 characters, only hex characters), otherwise an error is returned.
+You can pass in one or more model IDs in the `modelID` (optional). If you do, an event will only be sent every time the model with that specific ID is loaded or unloaded. If you pass in a model ID, it has to have the correct format (32 characters, only hex characters), otherwise an error is returned.
 
 **`CONFIG`**
 ```json
 "eventName": "ModelLoadedEvent",
 "config": {
-    "modelID": "OPTIONAL_model_ID_to_filter_for"
+    "modelID": [
+      "OPTIONAL_model_ID_to_filter_for",
+      "OPTIONAL_some_other_model_ID_to_filter_for"
+    ]
 }
 ```
 
