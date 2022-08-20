@@ -208,7 +208,7 @@ An event that is triggered every time the user manually changes the the settings
 ```json
 "messageType": "ModelConfigChangedEvent",
 "data": {
-    "modelID": "UniqueIDToIdentifyThisModelBy,
+    "modelID": "UniqueIDToIdentifyThisModelBy",
     "modelName": "My Cool Model,
     "hotkeyConfigChanged": true
 }
