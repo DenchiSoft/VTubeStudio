@@ -53,7 +53,7 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Removing item from the scene](#removing-item-from-the-scene)
   - [Controling items and item animations](#controling-items-and-item-animations)
   - [Moving items in the scene](#moving-items-in-the-scene)
-
+  - [Asking user to select ArtMeshes](#asking-user-to-select-artmeshes)
 
 ## General Info
 
@@ -1868,6 +1868,75 @@ If the request was successful, you will receive a response containing the status
 }
 ```
 
+## Asking user to select ArtMeshes
 
+TODO
 
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ArtMeshSelectionRequest",
+	"data": {
+		"itemsToMove":
+		[
+			{
+				"itemInstanceID": "ItemInstanceId",
+				"timeInSeconds": 1,
+				"fadeMode": "easeOut",
+				"positionX": 0.2,
+				"positionY": -0.8,
+				"size": 0.6,
+				"rotation": 180,
+				"order": -1000,
+				"setFlip": true,
+				"flip": false,
+				"userCanStop": true
+			},
+			{
+				"itemInstanceID": "SomeOther_ItemInstanceId",
+				"timeInSeconds": 0.5,
+				"fadeMode": "zip",
+				"positionX": 1,
+				"positionY": 1,
+				"size": 0.3,
+				"rotation": 0,
+				"order": 25,
+				"setFlip": false,
+				"flip": false,
+				"userCanStop": false
+			}
+		]
+	}
+}
+```
 
+If the request was successful, ...........................................
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ArtMeshSelectionResponse",
+	"data": {
+		"movedItems":
+		[
+			{
+				"itemInstanceID": "ItemInstanceId",
+				"success": true,
+				"errorID": -1
+			},
+			{
+				"itemInstanceID": "SomeOther_ItemInstanceId",
+				"success": false,
+				"errorID": 900
+			}
+		]
+	}
+}
+```
