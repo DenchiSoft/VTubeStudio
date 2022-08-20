@@ -1880,34 +1880,12 @@ TODO
 	"requestID": "SomeID",
 	"messageType": "ArtMeshSelectionRequest",
 	"data": {
-		"itemsToMove":
-		[
-			{
-				"itemInstanceID": "ItemInstanceId",
-				"timeInSeconds": 1,
-				"fadeMode": "easeOut",
-				"positionX": 0.2,
-				"positionY": -0.8,
-				"size": 0.6,
-				"rotation": 180,
-				"order": -1000,
-				"setFlip": true,
-				"flip": false,
-				"userCanStop": true
-			},
-			{
-				"itemInstanceID": "SomeOther_ItemInstanceId",
-				"timeInSeconds": 0.5,
-				"fadeMode": "zip",
-				"positionX": 1,
-				"positionY": 1,
-				"size": 0.3,
-				"rotation": 0,
-				"order": 25,
-				"setFlip": false,
-				"flip": false,
-				"userCanStop": false
-			}
+		"textOverride": "This text is shown over the ArtMesh selection list.",
+		"helpOverride": "This text is shown when the user presses the ? button. You can use \n for newlines."
+		"requestedArtMeshCount": 5
+		"activeArtMeshes": [
+			"D_BODY_00",
+			"D_ARM_R_05"
 		]
 	}
 }
@@ -1924,18 +1902,19 @@ If the request was successful, ...........................................
 	"requestID": "SomeID",
 	"messageType": "ArtMeshSelectionResponse",
 	"data": {
-		"movedItems":
-		[
-			{
-				"itemInstanceID": "ItemInstanceId",
-				"success": true,
-				"errorID": -1
-			},
-			{
-				"itemInstanceID": "SomeOther_ItemInstanceId",
-				"success": false,
-				"errorID": 900
-			}
+		"success": true
+		"activeArtMeshes": [
+			"D_BROW_00",
+			"D_EYE_BALL_03",
+			"D_EYE_BALL_02",
+			"D_EYE_BALL_01",
+			"D_EYE_BALL_00",
+			"D_EYE_11"
+		],
+		"inactiveArtMeshes": [
+			"D_EAR_06",
+			"D_BODY_00",
+			"D_ARM_R_05"
 		]
 	}
 }
