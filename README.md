@@ -1874,6 +1874,8 @@ TODO
 
  You can use `\n` for newlines.
 
+![API ArtMesh selection request screen](/Images/vts_request_select_artmeshes.png)
+
 **`REQUEST`**
 ```json
 {
