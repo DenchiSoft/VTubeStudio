@@ -1905,7 +1905,7 @@ As you can see in the screenshot above, the list has some default text that is s
 
 If the request is successful, the selection list will be shown to the user. There will be no immediate response. The response will come once the user clicks the "OK or "Cancel" button. The "Cancel" button is always available but the "OK" button will only be clickable once the requested amount of ArtMeshes have been selected.
 
-The activated/deactivated Artmeshes will be returned in the `activeArtMeshes` and `inactiveArtMeshes` arrays respectively.
+The activated/deactivated Artmeshes will be returned in the `activeArtMeshes` and `inactiveArtMeshes` arrays respectively. There will be **no overlap** between those arrays, so if you combine the ArtMeshes in those arrays, you would have a list of all ArtMeshes in the model.
 
 If the user clicked "OK" the `success` field will be `true`. If the user clicked "Cancel", the `success` field will be `false` (in that case you should probably ignore the `activeArtMeshes` and `inactiveArtMeshes` arrays, although they will still be returned).
 
