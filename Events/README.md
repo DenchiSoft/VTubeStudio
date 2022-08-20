@@ -209,7 +209,7 @@ An event that is triggered every time the user manually changes the the settings
 "messageType": "ModelConfigChangedEvent",
 "data": {
     "modelID": "UniqueIDToIdentifyThisModelBy",
-    "modelName": "My Cool Model,
+    "modelName": "My Cool Model",
     "hotkeyConfigChanged": true
 }
 ```
