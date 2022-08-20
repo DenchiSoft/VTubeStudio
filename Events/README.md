@@ -13,7 +13,7 @@
   - [Model loaded/unloaded](#model-loadedunloaded)
   - [Lost/Found tracking](#lostfound-tracking)
   - [Background changed](#background-changed)
-  - [Model config modified](#model-config-changed)
+  - [Model config modified](#model-config-modified)
   
 ## General Info
 
