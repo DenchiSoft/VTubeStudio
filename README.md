@@ -1870,11 +1870,19 @@ If the request was successful, you will receive a response containing the status
 
 ## Asking user to select ArtMeshes
 
-TODO
+You can use this request to show a list in VTube Studio containing all ArtMeshes of the currently loaded main Live2D model and have the user select one or more of them. Once the user is done selecting ArtMeshes, the ArtMesh IDs will be returned. You can use those ArtMesh IDs in various other API requests, for example to apply a color tint to them or make them invisible.
 
- You can use `\n` for newlines.
+If no model is currently loaded or there are currently other windows open, the request will return an error.
+
+The user can hover over ArtMeshes to show their ID and click them to filter the shown list for all ArtMeshes under on the click position. The UI shown by this request looks like this:
 
 ![API ArtMesh selection request screen](/Images/vts_request_select_artmeshes.png)
+
+Use the `requestedArtMeshCount` field to specify how many ArtMeshes the user has to activate. The "OK button will be unavailable until exactly that many ArtMeshes are activated. If you set `requestedArtMeshCount` to 0 or lower, the user will be asked to choose any arbitrary number of ArtMeshes (but at least one).
+
+If you want to pre-activate ArtMeshes in the list, you can use the `activeArtMeshes` list and pass in some ArtMesh IDs. If any of those IDs are not contained in the current model, an error will be returned. If you want a list of all ArtMeshes in the currently loaded model, use the `ArtMeshListRequest`.
+
+As you can see in the screenshot above, the list has some default text that is shown, asking the user to select ArtMeshes for the plugin. The same text is shown in a popup when you press the `?` button (help) in the top right. You can overwrite both of these strings using the `textOverride` and `helpOverride` fields respectively. If you leave them empty (empty string), null or leave them out of the payload, the default message shown above will be used. If you want to overwrite those messages, your provided string has to be between 4 and 1024 characters long, otherwise the default will be used. You can use `\n` for newlines in the strings you provide. 
 
 **`REQUEST`**
 ```json
@@ -1895,7 +1903,11 @@ TODO
 }
 ```
 
-If the request was successful, ...........................................
+If the request is successful, the selection list will be shown to the user. There will be no immediate response. The response will come once the user clicks the "OK or "Cancel" button. The "Cancel" button is always available but the "OK" button will only be clickable once the requested amount of ArtMeshes have been selected.
+
+The activated/deactivated Artmeshes will be returned in the `activeArtMeshes` and `inactiveArtMeshes` arrays respectively.
+
+If the user clicked "OK" the `success` field will be `true`. If the user clicked "Cancel", the `success` field will be `false` (in that case you should probably ignore the `activeArtMeshes` and `inactiveArtMeshes` arrays, although they will still be returned).
 
 **`RESPONSE`**
 ```json
