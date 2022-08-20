@@ -154,13 +154,63 @@ The event will be triggered every time a model (or one of the specified models) 
 
 ## Lost/Found tracking
 
-TODO
+An event that is triggered every time the face tracker finds/loses the face or hands.
+
+**`CONFIG`**
+```json
+"eventName": "TrackingStatusChangedEvent",
+"config": { }
+```
+
+Every time the face or left hand or right hand is found/lost, an event message like this will be sent:
+
+**`EVENT`**
+```json
+"messageType": "TrackingStatusChangedEvent",
+"data": {
+    "faceFound": true,
+    "leftHandFound": false,
+    "rightHandFound": false
+}
+```
 
 ## Background changed
 
-TODO
+An event that is triggered every time the background is changed by the user (manually or via hotkey).
+
+**`CONFIG`**
+```json
+"eventName": "BackgroundChangedEvent",
+"config": { }
+```
+
+The event will contain the background name (`backgroundName` field), as shown in the background selection list. This is typically the file name without the file extension.
+
+**`EVENT`**
+```json
+"messageType": "BackgroundChangedEvent",
+"data": {
+    "backgroundName": "my_cool_background"
+}
+```
 
 ## Model config modified
 
-TODO
+An event that is triggered every time the user manually changes the the settings/config of the currently loaded VTube Studio model. If the changed config is related to hotkeys, `hotkeyConfigChanged` will be `true` in the event payload.
+
+**`CONFIG`**
+```json
+"eventName": "ModelConfigChangedEvent",
+"config": { }
+```
+
+**`EVENT`**
+```json
+"messageType": "ModelConfigChangedEvent",
+"data": {
+    "modelID": "UniqueIDToIdentifyThisModelBy,
+    "modelName": "My Cool Model,
+    "hotkeyConfigChanged": true
+}
+```
 
