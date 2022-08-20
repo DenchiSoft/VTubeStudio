@@ -1872,6 +1872,8 @@ If the request was successful, you will receive a response containing the status
 
 TODO
 
+ You can use `\n` for newlines.
+
 **`REQUEST`**
 ```json
 {
@@ -1881,7 +1883,7 @@ TODO
 	"messageType": "ArtMeshSelectionRequest",
 	"data": {
 		"textOverride": "This text is shown over the ArtMesh selection list.",
-		"helpOverride": "This text is shown when the user presses the ? button. You can use \n for newlines."
+		"helpOverride": "This text is shown when the user presses the ? button."
 		"requestedArtMeshCount": 5
 		"activeArtMeshes": [
 			"D_BODY_00",
