@@ -11,7 +11,10 @@
 - [Events](#events)
   - [Test event](#test-event)
   - [Model loaded/unloaded](#model-loadedunloaded)
-
+  - [Lost/Found tracking](#lostfound-tracking)
+  - [Background changed](#background-changed)
+  - [Model config modified](#model-config-changed)
+  
 ## General Info
 
 Using the **VTube Studio Event API**, you can subscribe to various events to make sure your plugin gets a message when something happens in VTube Studio. That way, you can for example get notified every time a hotkey is activated, a model/item is loaded/unloaded, the model is clicked and much more.
@@ -149,4 +152,15 @@ The event will be triggered every time a model (or one of the specified models) 
 }
 ```
 
+## Lost/Found tracking
+
+TODO
+
+## Background changed
+
+TODO
+
+## Model config modified
+
+TODO
 
