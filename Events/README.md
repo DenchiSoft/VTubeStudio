@@ -226,7 +226,9 @@ An event that is triggered every time a model is moved, resized or rotated. This
 "config": { }
 ```
 
-The `modelPosition` object in the response contains the model position (`positionX` and `positionY`), the model size (`size`) and the model rotation (`rotation`). This is the exact same that you receive by polling the `CurrentModelRequest`, so please check that request for how to interpret the `modelPosition` data (see [here](https://github.com/DenchiSoft/VTubeStudio#getting-the-currently-loaded-model)).
+The `modelPosition` object in the response contains the model position (`positionX` and `positionY`), the model size (`size`) and the model rotation (`rotation`). This is the exact same object that you receive by polling the `CurrentModelRequest`, so please check that request for how to interpret the `modelPosition` data (see [here](https://github.com/DenchiSoft/VTubeStudio#getting-the-currently-loaded-model)).
+
+For more info about this data and the VTube Studio coordinate system, please check [this link](https://github.com/DenchiSoft/VTubeStudio#the-vts-coordinate-system).
 
 **`EVENT`**
 ```json
