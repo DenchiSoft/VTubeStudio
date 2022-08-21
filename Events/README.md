@@ -218,7 +218,7 @@ An event that is triggered every time the user manually changes the the settings
 
 ## Model moved/resized/rotated
 
-An event that is triggered every time a model is moved, resized or rotated. This will also be triggered right after subscribing, so it will send you the current position/scale/rotation of the currently loaded model the moment you subscribe (unless no model is loaded) and then send the current position in every frame when there's a change.
+An event that is triggered every time a model is moved, resized or rotated. This will also be triggered right after subscribing, so it will send you the current position/scale/rotation of the currently loaded model the moment you subscribe (unless no model is loaded) and then send the current position/scale/rotation in every frame when there's a change.
 
 **`CONFIG`**
 ```json
