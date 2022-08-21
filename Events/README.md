@@ -14,6 +14,8 @@
   - [Lost/Found tracking](#lostfound-tracking)
   - [Background changed](#background-changed)
   - [Model config modified](#model-config-modified)
+  - [Model moved/resized/rotated](#model-movedresizedrotated)
+  
   
 ## General Info
 
@@ -213,4 +215,32 @@ An event that is triggered every time the user manually changes the the settings
     "hotkeyConfigChanged": true
 }
 ```
+
+## Model moved/resized/rotated
+
+An event that is triggered every time a model is moved, resized or rotated. This will also be triggered right after subscribing, so it will send you the current position/scale/rotation of the currently loaded model the moment you subscribe (unless no model is loaded) and then send the current position in every frame when there's a change.
+
+**`CONFIG`**
+```json
+"eventName": "ModelMovedEvent",
+"config": { }
+```
+
+The `modelPosition` object in the response contains the model position (`positionX` and `positionY`), the model size (`size`) and the model rotation (`rotation`). This is the exact same that you receive by polling the `CurrentModelRequest`, so please check that request for how to interpret the `modelPosition` data (see [here](https://github.com/DenchiSoft/VTubeStudio#getting-the-currently-loaded-model)).
+
+**`EVENT`**
+```json
+"messageType": "ModelMovedEvent",
+"data": {
+    "modelID": "UniqueIDToIdentifyThisModelBy",
+    "modelName": "My Cool Model",
+    "modelPosition": {
+        "positionX": -0.20491,
+        "positionY": 0.1,
+        "size": -74.49664306640625,
+        "rotation": 341.3
+    }
+}
+```
+
 
