@@ -18,5 +18,6 @@ public enum HotkeyAction
     ScreenColorOverlay = 11,          // Activates/Deactivates model screen color overlay.
     DownloadRandomWorkshopItem = 14,  // Downloads a random item from the Steam Workshop and attempts to load it into the scene.
     ExecuteItemAction = 15,           // Executes a hotkey in the given Live2D item.
-    ArtMeshColorPreset = 16           // Loads the recorded ArtMesh multiply/screen color preset.
+    ArtMeshColorPreset = 16,          // Loads the recorded ArtMesh multiply/screen color preset.
+    ToggleTracker = 17                // Toggles the tracking on/off. Can be webcam or USB/WiFi connected phone.
 }
