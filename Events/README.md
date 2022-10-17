@@ -246,9 +246,9 @@ For more info about this data and the VTube Studio coordinate system, please che
 ```
 
 
-## Model Outline Changed
+## Model Outline changed
 
-An event that is triggered at a constant 15 FPS and sends subscribed plugins the model outline. Specifically, it sends an approximated convex polygon based on the bounding-box center points of all ArtMeshes in the model.
+An event that is triggered at a constant 15 FPS and sends subscribed plugins the model outline. Specifically, it sends an approximated convex polygon based on the bounding-box center points of all ArtMeshes in the model. If no model is loaded, the event isn't sent.
 
 This makes it possible for plugins to track the model extents within the window somewhat accurately.
 
@@ -264,9 +264,13 @@ You can pass in the `"draw"` parameter as `true` (default if not provided is `fa
 
 You will receive the following event 15 times per second.
 
-The `"convexHull"` array contains 2D points describing the rough outline of the model. The x/y coordinate of each point is it's position within the VTube Studio window
+The `"convexHull"` list contains 2D points describing the rough outline of the model. The x/y coordinate of each point is it's position within the VTube Studio window, as shown in the picture below. X or Y coordinates may be bigger than 1 or smaller than -1 if an outline point is outside of the window boundaries.
 
-is guaranteed to have at least 3 
+The `"convexHull"` list is guaranteed to have at least 3 entries. There is no limit to how many entries it can have, but for most regular models, it has between 10 and 20 entries.
+
+#### The VTS Coordinate System
+![The VTS Coordinate System](/Images/coordinate_explanation.png)
+
 
 **`EVENT`**
 ```json
