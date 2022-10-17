@@ -246,9 +246,9 @@ For more info about this data and the VTube Studio coordinate system, please che
 ```
 
 
-## Model Outline changed
+## Model outline changed
 
-An event that is triggered at a constant 15 FPS and sends subscribed plugins the model outline. Specifically, it sends an approximated convex polygon based on the bounding-box center points of all ArtMeshes in the model. If no model is loaded, the event isn't sent.
+An event that is triggered at a constant 15 FPS and sends subscribed plugins the model outline. Specifically, it sends an approximated convex polygon based on the bounding-box center points of all (visible) ArtMeshes in the model. If no model is loaded, the event isn't sent.
 
 This makes it possible for plugins to track the model extents within the window somewhat accurately.
 
@@ -266,7 +266,11 @@ You will receive the following event 15 times per second.
 
 The `"convexHull"` list contains 2D points describing the rough outline of the model. The x/y coordinate of each point is it's position within the VTube Studio window, as shown in the picture below. X or Y coordinates may be bigger than 1 or smaller than -1 if an outline point is outside of the window boundaries.
 
-The `"convexHull"` list is guaranteed to have at least 3 entries. There is no limit to how many entries it can have, but for most regular models, it has between 10 and 20 entries.
+The `"convexHull"` list is guaranteed to have at least 3 entries. There is no limit to how many entries it can have, but for most normal Live2D models, it has between 5 and 25 entries. Please also keep in mind that the number of list entries can (and will most likely) change between events you receive. Do not implement your plugin expecting the number of outline points to remain constant.
+
+The `"convexHullCenter"` parameter is the center/average of all the `"convexHull"` points.
+
+Additionally, the `"windowSize"` parameter contains the current VTube Studio window size.
 
 #### The VTS Coordinate System
 ![The VTS Coordinate System](/Images/coordinate_explanation.png)
