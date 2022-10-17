@@ -264,6 +264,10 @@ You can pass in the `"draw"` parameter as `true` (default if not provided is `fa
 
 You will receive the following event 15 times per second.
 
+The `"convexHull"` array contains 2D points describing the rough outline of the model. The x/y coordinate of each point is it's position within the VTube Studio window
+
+is guaranteed to have at least 3 
+
 **`EVENT`**
 ```json
 "messageType": "ModelLoadedEvent",
