@@ -246,3 +246,30 @@ For more info about this data and the VTube Studio coordinate system, please che
 ```
 
 
+## Model Outline Changed
+
+An event that is triggered at a constant 15 FPS and sends subscribed plugins the model outline. Specifically, it sends an approximated convex polygon based on the bounding-box center points of all ArtMeshes in the model.
+
+This makes it possible for plugins to track the model extents within the window somewhat accurately.
+
+You can pass in the `"draw"` parameter as `true` (default if not provided is `false`) to actually draw the outline polygon in VTube Studio. Drawing the outline in VTube Studio may not be performant so you should only do that for debugging purposes or to show the outline to the user for setup purposes. The outline will be drawn if at least one subscribed plugins has set `"draw"` to `true`.
+
+**`CONFIG`**
+```json
+"eventName": "ModelOutlineEvent",
+"config": {
+    "draw": false
+}
+```
+
+You will receive the following event 15 times per second.
+
+**`EVENT`**
+```json
+"messageType": "ModelLoadedEvent",
+"data": {
+    "modelLoaded": true,
+    "modelName": "My VTS Model Name",
+    "modelID": "165131471d8a4e42aae01a9738f255ef"
+}
+```
