@@ -254,6 +254,10 @@ This makes it possible for plugins to track the model extents within the window 
 
 You can pass in the `"draw"` parameter as `true` (default if not provided is `false`) to actually draw the outline polygon in VTube Studio. Drawing the outline in VTube Studio may not be performant so you should only do that for debugging purposes or to show the outline to the user for setup purposes. The outline will be drawn if at least one subscribed plugins has set `"draw"` to `true`.
 
+If you turn on the outline, it will be rendered like this:
+
+![Model Debug Outline](/Images/api_outline_ex.png)
+
 **`CONFIG`**
 ```json
 "eventName": "ModelOutlineEvent",
@@ -265,10 +269,6 @@ You can pass in the `"draw"` parameter as `true` (default if not provided is `fa
 You will receive the following event 15 times per second.
 
 The `"convexHull"` list contains 2D points describing the rough outline of the model. This list is ordered. The x/y coordinate of each point is it's position within the VTube Studio window, as shown in the picture below. X or Y coordinates may be bigger than 1 or smaller than -1 if an outline point is outside of the window boundaries.
-
-If you turn on the outline, it will be rendered like this:
-
-![Model Debug Outline](/Images/api_outline_ex.png)
 
 The `"convexHull"` list is guaranteed to have at least 3 entries. There is no limit to how many entries it can have, but for most normal Live2D models, it has between 5 and 25 entries. Please also keep in mind that the number of list entries can (and will most likely) change between events you receive. Do not implement your plugin expecting the number of outline points to remain constant.
 
