@@ -284,7 +284,6 @@ Additionally, the `"windowSize"` parameter contains the current VTube Studio win
 ```json
 "messageType": "ModelOutlineEvent",
 "data": {
-    "modelLoaded": true,
     "modelName": "My VTS Model Name",
     "modelID": "165131471d8a4e42aae01a9738f255ef",
     "convexHull": [
