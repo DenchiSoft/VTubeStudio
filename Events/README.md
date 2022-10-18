@@ -282,7 +282,7 @@ Additionally, the `"windowSize"` parameter contains the current VTube Studio win
 
 **`EVENT`**
 ```json
-"messageType": "ModelLoadedEvent",
+"messageType": "ModelOutlineEvent",
 "data": {
     "modelLoaded": true,
     "modelName": "My VTS Model Name",
