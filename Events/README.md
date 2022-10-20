@@ -15,8 +15,8 @@
   - [Background changed](#background-changed)
   - [Model config modified](#model-config-modified)
   - [Model moved/resized/rotated](#model-movedresizedrotated)
-  
-  
+  - [Model outline changed](#model-outline-changed)
+
 ## General Info
 
 Using the **VTube Studio Event API**, you can subscribe to various events to make sure your plugin gets a message when something happens in VTube Studio. That way, you can for example get notified every time a hotkey is activated, a model/item is loaded/unloaded, the model is clicked and much more.
