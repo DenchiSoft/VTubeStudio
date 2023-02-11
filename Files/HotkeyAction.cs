@@ -16,6 +16,8 @@ public enum HotkeyAction
     ChangeVTSModel = 9,               // Change VTS Model.
     TakeScreenshot = 10,              // Take a screenshot with the previous settings.
     ScreenColorOverlay = 11,          // Activates/Deactivates model screen color overlay.
+    RemoveAllItems = 12,              // Removes all items from the scene.
+    ToggleItemScene = 13,             // Loads an item scene.
     DownloadRandomWorkshopItem = 14,  // Downloads a random item from the Steam Workshop and attempts to load it into the scene.
     ExecuteItemAction = 15,           // Executes a hotkey in the given Live2D item.
     ArtMeshColorPreset = 16,          // Loads the recorded ArtMesh multiply/screen color preset.
