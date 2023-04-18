@@ -93,6 +93,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [ViewLink](https://kawaentertainment.itch.io/viewlink) | [KawaEntertainment](https://twitter.com/kawa_entertain) | App | Are you a VTuber that wants to stream VR games, but only have a Live2D model? With ViewLink, you can have your Live2D avatar react to VR gameplay without any fancy setup or additional hardware! |
 | [VTS Desktop Audio](https://lualucky.itch.io/vts-desktop-audio-plugin) | [Lua Lucky](https://twitter.com/LuaVLucky) | App | A plugin for using desktop audio as input parameters in VTS. |
 | [pyvts](https://github.com/Genteki/pyvts) | [Genteki](https://github.com/Genteki) | Library | A python library for interacting with the VTube Studio API. |
+| [DSYS: Dummy System](https://github.com/chuigda/Project-WG/tree/master/extra/dsys) | [Chuigda](https://github.com/chuigda) | App | A simple plugin for recording/replaying/semi-autopiloting with VTS model parameters. |
 
 # Event API
 
