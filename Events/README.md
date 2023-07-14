@@ -326,3 +326,37 @@ Additionally, the `"windowSize"` parameter contains the current VTube Studio win
     }
 }
 ```
+
+
+## Hotkey triggered
+
+An event that is triggered every time a hotkey is triggered manually by the user (keyboard/hand-gesture) or via the hotkey-trigger-API.
+
+You can pass in the `"onlyForAction"` parameter (optional). Valid values are the hotkey actions listed here: [HotkeyActions.cs](https://github.com/DenchiSoft/VTubeStudio/commits/master/Files/HotkeyAction.cs).
+If you provide that parameter, only hotkeys of the provided type (with the given action) will trigger this event. Otherwise, all hotkey activations will trigger the event.
+
+The event is also triggered when a hotkey is triggered for a Live2D item.
+
+**`CONFIG`**
+```json
+"eventName": "ModelOutlineEvent",
+"config": {
+    "onlyForAction": "ToggleExpression"
+}
+```
+
+**`EVENT`**
+```json
+"messageType": "HotkeyTriggeredEvent",
+"data": {
+    "hotkeyID": "21bf7ade9e664f3ec29d05156e4ce5c1",
+    "hotkeyName": "Eyes Cry",
+    "hotkeyAction": "ToggleExpression",
+    "hotkeyFile": "EyesCry.exp3.json",
+    "activatedByAPI": false,
+    "modelID": "d8ee771d2909873b1aa0226d03ef4f51",
+    "modelName": "Akari",
+    "isLive2DItem": false
+}
+```
+
