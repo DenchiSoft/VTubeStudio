@@ -339,7 +339,7 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
 
 **`CONFIG`**
 ```json
-"eventName": "ModelOutlineEvent",
+"eventName": "HotkeyTriggeredEvent",
 "config": {
     "onlyForAction": "ToggleExpression"
 }
