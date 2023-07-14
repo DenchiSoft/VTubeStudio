@@ -332,7 +332,7 @@ Additionally, the `"windowSize"` parameter contains the current VTube Studio win
 
 An event that is triggered every time a hotkey is triggered manually by the user (keyboard/hand-gesture) or via the hotkey-trigger-API.
 
-You can pass in the `"onlyForAction"` parameter (optional). Valid values are the hotkey actions listed here: [HotkeyActions.cs](https://github.com/DenchiSoft/VTubeStudio/commits/master/Files/HotkeyAction.cs).
+You can pass in the `"onlyForAction"` parameter (optional). Valid values are the hotkey actions listed here: ["HotkeyActions.cs"](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
 If you provide that parameter, only hotkeys of the provided type (with the given action) will trigger this event. Otherwise, all hotkey activations will trigger the event.
 
 The event is also triggered when a hotkey is triggered for a Live2D item.
