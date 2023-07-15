@@ -337,7 +337,7 @@ An event that is triggered every time a hotkey is triggered manually by the user
 You can pass in the `"onlyForAction"` parameter (optional). Valid values are the hotkey actions listed here: ["HotkeyActions.cs"](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
 If you provide that parameter, only hotkeys of the provided type (with the given action) will trigger this event. Otherwise, all hotkey activations will trigger the event.
 
-If you do not want to receive events when a hotkey is triggered by a plugin via the trigger-hotkey-API, you can pass in `"ignoreHotkeysTriggeredByAPI"` as `true`.
+If you do not want to receive events when a hotkey is triggered by a plugin via the trigger-hotkey-API, you can pass in `ignoreHotkeysTriggeredByAPI` as `true`.
 
 The event is also triggered when a hotkey is triggered for a Live2D item.
 
@@ -370,18 +370,14 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
 An event that is triggered every time there's an _animation-event_ encountered in an animation playing for any Live2D model in the scene (so for the main model and any Live2D items).
 
 The following _animation-events_ will trigger this event:
-- `"Start"`: An event is triggered when an animation **starts** (idle-animations or normal one-time animations)
-- `"End"`:  An event is triggered when an animation **ends** (idle-animations or normal one-time animations)
-- `"Custom"`:  An event is triggered when a custom event is encountered in the animation. These events can be added at any point in the animation when creating animations in the _Live2D Cubism Animation Editor_. You can find more details about how to create/use those events below.
+- `Start`: An event is triggered when an animation **starts** (idle-animations or normal one-time animations)
+- `End`:  An event is triggered when an animation **ends** (idle-animations or normal one-time animations)
+- `Custom`:  An event is triggered when a custom event is encountered in the animation. These events can be added at any point in the animation when creating animations in the _Live2D Cubism Animation Editor_. You can find more details about how to create/use those events below.
 
+These events will be triggered for normal one-time animations and for idle animations. If an animation is stopped because the model playing it is unloaded, no event is triggered.
 
+If you don't want to receive events triggered by animations in Live2D items, set `ignoreLive2DItems` to `true`. If you don't want to receive events triggered by any idle animations, set `ignoreIdleAnimations` to `true`. 
 
-You can pass in the `"onlyForAction"` parameter (optional). Valid values are the hotkey actions listed here: ["HotkeyActions.cs"](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
-If you provide that parameter, only hotkeys of the provided type (with the given action) will trigger this event. Otherwise, all hotkey activations will trigger the event.
-
-If you do not want to receive events when a hotkey is triggered by a plugin via the trigger-hotkey-API, you can pass in `"ignoreHotkeysTriggeredByAPI"` as `true`.
-
-The event is also triggered when a hotkey is triggered for a Live2D item.
 
 **`CONFIG`**
 ```json
@@ -391,6 +387,14 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
     "ignoreIdleAnimations": false
 }
 ```
+
+The `animationEventType` field contains the source of the event. Possible values are `Start` (an animation started), `End` (an animation ended) and `Custom`. For idle animations, the start/end events will continuously trigger as the animation loops. The `Custom` events are explained in more detail below.
+
+`animationEventTime` is the time in seconds within the animation when the animation-event was encountered. It's between 0 and `animationLength`, which is the length of the animation in seconds.
+
+`animationName` contains the filename of the animation.
+
+If `isIdleAnimation` is `true`, the event was triggered within an idle-animation. If it's `false`, the event was triggered within a normal one-time animation.
 
 **`EVENT`**
 ```json
@@ -407,6 +411,7 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
     "isLive2DItem": false
 }
 ```
+
 #### How to set up custom animation events 
 
  <img src="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/Images/api_animation_events_custom_1.png" alt="Setting up custom animation events in the Live2D Cubism Animator" width="750">
