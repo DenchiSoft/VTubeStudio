@@ -412,8 +412,27 @@ If `isIdleAnimation` is `true`, the event was triggered within an idle-animation
 }
 ```
 
-#### How to set up custom animation events 
+#### How to set up custom animation events
 
- <img src="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/Images/api_animation_events_custom_1.png" alt="Setting up custom animation events in the Live2D Cubism Animator" width="750">
+_Custom animation events_ can be used to trigger an event to be sent every time an animation reaches a certain timestamp. This works in idle-animations and normal one-time animations.
+
+These events can be added in the _Live2D Cubism Animation Editor_ when creating animations by right-clicking anywhere in the timeling and selecting "Add Event". From there, you can enter text that will be associated with this event and can be used to identify it. This text will be returned in the `animationEventData` parameter when the animation-event is encountered during animation playback.
+
+The text can be up to 256 characters. If the text is longer, the event will not work (it will be ignored). Also, events outside the animation timeline will be ignored (for example if you place the event 1 second after the animation ends).
+
+You also cannot use `Anim_Start` or `Anim_End` as text because those are reserved keywords for the `animationEventData` parameter for the events triggered by an animation starting/ending.
+
+When exporting an animation with _custom animation events_, make sure you have enabled "Export Event" on the animation export dialog in the _Live2D Cubism Animation Editor_.
+
+The following graphic explains all steps required to create an animation event.
+
+<img src="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/Images/api_animation_events_custom_1.png" alt="Setting up custom animation events in the Live2D Cubism Animator" width="750">
+
+
+
+
+
+
+
 
 
