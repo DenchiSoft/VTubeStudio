@@ -367,18 +367,11 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
 
 ## Animation event triggered
 
-An event that is triggered every time a hotkey is triggered manually by the user (keyboard/hand-gesture) or via the hotkey-trigger-API.
-
-You can pass in the `"onlyForAction"` parameter (optional). Valid values are the hotkey actions listed here: ["HotkeyActions.cs"](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
-If you provide that parameter, only hotkeys of the provided type (with the given action) will trigger this event. Otherwise, all hotkey activations will trigger the event.
-
-If you do not want to receive events when a hotkey is triggered by a plugin via the trigger-hotkey-API, you can pass in `"ignoreHotkeysTriggeredByAPI"` as `true`.
-
-The event is also triggered when a hotkey is triggered for a Live2D item.
+TODO
 
 **`CONFIG`**
 ```json
-"eventName": "AnimationStartedEndedEvent",
+"eventName": "AnimationEvent",
 "config": {
     "ignoreLive2DItems": false,
     "ignoreIdleAnimations": false
@@ -387,7 +380,7 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
 
 **`EVENT`**
 ```json
-"messageType": "AnimationStartedEndedEvent",
+"messageType": "AnimationEvent",
 "data": {
     "animationEventType": "Custom",
     "animationEventTime": 0.423317,
@@ -402,6 +395,6 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
 ```
 #### How to set up custom animation events 
 
-![Model Debug Outline](/Images/api_animation_events_custom_1.png)
+ <img src="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/Images/api_animation_events_custom_1.png" alt="Setting up custom animation events in the Live2D Cubism Animator" width="750">
 
 
