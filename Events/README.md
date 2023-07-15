@@ -367,7 +367,41 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
 
 ## Animation event triggered
 
-TODO
+An event that is triggered every time a hotkey is triggered manually by the user (keyboard/hand-gesture) or via the hotkey-trigger-API.
 
+You can pass in the `"onlyForAction"` parameter (optional). Valid values are the hotkey actions listed here: ["HotkeyActions.cs"](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/HotkeyAction.cs).
+If you provide that parameter, only hotkeys of the provided type (with the given action) will trigger this event. Otherwise, all hotkey activations will trigger the event.
+
+If you do not want to receive events when a hotkey is triggered by a plugin via the trigger-hotkey-API, you can pass in `"ignoreHotkeysTriggeredByAPI"` as `true`.
+
+The event is also triggered when a hotkey is triggered for a Live2D item.
+
+**`CONFIG`**
+```json
+"eventName": "AnimationStartedEndedEvent",
+"config": {
+    "ignoreLive2DItems": false,
+    "ignoreIdleAnimations": false
+}
+```
+
+**`EVENT`**
+```json
+"messageType": "AnimationStartedEndedEvent",
+"data": {
+    "animationEventType": "Custom",
+    "animationEventTime": 0.423317,
+    "animationEventData": "My Test Event 123456789",
+    "animationName": "event_test_anim_4_final.motion3.json",
+    "animationLength": 1.6670000553131104,
+    "isIdleAnimation": false,
+    "modelID": "4a7b131d2394f7ae61b0226d00ef471e",
+    "modelName": "Akari",
+    "isLive2DItem": false
+}
+```
+#### How to set up custom animation events 
+
+![Model Debug Outline](/Images/api_animation_events_custom_1.png)
 
 
