@@ -18,7 +18,7 @@
   - [Model outline changed](#model-outline-changed)
   - [Hotkey triggered](#hotkey-triggered)
   - [Animation event triggered](#animation-event-triggered)
-  - 
+
 ## General Info
 
 Using the **VTube Studio Event API**, you can subscribe to various events to make sure your plugin gets a message when something happens in VTube Studio. That way, you can for example get notified every time a hotkey is activated, a model/item is loaded/unloaded, the model is clicked and much more.
