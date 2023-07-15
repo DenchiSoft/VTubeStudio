@@ -16,7 +16,9 @@
   - [Model config modified](#model-config-modified)
   - [Model moved/resized/rotated](#model-movedresizedrotated)
   - [Model outline changed](#model-outline-changed)
-
+  - [Hotkey triggered](#hotkey-triggered)
+  - [Animation event triggered](#animation-event-triggered)
+  - 
 ## General Info
 
 Using the **VTube Studio Event API**, you can subscribe to various events to make sure your plugin gets a message when something happens in VTube Studio. That way, you can for example get notified every time a hotkey is activated, a model/item is loaded/unloaded, the model is clicked and much more.
@@ -353,7 +355,7 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
     "hotkeyName": "Eyes Cry",
     "hotkeyAction": "ToggleExpression",
     "hotkeyFile": "EyesCry.exp3.json",
-    "activatedByAPI": false,
+    "hotkeyTriggeredByAPI": false,
     "modelID": "d8ee771d2909873b1aa0226d03ef4f51",
     "modelName": "Akari",
     "isLive2DItem": false
