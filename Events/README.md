@@ -360,3 +360,9 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
 }
 ```
 
+## Animation event triggered
+
+TODO
+
+
+
