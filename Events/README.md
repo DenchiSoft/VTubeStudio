@@ -371,7 +371,7 @@ TODO
 
 **`CONFIG`**
 ```json
-"eventName": "AnimationEvent",
+"eventName": "ModelAnimationEvent",
 "config": {
     "ignoreLive2DItems": false,
     "ignoreIdleAnimations": false
@@ -380,7 +380,7 @@ TODO
 
 **`EVENT`**
 ```json
-"messageType": "AnimationEvent",
+"messageType": "ModelAnimationEvent",
 "data": {
     "animationEventType": "Custom",
     "animationEventTime": 0.423317,
