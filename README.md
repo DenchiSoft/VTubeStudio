@@ -1655,7 +1655,8 @@ The response contains the instance ID of the newly loaded item in the `instanceI
 	"requestID": "SomeID",
 	"messageType": "ItemLoadResponse",
 	"data": {
-		"instanceID": "SomeUniqueItemInstanceId"
+		"instanceID": "SomeUniqueItemInstanceId",
+		"fileName": "some_item_name.jpg"
 	}
 }
 ```
