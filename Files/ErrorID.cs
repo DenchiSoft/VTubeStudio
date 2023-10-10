@@ -112,6 +112,7 @@ public enum ErrorID
     ItemOrderAlreadyTaken = 756,
     ItemLoadValuesInvalid = 757, // Invalid values for fields like size, position, ...
     ItemCustomDataInvalid = 758, // Invalid values for custom data field (customDataBase64). Happens when data is provided here but it's no valid JPG/PNG data or image dimensions are invalid.
+    ItemCustomDataLoadRequestRejectedByUser = 759, // User rejected to load the custom data item the plugin requested.
     
     // Errors related to ItemUnloadRequest
     CannotCurrentlyUnloadItem = 800,  // This is usually because the user has menus open that prevent items from being unloaded.
