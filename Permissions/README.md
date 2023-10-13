@@ -77,8 +77,3 @@ In case you actually requested a permission, the `grantSuccess` field will tell 
 }
 ```
 
-TODO
-
-`"uptime"` contains the number of milliseconds since VTube Studio has been started. `"framerate"` is the current render FPS value. `"allowedPlugins"` is the number of plugins that the user has currently allowed to use VTube Studio, `"connectedPlugins"` is the number of plugins that are currently connected to the VTube Studio API. `"startedWithSteam"` is true if the app has been started using Steam, false otherwise (if the `.bat` file has been used to start VTS without Steam).
-
-Window width and height is in pixels.
