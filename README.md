@@ -159,7 +159,7 @@ Certain functionality offered by the VTube Studio API is locked behind additiona
 
 When requesting a permission, a popup is shown to the user explaining what the permission does. The user can then choose to grant or deny it. For more information on how to request permissions and what you need them for, check the [permissions page](Permissions/).
 
-![VTube Studio Permission Request Screen](/Images/vts_api_permissions_1_transparent.png)
+[![VTube Studio Permission Request Screen](/Images/vts_api_permissions_1_transparent.png)](Permissions/)
 
 
 ## API Server Discovery (UDP)
