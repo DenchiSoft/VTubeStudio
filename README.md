@@ -21,8 +21,8 @@ Everything you're looking for is on this page. If you have any questions, please
 - [Legal Info](#legal-info)
 - [Available Plugins and Examples](#available-examples)
 - [Event API](#event-api)
-- [API Permissions](#api-permissions)
 - [API Details](#api-details)
+  - [API Permissions](#api-permissions)
   - [API Server Discovery (UDP)](#api-server-discovery-udp)
   - [Authentication](#authentication)
   - [Subscribing to and unsubscribing from events](#subscribing-to-and-unsubscribing-from-events)
@@ -100,13 +100,6 @@ If you're a developer looking for examples/libraries for you to look at that mak
 
 There is another wiki page that describes the **Event API**, which you can use to subscribe events happening in VTube Studio, such as models being loaded or hotkeys being executed. Please check out the page about events [right here](Events/).
 
-# API Permissions
-
-Certain functionality offered by the VTube Studio API is locked behind additional **permissions** that have to be requested by the plugin after authenticating. Like the permissions in iOS and Android, this is to make sure users understand when plugins use functionality that could be considered risky or potentially dangerous, such as loading arbitrary images as items.
-
-When requesting a permission, 
-
-[permissions](Permissions/).
 
 # API Details
 
@@ -159,6 +152,15 @@ The `"currentSessionAuthenticated"` will tell you if the current session has alr
 All possible error IDs are listed on the page [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs).
 
 Once connected, the client can poll information about the current app state at any time.
+
+## API Permissions
+
+Certain functionality offered by the VTube Studio API is locked behind additional **permissions** that have to be requested by the plugin after authenticating. Like the permissions in iOS and Android, this is to make sure users understand when plugins use functionality that could be considered risky or potentially dangerous, such as loading arbitrary images as items.
+
+When requesting a permission, a popup is shown to the user explaining what the permission does. The user can then choose to grant or deny it. For more information on how to request permissions and what you need them for, check the [permissions page](Permissions/).
+
+![VTube Studio Permission Request Screen](/Images/vts_api_permissions_1_transparent.png)
+
 
 ## API Server Discovery (UDP)
 
