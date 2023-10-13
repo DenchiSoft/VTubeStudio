@@ -19,8 +19,9 @@ Everything you're looking for is on this page. If you have any questions, please
 
 - [General Info](#general-info)
 - [Legal Info](#legal-info)
-- [Available Plugins and Examples](#available-plugins-and-examples)
+- [Available Plugins and Examples](#available-examples)
 - [Event API](#event-api)
+- [API Permissions](#api-permissions)
 - [API Details](#api-details)
   - [API Server Discovery (UDP)](#api-server-discovery-udp)
   - [Authentication](#authentication)
@@ -98,6 +99,14 @@ If you're a developer looking for examples/libraries for you to look at that mak
 # Event API
 
 There is another wiki page that describes the **Event API**, which you can use to subscribe events happening in VTube Studio, such as models being loaded or hotkeys being executed. Please check out the page about events [right here](Events/).
+
+# API Permissions
+
+Certain functionality offered by the VTube Studio API is locked behind additional **permissions** that have to be requested by the plugin after authenticating. Like the permissions in iOS and Android, this is to make sure users understand when plugins use functionality that could be considered risky or potentially dangerous, such as loading arbitrary images as items.
+
+When requesting a permission, 
+
+[permissions](Permissions/).
 
 # API Details
 
