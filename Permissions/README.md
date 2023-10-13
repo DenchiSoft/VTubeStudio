@@ -22,7 +22,7 @@ The following permissions can be enabled by the user in the API config for your 
 
 ## Requesting permissions
 
-You can use the `PermissionRequest` to request permissions. If you only want to receive the list of currently granted/available permissions for this plugin without actually requesting a permission, send a request with the `requestedPermission` field left empty.
+You can use the `PermissionRequest` to request permissions or just request a list of all already granted permissions. If you only want to receive the list of currently granted/available permissions for this plugin without actually requesting a permission, send a request with the `requestedPermission` field left empty.
 
 If you pass in a valid permission in the `requestedPermission` field, a popup will be shown to the user containing all info about the permission and your plugin (see image above). Please only request permissions that your plugin really needs.
 
