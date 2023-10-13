@@ -147,7 +147,7 @@ public enum ErrorID
 
     // Errors related to PermissionRequest
     PermissionRequestUnknownPermission = 1100,
-    PermissionRequestPermissionUnavailable = 1101,
+    PermissionRequestPermissionUnavailable = 1101, // The permission you requested exists but plugins aren't allowed to request it. Users must grant is manually in the VTS API config for your plugin.
     PermissionRequestCannotRequestRightNow = 1102, // Permission config window is open.
     PermissionRequestFileProblem = 1103,
     
