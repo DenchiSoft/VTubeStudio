@@ -113,6 +113,9 @@ public enum ErrorID
     ItemLoadValuesInvalid = 757, // Invalid values for fields like size, position, ...
     ItemCustomDataInvalid = 758, // Invalid values for custom data field (customDataBase64). Happens when data is provided here but it's no valid JPG/PNG data or image dimensions are invalid.
     ItemCustomDataLoadRequestRejectedByUser = 759, // User rejected to load the custom data item the plugin requested.
+    ItemCustomDataNotAllowedToLoad = 760, // You tried to load a custom data image but you lack the permission. Request the permission first.
+    ItemCustomDataNotAllowedToLoadWithoutAsking = 761, // You tried to load a custom data image without asking the user. This requires a special permission that users have to manually grant in the config.
+    ItemCustomDataLoadRequestRejectedByUser = 762, // You requested a custom data image item to be loaded but the user rejected it.
     
     // Errors related to ItemUnloadRequest
     CannotCurrentlyUnloadItem = 800,  // This is usually because the user has menus open that prevent items from being unloaded.
@@ -132,6 +135,21 @@ public enum ErrorID
     
     // Errors related to EventSubscriptionRequest
     EventSubscriptionRequestEventTypeUnknown = 950,
+
+    // Errors related to ArtMeshSelectionRequest
+    ArtMeshSelectionRequestNoModelLoaded = 1000, // Cannot start request because no model is loaded.
+    ArtMeshSelectionRequestOtherWindowsOpen = 1001, // Other windows are currently open, can't start request.
+    ArtMeshSelectionRequestModelDoesNotHaveArtMesh = 1002, // At least one of the "active" ArtMeshes you provided does not exist in the model.
+    ArtMeshSelectionRequestArtMeshIDListError = 1003, // Your "active" ArtMesh ID list is too long.
+
+    // Errors related to ItemPinRequest
+    ItemPinRequestAAAA_TODO_ignore_this_for_now_please = 1050, 
+
+    // Errors related to PermissionRequest
+    PermissionRequestUnknownPermission = 1100,
+    PermissionRequestPermissionUnavailable = 1101,
+    PermissionRequestCannotRequestRightNow = 1102, // Permission config window is open.
+    PermissionRequestFileProblem = 1103,
     
     // -------------- EVENT CONFIG ERRORS --------------
     
