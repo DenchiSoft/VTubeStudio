@@ -23,7 +23,7 @@ If you pass in a valid permission in the `requestedPermission` field, a popup wi
 
 If your plugin already has been granted the permission before, the response is returned instantly without showing a popup to the user. Once a permission is granted, you cannot revoke it via the API, but the user can revoke it in the VTube Studio API config for your plugin at any time.
 
-An error will be returned if you request an unknown permission or a valid permission that plugins aren't allowed to request via this API. An error is also returned if the user currently has the API config window open or if there are issues reading/writing the plugin config file.
+An error will be returned if you request an unknown permission. An error is also returned if the user currently has the API config window open or if there are issues reading/writing the plugin config file.
 
 All possible error IDs for this request are listed on the page [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs).
 
