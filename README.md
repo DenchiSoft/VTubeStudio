@@ -1634,7 +1634,7 @@ There are also limits to some of the values. Specifically, the size has to be be
 
 Plugins can also use this request to load arbitrary PNG/JPG data as items by passing it in via the `customDataBase64` field. Leave it empty/NULL if you aren't using it.
 
-If you want to do this, you need the `LoadCustomImagesAsItems` permission. For more info on how to request permissions, check the [permissions page](Permissions/).
+If you want to do this, you need the `LoadCustomImagesAsItems` permission. For more info on how to request permissions, check the [permissions page](Permissions/). If you do not have that permission, an error will be returned if you try to load a custom data image (`RequestRequiresPermission `, see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
 
 To request arbitrary data to be loaded as an item, the `customDataBase64` must contain valid data of a PNG or JPG file. Custom data animated or Live2D items are not currently supported. The dimensions must be between (inclusive) 64 and 512 pixels and the data has to be smaller than 1 MB (the binary data before you encode it to base64).
 
