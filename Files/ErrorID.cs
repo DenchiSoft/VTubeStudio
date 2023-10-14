@@ -114,8 +114,7 @@ public enum ErrorID
     ItemCustomDataInvalid = 758, // Invalid values for custom data field (customDataBase64). Happens when data is provided here but it's no valid JPG/PNG data or image dimensions are invalid.
     ItemCustomDataLoadRequestRejectedByUser = 759, // User rejected to load the custom data item the plugin requested.
     ItemCustomDataNotAllowedToLoad = 760, // You tried to load a custom data image but you lack the permission. Request the permission first.
-    ItemCustomDataNotAllowedToLoadWithoutAsking = 761, // You tried to load a custom data image without asking the user. This requires a special permission that users have to manually grant in the config.
-    ItemCustomDataLoadRequestRejectedByUser = 762, // You requested a custom data image item to be loaded but the user rejected it.
+    ItemCustomDataLoadRequestRejectedByUser = 761, // You requested a custom data image item to be loaded but the user rejected it.
     
     // Errors related to ItemUnloadRequest
     CannotCurrentlyUnloadItem = 800,  // This is usually because the user has menus open that prevent items from being unloaded.
