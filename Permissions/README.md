@@ -14,11 +14,6 @@ The following is a list of **all current permissions** including the requests th
   * Used in the `ItemLoadRequest`. If you have this permission, you can provide custom PNG/JPG data that will be loaded as item in VTube Studio. Without that permission, you can only load items that the user has already added to VTube Studio. For more info, see explanation for `ItemLoadRequest`, in particular its `customDataBase64` field.
 * ...more to come!!
  
-The following permissions can be enabled by the user in the API config for your plugin but you can **NOT** request those permissions as they are considered too dangerous. If you really need those permissions, ask the user to turn them on manually.
-
-* `LoadCustomImagesWithoutPreview`
-  * Used in the `ItemLoadRequest`. Normally, if you only have the `LoadCustomImagesAsItems` permission, you can load arbitrary JPG/PNG data as item but it will first be shown to the user as a small icon on the UI and the user can then decide whether or not they want to actually load it as item. With this permission, you can completely skip that UI prompt and load any image data directly into the scene without any user input.
-
 
 ## Requesting permissions
 
@@ -46,7 +41,7 @@ All possible error IDs for this request are listed on the page [ErrorsID.cs](htt
 }
 ```
 
-The response will contain **ALL permissions** that VTube Studio offers. The `granted` field tells you whether or not your plugin currently has that permission. The `allowedToRequest` field is `true` for all permissions you can request and `false` for permissions that have to be manually turned on in the API config for your plugin by the user.
+The response will contain **ALL permissions** that VTube Studio offers. The `granted` field tells you whether or not your plugin currently has that permission. 
 
 In case you actually requested a permission, the `grantSuccess` field will tell you whether or not the user granted the permission for your plugin and the `requestedPermission` field will contain the name of the granted permission.
 
@@ -64,13 +59,7 @@ In case you actually requested a permission, the `grantSuccess` field will tell 
 		"permissions": [
 			{
 				"name": "LoadCustomImagesAsItems",
-				"granted": true,
-				"allowedToRequest": true
-			},
-			{
-				"name": "LoadCustomImagesWithoutPreview",
-				"granted": false,
-				"allowedToRequest": false
+				"granted": true
 			}
 		]
 	}
