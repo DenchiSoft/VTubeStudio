@@ -1652,6 +1652,8 @@ If you want to show a popup to the user first, set `customDataAskUserFirst` to `
 
 ![Custom Image Load Popup](/Images/vts_load_custom_image_1.png)
 
+6 popups like this can be displayed at the same time (popups are stacked vertically). When 6 popups are already currently shown to the user, subsequent requests will return an error.
+
 When showing the popup, the response for this request will only be returned once the user makes a decision. If the user decides to deny loading the custom data item, an error will be returned (`ItemCustomDataLoadRequestRejectedByUser`). When the user decides to load the item, it will be loaded and a normal response will be returned. That will also add it to the whitelist for your plugin so subsequent loads of the same item (as determined by its SHA256 hash) will not trigger the popup. If you want to force the popup to be triggered every time, you can set `customDataSkipAskingUserIfWhitelisted` to true.
 
 You can set a timeout for the popup using the `customDataAskTimer` field. If you set it to 0 (or smaller), the popup will be shown forever (until the user clicks OK or cancel). If you set it to any other positive number, the popup will be shown for that number in seconds, with a visible countdown shown to the user. If the user doesn't make a decision before the countdown is done, the item load request is considered rejected by the user.
