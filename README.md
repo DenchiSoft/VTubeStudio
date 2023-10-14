@@ -1650,7 +1650,7 @@ If you want to just load the item right away, set `customDataAskUserFirst` to `f
 
 If you want to show a popup to the user first, set `customDataAskUserFirst` to `true`. If you do that, the following popup will be shown to the user:
 
-IMG
+![Custom Image Load Popup](/Images/vts_load_custom_image_1.png)
 
 When showing the popup, the response for this request will only be returned once the user makes a decision. If the user decides to deny loading the custom data item, an error will be returned (`ItemCustomDataLoadRequestRejectedByUser`). When the user decides to load the item, it will be loaded and a normal response will be returned. That will also add it to the whitelist for your plugin so subsequent loads of the same item (as determined by its SHA256 hash) will not trigger the popup. If you want to force the popup to be triggered every time, you can set `customDataSkipAskingUserIfWhitelisted` to true.
 
