@@ -1632,7 +1632,7 @@ There are also limits to some of the values. Specifically, the size has to be be
 
 ### Custom Data Items
 
-Plugins can also use this request to load arbitrary PNG/JPG data as items by passing it in via the `customDataBase64` field. Leave it empty/NULL if you aren't using it.
+Plugins can also use this request to load arbitrary PNG/JPG data as items by passing it in via the `customDataBase64` field (has to be base64-encoded JPG or PNG file). Leave it empty/NULL if you aren't using it.
 
 If you want to do this, you need the `LoadCustomImagesAsItems` permission. For more info on how to request permissions, check the [permissions page](Permissions/). If you do not have that permission, an error will be returned if you try to load a custom data image (`RequestRequiresPermission`, see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
 
