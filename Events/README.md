@@ -18,6 +18,8 @@
   - [Model outline changed](#model-outline-changed)
   - [Hotkey triggered](#hotkey-triggered)
   - [Animation event triggered](#animation-event-triggered)
+  - [Item event](#item-event)
+
 
 ## General Info
 
@@ -429,8 +431,34 @@ The following graphic explains all steps required to create an animation event.
 <img src="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/Images/api_animation_events_custom_1.png" alt="Setting up custom animation events in the Live2D Cubism Animator" width="750">
 
 
+## Item event
 
+An event that is triggered every time certain actions are done with/by an item. The item is identified by its `itemInstanceID`.
 
+The following item event types are currently supported and will be returned in the `itemEventType` field:
+
+* `Added`: Item was added to the scene.
+* `Removed`: Item was removed from the scene.
+* `DroppedPinned`: Item was dropped on the model and is now pinned.
+* `DroppedUnpinned`: Item was dropped but not on the model. It is now unpinned
+* `Clicked`: Item was clicked.
+* `Locked`: Item was locked.
+* `Unlocked`: Item was unlocked.
+
+**`CONFIG`**
+```json
+"eventName": "ItemEvent",
+"config": { }
+```
+
+**`EVENT`**
+```json
+"messageType": "ItemEvent",
+"data": {
+    "itemEventType": "ItemClicked",
+    "itemInstanceID": "3dcfc2456ac94a37bad369ec1875a15b"
+}
+```
 
 
 
