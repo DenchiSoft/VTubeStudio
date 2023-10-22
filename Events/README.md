@@ -468,5 +468,76 @@ The event contains the item instance ID and the item position in the usual coord
 
 
 
+## Model clicked event
+
+An event that is triggered every time the model is clicked. Depending on the config, it is also triggered when you click anywhere in the VTS window even if the click wasn't on the model.
+
+This contains detailed information on where exactly the model was clicked.
+
+**`CONFIG`**
+```json
+"eventName": "ItemEvent",
+"config": {
+    "onlyClicksOnModel": true
+}
+```
+
+**`EVENT`**
+```json
+"messageType": "ModelClickedEvent",
+"data": {
+    "modelLoaded": true,
+    "loadedModelID": "d87b771d2902473bbaa0226d03ef4754",
+    "loadedModelName": "Akari",
+    "modelWasClicked": true,
+    "mouseButtonID": 0,
+    "clickPosition": {
+        "x": 0.24199999868869781,
+        "y": -0.1321222186088562
+    },
+    "windowSize": {
+        "x": 2000,
+        "y": 1211
+    },
+    "clickedArtMeshCount": 2,
+    "artMeshHits": [
+        {
+            "artMeshOrder": 0,
+            "isMasked": false,
+            "hitInfo": {
+                "hitValid": true,
+                "modelID": "d87b771d2902473bbaa0226d03ef4754",
+                "artMeshID": "hair_right3",
+                "angle": 91.55233764648438,
+                "size": 1.0,
+                "vertexID1": 20,
+                "vertexID2": 12,
+                "vertexID3": 39,
+                "vertexWeight1": 0.1765882521867752,
+                "vertexWeight2": 0.027021432295441628,
+                "vertexWeight3": 0.7963902950286865
+            }
+        },
+        {
+            "artMeshOrder": 1,
+            "isMasked": false,
+            "hitInfo": {
+                "hitValid": true,
+                "modelID": "d87b771d2902473bbaa0226d03ef4754",
+                "artMeshID": "face_skin",
+                "angle": 56.28250503540039,
+                "size": 1.0,
+                "vertexID1": 59,
+                "vertexID2": 56,
+                "vertexID3": 42,
+                "vertexWeight1": 0.7792447805404663,
+                "vertexWeight2": 0.12787353992462158,
+                "vertexWeight3": 0.09288167953491211
+            }
+        }
+    ]
+}
+```
+
 
 
