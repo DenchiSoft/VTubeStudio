@@ -55,7 +55,9 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Controling items and item animations](#controling-items-and-item-animations)
   - [Moving items in the scene](#moving-items-in-the-scene)
   - [Asking user to select ArtMeshes](#asking-user-to-select-artmeshes)
+  - [Pin items to the model](#pin-items-to-the-model)
 
+  
 ## General Info
 
 VTube Studio will get a **public API**. This means you will be able to write plugins/scripts that can trigger hotkeys, feed in face tracking data or receive face tracking data from VTube Studio.
@@ -1984,3 +1986,48 @@ If the user clicked "OK" the `success` field will be `true`. If the user clicked
 	}
 }
 ```
+
+
+## Pin items to the model
+
+**TODO**
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemPinRequest",
+	"data": {
+
+	}
+}
+```
+
+**TODO**
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemPinResponse",
+	"data": {
+
+	}
+}
+```
+
+
+
+
+
+
+
+
+
+
+
