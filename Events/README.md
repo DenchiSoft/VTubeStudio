@@ -482,6 +482,20 @@ This contains detailed information on where exactly the model was clicked.
 }
 ```
 
+`modelLoaded` will be `true` if a model is currently loaded. If one is loaded, `loadedModelID` will contain its ID and `loadedModelName` will contain the name.
+
+`mouseButtonID` is the ID of the mouse button. `1` is left-click, `2` is right-click and `3` is middle-click (mouse-wheel click). `clickPosition` is the position of the click in the usual coordinate system. If you need the exact pixel position of the click, you can use `windowSize` (current VTS window size in pixels) to calculate that.
+
+If the model was clicked, the number of ArtMeshes at the click position will be returned in the `clickedArtMeshCount` field. The `artMeshHits` array will contain the details of each of those ArtMeshes, including where exactly they were clicked at vertex-level within the mesh. You can use that data to pin items at that position using the `ItemPinRequest`. This array could contain a lot of ArtMeshes since many ArtMeshes might be stacked at one given position of the model.
+
+_Note:_ You can ignore the `hitValid` (always true), `angle` and `size` fields for now. They might be relevant in the future but have no purpose at the moment.
+
+Each ArtMesh hit contains info about where that ArtMesh was clicked. `artMeshOrder` is the order in the ArtMesh stack at the click position. The topmost ArtMesh at the click position will have `"artMeshOrder": 0`. This would be the ArtMesh that items pin to when dropped by users at that exact position.
+
+The exact click position within the ArtMesh is given via the `vertexID1`, `vertexID2`, `vertexID3`, `vertexWeight1`, `vertexWeight2`, `vertexWeight3` fields as [barycentric coordinates](https://en.wikipedia.org/wiki/Barycentric_coordinate_system). In short, VTS checks which specific triangle was clicked in the ArtMesh and returns the three vertex IDs that make up this triangle, including the weights that if multiplied with the vertex positions will result in the exact click position within the triangle.
+
+The ArtMesh ID and barycentric coordinates can be used to identify an exact position on the model and can be used to pin an item at that position using the `ItemPinRequest`.
+
 **`EVENT`**
 ```json
 "messageType": "ModelClickedEvent",
@@ -492,12 +506,12 @@ This contains detailed information on where exactly the model was clicked.
     "modelWasClicked": true,
     "mouseButtonID": 0,
     "clickPosition": {
-        "x": 0.24199999868869781,
-        "y": -0.1321222186088562
+        "x": -0.15343914926052094,
+        "y": 0.34593725204467773
     },
     "windowSize": {
-        "x": 2000,
-        "y": 1211
+        "x": 2268,
+        "y": 1243
     },
     "clickedArtMeshCount": 2,
     "artMeshHits": [
@@ -507,32 +521,32 @@ This contains detailed information on where exactly the model was clicked.
             "hitInfo": {
                 "hitValid": true,
                 "modelID": "d87b771d2902473bbaa0226d03ef4754",
-                "artMeshID": "hair_right3",
-                "angle": 91.55233764648438,
+                "artMeshID": "hair_right6",
+                "angle": 130.80455017089844,
                 "size": 1.0,
-                "vertexID1": 20,
-                "vertexID2": 12,
-                "vertexID3": 39,
-                "vertexWeight1": 0.1765882521867752,
-                "vertexWeight2": 0.027021432295441628,
-                "vertexWeight3": 0.7963902950286865
+                "vertexID1": 80,
+                "vertexID2": 76,
+                "vertexID3": 75,
+                "vertexWeight1": 0.4725686013698578,
+                "vertexWeight2": 0.07506437599658966,
+                "vertexWeight3": 0.45236700773239136
             }
         },
         {
             "artMeshOrder": 1,
-            "isMasked": false,
+            "isMasked": true,
             "hitInfo": {
                 "hitValid": true,
                 "modelID": "d87b771d2902473bbaa0226d03ef4754",
                 "artMeshID": "face_skin",
-                "angle": 56.28250503540039,
+                "angle": 63.90638732910156,
                 "size": 1.0,
-                "vertexID1": 59,
-                "vertexID2": 56,
-                "vertexID3": 42,
-                "vertexWeight1": 0.7792447805404663,
-                "vertexWeight2": 0.12787353992462158,
-                "vertexWeight3": 0.09288167953491211
+                "vertexID1": 75,
+                "vertexID2": 71,
+                "vertexID3": 70,
+                "vertexWeight1": 0.3965734839439392,
+                "vertexWeight2": 0.06637920439243317,
+                "vertexWeight3": 0.5370473265647888
             }
         }
     ]
