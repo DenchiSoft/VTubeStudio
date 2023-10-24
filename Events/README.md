@@ -451,7 +451,7 @@ The following item event types are currently supported and will be returned in t
 "config": { }
 ```
 
-The event contains the item instance ID and the item position in the usual coordinate system.
+The event contains the item instance ID, item file name (including extension if applicable) and the item position in the usual coordinate system.
 
 **`EVENT`**
 ```json
@@ -459,13 +459,13 @@ The event contains the item instance ID and the item position in the usual coord
 "data": {
     "itemEventType": "ItemClicked",
     "itemInstanceID": "3dcfc2456ac94a37bad369ec1875a15b",
+    "itemFileName": "my_item.png",
     "itemPosition": {
         "x": -0.34229445457458496,
         "y": 0.515410304069519
     }
 }
 ```
-
 
 
 ## Model clicked event
