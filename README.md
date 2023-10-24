@@ -1990,7 +1990,7 @@ If the user clicked "OK" the `success` field will be `true`. If the user clicked
 
 ## Pin items to the model
 
-**TODO**
+You can use this request to pin items in the scene to the currently loaded model.
 
 **`REQUEST`**
 ```json
