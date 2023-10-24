@@ -13,7 +13,7 @@ public enum ErrorID
     RequestTypeMissingOrEmpty = 6,
     RequestTypeUnknown = 7,
     RequestRequiresAuthetication = 8,
-    RequestRequiresPermission = 9,
+    RequestRequiresPermission = 9, // Returned when a request requires a certain permission that has not been granted for this plugin.
 
     // Errors related to AuthenticationTokenRequest
     TokenRequestDenied = 50,
@@ -142,12 +142,16 @@ public enum ErrorID
     ArtMeshSelectionRequestArtMeshIDListError = 1003, // Your "active" ArtMesh ID list is too long.
 
     // Errors related to ItemPinRequest
-    ItemPinRequestAAAA_TODO_ignore_this_for_now_please = 1050, 
+    ItemPinRequestGivenItemNotLoaded = 1050,
+    ItemPinRequestInvalidAngleOrSizeType = 1051,
+    ItemPinRequestModelNotFound = 1052,
+    ItemPinRequestArtMeshNotFound = 1053,
+    ItemPinRequestPinPositionInvalid = 1054,
 
     // Errors related to PermissionRequest
     PermissionRequestUnknownPermission = 1100,
     PermissionRequestCannotRequestRightNow = 1101, // Permission config window is open.
-    PermissionRequestFileProblem = 1102,
+    PermissionRequestFileProblem = 1102, // Could not open or write permission file for this plugin.
     
     // -------------- EVENT CONFIG ERRORS --------------
     
