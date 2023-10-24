@@ -19,7 +19,7 @@
   - [Hotkey triggered](#hotkey-triggered)
   - [Animation event triggered](#animation-event-triggered)
   - [Item event](#item-event)
-
+  - [Model clicked event](#model-clicked-event)
 
 ## General Info
 
