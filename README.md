@@ -1992,20 +1992,24 @@ If the user clicked "OK" the `success` field will be `true`. If the user clicked
 
 You can use this request to pin items in the scene to the currently loaded model.
 
-The item instance ID to identify the item has to be specified in the `itemInstanceID` field. If you want to unpin the item, just set `pin` to `false`. No other info has to be provided in that case.
+The item instance ID to identify the item has to be specified in the `itemInstanceID` field. If you want to unpin the item, just set `pin` to `false`. No other info has to be provided in that case. If no item with that ID is currently loaded, an error is returned (see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
 
 If you don't want the pin process to be logged in the VTS logs, you can set `log` to `false`. Pinning will write ~5 lines to the log each time so in some cases you might want to turn off logging like that to prevent log spam when pinning many items.
 
 If you want to pin an item, the pin position has to be provided in the `pinInfo` object. There are various ways to pin an item. For example, you can provide an exact position to pin to or you could just provide an ArtMesh and let VTS pin the item to the center of it or a random position on the ArtMesh. How exactly this works will be described below.
+
+When you send an `ItemPinRequest` for an item with an active `ItemMoveRequest`, the `ItemMoveRequest` will be automatically canceled.
+
+Also, if your plugin (or multiple different plugins) send multiple pin requests for the same item and they are received within the same frame in VTS, only the last received pin request is executed while the others are discarded.
 
 ### Options for pinning
 
 There are three fields that determine how the data given in `pinInfo` is interpreted:
 
 * `angleRelativeTo`: How should the provided angle be interpreted?
-  * `RelativeToWorld`: Absolute angle. That means if you pass in 0 as angle, the item will be pinned upright at an angle of 0 compared to the VTS window.
-  * `RelativeToCurrentItemRotation`: Relative to the angle the item currently is at. If you pass in 0 as angle, that means the item will be pinned at the angle it is already at meaning its current rotation will not be changed.
-  * `RelativeToModel`: Relative angle to model rotation. That means if you pass in 0 as angle and the user has rotated the model, the item will be pinned upright in relation to the model. This "model rotation" doesn't include rotation caused by Live2D ArtMesh deformation, only the actual rotation applied to the whole model by VTube Studio.
+  * `RelativeToWorld`: Absolute angle. That means if you pass in 0 as angle, the item will be pinned upright at an angle of 0 compared to the VTS window. You'd use this if you want the item to face a certain direction relative to the VTS window.
+  * `RelativeToCurrentItemRotation`: Relative to the angle the item currently is at. If you pass in 0 as angle, that means the item will be pinned at the angle it is already at meaning its current rotation will not be changed. You'd use this if you don't want to change the item rotation and just pin it as is.
+  * `RelativeToModel`: Relative angle to model rotation. That means if you pass in 0 as angle and the user has rotated the model, the item will be pinned upright in relation to the model. This "model rotation" doesn't include rotation caused by Live2D ArtMesh deformation, only the actual rotation applied to the whole model by VTube Studio. You'd use this if you want the item to face a certain direction relative to the current rotation of the model.
   * `RelativeToPinPosition`: Relative angle to the pin position. This is what you should use if you want to pin an item at a certain position within a certain ArtMesh at a certain angle and you want that angle to be exactly the same no matter how the model is rotated right now or how the ArtMesh is deformed. However, what angle you have to pass in to get the desired effect will be completely different for each pin-position.
 * `sizeRelativeTo`:
   * `RelativeToWorld`: Absolute size. Between 0 (smallest) and 1 (largest). See also `ItemLoadRequest`.
@@ -2014,8 +2018,21 @@ There are three fields that determine how the data given in `pinInfo` is interpr
   * `Provided`: The item will be pinned to the given ArtMesh using the pin position provided in the fields `vertexID1`, `vertexID2`, `vertexID3`, `vertexWeight1`, `vertexWeight2` and `vertexWeight3`. Details will be explained below.
   * `Center`: The item will be pinned to the "center" of the given ArtMesh. It's not really the center (spacially) but actually the triangle in the middle of the triangle list of the mesh. This will give you the same position every time for a given ArtMesh.
   * `Random`: The item will be pinned to a random triangle within the given ArtMesh.
- 
 
+If the provided model ID doesn't match the loaded model, an error is returned. You can also leave the model ID empty, which will try to pin to the currently loaded model (if one is loaded).
+
+If the model doesn't have the ArtMesh with the ArtMesh ID you provided, an error is returned. If you leave the ArtMesh ID empty, a random ArtMesh will be chosen in the model.
+
+For example, you could leave both the model ID and ArtMesh ID empty and set `vertexPinType` to `Random`. That will just pin the item to a random position on a random ArtMesh on the currently loaded model.
+
+### Pinning to a specific position
+
+If you set `vertexPinType` to `Provided`, you have to use the fields `vertexID1`, `vertexID2`, `vertexID3`, `vertexWeight1`, `vertexWeight2` and `vertexWeight3` to provide a valid position on the ArtMesh you selected using the `modelID` and `artMeshID` fields.
+
+The three vertex ID fields have to be the vertex IDs of a triangle in the given ArtMesh. To define a position within that specific triangle, use the vertex weight fields. Those fields will be multiplied with the vertex positions to define a position in the triangle. Keep in mind that the weights must add up to exactly 1, otherwise the resulting position would be outside of the triangle (and an error will be returned).
+
+
+mention clickRequest => pos
 
 **`REQUEST`**
 ```json
