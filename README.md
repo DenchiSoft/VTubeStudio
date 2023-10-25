@@ -1992,6 +1992,31 @@ If the user clicked "OK" the `success` field will be `true`. If the user clicked
 
 You can use this request to pin items in the scene to the currently loaded model.
 
+The item instance ID to identify the item has to be specified in the `itemInstanceID` field. If you want to unpin the item, just set `pin` to `false`. No other info has to be provided in that case.
+
+If you don't want the pin process to be logged in the VTS logs, you can set `log` to `false`. Pinning will write ~5 lines to the log each time so in some cases you might want to turn off logging like that to prevent log spam when pinning many items.
+
+If you want to pin an item, the pin position has to be provided in the `pinInfo` object. There are various ways to pin an item. For example, you can provide an exact position to pin to or you could just provide an ArtMesh and let VTS pin the item to the center of it or a random position on the ArtMesh. How exactly this works will be described below.
+
+### Options for pinning
+
+There are three fields that determine how the data given in `pinInfo` is interpreted:
+
+* `angleRelativeTo`: How should the provided angle be interpreted?
+  * `RelativeToWorld`: Absolute angle. That means if you pass in 0 as angle, the item will be pinned upright at an angle of 0 compared to the VTS window.
+  * `RelativeToCurrentItemRotation`: Relative to the angle the item currently is at. If you pass in 0 as angle, that means the item will be pinned at the angle it is already at meaning its current rotation will not be changed.
+  * `RelativeToModel`: Relative angle to model rotation. That means if you pass in 0 as angle and the user has rotated the model, the item will be pinned upright in relation to the model. This "model rotation" doesn't include rotation caused by Live2D ArtMesh deformation, only the actual rotation applied to the whole model by VTube Studio.
+  * `RelativeToPinPosition`: Relative angle to the pin position. This is what you should use if you want to pin an item at a certain position within a certain ArtMesh at a certain angle and you want that angle to be exactly the same no matter how the model is rotated right now or how the ArtMesh is deformed. However, what angle you have to pass in to get the desired effect will be completely different for each pin-position.
+* `sizeRelativeTo`:
+  * `RelativeToWorld`: Absolute size. Between 0 (smallest) and 1 (largest). See also `ItemLoadRequest`.
+  * `RelativeToCurrentItemSize`: Relative to current item size. You can pass in numbers between `-1` and `1`, which will be added to the current item size, meaning you can pass in 0 if you want to pin the item at its current size without changing it.
+* `vertexPinType`: 
+  * `Provided`: The item will be pinned to the given ArtMesh using the pin position provided in the fields `vertexID1`, `vertexID2`, `vertexID3`, `vertexWeight1`, `vertexWeight2` and `vertexWeight3`. Details will be explained below.
+  * `Center`: The item will be pinned to the "center" of the given ArtMesh. It's not really the center (spacially) but actually the triangle in the middle of the triangle list of the mesh. This will give you the same position every time for a given ArtMesh.
+  * `Random`: The item will be pinned to a random triangle within the given ArtMesh.
+ 
+
+
 **`REQUEST`**
 ```json
 {
