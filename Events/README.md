@@ -476,7 +476,7 @@ This contains detailed information on where exactly the model was clicked.
 
 **`CONFIG`**
 ```json
-"eventName": "ItemEvent",
+"eventName": "ModelClickedEvent",
 "config": {
     "onlyClicksOnModel": true
 }
