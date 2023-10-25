@@ -2000,7 +2000,24 @@ You can use this request to pin items in the scene to the currently loaded model
 	"requestID": "SomeID",
 	"messageType": "ItemPinRequest",
 	"data": {
-
+		"pin": true,
+		"log": true,
+		"itemInstanceID": "4a241269394f463ca16b8b21aa636568",
+		"angleRelativeTo": "RelativeToModel",
+		"sizeRelativeTo": "RelativeToWorld",
+		"vertexPinType": "Provided",
+		"pinInfo": {
+			"modelID": "d87b771d2902473bbaa0226d03ef4754",
+			"artMeshID": "hair_right_4",
+			"vertexID1": 17,
+			"vertexID2": 9,
+			"vertexID3": 55,
+			"vertexWeight1": 0.25928378105163576,
+			"vertexWeight2": 0.6850675940513611,
+			"vertexWeight3": 0.055648624897003177,
+			"angle": 23,
+			"size": 0.3
+		}
 	}
 }
 ```
@@ -2016,7 +2033,9 @@ You can use this request to pin items in the scene to the currently loaded model
 	"requestID": "SomeID",
 	"messageType": "ItemPinResponse",
 	"data": {
-
+		"isPinned": true,
+		"itemInstanceID": "4a241269394f463ca16b8b21aa636568",
+		"itemFileName": "my_test_item_2.png",
 	}
 }
 ```
