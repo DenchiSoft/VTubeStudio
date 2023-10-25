@@ -2031,8 +2031,7 @@ If you set `vertexPinType` to `Provided`, you have to use the fields `vertexID1`
 
 The three vertex ID fields have to be the vertex IDs of a triangle in the given ArtMesh. To define a position within that specific triangle, use the vertex weight fields. Those fields will be multiplied with the vertex positions to define a position in the triangle. Keep in mind that the weights must add up to exactly 1, otherwise the resulting position would be outside of the triangle (and an error will be returned).
 
-
-mention clickRequest => pos
+To get one of those positions, you can use the [ModelClickedEvent](https://github.com/DenchiSoft/VTubeStudio/tree/master/Events#model-clicked-event). This event will return pin positions you can use with the `ItemPinRequest` when the model is clicked.
 
 **`REQUEST`**
 ```json
@@ -2057,14 +2056,14 @@ mention clickRequest => pos
 			"vertexWeight1": 0.25928378105163576,
 			"vertexWeight2": 0.6850675940513611,
 			"vertexWeight3": 0.055648624897003177,
-			"angle": 23,
-			"size": 0.3
+			"angle": 23.938,
+			"size": 0.33
 		}
 	}
 }
 ```
 
-**TODO**
+If successful, the response contains the item ID, item file name and whether or not the item is now pinned.
 
 **`RESPONSE`**
 ```json
