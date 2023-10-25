@@ -1634,13 +1634,13 @@ There are also limits to some of the values. Specifically, the size has to be be
 
 ### Custom Data Items
 
-Plugins can also use this request to load arbitrary PNG/JPG data as items by passing it in via the `customDataBase64` field (has to be base64-encoded JPG or PNG file). Leave it empty/NULL if you aren't using it.
+Plugins can also use this request to load arbitrary PNG/JPG/GIF data as items by passing it in via the `customDataBase64` field (has to be base64-encoded JPG, PNG or GIF file). Leave it empty/NULL if you aren't using it.
 
 If you want to do this, you need the `LoadCustomImagesAsItems` permission. For more info on how to request permissions, check the [permissions page](Permissions/). If you do not have that permission, an error will be returned if you try to load a custom data image (`RequestRequiresPermission`, see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
 
-To request arbitrary data to be loaded as an item, the `customDataBase64` must contain valid data of a PNG or JPG file. Custom data animated or Live2D items are not currently supported. The dimensions must be between (inclusive) 64 and 512 pixels and the data has to be smaller than 1 MB (the binary data before you encode it to base64).
+To request arbitrary data to be loaded as an item, the `customDataBase64` must contain valid data of a PNG, JPG or GIF file. Custom data Live2D items are not currently supported. The dimensions must be between (inclusive) 64 and 512 pixels and the data has to be smaller than 1 MB (the binary data before you encode it to base64). For GIF data, the GIF must contain 1024 frames or less but at least 1 frame and all frames must have the same size.
 
-When providing custom data, you still have to also provide a filename in the `fileName` field. The `fileName` has to be alphanumeric (but can contain hyphens) and must end with `.jpg`. It has to be between (inclusive) 8 and 32 characters long.
+When providing custom data, you still have to also provide a filename in the `fileName` field. The `fileName` has to be alphanumeric (but can contain hyphens) and must end with `.jpg`, `.png` or `.gif`. It has to be between (inclusive) 8 and 32 characters long.
 
 When loading custom data, you have two options:
 * Just load the custom data item instantly.
