@@ -2029,7 +2029,7 @@ For example, you could leave both the model ID and ArtMesh ID empty and set `ver
 
 If you set `vertexPinType` to `Provided`, you have to use the fields `vertexID1`, `vertexID2`, `vertexID3`, `vertexWeight1`, `vertexWeight2` and `vertexWeight3` to provide a valid position on the ArtMesh you selected using the `modelID` and `artMeshID` fields.
 
-The three vertex ID fields have to be the vertex IDs of a triangle in the given ArtMesh. To define a position within that specific triangle, use the vertex weight fields. Those fields will be multiplied with the vertex positions to define a position in the triangle. Keep in mind that the weights must add up to exactly 1, otherwise the resulting position would be outside of the triangle (and an error will be returned).
+The three vertex ID fields have to be the vertex IDs of a triangle in the given ArtMesh. To define a position within that specific triangle, use the vertex weight fields. Those fields will be multiplied with the vertex positions to define a position in the triangle. Keep in mind that the weights must add up to exactly 1, otherwise the resulting position would be outside of the triangle (and an error will be returned). Those are [barycentric coordinates](https://en.wikipedia.org/wiki/Barycentric_coordinate_system).
 
 To get one of those positions, you can use the [ModelClickedEvent](https://github.com/DenchiSoft/VTubeStudio/tree/master/Events#model-clicked-event). This event will return pin positions you can use with the `ItemPinRequest` when the model is clicked.
 
