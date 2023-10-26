@@ -1994,8 +1994,6 @@ You can use this request to pin items in the scene to the currently loaded model
 
 The item instance ID to identify the item has to be specified in the `itemInstanceID` field. If you want to unpin the item, just set `pin` to `false`. No other info has to be provided in that case. If no item with that ID is currently loaded, an error is returned (see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
 
-If you don't want the pin process to be logged in the VTS logs, you can set `log` to `false`. Pinning will write ~5 lines to the log each time so in some cases you might want to turn off logging like that to prevent log spam when pinning many items.
-
 If you want to pin an item, the pin position has to be provided in the `pinInfo` object. There are various ways to pin an item. For example, you can provide an exact position to pin to or you could just provide an ArtMesh and let VTS pin the item to the center of it or a random position on the ArtMesh. How exactly this works will be described below.
 
 When you send an `ItemPinRequest` for an item with an active `ItemMoveRequest`, the `ItemMoveRequest` will be automatically canceled.
@@ -2042,7 +2040,6 @@ To get one of those positions, you can use the [ModelClickedEvent](https://githu
 	"messageType": "ItemPinRequest",
 	"data": {
 		"pin": true,
-		"log": true,
 		"itemInstanceID": "4a241269394f463ca16b8b21aa636568",
 		"angleRelativeTo": "RelativeToModel",
 		"sizeRelativeTo": "RelativeToWorld",
