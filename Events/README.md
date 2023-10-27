@@ -497,7 +497,7 @@ This contains detailed information on where exactly the model was clicked.
 
 If the model was clicked, the number of ArtMeshes at the click position will be returned in the `clickedArtMeshCount` field. The `artMeshHits` array will contain the details of each of those ArtMeshes, including where exactly they were clicked at vertex-level within the mesh. You can use that data to pin items at that position using the `ItemPinRequest`. This array could contain a lot of ArtMeshes since many ArtMeshes might be stacked at one given position of the model.
 
-_Note:_ You can ignore the `hitValid` (always true), `angle` and `size` fields for now. They might be relevant in the future but have no purpose at the moment.
+_Note:_ You can ignore the `angle` and `size` fields for now. They might be relevant in the future but have no purpose at the moment.
 
 Each ArtMesh hit contains info about where that ArtMesh was clicked. `artMeshOrder` is the order in the ArtMesh stack at the click position. The topmost ArtMesh at the click position will have `"artMeshOrder": 0`. This would be the ArtMesh that items pin to when dropped by users at that exact position.
 
@@ -528,7 +528,6 @@ The ArtMesh ID and barycentric coordinates can be used to identify an exact posi
             "artMeshOrder": 0,
             "isMasked": false,
             "hitInfo": {
-                "hitValid": true,
                 "modelID": "d87b771d2902473bbaa0226d03ef4754",
                 "artMeshID": "hair_right6",
                 "angle": 130.80455017089844,
@@ -545,7 +544,6 @@ The ArtMesh ID and barycentric coordinates can be used to identify an exact posi
             "artMeshOrder": 1,
             "isMasked": true,
             "hitInfo": {
-                "hitValid": true,
                 "modelID": "d87b771d2902473bbaa0226d03ef4754",
                 "artMeshID": "face_skin",
                 "angle": 63.90638732910156,
