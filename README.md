@@ -2047,14 +2047,14 @@ To get one of those positions, you can use the [ModelClickedEvent](https://githu
 		"pinInfo": {
 			"modelID": "d87b771d2902473bbaa0226d03ef4754",
 			"artMeshID": "hair_right_4",
+			"angle": 23.938,
+			"size": 0.33,
 			"vertexID1": 17,
 			"vertexID2": 9,
 			"vertexID3": 55,
 			"vertexWeight1": 0.25928378105163576,
 			"vertexWeight2": 0.6850675940513611,
-			"vertexWeight3": 0.055648624897003177,
-			"angle": 23.938,
-			"size": 0.33
+			"vertexWeight3": 0.055648624897003177
 		}
 	}
 }
