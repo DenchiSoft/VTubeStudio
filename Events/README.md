@@ -435,6 +435,12 @@ The following graphic explains all steps required to create an animation event.
 
 An event that is triggered every time certain actions are done with/by an item. The item is identified by its `itemInstanceID`.
 
+There are two arrays you can pass in (optional):
+* `itemInstanceIDs`: If you pass in a list of item IDs, items with non-matching IDs will not trigger the event.
+* `itemFileNames`: If you pass in a list of item filenames, items with non-matching filenames will not trigger the event. This does "contains-matching", so for example if you pass in `"my"`, it will match the item `my_item.png`
+
+If you don't pass in the lists or both lists are empty, all items will trigger events. If you pass in both lists, items will trigger events if they match one list or the other.
+
 The following item event types are currently supported and will be returned in the `itemEventType` field:
 
 * `Added`: Item was added to the scene.
@@ -448,7 +454,10 @@ The following item event types are currently supported and will be returned in t
 **`CONFIG`**
 ```json
 "eventName": "ItemEvent",
-"config": { }
+"config": {
+    "itemInstanceIDs": [ "some_item_instance_id_to_match" ],
+    "itemFileNames": [ "some_filename_to_match", "some_other_filename_to_match.gif" ]
+}
 ```
 
 The event contains the item instance ID, item file name (including extension if applicable) and the item position in the usual coordinate system.
