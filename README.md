@@ -870,8 +870,6 @@ Matching is always executed **case-insensitive**.
 }
 ```
 
-**Super secret note:** If you add `"jeb_": true` to the `"colorTint"` object, it'll activate the rainbow animation mode for the matched ArtMeshes.
-
 **`RESPONSE`**
 ```json
 {
