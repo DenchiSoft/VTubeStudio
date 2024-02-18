@@ -11,6 +11,10 @@ That can be found here: https://github.com/DenchiSoft/VTubeStudio/wiki
 
 Check out this page: https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins
 
+## Are you a developer looking for a way to receive tracking data from the VTube Studio iPhone app?
+
+The process for requesting tracking data from the VTube Studio iOS app is described here: https://github.com/DenchiSoft/VTubeStudioBlendshapeUDPReceiverTest
+
 ## Are you a developer who wants to learn about creating VTube Studio Plugins?
 
 Everything you're looking for is on this page. If you have any questions, please ask in the [Discord](https://discord.gg/VTubeStudio).
