@@ -2151,7 +2151,7 @@ Configs all have one of the following types (returned in `type` field of the con
 
 The configs for one effect are returned in the `configEntries` array. Each config also has an `internalID` and `enumID`. All config IDs for all effects with explanations can be found here: https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
 
-For one config, only the fields that match the type of that config are filled. Other fields will be empty or have a default value and should be ignored. For example, for a float config item fields like `intMin` and `colorValue` are empty (in this case 0 and an empty string).
+For one config, only the fields that match the type of that config are filled. Other fields will be empty or have a default value and should be ignored. For example, for a float config item fields like `intMin` and `colorValue` are empty (in this case 0 and an empty string). In addition to a default value (which all types have), the `Float` and `Int` configs also have a `min` and `max`.
 
 For fields that contain colors, a string in the RGBA hex format is returned (like "77CCAAFF") and `colorHasAlpha` will tell you whether or not that config actually has alpha. If it's `false`, the alpha will always be `FF`.
 
@@ -2159,7 +2159,7 @@ Configs of type `SceneItem` are essentially just string configs but the value mu
 
 ### When is an effect considered "active"?
 
-Each effect has at least one float config (but can have multiple) with `effectIsActive` set to `true`. If one of those configs for one effect has a value greater than 0, that effect is considered `active`.
+Each effect has at least one float config (but can have multiple) with `activationConfig` set to `true`. If one of those configs for one effect has a value greater than 0, that effect is considered `active`.
 
 For the `ColorGrading` effect for example, that would be the config `ColorGrading_Strength`.
 
@@ -2184,8 +2184,8 @@ For the `ColorGrading` effect for example, that would be the config `ColorGradin
 		"activeEffectCount": 5,
 		"effectCountBeforeFilter": 29,
 		"configCountBeforeFilter": 258,
-		"effectCountAfterFilter": 29,
-		"configCountAfterFilter": 258,
+		"effectCountAfterFilter": 4,
+		"configCountAfterFilter": 31,
 		"postProcessingEffects": [
 			{
 				"internalID": "color_grading",
