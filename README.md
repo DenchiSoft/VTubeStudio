@@ -2266,6 +2266,7 @@ VTube Studio has built-in post-processing, allowing you to add visual effects di
 
 https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
 https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
+[ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)
 
 **`REQUEST`**
 ```json
@@ -2276,7 +2277,33 @@ https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
 	"messageType": "PostProcessingUpdateRequest",
 	"data":
 	{
-		"TODO": true
+		"postProcessingOn": true,
+		"setPostProcessingPreset": false,
+		"setPostProcessingValues": true,
+		"presetToSet": "",
+		"postProcessingFadeTime": 1.3,
+		"setAllOtherValuesToDefault": true,
+		"usingRestrictedEffects": false,
+		"randomizeAll": false,
+		"randomizeAllChaosLevel" : 0.0,
+		"postProcessingValues": [
+			{
+				"configID": "Bloom_Strength",
+				"configValue": "1.0"
+			},
+			{
+				"configID": "Bloom_StreakVertical",
+				"configValue": false
+			},
+			{
+				"configID": "Bloom_StreakColorTint",
+				"configValue": "220308FF"
+			},
+			{
+				"configID": "Backlight_Strength",
+				"configValue": "0.8"
+			}
+		]
 	}
 }
 ```
@@ -2292,7 +2319,10 @@ https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
 	"messageType": "PostProcessingUpdateResponse",
 	"data":
 	{
-		"TODO": true
+		"postProcessingActive": true,
+		"presetIsActive": false,
+		"activePreset": "",
+		"activeEffectCount": 2
 	}
 }
 ```
