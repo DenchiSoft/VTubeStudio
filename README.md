@@ -2262,14 +2262,6 @@ For the `ColorGrading` effect for example, that would be the config `ColorGradin
 
 ⚠️ **CURRENTLY ONLY AVAILABLE ON VTS BETA BRANCH** ⚠️ 
 
-
-
-
-https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
-https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
-
-
-
 **Note:** The terms visual effects, VFX and post-processing effects are used interchangeably in this document.
 
 VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page ["Visual Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
@@ -2292,7 +2284,20 @@ When setting individual values, the field `setAllOtherValuesToDefault` determine
 
 If you want to use any [restricted/experimental Effects](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects) when setting config values directly, make sure `usingRestrictedEffects` has been set to `true` in your payload. This is just a sanity-check to make sure those effects aren't used accidentally. Otherwise, the error `PostProcessingUpdateRequestTriedToLoadRestrictedEffect` will be returned. This error will also be returned if the user hasn't enabled the usage of those effects in the VTube Studio VFX settings yet. This has to be done manually by the user. If a preset is loaded and it contains restricted effects, it will still fully load and there will not be any error but the restricted effects will not be activated.
 
+You can also request all effect configs to be randomized. This is just for fun. To do that, set `randomizeAll` to `true`. Any config values or presets you send in the payload will be ignored if `randomizeAll` is `true`. When many effects are active at the same time, you end up with just random noise so this makes sure that the number of effects is limited and the config values aren't too crazy. This can be controlled using the `randomizeAllChaosLevel` field, which accepts values between 0 and 1 (higher/lower values are clamped into that range). `0` will only have one or two effects active with mild values while `1` will create complete chaos on screen. `0.4` to `0.5` is the recommended value range for a good effect.
 
+### How to set individual config values
+
+When you want to control the post-processing config in detail by setting individual config values, you have to set `setPostProcessingValues` to `true` and set the values via the `postProcessingValues` array. `configID` is the ID of the config effect you want to configure, `configValue` is the value you want to set as a string.
+
+* `configID`: ID of the config you want to configure, see [this list of all config IDs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs). These IDs are accepted in many different formats, so you can create an enum for them in any enum style you want. They are case-insensitive and `_` or `-` is ignored. For example, that means instead of `Backlight_OutlineSize` you could write `Backlight_Outline_Size`, `backlight_outlinesize`, `BACKLIGHT_OUTLINESIZE`, `backlight-outline_size` or any other style that works best for you (see also `enumID` field in the `configEntries` array of the `PostProcessingListResponse`).
+* `configValue`: The value to set, as string. For floats or ints, values that are outside of the min/max range of the config will be clamped. Bool values are case-insensitive, so both `"True"` and `"true"` (or `"TRUE"`, etc.) are accepted values.
+
+If you have any duplicate keys in the array, the error `PostProcessingUpdateRequestValueListContainsDuplicates` is returned and if any keys were invalid (not found) or values were invalid (failed to deserialize float, bool, etc., correctly), the error `PostProcessingUpdateRequestValueListInvalid` is returned.
+
+### General usage advice
+
+You should not send this request at high frequencies, e.g. every frame. If you want to fade a value, use the `postProcessingFadeTime` field to set the appropriate fade time. Depending on the config combination, frequent updates *can* be okay, but you should carefully test things. The post-processing system is optimized for infrequent config updates, so make sure to check if your plugin causes any lag before publishing it. 
 
 **`REQUEST`**
 ```json
@@ -2334,6 +2339,7 @@ If you want to use any [restricted/experimental Effects](https://github.com/Denc
 }
 ```
 
+If there's no error, you will receive the following response with some general info about the new post-processing state after your requested update.
 
 **`RESPONSE`**
 ```json
