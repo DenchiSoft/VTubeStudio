@@ -2087,12 +2087,15 @@ If successful, the response contains the item ID, item file name and whether or 
 
 VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page ["Visual Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
 
-This request returns a list of all available post-processing effects with their current value (current post-processing state).
+This request returns the general state of the post-processing system, a list of all existing (user-created) post-processing presets and a list of all available post-processing effects with their current value (current post-processing state).
 
+If you set `fillPostProcessingPresetsArray` to `false`, the `postProcessingPresets` array in the response payload will be empty. Requesting the list of post-processing presets requires reading the preset files from the disk (although they are cached for a while in VTS), which can be slow. If you send this request at higher frequency, make sure `fillPostProcessingPresetsArray` isn't `true`, otherwise it could create lag due to disk I/O.
 
+If you set `fillPostProcessingEffectsArray` to `false`, the `postProcessingEffects` array in the response payload will be empty. If you don't need the full list of post-processing effects and their values, it is recommended to set `fillPostProcessingEffectsArray` to `false` because the response payload can be quite large.
 
-https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
-https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
+If you are only interested in specific post-processing effects, you can list them in the `effectIDFilter` array. Otherwise, leave the array empty to apply no filter. A list of all current effects can be found here: https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
+
+**Note:** These IDs are accepted in many different formats, so you can create an enum for them in any enum style you want. They are case-insensitive and `_` or `-` is ignored. For example, that means instead of `ChromaticAberration` you could write `Chromatic_Aberration`, `chromatic_aberration`, `CHROMATIC_ABERRATION` or any other style that works best for you.
 
 **`REQUEST`**
 ```json
@@ -2103,8 +2106,8 @@ https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
 	"messageType": "PostProcessingListRequest",
 	"data":
 	{
-		"fillPostProcessingEffectsArray": true,
 		"fillPostProcessingPresetsArray": true,
+		"fillPostProcessingEffectsArray": true,
 		"effectIDFilter":
 		[
 			"ASCII",
@@ -2116,6 +2119,18 @@ https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
 }
 ```
 
+https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
+
+The response contains some general info about the post-processing system state and the `postProcessingEffects` and `postProcessingPresets` arrays if requested.
+
+`postProcessingSupported` checks if the platform supports post-processing, which should always be `true` on Windows and macOS. The `postProcessingActive` field contains whether or not the user has turned post-processing on. Keep in mind that you can turn it on/off via the API as well using the `PostProcessingUpdateRequest` described next. Using the `PostProcessingUpdateRequest` may not be possible in some situations, for example when some windows or popups are open in VTube Studio. In this case, `canSendPostProcessingUpdateRequestRightNow` will be `false`.
+
+There are some restricted/experimental effects (see ["Restricted/Experimental Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects)). The user must explicitly allow those effects to be used. Whether or not the user has allowed these effects to be used is returned in the `restrictedEffectsAllowed` field.
+
+Whether or not a post-processing preset is active is returned in the `presetIsActive` field. If one is active, its name will be in the `activePreset` field, otherwise that field will be empty.
+
+**Note:** The `postProcessingEffects` in this response payload example is shortened by a lot. When no filters are applied, it can be thousands of lines long since there are 250+ effect configs.
+
 **`RESPONSE`**
 ```json
 {
@@ -2124,14 +2139,13 @@ https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
 	"timestamp": 1625405710728,
 	"requestID": "SomeID",
 	"messageType": "PostProcessingListResponse",
-	"data":
-	{
+	"data": {
 		"postProcessingSupported": true,
 		"postProcessingActive": true,
 		"canSendPostProcessingUpdateRequestRightNow": true,
 		"restrictedEffectsAllowed": false,
 		"presetIsActive": true,
-		"activePreset": "some_effects_preset_24",
+		"activePreset": "some_effects_preset_3",
 		"presetCount": 70,
 		"activeEffectCount": 5,
 		"effectCountBeforeFilter": 29,
@@ -2139,62 +2153,72 @@ https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
 		"effectCountAfterFilter": 29,
 		"configCountAfterFilter": 258,
 		"postProcessingEffects": [
-		{
-			"internalID": "color_grading",
-			"enumID": "ColorGrading",
-			"explanation": "Color grading",
-			"effectIsActive": false,
-			"effectIsRestricted": false,
-			"configEntries": [
 			{
-				"internalID": "color_grading-strength",
-				"enumID": "ColorGrading_Strength",
-				"explanation": "Effect on/off",
-				"type": "float",
-				"activationConfig": true,
-				"floatValue": 0.0,
-				"floatMin": 0.0,
-				"floatMax": 1.0,
-				"floatDefault": 0.0,
-				"intValue": 0,
-				"intMin": 0,
-				"intMax": 0,
-				"intDefault": 0,
-				"colorValue": "",
-				"colorDefault": "",
-				"colorHasAlpha": false,
-				"boolValue": false,
-				"boolDefault": false,
-				"stringValue": "",
-				"stringDefault": "",
- 				"sceneItemValue": "",
-				"sceneItemDefault": ""
-                    	},
-                    	{
-				"internalID": "color_grading-hue_shift",
-				"enumID": "ColorGrading_HueShift",
-				"explanation": "Hue shift",
-				"type": "float",
-				"activationConfig": false,
-				"floatValue": 0.0,
-				"floatMin": -180.0,
-				"floatMax": 180.0,
-				"floatDefault": 0.0,
-				"intValue": 0,
-				"intMin": 0,
-				"intMax": 0,
-				"intDefault": 0,
-				"colorValue": "",
-				"colorDefault": "",
-				"colorHasAlpha": false,
-				"boolValue": false,
-				"boolDefault": false,
-				"stringValue": "",
-				"stringDefault": "",
-				"sceneItemValue": "",
-				"sceneItemDefault": ""
-                    	}
-		}
+				"internalID": "color_grading",
+				"enumID": "ColorGrading",
+				"explanation": "Color grading",
+				"effectIsActive": false,
+				"effectIsRestricted": false,
+				"configEntries": [
+					{
+						"internalID": "color_grading-strength",
+						"enumID": "ColorGrading_Strength",
+						"explanation": "Effect on/off",
+						"type": "float",
+						"activationConfig": true,
+						"floatValue": 0.0,
+						"floatMin": 0.0,
+						"floatMax": 1.0,
+						"floatDefault": 0.0,
+						"intValue": 0,
+						"intMin": 0,
+						"intMax": 0,
+						"intDefault": 0,
+						"colorValue": "",
+						"colorDefault": "",
+						"colorHasAlpha": false,
+						"boolValue": false,
+						"boolDefault": false,
+						"stringValue": "",
+						"stringDefault": "",
+						"sceneItemValue": "",
+						"sceneItemDefault": ""
+					},
+					{
+						"internalID": "color_grading-hue_shift",
+						"enumID": "ColorGrading_HueShift",
+						"explanation": "Hue shift",
+						"type": "float",
+						"activationConfig": false,
+						"floatValue": 0.0,
+						"floatMin": -180.0,
+						"floatMax": 180.0,
+						"floatDefault": 0.0,
+						"intValue": 0,
+						"intMin": 0,
+						"intMax": 0,
+						"intDefault": 0,
+						"colorValue": "",
+						"colorDefault": "",
+						"colorHasAlpha": false,
+						"boolValue": false,
+						"boolDefault": false,
+						"stringValue": "",
+						"stringDefault": "",
+						"sceneItemValue": "",
+						"sceneItemDefault": ""
+					}
+				]
+			}
+		],
+		"postProcessingPresets": [
+			"My Cool Preset",
+			"some_effects_preset_1",
+			"some_effects_preset_2",
+			"some_effects_preset_3",
+			"test asdf 123456",
+			"blur and color grading",
+		]
 	}
 }
 ```
