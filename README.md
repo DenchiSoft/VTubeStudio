@@ -2083,6 +2083,8 @@ If successful, the response contains the item ID, item file name and whether or 
 
 ## Get list of post-processing effects and state
 
+⚠️ **CURRENTLY ONLY AVAILABLE ON VTS BETA BRANCH** ⚠️ 
+
 **Note:** The terms visual effects, VFX and post-processing effects are used interchangeably in this document.
 
 VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page ["Visual Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
@@ -2120,10 +2122,9 @@ If you are only interested in specific post-processing effects, you can list the
 ```
 
 
-
 The response contains some general info about the post-processing system state and the `postProcessingEffects` and `postProcessingPresets` arrays if requested.
 
-`postProcessingSupported` checks if the platform supports post-processing, which should always be `true` on Windows and macOS. The `postProcessingActive` field contains whether or not the user has turned post-processing on. Keep in mind that you can turn it on/off via the API as well using the `PostProcessingUpdateRequest` described next. Using the `PostProcessingUpdateRequest` may not be possible in some situations, for example when some windows or popups are open in VTube Studio. In this case, `canSendPostProcessingUpdateRequestRightNow` will be `false`.
+`postProcessingSupported` checks if the platform supports post-processing, which should always be `true` on Windows and macOS. The `postProcessingActive` field contains whether or not the user has turned post-processing on. Keep in mind that you can turn it on/off via the API as well using the `PostProcessingUpdateRequest` described next. Using the `PostProcessingUpdateRequest` may not be possible in some situations, specifically when some windows or popups related to post-processing configurations are open in VTube Studio. In this case, `canSendPostProcessingUpdateRequestRightNow` will be `false`.
 
 There are some restricted/experimental effects (see ["Restricted/Experimental Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects)). The user must explicitly allow those effects to be used. Whether or not the user has allowed these effects to be used is returned in the `restrictedEffectsAllowed` field.
 
@@ -2259,14 +2260,39 @@ For the `ColorGrading` effect for example, that would be the config `ColorGradin
 
 ## Set post-processing effects
 
-**Note:** The terms visual effects, VFX and post-processing effects are used interchangeably in this document.
+⚠️ **CURRENTLY ONLY AVAILABLE ON VTS BETA BRANCH** ⚠️ 
 
-VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page ["Visual Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
+
 
 
 https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
 https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
-[ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)
+
+
+
+**Note:** The terms visual effects, VFX and post-processing effects are used interchangeably in this document.
+
+VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page ["Visual Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
+
+Using the `PostProcessingUpdateRequest`, you can control the post-processing system. You can turn it on/off, load/unload presets or even control individual config items directly and in detail (colors, strengthts, etc.).
+
+This update can only be sent if no windows related to post-processing configuration are open. Otherwise, the error `PostProcessingUpdateReqestCannotUpdateRightNow` will be returned. For all errors this request can return, see ["ErrorsID.cs"](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs).
+
+Use `postProcessingOn` to turn post-processing on or off globally. This does the same as toggling the post-processing toggle on the VTS UI. You can set presets or individual config values even when turning post-processing off with the same request. The values will still be set but nothing will happen on screen. When opening the post-processing config window in VTube Studio, you will see that your requested values have been set and will be visible once post-processing is turned on. Keep in mind that if you set a preset but turn off post-processing with the same request, all values from the preset will still be set but the preset will not be shown as active on the UI because technically it is no longer "active". All values from the preset will be visible once post-processing is turned on again.
+
+You can set values for post-processing config items using two methods:
+* Set a post-processing preset: Set `setPostProcessingPreset` to `true` and provide the preset name in the `presetToSet` field (just the preset name without the file extension). If the preset doesn't exist, the error `PostProcessingUpdateRequestPresetFileLoadFailed` is returned.
+* Set individual config values: Set `setPostProcessingValues` to `true` and provide a list of config key/values in the `postProcessingValues` array.
+
+You can't do both at the same time: If `setPostProcessingPreset` and `setPostProcessingValues` are both `true`, the error `PostProcessingUpdateRequestLoadingPresetAndValues` will be returned. However, both can be `false`. In that case, no values will be set. That can be useful if you just want to turn post-processing on/off globally without changing anything about the current configuration.
+
+When changing config values directly or via presets, the config values will smoothly fade from the old values to the new ones you provided. The duration of the fade should be provided in the `postProcessingFadeTime` field and has to be between 0 and 2 (seconds). Anything outside that range will return the error `PostProcessingUpdateRequestFadeTimeInvalid`.
+
+When setting individual values, the field `setAllOtherValuesToDefault` determines whether all other values (the ones you didn't put in your payload) will be left unchanged or faded back to their default value, meaning all unmentioned effects will be turned off.
+
+If you want to use any [restricted/experimental Effects](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects) when setting config values directly, make sure `usingRestrictedEffects` has been set to `true` in your payload. This is just a sanity-check to make sure those effects aren't used accidentally. Otherwise, the error `PostProcessingUpdateRequestTriedToLoadRestrictedEffect` will be returned. This error will also be returned if the user hasn't enabled the usage of those effects in the VTube Studio VFX settings yet. This has to be done manually by the user. If a preset is loaded and it contains restricted effects, it will still fully load and there will not be any error but the restricted effects will not be activated.
+
+
 
 **`REQUEST`**
 ```json
