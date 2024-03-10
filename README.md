@@ -2090,7 +2090,9 @@ VTube Studio has built-in post-processing, allowing you to add visual effects di
 This request returns a list of all available post-processing effects with their current value (current post-processing state).
 
 
+
 https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
+https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
 
 **`REQUEST`**
 ```json
@@ -2101,7 +2103,15 @@ https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
 	"messageType": "PostProcessingListRequest",
 	"data":
 	{
-		"TODO": true
+		"fillPostProcessingEffectsArray": true,
+		"fillPostProcessingPresetsArray": true,
+		"effectIDFilter":
+		[
+			"ASCII",
+			"ColorGrading",
+			"WeatherEffects",
+			"ChromaticAberration"
+		]
 	}
 }
 ```
@@ -2116,7 +2126,75 @@ https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
 	"messageType": "PostProcessingListResponse",
 	"data":
 	{
-		"TODO": true
+		"postProcessingSupported": true,
+		"postProcessingActive": true,
+		"canSendPostProcessingUpdateRequestRightNow": true,
+		"restrictedEffectsAllowed": false,
+		"presetIsActive": true,
+		"activePreset": "some_effects_preset_24",
+		"presetCount": 70,
+		"activeEffectCount": 5,
+		"effectCountBeforeFilter": 29,
+		"configCountBeforeFilter": 258,
+		"effectCountAfterFilter": 29,
+		"configCountAfterFilter": 258,
+		"postProcessingEffects": [
+		{
+			"internalID": "color_grading",
+			"enumID": "ColorGrading",
+			"explanation": "Color grading",
+			"effectIsActive": false,
+			"effectIsRestricted": false,
+			"configEntries": [
+			{
+				"internalID": "color_grading-strength",
+				"enumID": "ColorGrading_Strength",
+				"explanation": "Effect on/off",
+				"type": "float",
+				"activationConfig": true,
+				"floatValue": 0.0,
+				"floatMin": 0.0,
+				"floatMax": 1.0,
+				"floatDefault": 0.0,
+				"intValue": 0,
+				"intMin": 0,
+				"intMax": 0,
+				"intDefault": 0,
+				"colorValue": "",
+				"colorDefault": "",
+				"colorHasAlpha": false,
+				"boolValue": false,
+				"boolDefault": false,
+				"stringValue": "",
+				"stringDefault": "",
+ 				"sceneItemValue": "",
+				"sceneItemDefault": ""
+                    	},
+                    	{
+				"internalID": "color_grading-hue_shift",
+				"enumID": "ColorGrading_HueShift",
+				"explanation": "Hue shift",
+				"type": "float",
+				"activationConfig": false,
+				"floatValue": 0.0,
+				"floatMin": -180.0,
+				"floatMax": 180.0,
+				"floatDefault": 0.0,
+				"intValue": 0,
+				"intMin": 0,
+				"intMax": 0,
+				"intDefault": 0,
+				"colorValue": "",
+				"colorDefault": "",
+				"colorHasAlpha": false,
+				"boolValue": false,
+				"boolDefault": false,
+				"stringValue": "",
+				"stringDefault": "",
+				"sceneItemValue": "",
+				"sceneItemDefault": ""
+                    	}
+		}
 	}
 }
 ```
@@ -2129,6 +2207,7 @@ VTube Studio has built-in post-processing, allowing you to add visual effects di
 
 
 https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
+https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
 
 **`REQUEST`**
 ```json
