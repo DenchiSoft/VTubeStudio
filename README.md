@@ -2295,6 +2295,8 @@ When you want to control the post-processing config in detail by setting individ
 
 If you have any duplicate keys in the array, the error `PostProcessingUpdateRequestValueListContainsDuplicates` is returned and if any keys were invalid (not found) or values were invalid (failed to deserialize float, bool, etc., correctly), the error `PostProcessingUpdateRequestValueListInvalid` is returned.
 
+**How to actually turn an effect "on":** Effects can have many config entries. Each effect has at least one config entry (but can have many) that turns the effect "on" if that entry is greater than 0. In the `PostProcessingListResponse` payload, those configs (always float-type configs) are marked using `"activationConfig": true`. You can also look at the list of all effect configs, where those special configs are marked with `sets_active: True`, see: https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
+
 ### General usage advice
 
 You should not send this request at high frequencies, e.g. every frame. If you want to fade a value, use the `postProcessingFadeTime` field to set the appropriate fade time. Depending on the config combination, frequent updates *can* be okay, but you should carefully test things. The post-processing system is optimized for infrequent config updates, so make sure to check if your plugin causes any lag before publishing it. 
