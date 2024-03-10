@@ -152,6 +152,18 @@ public enum ErrorID
     PermissionRequestUnknownPermission = 1100,
     PermissionRequestCannotRequestRightNow = 1101, // Permission config window is open.
     PermissionRequestFileProblem = 1102, // Could not open or write permission file for this plugin.
+
+    // Errors related to PostProcessingListReqest
+    PostProcessingListReqestInvalidFilter = 1150, // Provided filter array too long (more than 512 entries)
+
+    // Errors related to PostProcessingListReqest
+    PostProcessingUpdateReqestCannotUpdateRightNow = 1200, // Cannot update post-processing when windows are open.
+    PostProcessingUpdateRequestFadeTimeInvalid = 1201,
+    PostProcessingUpdateRequestLoadingPresetAndValues = 1202, // Cannot load preset and individual config values with one request. Do one or the other.
+    PostProcessingUpdateRequestPresetFileLoadFailed = 1203, // Requested preset file was not found in the "Effects" folder.
+    PostProcessingUpdateRequestValueListInvalid = 1204,
+    PostProcessingUpdateRequestValueListContainsDuplicates = 1205,
+    PostProcessingUpdateRequestTriedToLoadRestrictedEffect = 1206, // Tried to configure a restricted effect but user doesn't have those effects enabled/allowed.
     
     // -------------- EVENT CONFIG ERRORS --------------
     
