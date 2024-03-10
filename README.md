@@ -60,7 +60,8 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Moving items in the scene](#moving-items-in-the-scene)
   - [Asking user to select ArtMeshes](#asking-user-to-select-artmeshes)
   - [Pin items to the model](#pin-items-to-the-model)
-
+  - [Get list of post-processing effects and state](#get-list-of-post-processing-effects-and-state)
+  - [Set post-processing effects](#set-post-processing-effects)
   
 ## General Info
 
@@ -2080,13 +2081,82 @@ If successful, the response contains the item ID, item file name and whether or 
 }
 ```
 
+## Get list of post-processing effects and state
+
+**Note:** The terms visual effects, VFX and post-processing effects are used interchangeably in this document.
+
+VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page ["Visual Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
+
+This request returns a list of all available post-processing effects with their current value (current post-processing state).
 
 
+https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "PostProcessingListRequest",
+	"data":
+	{
+		"TODO": true
+	}
+}
+```
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "PostProcessingListResponse",
+	"data":
+	{
+		"TODO": true
+	}
+}
+```
+
+## Set post-processing effects
+
+**Note:** The terms visual effects, VFX and post-processing effects are used interchangeably in this document.
+
+VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page ["Visual Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
 
 
+https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "PostProcessingUpdateRequest",
+	"data":
+	{
+		"TODO": true
+	}
+}
+```
 
 
-
-
-
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "PostProcessingUpdateResponse",
+	"data":
+	{
+		"TODO": true
+	}
+}
+```
 
