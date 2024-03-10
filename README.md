@@ -2119,7 +2119,7 @@ If you are only interested in specific post-processing effects, you can list the
 }
 ```
 
-https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
+
 
 The response contains some general info about the post-processing system state and the `postProcessingEffects` and `postProcessingPresets` arrays if requested.
 
@@ -2128,6 +2128,40 @@ The response contains some general info about the post-processing system state a
 There are some restricted/experimental effects (see ["Restricted/Experimental Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects)). The user must explicitly allow those effects to be used. Whether or not the user has allowed these effects to be used is returned in the `restrictedEffectsAllowed` field.
 
 Whether or not a post-processing preset is active is returned in the `presetIsActive` field. If one is active, its name will be in the `activePreset` field, otherwise that field will be empty.
+
+`presetCount` contains the number of post-processing presets in the `postProcessingPresets` array. If you haven't requested the array to be filled, `presetCount` will be 0.
+
+`activeEffectCount` is the number of active post-processing effects. What it means for an effect to be "active" is explained later in this section.
+
+The "effectCount" and "configCount" fields contain the number of effects and total configs for all effects before and after applying the filter (if you requested filtering).
+
+### The `postProcessingEffects` array
+
+The `postProcessingEffects` array contains a list of all effects. Those are the same effects that are shown in the VFX list in VTube Studio. Each effect can have multiple "configs" that configure certain aspects of the effect, for example its strength or a color.
+
+The ID you use to identify an effect is returned in the `enumID` field. There is also the `internalID` field which contains the ID that VTube Studio uses internally for that effect. That's the ID that is used in the post-processing preset JSON files, so they should not be relevant for most use-cases. However, these IDs can also be used in the API to refer to the effects if you want to use them for some reason.
+
+Configs all have one of the following types (returned in `type` field of the config):
+* Float
+* Int
+* Bool
+* String
+* Color
+* SceneItem
+
+The configs for one effect are returned in the `configEntries` array. Each config also has an `internalID` and `enumID`. All config IDs for all effects with explanations can be found here: https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/EffectConfigs.cs
+
+For one config, only the fields that match the type of that config are filled. Other fields will be empty or have a default value and should be ignored. For example, for a float config item fields like `intMin` and `colorValue` are empty (in this case 0 and an empty string).
+
+For fields that contain colors, a string in the RGBA hex format is returned (like "77CCAAFF") and `colorHasAlpha` will tell you whether or not that config actually has alpha. If it's `false`, the alpha will always be `FF`.
+
+Configs of type `SceneItem` are essentially just string configs but the value must be the filename of an item (ending with either .jpg or .png) that exists in the VTube Studio "Items" folder. Those are for example used in the custom particles effect.
+
+### When is an effect considered "active"?
+
+Each effect has at least one float config (but can have multiple) with `effectIsActive` set to `true`. If one of those configs for one effect has a value greater than 0, that effect is considered `active`.
+
+For the `ColorGrading` effect for example, that would be the config `ColorGrading_Strength`.
 
 **Note:** The `postProcessingEffects` in this response payload example is shortened by a lot. When no filters are applied, it can be thousands of lines long since there are 250+ effect configs.
 
@@ -2164,7 +2198,7 @@ Whether or not a post-processing preset is active is returned in the `presetIsAc
 						"internalID": "color_grading-strength",
 						"enumID": "ColorGrading_Strength",
 						"explanation": "Effect on/off",
-						"type": "float",
+						"type": "Float",
 						"activationConfig": true,
 						"floatValue": 0.0,
 						"floatMin": 0.0,
@@ -2185,21 +2219,21 @@ Whether or not a post-processing preset is active is returned in the `presetIsAc
 						"sceneItemDefault": ""
 					},
 					{
-						"internalID": "color_grading-hue_shift",
-						"enumID": "ColorGrading_HueShift",
-						"explanation": "Hue shift",
-						"type": "float",
+						"internalID": "color_grading-color_filter",
+						"enumID": "ColorGrading_ColorFilter",
+						"explanation": "Color filter",
+						"type": "color",
 						"activationConfig": false,
 						"floatValue": 0.0,
-						"floatMin": -180.0,
-						"floatMax": 180.0,
+						"floatMin": 0.0,
+						"floatMax": 0.0,
 						"floatDefault": 0.0,
 						"intValue": 0,
 						"intMin": 0,
 						"intMax": 0,
 						"intDefault": 0,
-						"colorValue": "",
-						"colorDefault": "",
+						"colorValue": "FFFFFFFF",
+						"colorDefault": "FFFFFFFF",
 						"colorHasAlpha": false,
 						"boolValue": false,
 						"boolDefault": false,
