@@ -2,7 +2,7 @@
 /// IDs of all post processing effect configs that can be set via the VTube Studio API.
 /// There are currently 258 configs.
 /// 
-/// This file was automatically generated on Saturday, 09 March 2024 19:43
+/// This file was automatically generated on Sunday, 10 March 2024 03:05
 /// </summary>
 public enum EffectConfigs
 {
