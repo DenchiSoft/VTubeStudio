@@ -156,7 +156,7 @@ public enum ErrorID
     // Errors related to PostProcessingListReqest
     PostProcessingListReqestInvalidFilter = 1150, // Provided filter array too long (more than 512 entries)
 
-    // Errors related to PostProcessingListReqest
+    // Errors related to PostProcessingUpdateReqest
     PostProcessingUpdateReqestCannotUpdateRightNow = 1200, // Cannot update post-processing when windows are open.
     PostProcessingUpdateRequestFadeTimeInvalid = 1201,
     PostProcessingUpdateRequestLoadingPresetAndValues = 1202, // Cannot load preset and individual config values with one request. Do one or the other.
