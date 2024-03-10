@@ -2288,20 +2288,20 @@ https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/Effects.cs
 		"randomizeAllChaosLevel" : 0.0,
 		"postProcessingValues": [
 			{
+				"configID": "Backlight_Strength",
+				"configValue": "0.8"
+			},
+			{
 				"configID": "Bloom_Strength",
 				"configValue": "1.0"
 			},
 			{
 				"configID": "Bloom_StreakVertical",
-				"configValue": false
+				"configValue": "false"
 			},
 			{
 				"configID": "Bloom_StreakColorTint",
 				"configValue": "220308FF"
-			},
-			{
-				"configID": "Backlight_Strength",
-				"configValue": "0.8"
 			}
 		]
 	}
