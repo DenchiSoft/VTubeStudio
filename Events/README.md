@@ -20,6 +20,7 @@
   - [Animation event triggered](#animation-event-triggered)
   - [Item event](#item-event)
   - [Model clicked event](#model-clicked-event)
+  - [Post-processing event](#post-processing-event)
 
 ## General Info
 
@@ -561,4 +562,23 @@ The ArtMesh ID and barycentric coordinates can be used to identify an exact posi
 ```
 
 
+## Post-processing event
+
+An event that is triggered every time the post-processing system is turned on/off or a preset is loaded/unloaded. For more information about post-processing, check the [visual effects page](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
+
+**`CONFIG`**
+```json
+"eventName": "PostProcessingEvent",
+"config": { }
+}
+```
+
+**`EVENT`**
+```json
+"messageType": "PostProcessingEvent",
+"data": {
+    "currentOnState": true,
+    "currentPreset": "my_preset"
+}
+```
 
