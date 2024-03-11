@@ -570,7 +570,6 @@ An event that is triggered every time the post-processing system is turned on/of
 ```json
 "eventName": "PostProcessingEvent",
 "config": { }
-}
 ```
 
 **`EVENT`**
