@@ -566,6 +566,8 @@ The ArtMesh ID and barycentric coordinates can be used to identify an exact posi
 
 An event that is triggered every time the post-processing system is turned on/off or a preset is loaded/unloaded. For more information about post-processing, check the [visual effects page](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
 
+If after receiving this event you want to read the detailed post-processing state including all configs and their values use the `PostProcessingListRequest` and if you want to send post-processing values, use the `PostProcessingUpdateRequest.`
+
 **`CONFIG`**
 ```json
 "eventName": "PostProcessingEvent",
