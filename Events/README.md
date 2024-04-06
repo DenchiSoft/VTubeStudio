@@ -21,7 +21,8 @@
   - [Item event](#item-event)
   - [Model clicked event](#model-clicked-event)
   - [Post-processing event](#post-processing-event)
-
+  - [Live2D Cubism Editor connected event](#live2d-cubism-editor-connected-event)
+ 
 ## General Info
 
 Using the **VTube Studio Event API**, you can subscribe to various events to make sure your plugin gets a message when something happens in VTube Studio. That way, you can for example get notified every time a hotkey is activated, a model/item is loaded/unloaded, the model is clicked and much more.
@@ -580,6 +581,37 @@ If after receiving this event you want to read the detailed post-processing stat
 "data": {
     "currentOnState": true,
     "currentPreset": "my_preset"
+}
+```
+
+
+## Live2D Cubism Editor connected event
+
+VTube Studio can communicate directly with the **Live2D Cubism Editor**, which is used to create Live2D models. For more info on how that works, check the page ["Live2D Cubism Editor Communication"](https://github.com/DenchiSoft/VTubeStudio/wiki/Live2D-Cubism-Editor-Communication).
+
+When fully connected, VTube Studio can send tracking data directly to Live2D, which makes testing angles/physics during rigging easier. The following fields are sent:
+
+* `tryingToConnect`: Is VTube Studio trying to connect to Live2D Cubism? True if the `Connect` toggle is turend on in VTS.
+* `connected`: Is VTube Studio fully connected to and authenticated with Live2D Cubism?
+* `shouldSendParameters`: Has the user turned on the `Send parameters` toggle? If this is on and `connected` is true, VTube Studio is actively sending parameter data into Live2D Cubism.
+
+When VTube Studio is actively sending parameter data into Live2D Cubism, plugins can also send parameter data to VTube Studio which will then be passed on to Live2D Cubism.
+
+**Note:** This event is triggered every time the `Connect`/`Send parameters` toggles are toggled by the user and every time the connection state with the Live2D Cubism API changes. Additionally, the event is also sent exactly once when you first subscribe to the event. That way, you can easily get the initial state.
+
+**`CONFIG`**
+```json
+"eventName": "Live2DCubismEditorConnectedEvent",
+"config": { }
+```
+
+**`EVENT`**
+```json
+"messageType": "Live2DCubismEditorConnectedEvent",
+"data": {
+    "tryingToConnect": true,
+    "connected": true,
+    "shouldSendParameters": false
 }
 ```
 
