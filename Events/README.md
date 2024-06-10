@@ -495,7 +495,7 @@ This contains detailed information on where exactly the model was clicked.
 
 `modelLoaded` will be `true` if a model is currently loaded. If one is loaded, `loadedModelID` will contain its ID and `loadedModelName` will contain the name.
 
-`mouseButtonID` is the ID of the mouse button. `1` is left-click, `2` is right-click and `3` is middle-click (mouse-wheel click). `clickPosition` is the position of the click in the usual coordinate system. If you need the exact pixel position of the click, you can use `windowSize` (current VTS window size in pixels) to calculate that.
+`mouseButtonID` is the ID of the mouse button. `0` is left-click, `1` is right-click and `2` is middle-click (mouse-wheel click). `clickPosition` is the position of the click in the usual coordinate system. If you need the exact pixel position of the click, you can use `windowSize` (current VTS window size in pixels) to calculate that.
 
 If the model was clicked, the number of ArtMeshes at the click position will be returned in the `clickedArtMeshCount` field. The `artMeshHits` array will contain the details of each of those ArtMeshes, including where exactly they were clicked at vertex-level within the mesh. You can use that data to pin items at that position using the `ItemPinRequest`. This array could contain a lot of ArtMeshes since many ArtMeshes might be stacked at one given position of the model.
 
