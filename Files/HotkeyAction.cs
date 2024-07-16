@@ -23,5 +23,7 @@ public enum HotkeyAction
     ArtMeshColorPreset = 16,          // Loads the recorded ArtMesh multiply/screen color preset.
     ToggleTracker = 17,               // Toggles the tracking on/off. Can be webcam or USB/WiFi connected phone.
     ToggleTwitchFeature = 18,         // Toggles a Twitch feature (for example Emote Dropper) on/off.
-    LoadEffectPreset = 19             // Loads post processing effect preset.
+    LoadEffectPreset = 19,            // Loads post processing effect preset.
+    ToggleLive2DEditorAPI = 20,       // Toggles Live2D Editor API parameter sync on/off.
+    WebItemAction = 21                // Triggers Web Item action.
 }
