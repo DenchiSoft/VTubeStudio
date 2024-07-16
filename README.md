@@ -2083,8 +2083,6 @@ If successful, the response contains the item ID, item file name and whether or 
 
 ## Get list of post-processing effects and state
 
-⚠️ **CURRENTLY ONLY AVAILABLE ON VTS BETA BRANCH** ⚠️ 
-
 **Note:** The terms visual effects, VFX and post-processing effects are used interchangeably in this document.
 
 VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page ["Visual Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
@@ -2259,8 +2257,6 @@ For the `ColorGrading` effect for example, that would be the config `ColorGradin
 ```
 
 ## Set post-processing effects
-
-⚠️ **CURRENTLY ONLY AVAILABLE ON VTS BETA BRANCH** ⚠️ 
 
 **Note:** The terms visual effects, VFX and post-processing effects are used interchangeably in this document.
 
