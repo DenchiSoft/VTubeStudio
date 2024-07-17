@@ -102,6 +102,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [VTS Desktop Audio](https://lualucky.itch.io/vts-desktop-audio-plugin) | [Lua Lucky](https://twitter.com/LuaVLucky) | App | A plugin for using desktop audio as input parameters in VTS. |
 | [pyvts](https://github.com/Genteki/pyvts) | [Genteki](https://github.com/Genteki) | Library | A python library for interacting with the VTube Studio API. |
 | [DSYS: Dummy System](https://github.com/chuigda/Project-WG/tree/master/extra/dsys) | [Chuigda](https://github.com/chuigda) | App | A simple plugin for recording/replaying/semi-autopiloting with VTS model parameters. |
+| [SAMMIVtubeStudioExtension](https://github.com/HueVirtualCreature/SAMMIVtubeStudioExtension) | [hue](https://twitter.com/Hue_SwordDevil) | Plugin | A plugin for the stream automation tool called [SAMMI](https://sammi.solutions/) |
 
 # Event API
 
