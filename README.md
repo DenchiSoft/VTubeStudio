@@ -497,7 +497,9 @@ The `"modelPosition"` array contains the current model position, rotation and si
 }
 ```
 
-This may fail and return an error if the app is currently in a state where no model can be loaded. This includes having config windows open or a model load operation currently already being in progress. There is also a global 2 second cooldown for this requests.
+This may fail and return an error if the app is currently in a state where no model can be loaded/unloaded. This includes having config windows open or a model load operation currently already being in progress. There is also a global 2 second cooldown for this request.
+
+If pass in an empty model ID, the currently loaded model will be unloaded (will do nothing if no model is loaded).
 
 ## Moving the currently loaded VTS model
 
