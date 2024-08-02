@@ -780,12 +780,14 @@ It's recommended to activate expressions via hotkeys since otherwise users could
 	"messageType": "ExpressionActivationRequest",
 	"data": {
 		"expressionFile": "myExpression_1.exp3.json",
+		"fadeTime": 0.5,
 		"active": true
 	}
 }
 ```
 
 You will get this empty response if the request was successful. If the filename is invalid (doesn't end in `.exp3.json`) or not found in the current model or no model is loaded, an error is returned (see "[ErrorID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)").
+The `fadeTime` parameter is clamped between 0 and 2 seconds. Its default is 0.25. Note that the fade time can only be set while fading in due to restrictions from the VTS animation system. When fading out an expression, the same time from the fade in will always be used.
 
 **`RESPONSE`**
 ```json
