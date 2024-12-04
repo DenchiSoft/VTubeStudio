@@ -65,11 +65,9 @@ Everything you're looking for is on this page. If you have any questions, please
   
 ## General Info
 
-VTube Studio will get a **public API**. This means you will be able to write plugins/scripts that can trigger hotkeys, feed in face tracking data or receive face tracking data from VTube Studio.
+VTube Studio has a **public API**. This means you are able to write plugins/scripts that can trigger hotkeys, feed in face tracking data, load items, load models, get event notifications for various events, tint model ArtMeshes and much more.
 
-As a first step, a proposal for the API setup and payloads will be published on this page. Once that's available, please review the proposal and leave feedback. After this process, the API will be implemented as documented in this repository.
-
-Afterwards, if you develop a plugin or any app that can be used with VTube Studio, please open a PR and I will add it to the list that will be created on this page.
+If you develop a plugin or any app that can be used with VTube Studio, please open a PR and I will add it to the list on this page.
 
 ## Legal Info
 
