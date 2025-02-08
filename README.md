@@ -101,6 +101,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [pyvts](https://github.com/Genteki/pyvts) | [Genteki](https://github.com/Genteki) | Library | A python library for interacting with the VTube Studio API. |
 | [DSYS: Dummy System](https://github.com/chuigda/Project-WG/tree/master/extra/dsys) | [Chuigda](https://github.com/chuigda) | App | A simple plugin for recording/replaying/semi-autopiloting with VTS model parameters. |
 | [SAMMIVtubeStudioExtension](https://github.com/HueVirtualCreature/SAMMIVtubeStudioExtension) | [hue](https://twitter.com/Hue_SwordDevil) | Plugin | A plugin for the stream automation tool called [SAMMI](https://sammi.solutions/) |
+| [Streamer.bot](https://streamer.bot) | [Streamer.bot](https://streamer.bot) | App | Advanced multi-platform streaming software with an official [VTubeStudio integration](https://docs.streamer.bot/guide/integrations/vtube-studio) |
 
 # Event API
 
