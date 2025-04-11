@@ -102,6 +102,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [DSYS: Dummy System](https://github.com/chuigda/Project-WG/tree/master/extra/dsys) | [Chuigda](https://github.com/chuigda) | App | A simple plugin for recording/replaying/semi-autopiloting with VTS model parameters. |
 | [SAMMIVtubeStudioExtension](https://github.com/HueVirtualCreature/SAMMIVtubeStudioExtension) | [hue](https://twitter.com/Hue_SwordDevil) | Plugin | A plugin for the stream automation tool called [SAMMI](https://sammi.solutions/) |
 | [Streamer.bot](https://streamer.bot) | [Streamer.bot](https://streamer.bot) | App | Advanced multi-platform streaming software with an official [VTubeStudio integration](https://docs.streamer.bot/guide/integrations/vtube-studio) |
+| [coovts](https://github.com/lgc2333/coovts) | [LgCookie](https://github.com/lgc2333) | Library | Another library for making VTube Studio plugins with Python (in early dev). Full type hints \| Async design \| Pydantic based data validation |
 
 # Event API
 
