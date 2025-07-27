@@ -1,5 +1,4 @@
-# <a href="https://denchisoft.com"><img src="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/Images/vtube_studio_logo_nyan_2.png" width="542" /></a><br> [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/DenchiSoft/VTubeStudio/blob/master/LICENSE) [![VTube Studio Discord](https://discordapp.com/api/guilds/652602255748497449/widget.png?style=shield)](https://discord.gg/VTubeStudio) [![Stars](https://img.shields.io/github/stars/DenchiSoft/VTubeStudio?style=social)](https://github.com/DenchiSoft/VTubeStudio) [![Twitter Follow](https://img.shields.io/twitter/follow/VTubeStudio.svg?style=social)](https://twitter.com/VTubeStudio)
-
+# `<a href="https://denchisoft.com"><img src="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/Images/vtube_studio_logo_nyan_2.png" width="542" />``</a><br>` [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/DenchiSoft/VTubeStudio/blob/master/LICENSE) [![VTube Studio Discord](https://discordapp.com/api/guilds/652602255748497449/widget.png?style=shield)](https://discord.gg/VTubeStudio) [![Stars](https://img.shields.io/github/stars/DenchiSoft/VTubeStudio?style=social)](https://github.com/DenchiSoft/VTubeStudio) [![Twitter Follow](https://img.shields.io/twitter/follow/VTubeStudio.svg?style=social)](https://twitter.com/VTubeStudio)
 
 [![VTube Studio Discord](https://discordapp.com/api/guilds/652602255748497449/widget.png?style=banner2)](https://discord.gg/VTubeStudio)
 
@@ -47,7 +46,7 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Requesting list of available tracking parameters](#requesting-list-of-available-tracking-parameters)
   - [Get the value for one specific parameter, default or custom](#get-the-value-for-one-specific-parameter-default-or-custom)
   - [Get the value for all Live2D parameters in the current model](#get-the-value-for-all-live2d-parameters-in-the-current-model)
-  - [Adding new tracking parameters ("custom parameters")](#adding-new-tracking-parameters-custom-parameters)
+  - [Adding new tracking parameters (&#34;custom parameters&#34;)](#adding-new-tracking-parameters-custom-parameters)
   - [Delete custom parameters](#delete-custom-parameters)
   - [Feeding in data for default or custom parameters](#feeding-in-data-for-default-or-custom-parameters)
   - [Getting physics settings of currently loaded VTS model](#getting-physics-settings-of-currently-loaded-vts-model)
@@ -62,7 +61,7 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Pin items to the model](#pin-items-to-the-model)
   - [Get list of post-processing effects and state](#get-list-of-post-processing-effects-and-state)
   - [Set post-processing effects](#set-post-processing-effects)
-  
+
 ## General Info
 
 VTube Studio has a **public API**. This means you are able to write plugins/scripts that can trigger hotkeys, feed in face tracking data, load items, load models, get event notifications for various events, tint model ArtMeshes and much more.
@@ -77,37 +76,37 @@ You are free to write, publish and sell any plugin you want for VTube Studio. No
 
 If you're a user of VTube Studio looking for plugins you can use, check out the [plugin list wiki page](https://github.com/DenchiSoft/VTubeStudio/wiki/Plugins).
 
-If you're a developer looking for examples/libraries for you to look at that make it easier to integrate the VTube Studio API into your app, please take a look at the following table. 
+If you're a developer looking for examples/libraries for you to look at that make it easier to integrate the VTube Studio API into your app, please take a look at the following table.
 
-:warning: **If you made something you want to have included here, open a pull request with the modified table!!** :warning:
+⚠️ **If you made something you want to have included here, open a pull request with the modified table!!** ⚠️
 
-| Plugin | Developer | Type | Explanation |
-| --- | --- | --- | --- |
-| [Cheers Bot](https://cheers.hawk.bar/) | [Hawkbar](https://twitter.com/HawkbarGaming) | App | A web-based Twitch integration platform which can trigger actions in VTube Studio when chatters redeem channel points, among many other features. |
-| [VTubeStudioJS](https://github.com/Hawkbat/VTubeStudioJS) | [Hawkbar](https://twitter.com/HawkbarGaming) | Library | A JavaScript library for use by other plugin authors which implements the VTube Studio WebSocket API. Compatible with both NodeJS and the browser. 
-| [VTS Linker - SMB1](https://github.com/Renpona/VTStudio-Linker-SMB1) | [Renpona](https://twitter.com/renpona) | Example | A prototype for reading data from an emulated copy of Super Mario Bros, and using that data to automatically move and recolor a Live2D model in VTS based on what's happening in the game.
-| [VTchaos](https://github.com/Raelice/VTchaos) | [Raelice](https://twitter.com/theraelice) | App | A program that reads YouTube and Twitch chat to perform functions like model swapping, rotation, hotkeys, and movement in vtube studio through simple chat commands.
-| [Mix It Up](https://mixitupapp.com/) | [Mix It Up](https://twitter.com/mixitupapp) | App | Streaming Software Bot for Chat, Events, and other awesome features!
-| [VsPyYt](https://github.com/mlo40/VsPyYt) | [emlo40](https://emlo40.com) | App/Framework | VsPyYt is a command prompt app that can read YouTube chat and execute commands saved in token.json. You can also use it as a base for python programs that interact with VTube Studio. |
-| [VTS-Sharp](https://github.com/FomTarro/VTS-Sharp) | [Skeletom](https://www.twitter.com/FomTarro) | Library | A Unity/C# library for use by other plugin authors which implements the VTube Studio WebSocket API. |
-| [node-red-contrib-vts](https://github.com/eslym/node-red-contrib-vts) | [0nepeop1e](https://github.com/eslym) | Library | A library package which provides node for Node-RED to integrate with VTube Studio |
-| [VTS Mod](https://github.com/MechaWolfVtuberShin/VTS-Mod/releases/tag/vts-mod) | [MechaWolfVtuber_Shin](https://github.com/MechaWolfVtuberShin) | App | A program that allows users to change the surface color of the model including RGB. It can also change the rotation of the model. |
-| [Tie Tools: VTS Color Editor](https://tie-tools.tiberiusx.me) | [Prof. Tiberius](https://www.twitter.com/prof_tiberius) | App | Web App that gives in depth control of the colors and opacity of specific parts of your model. |
-| [vtubestudio-rs](https://github.com/walfie/vtubestudio-rs) | [Walfie](https://www.twitter.com/walfieee) | Library | A Rust library for use by other plugin authors which implements the VTube Studio WebSocket API. |
-| [vts-heartrate](https://skeletom-ch.itch.io/vts-heartrate) | [Skeletom](https://www.twitter.com/FomTarro) | App | A plugin that connects real-time heartrate data to VTube Studio, allowing for dynamic model tinting and providing custom tracking parameters based on pulse. |
-| [vts-chameleon](https://satetsu888.github.io/vts-chameleon/) | [satetsu888](https://www.twitter.com/satetsu888) | App | A plugin for applying color tints. You can play around by changing color tones of hair, skin, uniform, etc. of your models. |
-| [ViewLink](https://kawaentertainment.itch.io/viewlink) | [KawaEntertainment](https://twitter.com/kawa_entertain) | App | Are you a VTuber that wants to stream VR games, but only have a Live2D model? With ViewLink, you can have your Live2D avatar react to VR gameplay without any fancy setup or additional hardware! |
-| [VTS Desktop Audio](https://lualucky.itch.io/vts-desktop-audio-plugin) | [Lua Lucky](https://twitter.com/LuaVLucky) | App | A plugin for using desktop audio as input parameters in VTS. |
-| [pyvts](https://github.com/Genteki/pyvts) | [Genteki](https://github.com/Genteki) | Library | A python library for interacting with the VTube Studio API. |
-| [DSYS: Dummy System](https://github.com/chuigda/Project-WG/tree/master/extra/dsys) | [Chuigda](https://github.com/chuigda) | App | A simple plugin for recording/replaying/semi-autopiloting with VTS model parameters. |
-| [SAMMIVtubeStudioExtension](https://github.com/HueVirtualCreature/SAMMIVtubeStudioExtension) | [hue](https://twitter.com/Hue_SwordDevil) | Plugin | A plugin for the stream automation tool called [SAMMI](https://sammi.solutions/) |
-| [Streamer.bot](https://streamer.bot) | [Streamer.bot](https://streamer.bot) | App | Advanced multi-platform streaming software with an official [VTubeStudio integration](https://docs.streamer.bot/guide/integrations/vtube-studio) |
-| [coovts](https://github.com/lgc2333/coovts) | [LgCookie](https://github.com/lgc2333) | Library | Another library for making VTube Studio plugins with Python (in early dev). Full type hints \| Async design \| Pydantic based data validation |
+| Plugin                                                                                    | Developer                                                   | Type          | Explanation                                                                                                                                                                                       |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Cheers Bot](https://cheers.hawk.bar/)                                                       | [Hawkbar](https://twitter.com/HawkbarGaming)                   | App           | A web-based Twitch integration platform which can trigger actions in VTube Studio when chatters redeem channel points, among many other features.                                                 |
+| [VTubeStudioJS](https://github.com/Hawkbat/VTubeStudioJS)                                    | [Hawkbar](https://twitter.com/HawkbarGaming)                   | Library       | A JavaScript library for use by other plugin authors which implements the VTube Studio WebSocket API. Compatible with both NodeJS and the browser.                                                |
+| [VTS Linker - SMB1](https://github.com/Renpona/VTStudio-Linker-SMB1)                         | [Renpona](https://twitter.com/renpona)                         | Example       | A prototype for reading data from an emulated copy of Super Mario Bros, and using that data to automatically move and recolor a Live2D model in VTS based on what's happening in the game.        |
+| [VTchaos](https://github.com/Raelice/VTchaos)                                                | [Raelice](https://twitter.com/theraelice)                      | App           | A program that reads YouTube and Twitch chat to perform functions like model swapping, rotation, hotkeys, and movement in vtube studio through simple chat commands.                              |
+| [Mix It Up](https://mixitupapp.com/)                                                         | [Mix It Up](https://twitter.com/mixitupapp)                    | App           | Streaming Software Bot for Chat, Events, and other awesome features!                                                                                                                              |
+| [VsPyYt](https://github.com/mlo40/VsPyYt)                                                    | [emlo40](https://emlo40.com)                                   | App/Framework | VsPyYt is a command prompt app that can read YouTube chat and execute commands saved in token.json. You can also use it as a base for python programs that interact with VTube Studio.            |
+| [VTS-Sharp](https://github.com/FomTarro/VTS-Sharp)                                           | [Skeletom](https://www.twitter.com/FomTarro)                   | Library       | A Unity/C# library for use by other plugin authors which implements the VTube Studio WebSocket API.                                                                                               |
+| [node-red-contrib-vts](https://github.com/eslym/node-red-contrib-vts)                        | [0nepeop1e](https://github.com/eslym)                          | Library       | A library package which provides node for Node-RED to integrate with VTube Studio                                                                                                                 |
+| [VTS Mod](https://github.com/MechaWolfVtuberShin/VTS-Mod/releases/tag/vts-mod)               | [MechaWolfVtuber_Shin](https://github.com/MechaWolfVtuberShin) | App           | A program that allows users to change the surface color of the model including RGB. It can also change the rotation of the model.                                                                 |
+| [Tie Tools: VTS Color Editor](https://tie-tools.tiberiusx.me)                                | [Prof. Tiberius](https://www.twitter.com/prof_tiberius)        | App           | Web App that gives in depth control of the colors and opacity of specific parts of your model.                                                                                                    |
+| [vtubestudio-rs](https://github.com/walfie/vtubestudio-rs)                                   | [Walfie](https://www.twitter.com/walfieee)                     | Library       | A Rust library for use by other plugin authors which implements the VTube Studio WebSocket API.                                                                                                   |
+| [vts-heartrate](https://skeletom-ch.itch.io/vts-heartrate)                                   | [Skeletom](https://www.twitter.com/FomTarro)                   | App           | A plugin that connects real-time heartrate data to VTube Studio, allowing for dynamic model tinting and providing custom tracking parameters based on pulse.                                      |
+| [vts-chameleon](https://satetsu888.github.io/vts-chameleon/)                                 | [satetsu888](https://www.twitter.com/satetsu888)               | App           | A plugin for applying color tints. You can play around by changing color tones of hair, skin, uniform, etc. of your models.                                                                       |
+| [ViewLink](https://kawaentertainment.itch.io/viewlink)                                       | [KawaEntertainment](https://twitter.com/kawa_entertain)        | App           | Are you a VTuber that wants to stream VR games, but only have a Live2D model? With ViewLink, you can have your Live2D avatar react to VR gameplay without any fancy setup or additional hardware! |
+| [VTS Desktop Audio](https://lualucky.itch.io/vts-desktop-audio-plugin)                       | [Lua Lucky](https://twitter.com/LuaVLucky)                     | App           | A plugin for using desktop audio as input parameters in VTS.                                                                                                                                      |
+| [pyvts](https://github.com/Genteki/pyvts)                                                    | [Genteki](https://github.com/Genteki)                          | Library       | A python library for interacting with the VTube Studio API.                                                                                                                                       |
+| [DSYS: Dummy System](https://github.com/chuigda/Project-WG/tree/master/extra/dsys)           | [Chuigda](https://github.com/chuigda)                          | App           | A simple plugin for recording/replaying/semi-autopiloting with VTS model parameters.                                                                                                              |
+| [SAMMIVtubeStudioExtension](https://github.com/HueVirtualCreature/SAMMIVtubeStudioExtension) | [hue](https://twitter.com/Hue_SwordDevil)                      | Plugin        | A plugin for the stream automation tool called[SAMMI](https://sammi.solutions/)                                                                                                                      |
+| [Streamer.bot](https://streamer.bot)                                                         | [Streamer.bot](https://streamer.bot)                           | App           | Advanced multi-platform streaming software with an official[VTubeStudio integration](https://docs.streamer.bot/guide/integrations/vtube-studio)                                                      |
+| [coovts](https://github.com/lgc2333/coovts)                                                  | [LgCookie](https://github.com/lgc2333)                         | Library       | Another library for making VTube Studio plugins with Python (in early dev). Full type hints\| Async design \| Pydantic based data validation                                                      |
+| [VTS Terminal](https://www.nekomaido.com/plugin/vts-terminal)                                | [Neko Maido](https://www.nekomaido.com)                        | App           | A plugin that provides tons of utilities , can trigger hotkeys, adjust the model's position and effects, and generate a PDF manual for your Live2D model.                                        |
 
 # Event API
 
 There is another wiki page that describes the **Event API**, which you can use to subscribe events happening in VTube Studio, such as models being loaded or hotkeys being executed. Please check out the page about events [right here](Events/).
-
 
 # API Details
 
@@ -119,6 +118,7 @@ You should also make sure your plugin supports configuring the port used for the
 If you can connect, the first thing you can try is check the status of your session.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -129,6 +129,7 @@ If you can connect, the first thing you can try is check the status of your sess
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -169,7 +170,6 @@ When requesting a permission, a popup is shown to the user explaining what the p
 
 [![VTube Studio Permission Request Screen](/Images/vts_api_permissions_1_transparent.png)](Permissions/)
 
-
 ## API Server Discovery (UDP)
 
 VTube Studio also broadcasts the API state on the local network via UDP on port 47779. This is done once every two seconds even if the user has turned off the API.
@@ -200,6 +200,7 @@ Before using the API, you have to authenticate once. For this, you'll have to pr
 This is done by requesting a token for your plugin. Send the following request:
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -217,6 +218,7 @@ This is done by requesting a token for your plugin. Send the following request:
 If the user has activated API access, this will trigger a popup inside of VTS asking the user if they want to allow the plugin `"My Cool Plugin"` by `"My Name"` to control VTube Studio. `"pluginIcon"` can be added optionally. This has to be a base64 encoded PNG or JPG image with the exact dimensions 128x128 pixels. If you add this, the icon will be used in the plugin access request popup shown to the user. If they click "Allow", you will get the following response:
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -234,6 +236,7 @@ The field `"authenticationToken"` contains an ASCII string which will serve as t
 If they deny access, you will get the following error:
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -247,6 +250,7 @@ If they deny access, you will get the following error:
 	}
 }
 ```
+
 Users can revoke API access from your plugin at any point from within VTube Studio. If they do, you will also get this error when trying to send any requests. You may try to re-authenticate in this case.
 
 You only need to obtain the token once. With this token, you can now authenticate for this session. In the next session (for example when VTS is restarted or your plugin has to re-connect to VTS for some reason), you can use the same token to authenticate again so you don't have to send the requests to get a token again so the user will only be asked about allowing your plugin once.
@@ -254,6 +258,7 @@ You only need to obtain the token once. With this token, you can now authenticat
 To authenticate for one session, send the following request with your token:
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -273,6 +278,7 @@ To authenticate for one session, send the following request with your token:
 If the token is valid and API access has not been revoked by the user, you will get the following response:
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -304,6 +310,7 @@ Please check out the page about events [right here](Events/).
 ## Getting current VTS statistics
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -314,6 +321,7 @@ Please check out the page about events [right here](Events/).
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -344,6 +352,7 @@ Window width and height is in pixels.
 Returns the name of various VTube Studio folders. They are in the `StreamingAssets` folder in the game files.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -354,6 +363,7 @@ Returns the name of various VTube Studio folders. They are in the `StreamingAsse
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -375,6 +385,7 @@ Returns the name of various VTube Studio folders. They are in the `StreamingAsse
 ## Getting the currently loaded model
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -385,6 +396,7 @@ Returns the name of various VTube Studio folders. They are in the `StreamingAsse
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -427,6 +439,7 @@ The `"modelPosition"` array contains the current model position, rotation and si
 ## Getting a list of available VTS models
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -437,6 +450,7 @@ The `"modelPosition"` array contains the current model position, rotation and si
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -466,11 +480,12 @@ The `"modelPosition"` array contains the current model position, rotation and si
 }
 ```
 
-`"modelLoaded"` is `true` if the respective model is currently loaded in VTube Studio, `false` otherwise. 
+`"modelLoaded"` is `true` if the respective model is currently loaded in VTube Studio, `false` otherwise.
 
 ## Loading a VTS model by its ID
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -484,6 +499,7 @@ The `"modelPosition"` array contains the current model position, rotation and si
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -512,6 +528,7 @@ Subsequent `MoveModelRequest` can be sent without waiting for the ongoing one to
 The `"size"` is given as a float between -100 (smallest) and +100 (biggest). For `"positionX"`, `"positionY"` and `"rotation"`, please refer to the following image:
 
 #### The VTS Coordinate System
+
 ![The VTS Coordinate System](/Images/coordinate_explanation.png)
 
 The numbers in the cats represent the **[X/Y]** coordinates you can pass in using `"positionX"` and `"positionY"`. For example, sending [0/0] will position the middle of the model in the middle of the screen. What the "middle of the model" is can be set freely in Live2D Cubism and may vary between models. You can of course also send much bigger/smaller values to move the model off-screen. `"positionX"` and `"positionY"` have to be between -1000 and 1000.
@@ -525,6 +542,7 @@ If `"valuesAreRelativeToModel"` is set to `false`, the values from your request 
 If you want to move the model to a fixed pixel position or by a certain amount of pixels, you'll have to calculate the respective coordinates yourself. You can do so by getting the window width and height in pixels using the `StatisticsRequest`.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -543,6 +561,7 @@ If you want to move the model to a fixed pixel position or by a certain amount o
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -554,11 +573,10 @@ If you want to move the model to a fixed pixel position or by a certain amount o
 }
 ```
 
-
-
 ## Requesting list of hotkeys available in current or other VTS model
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -579,6 +597,7 @@ This can also return the hotkeys of any available Live2D item. To do that, just 
 If both `"modelID"` and `"live2DItemFileName"` are provided, only `"modelID"` is used and the other field will be ignored.
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -645,7 +664,7 @@ If no model ID was specified in the request and no model is loaded, `"modelLoade
 
 The `"file"` field contains the expression/animation/model filename for hotkeys of type `TriggerAnimation`, `ChangeIdleAnimation`, `ToggleExpression` and `ChangeVTSModel`. For `ChangeBackground` hotkeys, this contains the background name without the file extension. For all other types, it contains an empty string.
 
-The `"description"` field contains a description of what the hotkey does. You can show this string on your plugin UI when you encounter a hotkey type that your plugin doesn't know, for example because the hotkey type was newly added to VTube Studio. 
+The `"description"` field contains a description of what the hotkey does. You can show this string on your plugin UI when you encounter a hotkey type that your plugin doesn't know, for example because the hotkey type was newly added to VTube Studio.
 
 The `"keyCombination"` array contains the keyboard (or mouse key) combination that will trigger they hotkey. See [RestrictedRawKey.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/RestrictedRawKey.cs) for all possible values. If the array is empty, no key combination has been set. **IMPORTANT:** For security reasons, the `"keyCombination"` array will currently **always be empty**, so this data won't be available to plugins for now. May be re-added in a future update.
 
@@ -656,6 +675,7 @@ All hotkey type strings can be found on the page [HotkeyActions.cs](https://gith
 ## Requesting execution of hotkeys
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -670,6 +690,7 @@ All hotkey type strings can be found on the page [HotkeyActions.cs](https://gith
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -704,6 +725,7 @@ If you include a filename but it's invalid (doesn't end in `.exp3.json`) or not 
 Setting `"details"` to true will return a few more details in the response (specifically, the `"usedInHotkeys"` and `"parameters"` arrays will be empty if `"details"` is set to false).
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -726,6 +748,7 @@ If the expression was activated using a hotkey, `"deactivateWhenKeyIsLetGo"` and
 If `"details"` was set to `true` in the request the `"usedInHotkeys"` array will contain a list of all hotkeys that this expression is used in. Also, the `"parameters"` array will contain the contents of the expression, meaning the Live2D parameter IDs and target values of all parameters used in the expression.
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -772,6 +795,7 @@ If `"details"` was set to `true` in the request the `"usedInHotkeys"` array will
 It's recommended to activate expressions via hotkeys since otherwise users could end up with activated expressions they can't deactivate because they don't have hotkeys set up for them. However, you can also activate and deactivate hotkeys directly if that's required for your plugin. You do this by passing in an expression file name and whether the expression should be activated or deactivated.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -790,6 +814,7 @@ You will get this empty response if the request was successful. If the filename 
 The `fadeTime` parameter is clamped between 0 and 2 seconds. Its default is 0.25. Note that the fade time can only be set while fading in due to restrictions from the VTS animation system. When fading out an expression, the same time from the fade in will always be used.
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -812,6 +837,7 @@ If no model is loaded, `"modelLoaded"` will be `false` and the arrays will be em
 **Note about "tags":** Tags can be added to ArtMeshes in the "UserData" field in the Live2D Cubism Editor. You can add any text into that field in the editor. VTube Studio will split that text at spaces and newline characters. This means if your tag text is "my tag", it will become two tags in VTS: "my" and "tag". You can add as many tags to each ArtMesh as you want.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -822,6 +848,7 @@ If no model is loaded, `"modelLoaded"` will be `false` and the arrays will be em
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -854,6 +881,7 @@ When the session is disconnected, all ArtMeshes that have been tinted in this se
 Matching is always executed **case-insensitive**.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -881,6 +909,7 @@ Matching is always executed **case-insensitive**.
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -900,7 +929,7 @@ VTube Studio has functionality to overlay the model with the average color captu
 
 You can get the current user configuration and color for the scene lighting overlay system via the API.
 
-In the top level of the response, you have the `active` field, which tells you whether or not the lighting overlay is on. If `itemsIncluded` is true, all items are also affected by the lighting overlay. If `isWindowCapture` is `true`, VTube Studio is set to capture the average color of a window. If this is `false`, the capture is set to a screen. 
+In the top level of the response, you have the `active` field, which tells you whether or not the lighting overlay is on. If `itemsIncluded` is true, all items are also affected by the lighting overlay. If `isWindowCapture` is `true`, VTube Studio is set to capture the average color of a window. If this is `false`, the capture is set to a screen.
 
 `baseBrightness` (between 0 and 100), `colorBoost` (between 0 and 100) and `smoothing` (between 0 and 60) are the three values users can select using sliders on the UI. For an explanation, please check [documentation page about this feature](https://github.com/DenchiSoft/VTubeStudio/wiki/Display-Light-Overlay).
 
@@ -917,6 +946,7 @@ This may produce values as high as 2 * 255 for R, G and B. The values are capped
 When the lighting overlay system is turned off, `active` on the top payload level will be `false` and all colors will be returned as white.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -927,6 +957,7 @@ When the lighting overlay system is turned off, `active` on the top payload leve
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -968,12 +999,12 @@ When the lighting overlay system is turned off, `active` on the top payload leve
 }
 ```
 
-
 ## Checking if face is currently found by tracker
 
 Returns whether or not the face is currently found by the active tracker (smartphone via network/USB or webcam tracker).
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -984,6 +1015,7 @@ Returns whether or not the face is currently found by the active tracker (smartp
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1005,6 +1037,7 @@ This includes all regular parameters and all custom parameters created by plugin
 **Important:** This may return a lot of data. It is not recommended to send this request at high frequencies (60+ FPS), as it may cause performance issues on slower PCs.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1015,6 +1048,7 @@ This includes all regular parameters and all custom parameters created by plugin
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1073,13 +1107,15 @@ This includes all regular parameters and all custom parameters created by plugin
 	}
 }
 ```
-**Note:** The `"defaultParameters"` array is incomplete in this example payload. This will contain all default face/mouse/etc. tracking parameters offered by VTube Studio 
+
+**Note:** The `"defaultParameters"` array is incomplete in this example payload. This will contain all default face/mouse/etc. tracking parameters offered by VTube Studio
 
 ## Get the value for one specific parameter, default or custom
 
 If the requested input parameter does not exist, an error will be returned.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1093,6 +1129,7 @@ If the requested input parameter does not exist, an error will be returned.
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1116,6 +1153,7 @@ If the requested input parameter does not exist, an error will be returned.
 This will return an error if no model is loaded.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1126,6 +1164,7 @@ This will return an error if no model is loaded.
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1166,6 +1205,7 @@ You can also add your own new tracking parameters and use them in your VTube Stu
 Parameter names have to be unique, alphanumeric (no spaces allowed) and have to be between 4 and 32 characters in length. New tracking parameters are created like this:
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1183,6 +1223,7 @@ Parameter names have to be unique, alphanumeric (no spaces allowed) and have to 
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1213,6 +1254,7 @@ These custom parameters you create are stored as part of the VTube Studio config
 You can delete custom parameters. Default parameters cannot be deleted. You also cannot delete parameters created by plugins other than the one you have used to authenticate this session.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1226,6 +1268,7 @@ You can delete custom parameters. Default parameters cannot be deleted. You also
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1246,6 +1289,7 @@ You can feed in data for any default or custom parameter. These tracking paramet
 The payload looks like this:
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1271,6 +1315,7 @@ The payload looks like this:
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1305,8 +1350,8 @@ Alternatively, you can set the `"mode"` field to `"add"`. This will instead add 
 
 Users can customize physics settings in VTube Studio. They can change the following settings:
 
-- **Base physics strength (per model):** Integer between 0 (off) and 100 (max). Default is 50, which means physics will behave like in the Live2D Cubism Editor. 
-- **Base wind strength (per model):** Integer between 0 (off) and 100 (max). Default is 0. 
+- **Base physics strength (per model):** Integer between 0 (off) and 100 (max). Default is 50, which means physics will behave like in the Live2D Cubism Editor.
+- **Base wind strength (per model):** Integer between 0 (off) and 100 (max). Default is 0.
 - **Physics Multiplier (per physics group):** For each physics group (can be set up in Live2D Cubism), users can set a multiplier. The base physics value will be multiplied by this value when processing the respective physics group. Float between 0 and 2, default is 1 meaning the base value stays unchanged.
 - **Wind Multiplier (per physics group):** For each physics group (can be set up in Live2D Cubism), users can set a multiplier. The base wind value will be multiplied by this value when processing the respective physics group. Float between 0 and 2, default is 1 meaning the base value stays unchanged.
 
@@ -1314,8 +1359,8 @@ These values set by the user can be read via the API and also overridden tempora
 
 To read the values of the currently loaded model, use this request:
 
-
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1326,6 +1371,7 @@ To read the values of the currently loaded model, use this request:
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1369,7 +1415,7 @@ If a model is loaded, the `modelHasPhysics` field will tell you whether or not t
 
 `physicsFPSSetting` contains the physics FPS setting for this model and can be 30, 60, 120 or -1, which indicates that the user has selected `Use same FPS as app`.
 
-The `apiPhysicsOverrideActive` and `apiPhysicsOverridePluginName` fields indicate whether or not a plugin is currently overriding some of the physics settings. If it's active field is true, the name field will contain the name of the plugin. Only one plugin can take control of the physics system at a time. This will also be explained as part of the `SetCurrentModelPhysicsRequest` request. 
+The `apiPhysicsOverrideActive` and `apiPhysicsOverridePluginName` fields indicate whether or not a plugin is currently overriding some of the physics settings. If it's active field is true, the name field will contain the name of the plugin. Only one plugin can take control of the physics system at a time. This will also be explained as part of the `SetCurrentModelPhysicsRequest` request.
 
 If you use the `SetCurrentModelPhysicsRequest` to override physics or wind base values or multipliers, these changes will **NOT** be reflected in this Get-Request. You have to remember your own physics overrides.
 
@@ -1383,7 +1429,7 @@ If the user has turned off physics for the currently loaded model, you cannot tu
 
 As explained in the `GetCurrentModelPhysicsRequest` section above, values for physics/wind multipliers should be between 0 and 2 while values for physics/wind base values should be integers between 0 and 100 (because that's also how they're shown to the user in the app). Values outside that range will automatically be clamped.
 
-If you want to set multipliers for strength or wind for a specific physics group, use the `strengthOverrides` and `windOverrides` arrays with the respective group ID and `setBaseValue` set to false. If you set `setBaseValue` to true, the provided value will be set as base value for physics strength or wind instead of a specific group. You can leave the group ID (`id`) empty in that case. 
+If you want to set multipliers for strength or wind for a specific physics group, use the `strengthOverrides` and `windOverrides` arrays with the respective group ID and `setBaseValue` set to false. If you set `setBaseValue` to true, the provided value will be set as base value for physics strength or wind instead of a specific group. You can leave the group ID (`id`) empty in that case.
 
 Generally, the values set using this API are used to override the values set by the user in the app. They're not actually shown to the user on the UI and are not saved. Override values set using this API are automatically unset when their timer runs out (the value you set using `overrideSeconds`). If you want to keep overriding values, you have to repeatedly send this request.
 
@@ -1392,6 +1438,7 @@ When all timers run out, the API will no longer consider your plugin as controll
 Override timer values have to be between 0.5 and 5 seconds.  Values outside that range will automatically be clamped.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1420,6 +1467,7 @@ Override timer values have to be between 0.5 and 5 seconds.  Values outside that
 ```
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1448,6 +1496,7 @@ If the NDI resolution does not match the window resolution, VTube Studio will au
 **Important:** This request has a cooldown period of 3 seconds. Triggering it too fast will return an error of type `NDIConfigCooldownNotOver` (see "[ErrorID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)").
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1468,6 +1517,7 @@ If the NDI resolution does not match the window resolution, VTube Studio will au
 The response will just contain the current settings (the new ones if you requested a new config to be set). The `"setNewConfig"` field does not have any significance in the response.
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1505,6 +1555,7 @@ There will only ever be at most one item with a certain instance ID in the scene
 Please also note that **item filenames are unique**, meaning there cannot be two item files with the same filename. They are also **case-sensitive**, so if you want to refer to one specific file, make sure to not change the capitalization.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1525,7 +1576,7 @@ The fields in the response should me mostly self-explanatory.
 
 The filename is the name of the item file. This is the name you can use to load an instance of the item into the scene. For JPG/PNG/GIF items, this is the full filename (without path) including the file extension (for example "my_item.jpg"). For animation folders, it's the folder name. For Live2D items, it is also the folder name.
 
-The item type can be found in the `"type"` field. Possible values are `PNG`, `JPG`, `GIF`, `AnimationFolder` or `Live2D`. Another possible value is `Unknown`. This would only happen if there is another item type is added to VTube Studio before the API is updated, so it should never happen. 
+The item type can be found in the `"type"` field. Possible values are `PNG`, `JPG`, `GIF`, `AnimationFolder` or `Live2D`. Another possible value is `Unknown`. This would only happen if there is another item type is added to VTube Studio before the API is updated, so it should never happen.
 
 `"canLoadItemsRightNow"` may be `false` if the user has certain menus or dialogs open in VTube Studio. This generally prevents actions such as loading items, using hotkeys and more.
 
@@ -1536,6 +1587,7 @@ If `"pinnedToModel"` is true, `"pinnedModelID"` will contain the model ID of the
 If you set `"includeAvailableItemFiles"` to `true`, the `"availableItemFiles"` will contain a list of all item files in the user's `Items` folder. You can use the filenames returned here to load items into the scene using the `ItemLoadRequest`.
 
 **`RESPONSE`**
+
 ```json
 {
     "apiName": "VTubeStudioPublicAPI",
@@ -1651,6 +1703,7 @@ To request arbitrary data to be loaded as an item, the `customDataBase64` must c
 When providing custom data, you still have to also provide a filename in the `fileName` field. The `fileName` has to be alphanumeric (but can contain hyphens) and must end with `.jpg`, `.png` or `.gif`. It has to be between (inclusive) 8 and 32 characters long.
 
 When loading custom data, you have two options:
+
 * Just load the custom data item instantly.
 * Show small popup to the user (including item thumbnail) and ask them if they want to load the item.
 
@@ -1669,6 +1722,7 @@ When showing the popup, the response for this request will only be returned once
 You can set a timeout for the popup using the `customDataAskTimer` field. If you set it to 0 (or smaller), the popup will be shown forever (until the user clicks OK or cancel). If you set it to any other positive number, the popup will be shown for that number in seconds, with a visible countdown shown to the user. If the user doesn't make a decision before the countdown is done, the item load request is considered rejected by the user.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1702,6 +1756,7 @@ The response contains the instance ID of the newly loaded item in the `instanceI
 If you loaded a custom data item, the filename will be generated by VTube Studio, so it will be different from the filename that you passed in. You can use that filename to request that item to be loaded again without passing in custom data. However, when VTube Studio is restarted, all temporary files are cleared, which includes custom data items.
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1731,6 +1786,7 @@ You can also request specific item instances or item instances that have been lo
 This may return an error of type `CannotCurrentlyUnloadItem` if the user currently has menus open that prevent VTS from loading/unloading items.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1756,6 +1812,7 @@ This may return an error of type `CannotCurrentlyUnloadItem` if the user current
 The response contains the instance IDs and filenames of the unloaded items.
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1793,9 +1850,10 @@ You can start/stop the animation using the `"animationPlayState"` field (`true` 
 
 You can set a list of frame indices that the animation will automatically stop playing on using the `"autoStopFrames"` array. This array is only used if you set `"setAutoStopFrames"` to true, otherwise the auto-stop frames will not be changed. If you want to remove the auto-stop frames, set `"setAutoStopFrames"` to true and set an empty array in `"autoStopFrames"`. You can have a maximum of 1024 auto-stop frames.
 
-Once the animation reaches one of those frames, it will stop playing and can only be started again via the API using this request to set the animation play state to `true` (see above). 
+Once the animation reaches one of those frames, it will stop playing and can only be started again via the API using this request to set the animation play state to `true` (see above).
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1819,6 +1877,7 @@ Once the animation reaches one of those frames, it will stop playing and can onl
 The response contains the current frame index and whether or not the animation is currently playing (only for animated items, for other item types these fields should be ignored).
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1847,7 +1906,6 @@ If you want to change the order of an item, you can use the `"order"` field. You
 
 For the fields that set the target of the movement (`"positionX"`, `"positionY"`, `"size"` and `"rotation"`), please refer to the documentation of the `ItemLoadRequest`. The only difference is that this `ItemMoveRequest` will not return an error if the given values are too high/low. Instead, you can set values of `-1000` or lower if you want a respective field to be ignored. If you do that, this field will not be included in the movement and instead the respective current value will be used.
 
-
 #### Item movement transition fade types
 
 You can set the movement type for the position/rotation/size fade using the `"fadeMode"` field. Accepted values are `"linear"`, `"easeIn"`, `"easeOut"`, `"easeBoth"`, `"overshoot"` and `"zip"`. They will only be used if the `"timeInSeconds"` field was set higher than `0`.
@@ -1859,6 +1917,7 @@ Here's a visual representation of the movement modes:
 ![VTube Studio Movement Modes](/Images/vts_movement_modes_smooth.png)
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1902,6 +1961,7 @@ Here's a visual representation of the movement modes:
 If the request was successful, you will receive a response containing the status of all requested items.
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1941,9 +2001,10 @@ Use the `requestedArtMeshCount` field to specify how many ArtMeshes the user has
 
 If you want to pre-activate ArtMeshes in the list, you can use the `activeArtMeshes` list and pass in some ArtMesh IDs. If any of those IDs are not contained in the current model, an error will be returned. If you want a list of all ArtMeshes in the currently loaded model, use the `ArtMeshListRequest`.
 
-As you can see in the screenshot above, the list has some default text that is shown, asking the user to select ArtMeshes for the plugin. The same text is shown in a popup when you press the `?` button (help) in the top right. You can overwrite both of these strings using the `textOverride` and `helpOverride` fields respectively. If you leave them empty (empty string), null or leave them out of the payload, the default message shown above will be used. If you want to overwrite those messages, your provided string has to be between 4 and 1024 characters long, otherwise the default will be used. You can use `\n` for newlines in the strings you provide. 
+As you can see in the screenshot above, the list has some default text that is shown, asking the user to select ArtMeshes for the plugin. The same text is shown in a popup when you press the `?` button (help) in the top right. You can overwrite both of these strings using the `textOverride` and `helpOverride` fields respectively. If you leave them empty (empty string), null or leave them out of the payload, the default message shown above will be used. If you want to overwrite those messages, your provided string has to be between 4 and 1024 characters long, otherwise the default will be used. You can use `\n` for newlines in the strings you provide.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1969,6 +2030,7 @@ The activated/deactivated Artmeshes will be returned in the `activeArtMeshes` an
 If the user clicked "OK" the `success` field will be `true`. If the user clicked "Cancel", the `success` field will be `false` (in that case you should probably ignore the `activeArtMeshes` and `inactiveArtMeshes` arrays, although they will still be returned).
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -1995,7 +2057,6 @@ If the user clicked "OK" the `success` field will be `true`. If the user clicked
 }
 ```
 
-
 ## Pin items to the model
 
 You can use this request to pin items in the scene to the currently loaded model.
@@ -2020,7 +2081,7 @@ There are three fields that determine how the data given in `pinInfo` is interpr
 * `sizeRelativeTo`:
   * `RelativeToWorld`: Absolute size. Between 0 (smallest) and 1 (largest). See also `ItemLoadRequest`.
   * `RelativeToCurrentItemSize`: Relative to current item size. You can pass in numbers between `-1` and `1`, which will be added to the current item size, meaning you can pass in 0 if you want to pin the item at its current size without changing it.
-* `vertexPinType`: 
+* `vertexPinType`:
   * `Provided`: The item will be pinned to the given ArtMesh using the pin position provided in the fields `vertexID1`, `vertexID2`, `vertexID3`, `vertexWeight1`, `vertexWeight2` and `vertexWeight3`. Details will be explained below.
   * `Center`: The item will be pinned to the "center" of the given ArtMesh. It's not really the center (spacially) but actually the triangle in the middle of the triangle list of the mesh. This will give you the same position every time for a given ArtMesh.
   * `Random`: The item will be pinned to a random triangle within the given ArtMesh.
@@ -2040,6 +2101,7 @@ The three vertex ID fields have to be the vertex IDs of a triangle in the given 
 To get one of those positions, you can use the [ModelClickedEvent](https://github.com/DenchiSoft/VTubeStudio/tree/master/Events#model-clicked-event). This event will return pin positions you can use with the `ItemPinRequest` when the model is clicked.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -2071,6 +2133,7 @@ To get one of those positions, you can use the [ModelClickedEvent](https://githu
 If successful, the response contains the item ID, item file name and whether or not the item is now pinned.
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -2090,7 +2153,7 @@ If successful, the response contains the item ID, item file name and whether or 
 
 **Note:** The terms visual effects, VFX and post-processing effects are used interchangeably in this document.
 
-VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page ["Visual Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
+VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page [&#34;Visual Effects&#34;](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
 
 This request returns the general state of the post-processing system, a list of all existing (user-created) post-processing presets and a list of all available post-processing effects with their current value (current post-processing state).
 
@@ -2103,6 +2166,7 @@ If you are only interested in specific post-processing effects, you can list the
 **Note:** These IDs are accepted in many different formats, so you can create an enum for them in any enum style you want. They are case-insensitive and `_` or `-` is ignored. For example, that means instead of `ChromaticAberration` you could write `Chromatic_Aberration`, `chromatic_aberration`, `CHROMATIC_ABERRATION` or any other style that works best for you.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -2124,12 +2188,11 @@ If you are only interested in specific post-processing effects, you can list the
 }
 ```
 
-
 The response contains some general info about the post-processing system state and the `postProcessingEffects` and `postProcessingPresets` arrays if requested.
 
 `postProcessingSupported` checks if the platform supports post-processing, which should always be `true` on Windows and macOS. The `postProcessingActive` field contains whether or not the user has turned post-processing on. Keep in mind that you can turn it on/off via the API as well using the `PostProcessingUpdateRequest` described next. Using the `PostProcessingUpdateRequest` may not be possible in some situations, specifically when some windows or popups related to post-processing configurations are open in VTube Studio. In this case, `canSendPostProcessingUpdateRequestRightNow` will be `false`.
 
-There are some restricted/experimental effects (see ["Restricted/Experimental Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects)). The user must explicitly allow those effects to be used. Whether or not the user has allowed these effects to be used is returned in the `restrictedEffectsAllowed` field.
+There are some restricted/experimental effects (see [&#34;Restricted/Experimental Effects&#34;](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects#restrictedexperimental-effects)). The user must explicitly allow those effects to be used. Whether or not the user has allowed these effects to be used is returned in the `restrictedEffectsAllowed` field.
 
 Whether or not a post-processing preset is active is returned in the `presetIsActive` field. If one is active, its name will be in the `activePreset` field, otherwise that field will be empty.
 
@@ -2146,6 +2209,7 @@ The `postProcessingEffects` array contains a list of all effects. Those are the 
 The ID you use to identify an effect is returned in the `enumID` field. There is also the `internalID` field which contains the ID that VTube Studio uses internally for that effect. That's the ID that is used in the post-processing preset JSON files, so they should not be relevant for most use-cases. However, these IDs can also be used in the API to refer to the effects if you want to use them for some reason.
 
 Configs all have one of the following types (returned in `type` field of the config):
+
 * Float
 * Int
 * Bool
@@ -2170,6 +2234,7 @@ For the `ColorGrading` effect for example, that would be the config `ColorGradin
 **Note:** The `postProcessingEffects` in this response payload example is shortened by a lot. When no filters are applied, it can be thousands of lines long since there are 250+ effect configs.
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -2265,15 +2330,16 @@ For the `ColorGrading` effect for example, that would be the config `ColorGradin
 
 **Note:** The terms visual effects, VFX and post-processing effects are used interchangeably in this document.
 
-VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page ["Visual Effects"](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
+VTube Studio has built-in post-processing, allowing you to add visual effects directly to the scene. This is available on Windows and macOS. For more information, check the page [&#34;Visual Effects&#34;](https://github.com/DenchiSoft/VTubeStudio/wiki/Visual-Effects).
 
 Using the `PostProcessingUpdateRequest`, you can control the post-processing system. You can turn it on/off, load/unload presets or even control individual config items directly and in detail (colors, strengthts, etc.).
 
-This update can only be sent if no windows related to post-processing configuration are open. Otherwise, the error `PostProcessingUpdateReqestCannotUpdateRightNow` will be returned. For all errors this request can return, see ["ErrorsID.cs"](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs).
+This update can only be sent if no windows related to post-processing configuration are open. Otherwise, the error `PostProcessingUpdateReqestCannotUpdateRightNow` will be returned. For all errors this request can return, see [&#34;ErrorsID.cs&#34;](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs).
 
 Use `postProcessingOn` to turn post-processing on or off globally. This does the same as toggling the post-processing toggle on the VTS UI. You can set presets or individual config values even when turning post-processing off with the same request. The values will still be set but nothing will happen on screen. When opening the post-processing config window in VTube Studio, you will see that your requested values have been set and will be visible once post-processing is turned on. Keep in mind that if you set a preset but turn off post-processing with the same request, all values from the preset will still be set but the preset will not be shown as active on the UI because technically it is no longer "active". All values from the preset will be visible once post-processing is turned on again.
 
 You can set values for post-processing config items using two methods:
+
 * Set a post-processing preset: Set `setPostProcessingPreset` to `true` and provide the preset name in the `presetToSet` field (just the preset name without the file extension). If the preset doesn't exist, the error `PostProcessingUpdateRequestPresetFileLoadFailed` is returned.
 * Set individual config values: Set `setPostProcessingValues` to `true` and provide a list of config key/values in the `postProcessingValues` array.
 
@@ -2300,9 +2366,10 @@ If you have any duplicate keys in the array, the error `PostProcessingUpdateRequ
 
 ### General usage advice
 
-You should not send this request at high frequencies, e.g. every frame. If you want to fade a value, use the `postProcessingFadeTime` field to set the appropriate fade time. Depending on the config combination, frequent updates *can* be okay, but you should carefully test things. The post-processing system is optimized for infrequent config updates, so make sure to check if your plugin causes any lag before publishing it. 
+You should not send this request at high frequencies, e.g. every frame. If you want to fade a value, use the `postProcessingFadeTime` field to set the appropriate fade time. Depending on the config combination, frequent updates *can* be okay, but you should carefully test things. The post-processing system is optimized for infrequent config updates, so make sure to check if your plugin causes any lag before publishing it.
 
 **`REQUEST`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -2345,6 +2412,7 @@ You should not send this request at high frequencies, e.g. every frame. If you w
 If there's no error, you will receive the following response with some general info about the new post-processing state after your requested update.
 
 **`RESPONSE`**
+
 ```json
 {
 	"apiName": "VTubeStudioPublicAPI",
@@ -2361,4 +2429,3 @@ If there's no error, you will receive the following response with some general i
 	}
 }
 ```
-
