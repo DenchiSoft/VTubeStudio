@@ -168,9 +168,9 @@ public enum ErrorID
     // Errors related to ItemSortRequest
     ItemSortRequestInstanceIDNotFound = 1250,
     ItemSortRequestInvalidValueSetType = 1251,
-    ItemSortRequestInvalidFrontLayer = 1252,
-    ItemSortRequestInvalidBackLayer = 1253,
-    ItemSortRequestInvalidSplitLayer = 1254,
+    ItemSortRequestInvalidFrontOrder = 1252,
+    ItemSortRequestInvalidBackOrder = 1253,
+    ItemSortRequestInvalidSplitPoint = 1254,
     ItemSortRequestItemConfigWindowOpen = 1255,
     
     // -------------- EVENT CONFIG ERRORS --------------
