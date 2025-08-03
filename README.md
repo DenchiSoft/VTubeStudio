@@ -58,6 +58,7 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Removing item from the scene](#removing-item-from-the-scene)
   - [Controling items and item animations](#controling-items-and-item-animations)
   - [Moving items in the scene](#moving-items-in-the-scene)
+  - [Set within-model-sorting for items](#set-item-within-model-sorting-order)
   - [Asking user to select ArtMeshes](#asking-user-to-select-artmeshes)
   - [Pin items to the model](#pin-items-to-the-model)
   - [Get list of post-processing effects and state](#get-list-of-post-processing-effects-and-state)
@@ -1926,6 +1927,61 @@ If the request was successful, you will receive a response containing the status
 	}
 }
 ```
+
+## Set item within-model-sorting order
+
+#### ⚠️ This request is only available on the public beta branch right now ⚠️
+
+VTube Studio lets you sort and pin items **between the layers** of your main model. For some general information about how this works, check out the page about "[Between-Layer Item Pinning](https://github.com/DenchiSoft/VTubeStudio/wiki/Between-Layer-Item-Pinning)".
+
+For [Live2D items](https://github.com/DenchiSoft/VTubeStudio/wiki/Live2D-Items) specifically, you can also split the **Live2D item model** into a front- and back-part and insert them into the main model separately. 
+
+TODO
+
+
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ItemSortRequest",
+	"data": {
+		"itemInstanceID": "b616cf51fe3444729ccbf6ee54a14d1a",
+		"frontOn": true,
+		"backOn": true,
+		"setFrontOrder": "UseArtMeshID",
+		"setBackOrder": "UseSpecialID",
+		"setSplitPoint": "UseArtMeshID",	
+		"splitAt": "MyArtMeshIDInItemModel91",		
+		"withinModelOrderFront": "MyArtMeshIDInMainModel73",
+		"withinModelOrderBack": "FullyInBack"
+	}
+}
+```
+
+If the request was successful, you will receive this response:
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ItemSortResponse",
+	"data": {
+		"itemInstanceID": "b616cf51fe3444729ccbf6ee54a14d1a",
+		"modelLoaded": true,
+		"modelID": "d87b771d2902473bbaa0226d03ef4754",
+		"modelName": "Akari",
+		"loadedModelHadRequestedFrontLayer": true,
+		"loadedModelHadRequestedBackLayer": true
+	}
+}
+```
+
 
 ## Asking user to select ArtMeshes
 
