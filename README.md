@@ -1940,7 +1940,7 @@ To identify the item you want to change the within-model-sorting settings for, p
 
 For all errors this request can return, see "[ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)".
 
-*Note:* Normal items (non-Live2D items) do not have a "back part" or "split point", so the back/split fields are entirely ignored when using this request for normal items. You can leave them empty/`null`. The text below assumes you are using this request for a Live2D items.
+*Note:* Normal items (non-Live2D items) do not have a "back part" or "split point", so the back/split fields are entirely ignored when using this request for normal items. You can leave them empty/`null`. The text below assumes you are using this request for a Live2D items. Also, VTube Studio will make sure that even if you set the back-part in front of the front-part, it will not move past it.
 
 To insert the item into the model, set `"frontOn"` to `true`. If you have a Live2D item and want to insert its back part further back into the model, you can also set `"backOn"` to `true` (ignored for non-Live2D items).
 
