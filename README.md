@@ -1936,9 +1936,35 @@ VTube Studio lets you sort and pin items **between the layers** of your main mod
 
 For [Live2D items](https://github.com/DenchiSoft/VTubeStudio/wiki/Live2D-Items) specifically, you can also split the **Live2D item model** into a front- and back-part and insert them into the main model separately. 
 
-TODO
+To identify the item you want to change the within-model-sorting settings for, pass in its item instance ID using the `"itemInstanceID"` field. An `ItemSortRequestInstanceIDNotFound` error is returned if no item with that ID was found. To get the item instance IDs of all loaded items, you can use the `ItemListRequest`. The ID is also directly returned when you use the `ItemLoadRequest` to load an item via the API.
 
+For all errors this request can return, see "[ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)".
 
+*Note:* Normal items (non-Live2D items) do not have a "back part" or "split point", so the back/split fields are entirely ignored when using this request for normal items. You can leave them empty/`null`. The text below assumes you are using this request for a Live2D items.
+
+To insert the item into the model, set `"frontOn"` to `true`. If you have a Live2D item and want to insert its back part further back into the model, you can also set `"backOn"` to `true` (ignored for non-Live2D items).
+
+Split point and front/back insertion points are set using `"splitAt"`, `"withinModelOrderFront"` and `"withinModelOrderBack"`. How these fields are interpreted depends on what you pass in via `"setSplitPoint"`, `"setFrontOrder"` and `"setBackOrder"`. 
+
+The following fields are used to set the item split point and insertion point(s):
+
+* `"splitAt"`: Set split point that is used to split the Live2D item model into front- and back-part.
+  * Ignored for non-Live2D items.
+  * If `"setSplitPoint"` is set to `"Unchanged"`: The value in `"splitAt"` will be ignored and the split point will be left unchanged.
+  * If `"setSplitPoint"` is set to `"UseArtMeshID"`: `"splitAt"` expects an ArtMesh ID that exists in the Live2D item model and will return the error `ItemSortRequestInvalidSplitPoint` if that ArtMesh ID doesn't exist.
+* `"withinModelOrderFront"`: Sets where to insert the item into the main model (or the front part of the item in case of Live2D items).
+  * If `"setFrontOrder"` is set to `"Unchanged"`: The value in `"withinModelOrderFront"` will be ignored and the front part insertion position will be left unchanged.
+  * If `"setFrontOrder"` is set to `"UseArtMeshID"`: `"withinModelOrderFront"` expects an ArtMesh ID that exists in the main Live2D model, but if it doesn't exist the request will still return successfully because it could be an ID for a Live2D model that is not currently loaded.
+  * If `"setFrontOrder"` is set to `"UseSpecialID"`: `"withinModelOrderFront"` expects either `"FullyInFront"` or `"FullyInBack"` to always set the item (front part) fully in front of or fully behind the loaded main model. Any other value will return a `ItemSortRequestInvalidFrontOrder` error in this case.
+* `"withinModelOrderBack"`: Sets where to insert the back part of Live2D items into the main model.
+  * Ignored for non-Live2D items.
+  * If `"setBackOrder"` is set to `"Unchanged"`: The value in `"withinModelOrderBack"` will be ignored and the back part insertion position will be left unchanged.
+  * If `"setBackOrder"` is set to `"UseArtMeshID"`: `"withinModelOrderBack"` expects an ArtMesh ID that exists in the main Live2D model, but if it doesn't exist the request will still return successfully because it could be an ID for a Live2D model that is not currently loaded.
+  * If `"setBackOrder"` is set to `"UseSpecialID"`: `"withinModelOrderBack"` expects `"FullyInBack"` to always set the item (back part) fully behind the loaded main model. Any other value will return a `ItemSortRequestInvalidBackOrder` error in this case.
+
+Invalid values in `"setSplitPoint"`, `"setFrontOrder"` and `"setBackOrder"` will return a `ItemSortRequestInvalidValueSetType` error.
+
+This will also return the error `ItemSortRequestItemConfigWindowOpen` if the within-model sorting window is currently open (meaning the user is currently manually setting insertion orders).
 
 **`REQUEST`**
 ```json
@@ -1951,9 +1977,9 @@ TODO
 		"itemInstanceID": "b616cf51fe3444729ccbf6ee54a14d1a",
 		"frontOn": true,
 		"backOn": true,
+		"setSplitPoint": "UseArtMeshID",
 		"setFrontOrder": "UseArtMeshID",
 		"setBackOrder": "UseSpecialID",
-		"setSplitPoint": "UseArtMeshID",	
 		"splitAt": "MyArtMeshIDInItemModel91",		
 		"withinModelOrderFront": "MyArtMeshIDInMainModel73",
 		"withinModelOrderBack": "FullyInBack"
@@ -1961,7 +1987,13 @@ TODO
 }
 ```
 
-If the request was successful, you will receive this response:
+If the request was successful, you will receive this response.
+
+`"itemInstanceID"` will pass back the instance ID of the item the request was for.
+
+If a main model is currently loaded, `"modelLoaded"` will be `true` and `"modelID"` and `"modelName"` will contain the model ID and name of the model. If no model is loaded, these fields will be empty.
+
+If a main model is loaded, `"loadedModelHadRequestedFrontLayer"` and `"loadedModelHadRequestedBackLayer"` will tell you whether or not the front/back insertion points you provided were found in the currently loaded model. If the insertion points were left unchanged, these fields are set to `false`.
 
 **`RESPONSE`**
 ```json
