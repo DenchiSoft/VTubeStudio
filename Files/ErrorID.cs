@@ -164,6 +164,14 @@ public enum ErrorID
     PostProcessingUpdateRequestValueListInvalid = 1204,
     PostProcessingUpdateRequestValueListContainsDuplicates = 1205,
     PostProcessingUpdateRequestTriedToLoadRestrictedEffect = 1206, // Tried to configure a restricted effect but user doesn't have those effects enabled/allowed.
+
+    // Errors related to ItemSortRequest
+    ItemSortRequestInstanceIDNotFound = 1250,
+    ItemSortRequestInvalidValueSetType = 1251,
+    ItemSortRequestInvalidFrontLayer = 1252,
+    ItemSortRequestInvalidBackLayer = 1253,
+    ItemSortRequestInvalidSplitLayer = 1254,
+    ItemSortRequestItemConfigWindowOpen = 1255,
     
     // -------------- EVENT CONFIG ERRORS --------------
     
