@@ -1931,7 +1931,7 @@ If the request was successful, you will receive a response containing the status
 
 ## Set item within-model-sorting order
 
-#### ⚠️ This request is only available on the public beta branch right now ⚠️
+#### ⚠️ This request is only available on the [public beta branch](https://github.com/DenchiSoft/VTubeStudio/wiki/Joining-the-Beta) right now ⚠️
 
 VTube Studio lets you sort and pin items **between the layers** of your main model. For some general information about how this works, check out the page about "[Between-Layer Item Pinning](https://github.com/DenchiSoft/VTubeStudio/wiki/Between-Layer-Item-Pinning)".
 
