@@ -771,7 +771,7 @@ If `"details"` was set to `true` in the request the `"usedInHotkeys"` array will
 
 ## Requesting activation or deactivation of expressions
 
-It's recommended to activate expressions via hotkeys since otherwise users could end up with activated expressions they can't deactivate because they don't have hotkeys set up for them. However, you can also activate and deactivate hotkeys directly if that's required for your plugin. You do this by passing in an expression file name and whether the expression should be activated or deactivated.
+It's recommended to activate expressions via hotkeys since otherwise users could end up with activated expressions they can't deactivate because they don't have hotkeys set up for them. However, you can also activate and deactivate expressions directly if that's required for your plugin. You do this by passing in an expression file name and whether the expression should be activated or deactivated.
 
 **`REQUEST`**
 ```json
