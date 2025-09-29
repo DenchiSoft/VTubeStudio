@@ -1,3 +1,35 @@
+
+<div align="right">
+  <details>
+    <summary >🌐 Language</summary>
+    <div>
+      <div align="center">
+        <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=en">English</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=zh-CN">简体中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=zh-TW">繁體中文</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=ja">日本語</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=ko">한국어</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=hi">हिन्दी</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=th">ไทย</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=fr">Français</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=de">Deutsch</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=es">Español</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=it">Italiano</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=ru">Русский</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=pt">Português</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=nl">Nederlands</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=pl">Polski</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=ar">العربية</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=fa">فارسی</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=tr">Türkçe</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=vi">Tiếng Việt</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=id">Bahasa Indonesia</a>
+        | <a href="https://openaitx.github.io/view.html?user=DenchiSoft&project=VTubeStudio&lang=as">অসমীয়া</
+      </div>
+    </div>
+  </details>
+</div>
+
 # <a href="https://denchisoft.com"><img src="https://raw.githubusercontent.com/DenchiSoft/VTubeStudio/master/Images/vtube_studio_logo_nyan_2.png" width="542" /></a><br> [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/DenchiSoft/VTubeStudio/blob/master/LICENSE) [![VTube Studio Discord](https://discordapp.com/api/guilds/652602255748497449/widget.png?style=shield)](https://discord.gg/VTubeStudio) [![Stars](https://img.shields.io/github/stars/DenchiSoft/VTubeStudio?style=social)](https://github.com/DenchiSoft/VTubeStudio) [![Twitter Follow](https://img.shields.io/twitter/follow/VTubeStudio.svg?style=social)](https://twitter.com/VTubeStudio)
 
 
