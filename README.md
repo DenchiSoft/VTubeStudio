@@ -106,6 +106,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [coovts](https://github.com/lgc2333/coovts) | [LgCookie](https://github.com/lgc2333) | Library | Another library for making VTube Studio plugins with Python (in early dev). Full type hints \| Async design \| Pydantic based data validation |
 | [VTS Terminal](https://www.nekomaido.com/plugin/vts-terminal) | [Neko Maido](https://www.nekomaido.com) | App | A plugin that provides many utilities, can trigger hotkeys, adjust the model's position and visual effects, and generate a PDF manual for your Live2D model. |
 | [VTS4J](https://github.com/aDL1n/VTS4J) | [aDL1n](https://github.com/aDL1n) | Library | A Java library for interacting with the VTube Studio WebSocket API |
+| [Lumia Stream](https://lumiastream.com/) | [Lumia Stream](https://x.com/lumiastream) | App | Desktop streaming app that helps creators manage and customize their live streaming workflow in one place.
 
 # Event API
 
