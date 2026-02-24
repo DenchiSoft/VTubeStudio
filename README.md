@@ -106,7 +106,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [coovts](https://github.com/lgc2333/coovts) | [LgCookie](https://github.com/lgc2333) | Library | Another library for making VTube Studio plugins with Python (in early dev). Full type hints \| Async design \| Pydantic based data validation |
 | [VTS Terminal](https://www.nekomaido.com/plugin/vts-terminal) | [Neko Maido](https://www.nekomaido.com) | App | A plugin that provides many utilities, can trigger hotkeys, adjust the model's position and visual effects, and generate a PDF manual for your Live2D model. |
 | [VTS4J](https://github.com/aDL1n/VTS4J) | [aDL1n](https://github.com/aDL1n) | Library | A Java library for interacting with the VTube Studio WebSocket API |
-| [BlerpVTS](https://blerp.com/vtuber-pet) | [Blerp](https://blerp.com) | Streaming Extension | A plugin for streamers that lets your pet lip-sync when viewers trigger Blerp sounds or TTS. Pet can also answer questions sent through the Blerp extension autonomously. Works across Twitch, Kick, YouTube, TikTok, and more! |
+| [BlerpVTS](https://blerp.com/vtuber-pet?referralId=vtube-studio-github) | [Blerp](https://blerp.com) | Streaming Extension | A plugin for streamers that lets your pet lip-sync when viewers trigger Blerp sounds or TTS. Pet can also answer questions sent through the Blerp extension autonomously. Works across Twitch, Kick, YouTube, TikTok, and more! |
 
 # Event API
 
