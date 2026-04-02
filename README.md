@@ -108,6 +108,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [VTS4J](https://github.com/aDL1n/VTS4J) | [aDL1n](https://github.com/aDL1n) | Library | A Java library for interacting with the VTube Studio WebSocket API |
 | [BlerpVTS](https://blerp.com/vtuber-pet?referralId=vtube-studio-github) | [Blerp](https://blerp.com) | Streaming Extension | A plugin for streamers that lets your pet lip-sync when viewers trigger Blerp sounds or TTS. Pet can also answer questions sent through the Blerp extension autonomously. Works across Twitch, Kick, YouTube, TikTok, and more! |
 | [Lumia Stream](https://lumiastream.com/) | [Lumia Stream](https://x.com/lumiastream) | App | Desktop streaming app that helps creators manage and customize their live streaming workflow in one place. VTube Studio integration: https://www.youtube.com/watch?v=uYwqhTD1LHg
+| [VTwink](https://katomon.itch.io/vtwink) | [Katomon](https://x.com/K4tomon) | App | A plugin that allow alerts from twitch connect directly to Vtubestudio Live2D Models and Live2D assets, transfering names and amounts to it.
 
 # Event API
 
