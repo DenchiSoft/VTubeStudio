@@ -25,5 +25,6 @@ public enum HotkeyAction
     ToggleTwitchFeature = 18,         // Toggles a Twitch feature (for example Emote Dropper) on/off.
     LoadEffectPreset = 19,            // Loads post processing effect preset.
     ToggleLive2DEditorAPI = 20,       // Toggles Live2D Editor API parameter sync on/off.
-    WebItemAction = 21                // Triggers Web Item action.
+    WebItemAction = 21,               // Triggers Web Item action.
+    ToggleModelSound = 22             // Toggles model/item SFX volume on/off.
 }
