@@ -111,7 +111,6 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [FoxBridge Live](https://github.com/yafoxins/FoxBridge_Live) | [YaFoxin Dev](https://github.com/yafoxins) | App | A Windows desktop app that connects VK Live rewards to VTube Studio hotkeys, allowing viewer rewards to trigger model reactions automatically. |
 | [VTwink](https://katomon.itch.io/vtwink) | [Katomon](https://x.com/K4tomon) | App | A plugin that allow alerts (subs, bits, ...) from Twitch to be displayed directly in VTube Studio on your Live2D models or items, including names and donation amounts. |
 
-
 # Event API
 
 There is another wiki page that describes the **Event API**, which you can use to subscribe events happening in VTube Studio, such as models being loaded or hotkeys being executed. Please check out the page about events [right here](Events/).
