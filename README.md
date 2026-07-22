@@ -110,6 +110,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [Lumia Stream](https://lumiastream.com/) | [Lumia Stream](https://x.com/lumiastream) | App | Desktop streaming app that helps creators manage and customize their live streaming workflow in one place. VTube Studio integration: https://www.youtube.com/watch?v=uYwqhTD1LHg
 | [FoxBridge Live](https://github.com/yafoxins/FoxBridge_Live) | [YaFoxin Dev](https://github.com/yafoxins) | App | A Windows desktop app that connects VK Live rewards to VTube Studio hotkeys, allowing viewer rewards to trigger model reactions automatically. |
 | [VTwink](https://katomon.itch.io/vtwink) | [Katomon](https://x.com/K4tomon) | App | A plugin that allow alerts (subs, bits, ...) from Twitch to be displayed directly in VTube Studio on your Live2D models or items, including names and donation amounts. |
+| [Wheel of Item](https://wheelofitem.com/vtube-studio-wheel.html?utm_source=vtubestudio&utm_medium=plugin_list) | [Akochan](https://wheelofitem.com/) | App | A browser-based wheel and gachapon overlay for streamers. Each wheel prize can be mapped to its own VTube Studio hotkey, so the model reacts differently depending on what the wheel lands on. Spins can be triggered by viewer tips (Streamlabs, StreamElements, Ko-fi, TikTok, YouTube) or Twitch chat commands, and it runs as an OBS browser source with no install. |
 
 # Event API
 
