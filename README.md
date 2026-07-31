@@ -1549,7 +1549,7 @@ Please also note that **item filenames are unique**, meaning there cannot be two
 }
 ```
 
-The fields in the response should me mostly self-explanatory.
+The fields in the response should be mostly self-explanatory.
 
 The filename is the name of the item file. This is the name you can use to load an instance of the item into the scene. For JPG/PNG/GIF items, this is the full filename (without path) including the file extension (for example "my_item.jpg"). For animation folders, it's the folder name. For Live2D items, it is also the folder name.
 
