@@ -814,6 +814,8 @@ The API uses the term `ArtMesh Name`, but this actually refers to the ArtMesh ID
 
 ArtMesh tags returned in the `"artMeshTags"` array will not contain duplicate tags.
 
+The response will also return all [ArtMesh/Layer Groups](https://github.com/DenchiSoft/VTubeStudio/wiki/ArtMesh-Groups) set up by the user with their ID, name and content. Please note that while ArtMesh group IDs are guaranteed to be unique, the same is not true for the ArtMesh group names.
+
 If no model is loaded, `"modelLoaded"` will be `false` and the arrays will be empty.
 
 **Note about "tags":** Tags can be added to ArtMeshes in the "UserData" field in the Live2D Cubism Editor. You can add any text into that field in the editor. VTube Studio will split that text at spaces and newline characters. This means if your tag text is "my tag", it will become two tags in VTS: "my" and "tag". You can add as many tags to each ArtMesh as you want.
@@ -842,6 +844,24 @@ If no model is loaded, `"modelLoaded"` will be `false` and the arrays will be em
 		"numberOfArtMeshTags": 2,
 		"artMeshNames": ["ArtMesh1", "ArtMesh2", "HairFront1", "HairFront2", "SomeArtMesh"],
 		"artMeshTags": ["my_tag", "SomeOtherTag"]
+		"numberOfArtMeshGroups": 2,
+		"artMeshGroups": [
+			{
+				"groupID": "5c1dc47c3b7447efa3cdd1bca56f4c27",
+				"groupName": "Model Hair",
+				"numberOfArtMeshesInGroup": 2,
+				"artMeshNames": [
+					"hair_1",
+					"hair_2",
+				]
+			},
+			{
+				"groupID": "2ed325b7d3dd4f92af8dbc1c47cd3143",
+				"groupName": "empty_group_test",
+				"numberOfArtMeshesInGroup": 0,
+				"artMeshNames": []
+			}
+		]
 	}
 }
 ```
@@ -854,7 +874,7 @@ Not providing one of the color values or any being outside the 0-255 range will 
 
 Optionally, you can provide `mixWithSceneLightingColor` between 0 and 1. If provided, this will determine how the tint color is mixed with the scene lighting system color (see [here](https://github.com/DenchiSoft/VTubeStudio/wiki/Display-Light-Overlay) for more info on that). If it's set to 1, your provided color value will overwrite the value set by the scene lighting completely. Setting it to 0 will make the scene lighting color overwrite your provided color. Anything in between will mix the two colors. If scene lighting is off, this has no effect. If you don't provide `mixWithSceneLightingColor`, it's set to 1 per default, meaning your provided color will overwrite the scene lighting completely.
 
-All arrays included in the `"artMeshMatcher"` object are optional. If you include them, it will select ArtMeshes based on whether or not the ArtMesh names or tags match any of the given strings exactly or contain them (when using the `"nameContains"`/`"tagContains"` arrays). The `"artMeshNumber"` array lets you select ArtMeshes based on their order within the model. If you just want to tint the whole model, don't include any of the matcher arrays and instead set `"tintAll"` to true.
+All arrays included in the `"artMeshMatcher"` object are optional. If you include them, it will select ArtMeshes based on whether or not the ArtMesh names or tags match any of the given strings exactly or contain them (when using the `"nameContains"`/`"tagContains"` arrays). The `"artMeshNumber"` array lets you select ArtMeshes based on their order within the model. If you just want to tint the whole model, don't include any of the matcher arrays and instead set `"tintAll"` to true. The `artMeshGroupIDExact` array lets you select all ArtMeshes that are in one or more of the given [ArtMesh/Layer Groups](https://github.com/DenchiSoft/VTubeStudio/wiki/ArtMesh-Groups).
 
 When the session is disconnected, all ArtMeshes that have been tinted in this session will be reset to their default (fully opaque white). When multiple plugins/sessions overwrite the color of an ArtMesh, it will have the color set by the most recent request.
 
@@ -881,7 +901,8 @@ Matching is always executed **case-insensitive**.
 			"nameExact": ["eye_white_left", "eye_white_right"],
 			"nameContains": ["mouth"],
 			"tagExact": [],
-			"tagContains": ["MyTag"]
+			"tagContains": ["MyTag"],
+			"artMeshGroupIDExact": ["5c1dc47c3b7447efa3cdd1bca56f4c27"]
 		}
 	}
 }
