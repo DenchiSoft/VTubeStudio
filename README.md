@@ -41,6 +41,7 @@ Everything you're looking for is on this page. If you have any questions, please
   - [Requesting list of expressions and their states](#requesting-current-expression-state-list)
   - [Requesting activation/deactivation of expressions](#requesting-activation-or-deactivation-of-expressions)
   - [Requesting list of ArtMeshes in current model](#requesting-list-of-artmeshes-in-current-model)
+  - [Requesting list of ArtMeshes at position](#requesting-list-of-artmeshes-at-position)
   - [Tint ArtMeshes with color](#tint-artmeshes-with-color)
   - [Getting scene lighting overlay color](#getting-scene-lighting-overlay-color)
   - [Checking if face is currently found by tracker](#checking-if-face-is-currently-found-by-tracker)
@@ -861,6 +862,100 @@ If no model is loaded, `"modelLoaded"` will be `false` and the arrays will be em
 				"groupName": "empty_group_test",
 				"numberOfArtMeshesInGroup": 0,
 				"artMeshNames": []
+			}
+		]
+	}
+}
+```
+
+## Requesting list of ArtMeshes at position
+
+⚠️ **This request is currently only available on the [public beta branch](https://github.com/DenchiSoft/VTubeStudio/wiki/Joining-the-Beta)!!** ⚠️
+
+This lets you request a list of all ArtMeshes at a certain position.
+
+Use the `x` and `y` fields to pass in the position to check. Positions should be given using the [VTube Studio coordinate system](#the-vts-coordinate-system). However, you can also pass in coordinate values larger than 1 or smaller than -1 (clamped to +/- 1000) to check positions outside the window bounds so this will work even when the model is off-screen.
+
+If you set `visualize` to a value other than 0, this will show a small dot as indicator for the position that was just checked. It will be shown for `visualize` seconds (clamped between 0 and 5). If 100 visualizer dots are currently visible, no more are shown until some of the old ones vanish.
+
+**Note:** This only works for the loaded main model, not for item Live2D models or other participants during a VNet collab.
+
+**`REQUEST`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"requestID": "SomeID",
+	"messageType": "ArtMeshAtPositionRequest",
+	"data": {
+		"x": 0.3,
+		"y": -0.67,
+		"visualize": 2.5
+	}
+}
+```
+
+The response payload is almost the same as the event payload of the [ModelClickedEvent](https://github.com/DenchiSoft/VTubeStudio/tree/master/Events#model-clicked-event).
+Some base payload field names were changed, but the ArtMesh position information in the `artMeshHits` array uses the exact same payload.
+
+Basically, this just returns a list of ArtMeshes of the main model at the given position, ordered from top to botton or an empty list if there were no ArtMeshes at that position. It also returns detailed information about where exactly the ArtMesh was clicked, down to the exact position within the mesh.
+
+Please refer to the documentation of the [ModelClickedEvent](https://github.com/DenchiSoft/VTubeStudio/tree/master/Events#model-clicked-event) for more information.
+
+**`RESPONSE`**
+```json
+{
+	"apiName": "VTubeStudioPublicAPI",
+	"apiVersion": "1.0",
+	"timestamp": 1625405710728,
+	"requestID": "SomeID",
+	"messageType": "ArtMeshAtPositionResponse",
+	"data": {
+		"modelLoaded": true,
+		"loadedModelID": "d87b771d2902473bbaa0226d03ef4754",
+		"loadedModelName": "Akari",
+		"modelWasHit": true,
+		"checkedPosition": {
+			"x": 0.3,
+			"y": -0.67
+		},
+		"windowSize": {
+			"x": 2268,
+			"y": 1243
+		},
+		"artMeshHitCount": 2,
+		"artMeshHits": [
+			{
+				"artMeshOrder": 0,
+				"isMasked": false,
+				"hitInfo": {
+					"modelID": "d87b771d2902473bbaa0226d03ef4754",
+					"artMeshID": "hair_right6",
+					"angle": 130.80455017089844,
+					"size": 1.0,
+					"vertexID1": 80,
+					"vertexID2": 76,
+					"vertexID3": 75,
+					"vertexWeight1": 0.4725686013698578,
+					"vertexWeight2": 0.07506437599658966,
+					"vertexWeight3": 0.45236700773239136
+				}
+			},
+			{
+				"artMeshOrder": 1,
+				"isMasked": true,
+				"hitInfo": {
+					"modelID": "d87b771d2902473bbaa0226d03ef4754",
+					"artMeshID": "face_skin",
+					"angle": 63.90638732910156,
+					"size": 1.0,
+					"vertexID1": 75,
+					"vertexID2": 71,
+					"vertexID3": 70,
+					"vertexWeight1": 0.3965734839439392,
+					"vertexWeight2": 0.06637920439243317,
+					"vertexWeight3": 0.5370473265647888
+				}
 			}
 		]
 	}
