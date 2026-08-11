@@ -592,7 +592,7 @@ VTube Studio can communicate directly with the **Live2D Cubism Editor**, which i
 
 When fully connected, VTube Studio can send tracking data directly to Live2D, which makes testing angles/physics during rigging easier. The following fields are sent:
 
-* `tryingToConnect`: Is VTube Studio trying to connect to Live2D Cubism? True if the `Connect` toggle is turend on in VTS.
+* `tryingToConnect`: Is VTube Studio trying to connect to Live2D Cubism? True if the `Connect` toggle is turned on in VTS.
 * `connected`: Is VTube Studio fully connected to and authenticated with Live2D Cubism?
 * `shouldSendParameters`: Has the user turned on the `Send parameters` toggle? If this is on and `connected` is true, VTube Studio is actively sending parameter data into Live2D Cubism.
 
@@ -618,6 +618,8 @@ When VTube Studio is actively sending parameter data into Live2D Cubism, plugins
 
 
 ## Track custom point on ArtMesh event
+
+⚠️ **This event is currently only available on the [public beta branch](https://github.com/DenchiSoft/VTubeStudio/wiki/Joining-the-Beta)!!** ⚠️
 
 An event that tracks one or more specific points on **ArtMeshes** (model layers) in real-time and returns their position, rotation, size and visibility at a configurable frequency. Works for the main model only (no Live2D items or other VNet collab participant models).
 
@@ -647,7 +649,17 @@ The `frequency` parameter controls how many times per second the event is sent. 
 
 All `trackingPointID` values within a single subscription must be unique.
 
+#### How `size` and `angle` work
 
+Other than just tracking a position, this event also lets you track **angle** and **size** changes over time. For that, you define a base angle and base size, which will set the area the point will cover on the attached model and the base rotation relative to the three vertices.
+
+This is important so whenever the tracking point is attached to the model, it doesn't matter what scale it currently is at or how the ArtMesh is rotated/deformed: the point will always attach in the exact same way as long as these values are kept the same.
+
+To find the right `angle` and `size`, repeatedly re-subscribe to the event with different values for these parameters with `visualize` set to `true` until the visualizer circle covers the right area of the ArtMesh and the angle is properly zero-aligned the way you want it.
+
+Then, when you receive an event, the `angle` in that payload will be the delta of the angle shown by the visualizer compared to the bottom edge of the window. And the size will be the size of the visualizer in [VTube Studio coordinate system units](https://github.com/DenchiSoft/VTubeStudio#the-vts-coordinate-system) based on the window height, so a size of `2` would mean the visualizer circle spans exactly the whole window from top to bottom (from `y=1` to `y=-1`).
+
+**TODO:** Image of visualizer here!!
 
 **`CONFIG`**
 ```json
@@ -656,7 +668,7 @@ All `trackingPointID` values within a single subscription must be unique.
     "frequency": 30,
     "trackingPoints": [
         {
-            "trackingPointID": "MyPointA",
+            "trackingPointID": "Tracked Point on Hair",
             "artMeshCoords": {
                 "modelID": "d87b771d2902473bbaa0226d03ef4754",
                 "artMeshID": "hair_right6",
@@ -672,7 +684,7 @@ All `trackingPointID` values within a single subscription must be unique.
             "visualize": false
         },
         {
-            "trackingPointID": "MyPointB",
+            "trackingPointID": "Some other tracked point 12345",
             "artMeshCoords": {
                 "modelID": "d87b771d2902473bbaa0226d03ef4754",
                 "artMeshID": "face_skin",
@@ -725,7 +737,7 @@ If no model is loaded, an event is sent once with `modelLoaded: false`, an empty
     "eventCounter": 147,
     "trackingPoints": [
         {
-            "trackingPointID": "MyPointA",
+            "trackingPointID": "Tracked Point on Hair",
             "artMeshVisible": true,
             "position": {
                 "x": 0.142,
@@ -735,7 +747,7 @@ If no model is loaded, an event is sent once with `modelLoaded: false`, an empty
             "size": 0.073
         },
         {
-            "trackingPointID": "MyPointB",
+            "trackingPointID": "Some other tracked point 1234",
             "artMeshVisible": false,
             "position": {
                 "x": 0.019,
@@ -754,9 +766,9 @@ You can include tracking points for multiple models in a single subscription. Ea
 
 This means you can set up all your tracking points once at subscribe time, even if the user hasn't loaded the relevant models yet. The event will then automatically start including those points as soon as the matching model is loaded.
 
+#### Tracking single vertices
 
-
-
+If you just want to track the exact position of one vertex, that is also possible: Just set `vertexID1`, `vertexID2` and `vertexID3` to the same value. Of course, that means scale and rotation cannot be calculated, but you will get the exact coordinates of that one vertex in the event. 
 
 
 
