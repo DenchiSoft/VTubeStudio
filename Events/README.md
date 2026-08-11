@@ -659,7 +659,9 @@ To find the right `angle` and `size`, repeatedly re-subscribe to the event with 
 
 Then, when you receive an event, the `angle` in that payload will be the delta of the angle shown by the visualizer compared to the bottom edge of the window. And the size will be the size of the visualizer in [VTube Studio coordinate system units](https://github.com/DenchiSoft/VTubeStudio#the-vts-coordinate-system) based on the window height, so a size of `2` would mean the visualizer circle spans exactly the whole window from top to bottom (from `y=1` to `y=-1`).
 
-**TODO:** Image of visualizer here!!
+This makes it possible to track areas on the model over time with high precision.
+
+![The VTS Event System Subscription Flow](/Images/api_visualizers_a.png)
 
 **`CONFIG`**
 ```json
