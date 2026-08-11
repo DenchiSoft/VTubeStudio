@@ -22,6 +22,7 @@
   - [Model clicked event](#model-clicked-event)
   - [Post-processing event](#post-processing-event)
   - [Live2D Cubism Editor connected event](#live2d-cubism-editor-connected-event)
+  - [Track custom point on ArtMesh event](#track-custom-point-on-artmesh-event)
  
 ## General Info
 
@@ -614,4 +615,152 @@ When VTube Studio is actively sending parameter data into Live2D Cubism, plugins
     "shouldSendParameters": false
 }
 ```
+
+
+## Track custom point on ArtMesh event
+
+An event that tracks one or more specific points on **ArtMeshes** (model layers) in real-time and returns their position, rotation, size and visibility at a configurable frequency. Works for the main model only (no Live2D items or other VNet collab participant models).
+
+This is useful for plugins that need to track specific parts of a model over time, for example to attach overlays, effects or other visuals to a precise point on the model's mesh.
+
+Each tracking point is defined by a set of [barycentric coordinates](https://en.wikipedia.org/wiki/Barycentric_coordinate_system) within a specific ArtMesh, the same format used by `ModelClickedEvent`. This means you can use the click event to find a point on the model you're interested in and then directly use those coordinates to subscribe to this event so that point is tracked over time.
+
+You can subscribe to up to **500 tracking points** per plugin session. Tracking all 500 points simultaneously is technically possible but may have a performance impact, so use only as many as your plugin actually needs. Unsubscribing from the event or disconnecting from the API will remove all tracking points.
+
+You can subscribe to points on models that aren't currently loaded. No event will fire until the model is actually loaded. Then, if the given point was found on the model, the event will start firing while the model is loaded.
+
+#### Setting up tracking points
+
+Each entry in the `trackingPoints` array describes one point to track. When changing the subscribed points or adding/removing ones, you always have to send the full config with all points you want to track.
+
+- `trackingPointID`: A unique string ID you assign to this tracking point (max. 128 characters). This ID is used to identify the point in event payloads.
+- `artMeshCoords`: The barycentric coordinates that describe the exact position on the ArtMesh. This is the same `hitInfo` structure returned by `ModelClickedEvent`, so you can get valid coordinates to use for this by clicking on the model while subscribed to that event.
+  - `modelID`: The ID of the model this tracking point belongs to (max. 128 characters).
+  - `artMeshID`: The ID of the ArtMesh (max. 128 characters).
+  - `vertexID1`, `vertexID2`, `vertexID3`: The three vertex IDs of the triangle to track. Must be non-negative.
+  - `vertexWeight1`, `vertexWeight2`, `vertexWeight3`: Barycentric weights for each vertex. Must sum to `1.0` (within a tolerance of `0.01`).
+  - `angle`: The base angle for the attached tracking point (explained further below).
+  - `size`: The base size value for the attached tracking point (explained further below). Must be greater than `0` and at most `10000`.
+- `visualize`: If `true`, a visualizer circle will be shown at the tracked position in VTube Studio. Useful for debugging and finding the right base size and base angle. Can be toggled by re-subscribing with a new config that only changes this flag.
+
+The `frequency` parameter controls how many times per second the event is sent. Must be between `1` and `60` (inclusive).
+
+All `trackingPointID` values within a single subscription must be unique.
+
+
+
+**`CONFIG`**
+```json
+"eventName": "ArtMeshTrackingEvent",
+"config": {
+    "frequency": 30,
+    "trackingPoints": [
+        {
+            "trackingPointID": "MyPointA",
+            "artMeshCoords": {
+                "modelID": "d87b771d2902473bbaa0226d03ef4754",
+                "artMeshID": "hair_right6",
+                "vertexID1": 80,
+                "vertexID2": 76,
+                "vertexID3": 75,
+                "vertexWeight1": 0.4725686013698578,
+                "vertexWeight2": 0.07506437599658966,
+                "vertexWeight3": 0.45236700773239136,
+                "angle": 0.0,
+                "size": 1.0
+            },
+            "visualize": false
+        },
+        {
+            "trackingPointID": "MyPointB",
+            "artMeshCoords": {
+                "modelID": "d87b771d2902473bbaa0226d03ef4754",
+                "artMeshID": "face_skin",
+                "vertexID1": 75,
+                "vertexID2": 71,
+                "vertexID3": 70,
+                "vertexWeight1": 0.3965734839439392,
+                "vertexWeight2": 0.06637920439243317,
+                "vertexWeight3": 0.5370473265647888,
+                "angle": 0.0,
+                "size": 1.0
+            },
+            "visualize": true
+        }
+    ]
+}
+```
+
+#### Receiving events
+
+The event is sent at the configured `frequency`. Each payload contains all currently found tracking points in one message.
+
+**Only tracking points that were found are included in the `trackingPoints` array.** Points whose ArtMesh could not be found (e.g. wrong model loaded, wrong `artMeshID`, or vertex IDs out of bounds) are silently omitted. You can compare `subscribedPointsCount` and `foundPointsCount` to quickly check whether all points are currently being tracked, without having to iterate the array.
+
+`modelID` in the base payload is the ID of the currently loaded model, or an empty string if no model is loaded.
+
+The `eventCounter` starts at `0` when you first subscribe and increases by `1` with every event sent. It resets to `0` if you re-subscribe with a new config or if the plugin session disconnects and reconnects.
+
+For each found tracking point:
+- `trackingPointID`: The ID you assigned in the subscription config.
+- `artMeshVisible`: Whether or not the ArtMesh is currently "visible". ArtMeshes can be "invisible" if their opacity is faded all the way out in the Live2D model. This specifically refers to that "visibility". ArtMeshes that are just off-screen are still considered "visible". Note that position, rotation and size remain valid even when this is `false`.
+- `position`: The tracked position using the [VTube Studio coordinate system](https://github.com/DenchiSoft/VTubeStudio#the-vts-coordinate-system). The range is `-1` to `1` on both axes, where `(-1, -1)` is the bottom-left and `(1, 1)` is the top-right of the VTube Studio window. Values outside this range mean the point is currently off-screen.
+- `rotation`: The world-space rotation angle in degrees (`0`–`360`), based on the orientation of the tracked triangle edge.
+- `size`: The size of the tracked point in [VTube Studio coordinate system units](https://github.com/DenchiSoft/VTubeStudio#the-vts-coordinate-system). You can use the included `windowSize` fields to convert this to pixels.
+
+If no model is loaded, an event is sent once with `modelLoaded: false`, an empty `trackingPoints` array and `foundPointsCount: 0`. After that, no further events are sent until a model is loaded again.
+
+**`EVENT`**
+```json
+"messageType": "ArtMeshTrackingEvent",
+"data": {
+    "modelLoaded": true,
+    "modelID": "d87b771d2902473bbaa0226d03ef4754",
+    "windowSize": {
+        "x": 1920,
+        "y": 1080
+    },
+    "subscribedPointsCount": 2,
+    "foundPointsCount": 2,
+    "eventCounter": 147,
+    "trackingPoints": [
+        {
+            "trackingPointID": "MyPointA",
+            "artMeshVisible": true,
+            "position": {
+                "x": 0.142,
+                "y": 0.381
+            },
+            "rotation": 217.4,
+            "size": 0.073
+        },
+        {
+            "trackingPointID": "MyPointB",
+            "artMeshVisible": false,
+            "position": {
+                "x": 0.019,
+                "y": 0.445
+            },
+            "rotation": 94.1,
+            "size": 0.051
+        }
+    ]
+}
+```
+
+#### Subscribing to points across multiple models
+
+You can include tracking points for multiple models in a single subscription. Each tracking point's `modelID` is matched case-insensitively against the currently loaded model. Points targeting a model that isn't currently loaded will simply be absent from the `trackingPoints` array.
+
+This means you can set up all your tracking points once at subscribe time, even if the user hasn't loaded the relevant models yet. The event will then automatically start including those points as soon as the matching model is loaded.
+
+
+
+
+
+
+
+
+
+
 
