@@ -181,5 +181,12 @@ public enum ErrorID
     Event_TestEvent_TestMessageTooLong = EVENT_OFFSET + 0,
 
     // Event subscription errors for ModelLoadedEvent
-    Event_ModelLoadedEvent_ModelIDInvalid = EVENT_OFFSET + 50
+    Event_ModelLoadedEvent_ModelIDInvalid = EVENT_OFFSET + 50,
+
+    // Event subscription errors for HotkeyTriggeredEvent
+    Event_HotkeyTriggeredEvent_HotkeyActionInvalid = EVENT_OFFSET + 100,
+
+    // Event subscription errors for ArtMeshTrackingEvent
+    Event_ArtMeshTrackingEvent_TrackingPointsInvalid = EVENT_OFFSET + 150,
+    Event_ArtMeshTrackingEvent_FrequencyInvalid      = EVENT_OFFSET + 151
 }
