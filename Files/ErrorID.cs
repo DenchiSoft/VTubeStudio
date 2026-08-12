@@ -188,5 +188,9 @@ public enum ErrorID
 
     // Event subscription errors for ArtMeshTrackingEvent
     Event_ArtMeshTrackingEvent_TrackingPointsInvalid = EVENT_OFFSET + 150,
-    Event_ArtMeshTrackingEvent_FrequencyInvalid      = EVENT_OFFSET + 151
+    Event_ArtMeshTrackingEvent_FrequencyInvalid      = EVENT_OFFSET + 151,
+
+    // Event subscription errors for ArtMeshOutlineEvent
+    Event_ArtMeshOutlineEvent_ArtMeshesInvalid = EVENT_OFFSET + 200,
+    Event_ArtMeshOutlineEvent_FrequencyInvalid = EVENT_OFFSET + 201,
 }
