@@ -23,7 +23,8 @@
   - [Post-processing event](#post-processing-event)
   - [Live2D Cubism Editor connected event](#live2d-cubism-editor-connected-event)
   - [Track custom point on ArtMesh event](#track-custom-point-on-artmesh-event)
- 
+  - [Track ArtMesh outline event](#track-artmesh-outline-event)
+
 ## General Info
 
 Using the **VTube Studio Event API**, you can subscribe to various events to make sure your plugin gets a message when something happens in VTube Studio. That way, you can for example get notified every time a hotkey is activated, a model/item is loaded/unloaded, the model is clicked and much more.
@@ -771,6 +772,236 @@ This means you can set up all your tracking points once at subscribe time, even 
 #### Tracking single vertices
 
 If you just want to track the exact position of one vertex, that is also possible: Just set `vertexID1`, `vertexID2` and `vertexID3` to the same value. Of course, that means scale and rotation cannot be calculated, but you will get the exact coordinates of that one vertex in the event. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Track ArtMesh outline event
+
+⚠️ **This event is currently only available on the [public beta branch](https://github.com/DenchiSoft/VTubeStudio/wiki/Joining-the-Beta)!!** ⚠️
+
+An event that returns the **boundary outlines** of one or more **ArtMeshes** (model layers) in real-time at a configurable frequency. Works for the main model only (no Live2D items or other VNet collab participant models).
+
+This is useful for plugins that need to know the visual shape, extent or position of specific ArtMeshes over time, for example to draw overlays, apply effects, or detect occlusion.
+
+You can subscribe to up to **100 ArtMeshes** per plugin session. Unsubscribing from the event or disconnecting from the API will remove all tracked outlines.
+
+You can subscribe to ArtMeshes from models that aren't currently loaded. No event will fire until the matching model is loaded. Once it is, the event will start firing with the outline data for all found ArtMeshes.
+
+#### Setting up the subscription
+
+Each entry in the `artMeshes` array identifies one ArtMesh to track:
+
+- `modelID`: The ID of the model that contains this ArtMesh.
+- `artMeshID`: The ID of the ArtMesh to track.
+
+The `frequency` parameter controls how many times per second the event is sent. Must be between `1` and `30` (inclusive). Tracking many ArtMeshes at high speed (for example 80 ArtMeshes at 30 times per second) may cause some cause some small CPU usage increase, although it should not be significant on most modern PCs.
+
+All `modelID` + `artMeshID` combinations within a single subscription must be unique. Duplicate entries will be rejected.
+
+When changing the subscribed ArtMeshes, always send the full config with all entries you want to track.
+
+#### How outlines work
+
+The outline of each ArtMesh is computed from its mesh boundary edges and resampled to exactly **20 evenly spaced points** per ring. These points are returned as a flat array of interleaved X/Y coordinate pairs: `[x0, y0, x1, y1, ..., x19, y19]`.
+
+Coordinates are in the [VTube Studio coordinate system](https://github.com/DenchiSoft/VTubeStudio#the-vts-coordinate-system), ranging from `-1` to `1` on both axes where `(-1, -1)` is the bottom-left and `(1, 1)` is the top-right of the VTube Studio window. Values outside this range mean that point of the ArtMesh outline is currently off-screen.
+
+The outline geometry is computed once when you subscribe and cached (may cause one tiny stutter if subscribing to large amount of very complex meshes). Only the vertex positions are updated each frame, so performance is not affected by mesh complexity.
+
+#### Multiple rings (mesh islands)
+
+Some ArtMeshes consist of multiple disconnected mesh islands (for example a polka-dot pattern). Each disconnected island produces its own ring. The `outlinePoints` array will contain one entry per ring, and `outlineCount` tells you how many rings there are. Most ArtMeshes will have exactly one ring though.
+
+**`CONFIG`**
+```json
+"eventName": "ArtMeshOutlineEvent",
+"config": {
+    "frequency": 15,
+    "artMeshes": [
+        {
+            "modelID": "d87b771d2902473bbaa0226d03ef4754",
+            "artMeshID": "hair_right6"
+        },
+        {
+            "modelID": "d87b771d2902473bbaa0226d03ef4754",
+            "artMeshID": "face_skin"
+        }
+    ]
+}
+```
+
+
+#### Receiving events
+
+The event is sent at the configured `frequency`. Each payload contains all currently found ArtMeshes in one message.
+
+**Only ArtMeshes that were found are included in the `artMeshOutlines` array.** ArtMeshes that could not be found (e.g. wrong model loaded or wrong `artMeshID`) are silently omitted. You can compare `subscribedArtMeshCount` and `foundArtMeshCount` to quickly check whether or not all ArtMeshes are currently being tracked without having to iterate the array.
+
+`modelID` in the base payload is the ID of the currently loaded model or an empty string if no model is loaded.
+
+The `eventCounter` starts at `0` when you first subscribe and increases by `1` with every event sent. It resets to `0` if you re-subscribe with a new config or if the plugin session disconnects and reconnects.
+
+For each found ArtMesh:
+- `artMeshID`: The ArtMesh ID as provided in the subscription config.
+- `artMeshVisible`: Whether or not the ArtMesh is currently visible. ArtMeshes can be invisible if their opacity is faded out in the Live2D model. ArtMeshes that are just off-screen are still considered visible. Outline points remain valid even when this is `false`.
+- `outlineCount`: The number of boundary rings for this ArtMesh. Most ArtMeshes just have one ring (one outline). Disconnected mesh islands produce additional rings.
+- `outlineArea`: The combined area of all outline rings of that ArtMesh, calculated in [VTS coordinate system space](https://github.com/DenchiSoft/VTubeStudio#the-vts-coordinate-system). This means that an ArtMesh that covers mostly the whole screen would have an area of roughly `4`. Useful for rough size comparisons between ArtMeshes. Note that this is an approximation, not the exact mesh area (because the outline is downsampled to 20 points).
+- `outlinePoints`: One entry per boundary ring. Each ring has a `points` array: a flat list of 40 numbers representing 20 X/Y pairs: `[x0, y0, x1, y1, ..., x19, y19]`. Coordinates are rounded to 4 decimal places to make payload sizes more manageable.
+
+If no model is loaded, one event is sent with `modelLoaded: false`, an empty `artMeshOutlines` array and `foundArtMeshCount: 0`. After that, no further events are sent until a model is loaded again.
+
+**`EVENT`**
+```json
+"messageType": "ArtMeshOutlineEvent",
+"data": {
+    "modelLoaded": true,
+    "modelID": "d87b771d2902473bbaa0226d03ef4754",
+    "windowSize": {
+        "x": 1920,
+        "y": 1080
+    },
+    "subscribedArtMeshCount": 2,
+    "foundArtMeshCount": 2,
+    "eventCounter": 147,
+    "artMeshOutlines": [
+        {
+            "artMeshID": "hair_right6",
+            "artMeshVisible": true,
+            "outlineCount": 1,
+            "outlineArea": 0.0842,
+            "outlinePoints": [
+                {
+                    "points": [
+                        0.1421,
+                        0.3812,
+                        0.1388,
+                        0.3901,
+                        0.134,
+                        0.3964,
+                        0.1271,
+                        0.4003,
+                        0.1198,
+                        0.4014,
+                        0.1124,
+                        0.3994,
+                        0.1062,
+                        0.3947,
+                        0.1019,
+                        0.3878,
+                        0.1001,
+                        0.38,
+                        0.1011,
+                        0.3722,
+                        0.1048,
+                        0.3654,
+                        0.1109,
+                        0.3604,
+                        0.1182,
+                        0.3578,
+                        0.1259,
+                        0.3578,
+                        0.1331,
+                        0.3602,
+                        0.1391,
+                        0.3649,
+                        0.1429,
+                        0.3717,
+                        0.1443,
+                        0.3794,
+                        0.1421,
+                        0.3812
+                    ]
+                }
+            ]
+        },
+        {
+            "artMeshID": "face_skin",
+            "artMeshVisible": true,
+            "outlineCount": 1,
+            "outlineArea": 0.2341,
+            "outlinePoints": [
+                {
+                    "points": [
+                        0.0191,
+                        0.4451,
+                        0.0088,
+                        0.4502,
+                        -0.0021,
+                        0.4511,
+                        -0.0127,
+                        0.4476,
+                        -0.0214,
+                        0.4403,
+                        -0.0264,
+                        0.4303,
+                        -0.0271,
+                        0.4193,
+                        -0.0236,
+                        0.4089,
+                        -0.0163,
+                        0.4008,
+                        -0.0064,
+                        0.3961,
+                        0.0044,
+                        0.3953,
+                        0.0148,
+                        0.3985,
+                        0.0233,
+                        0.4054,
+                        0.0284,
+                        0.4151,
+                        0.0294,
+                        0.4259,
+                        0.0262,
+                        0.4362,
+                        0.0191,
+                        0.4451
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+#### Subscribing to ArtMeshes across multiple models
+
+You can include ArtMeshes from multiple models in a single subscription. Each entry's `modelID` is matched case-insensitively against the currently loaded model. Entries targeting a model that isn't currently loaded will simply be absent from the `artMeshOutlines` array.
+
+This means you can set up all your ArtMeshes at subscribe time, even if the user hasn't loaded the relevant models yet. The event will then automatically start including those ArtMeshes as soon as the matching model is loaded.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
