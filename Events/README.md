@@ -662,7 +662,7 @@ Then, when you receive an event, the `angle` in that payload will be the delta o
 
 This makes it possible to track areas on the model over time with high precision.
 
-![The VTS Event System Subscription Flow](/Images/api_visualizers_a.png)
+![ArtMeshTrackingEvent: Visualizers](/Images/api_visualizers_a.png)
 
 **`CONFIG`**
 ```json
@@ -774,24 +774,6 @@ This means you can set up all your tracking points once at subscribe time, even 
 If you just want to track the exact position of one vertex, that is also possible: Just set `vertexID1`, `vertexID2` and `vertexID3` to the same value. Of course, that means scale and rotation cannot be calculated, but you will get the exact coordinates of that one vertex in the event. 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Track ArtMesh outline event
 
 ⚠️ **This event is currently only available on the [public beta branch](https://github.com/DenchiSoft/VTubeStudio/wiki/Joining-the-Beta)!!** ⚠️
@@ -829,6 +811,8 @@ The outline geometry is computed once when you subscribe and cached (may cause o
 
 Some ArtMeshes consist of multiple disconnected mesh islands (for example a polka-dot pattern). Each disconnected island produces its own ring. The `outlinePoints` array will contain one entry per ring, and `outlineCount` tells you how many rings there are. Most ArtMeshes will have exactly one ring though.
 
+![ArtMeshOutlineEvent: Visualizing ArtMesh outlines with a VTS plugin](/Images/api_artmesh_outline_a.png)
+
 **`CONFIG`**
 ```json
 "eventName": "ArtMeshOutlineEvent",
@@ -846,7 +830,6 @@ Some ArtMeshes consist of multiple disconnected mesh islands (for example a polk
     ]
 }
 ```
-
 
 #### Receiving events
 
@@ -986,26 +969,5 @@ If no model is loaded, one event is sent with `modelLoaded: false`, an empty `ar
 You can include ArtMeshes from multiple models in a single subscription. Each entry's `modelID` is matched case-insensitively against the currently loaded model. Entries targeting a model that isn't currently loaded will simply be absent from the `artMeshOutlines` array.
 
 This means you can set up all your ArtMeshes at subscribe time, even if the user hasn't loaded the relevant models yet. The event will then automatically start including those ArtMeshes as soon as the matching model is loaded.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
