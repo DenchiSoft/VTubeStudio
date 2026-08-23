@@ -17,6 +17,7 @@
   - [Model moved/resized/rotated](#model-movedresizedrotated)
   - [Model outline changed](#model-outline-changed)
   - [Hotkey triggered](#hotkey-triggered)
+  - [Expression Activated/Deactivated event](#expression-activateddeactivated-event)
   - [Animation event triggered](#animation-event-triggered)
   - [Item event](#item-event)
   - [Model clicked event](#model-clicked-event)
@@ -24,6 +25,7 @@
   - [Live2D Cubism Editor connected event](#live2d-cubism-editor-connected-event)
   - [Track custom point on ArtMesh event](#track-custom-point-on-artmesh-event)
   - [Track ArtMesh outline event](#track-artmesh-outline-event)
+  
 
 ## General Info
 
@@ -370,6 +372,43 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
     "isLive2DItem": false
 }
 ```
+
+
+## Expression Activated/Deactivated event
+
+An event that is triggered every time an expression is turned on or off (for the main model only, no Live2D items currently).
+
+This event is triggered regardless of the reason why the expression was triggered. Reasons include:
+
+- Expression **manually turned on/off by user** using hotkey or via the expression on/off UI.
+- Expression turned off using a **"turn all expressions off"** hotkey.
+- Expression toggled on/off via the **API**.
+- Expression turned back on automatically after a model was loaded that had **"save active expressions"** turned on.
+
+If you want to know the _initial expression state_, you can pass in `sendAllActiveStatesOnSubscription` as `true`. That will trigger the event once right after subscribing for every single expression of the model, if one is loaded. That includes all expressions, even the ones that are currently off, so you can build an initial expression state for the model and track any changes from there using subsequent events.
+
+**Note:** That means if your model has 100 expressions, you'll instantly receive 100 events just after subscribing.
+
+**`CONFIG`**
+```json
+"eventName": "ExpressionToggledEvent",
+"config": {
+    "sendAllActiveStatesOnSubscription": true
+}
+```
+
+**`EVENT`**
+```json
+"messageType": "ExpressionToggledEvent",
+"data": {
+    "modelID": "d8ee771d2909873b1aa0226d03ef4f51",
+    "modelName": "Akari",
+    "hotkeyAction": "ToggleExpression",
+    "expressionFile": "EyesCry.exp3.json",
+    "active": true
+}
+```
+
 
 ## Animation event triggered
 
