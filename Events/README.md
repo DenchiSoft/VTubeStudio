@@ -376,6 +376,8 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
 
 ## Expression Activated/Deactivated event
 
+⚠️ **This event is currently only available on the [public beta branch](https://github.com/DenchiSoft/VTubeStudio/wiki/Joining-the-Beta)!!** ⚠️
+
 An event that is triggered every time an expression is turned on/off for the main model or for Live2D item models.
 
 This event is triggered regardless of the reason why the expression was toggled. Reasons include:
