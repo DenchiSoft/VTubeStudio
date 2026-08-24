@@ -376,24 +376,30 @@ The event is also triggered when a hotkey is triggered for a Live2D item.
 
 ## Expression Activated/Deactivated event
 
-An event that is triggered every time an expression is turned on or off (for the main model only, no Live2D items currently).
+An event that is triggered every time an expression is turned on/off for the main model or for Live2D item models.
 
-This event is triggered regardless of the reason why the expression was triggered. Reasons include:
+This event is triggered regardless of the reason why the expression was toggled. Reasons include:
 
 - Expression **manually turned on/off by user** using hotkey or via the expression on/off UI.
 - Expression turned off using a **"turn all expressions off"** hotkey.
 - Expression toggled on/off via the **API**.
-- Expression turned back on automatically after a model was loaded that had **"save active expressions"** turned on.
 
-If you want to know the _initial expression state_, you can pass in `sendAllActiveStatesOnSubscription` as `true`. That will trigger the event once right after subscribing for every single expression of the model, if one is loaded. That includes all expressions, even the ones that are currently off, so you can build an initial expression state for the model and track any changes from there using subsequent events.
+If you want to receive events for Live2D items in addition to the main model, make sure set `ignoreLive2DItems` is set to `false`. Events for Live2D items will be marked in the event via the `isLive2DItem` flag.
 
-**Note:** That means if your model has 100 expressions, you'll instantly receive 100 events just after subscribing.
+If you want to know the _initial expression state_, you can pass in `sendAllActiveStatesOnSubscription` as `true`. That will trigger the event once right after subscribing for every single expression of the main model (if one is loaded) and (if requested) all loaded Live2D items. That includes all expressions, even the ones that are currently off, so you can build an initial expression state for the model and track any changes from there using subsequent events. These events will be marked with `justLoaded` set to `true` (full model expression state snapshot).
+
+Additionally, when a model or Live2D item is loaded, you will instantly receive events for all expressions that model contains so you can build an initial state. These events will also be marked with `justLoaded` set to `true` (full model expression state snapshot).
+
+**Note:** That means if your model has 100 expressions, you'll instantly receive 100 events just after subscribing (or when loading the model)
+
+For Live2D items, the `itemInstanceID` will contain their item instance ID. This lets you distinguish between multiple Live2D items that may have the same `modelID`. For main models, `itemInstanceID` will be an empty string.
 
 **`CONFIG`**
 ```json
 "eventName": "ExpressionToggledEvent",
 "config": {
-    "sendAllActiveStatesOnSubscription": true
+    "sendAllActiveStatesOnSubscription": true,
+    "ignoreLive2DItems": false 
 }
 ```
 
@@ -403,7 +409,9 @@ If you want to know the _initial expression state_, you can pass in `sendAllActi
 "data": {
     "modelID": "d8ee771d2909873b1aa0226d03ef4f51",
     "modelName": "Akari",
-    "hotkeyAction": "ToggleExpression",
+    "isLive2DItem": false,
+    "itemInstanceID": "",
+    "justLoaded": false,
     "expressionFile": "EyesCry.exp3.json",
     "active": true
 }
