@@ -396,6 +396,8 @@ Additionally, when a model or Live2D item is loaded, you will instantly receive 
 
 For Live2D items, the `itemInstanceID` will contain their item instance ID. This lets you distinguish between multiple Live2D items that may have the same `modelID`. For main models, `itemInstanceID` will be an empty string.
 
+The `expressionName` is just the `expressionFile` but without the `.exp3.json` file extension.
+
 **`CONFIG`**
 ```json
 "eventName": "ExpressionToggledEvent",
@@ -415,6 +417,7 @@ For Live2D items, the `itemInstanceID` will contain their item instance ID. This
     "itemInstanceID": "",
     "justLoaded": false,
     "expressionFile": "EyesCry.exp3.json",
+    "expressionName": "EyesCry",
     "active": true
 }
 ```
