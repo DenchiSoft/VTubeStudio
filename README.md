@@ -1558,6 +1558,10 @@ Override timer values have to be between 0.5 and 5 seconds.  Values outside that
 
 ## Get and set NDI settings
 
+⚠️ **Some breaking changes were made to this request, currently only on the [public beta branch](https://github.com/DenchiSoft/VTubeStudio/wiki/Joining-the-Beta)!! This request now requires a permission!! See below.** ⚠️
+
+**Note:** To use this request, you need the `ControlNDISettings` permission. For more info on how to request permissions, check the [permissions page](Permissions/). If you do not have that permission, an error will be returned if you try to use this request (`RequestRequiresPermission`, see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).	
+
 You can request the current NDI settings and change them via the API. This allows you to turn NDI on/off, set a custom fixed resolution and more.
 
 Information about NDI and how to use it in VTube Studio can be found on this page: https://github.com/DenchiSoft/VTubeStudio/wiki/Streaming-to-Mac-PC
