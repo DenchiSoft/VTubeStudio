@@ -12,6 +12,8 @@ The following is a list of **all current permissions** including the requests th
 
 * `LoadCustomImagesAsItems`
   * Used in the `ItemLoadRequest`. If you have this permission, you can provide custom PNG/JPG data that will be loaded as item in VTube Studio. Without that permission, you can only load items that the user has already added to VTube Studio. For more info, see explanation for `ItemLoadRequest`, in particular its `customDataBase64` field.
+* `ControlNDISettings`
+  * Required to use `NDIConfigRequest`. Without this permission, this request will return a `RequestRequiresPermission` error (see [ErrorsID.cs](https://github.com/DenchiSoft/VTubeStudio/blob/master/Files/ErrorID.cs)).
 * ...more to come!!
  
 
