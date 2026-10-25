@@ -114,6 +114,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [Wheel of Item](https://wheelofitem.com/vtube-studio-wheel.html?utm_source=vtubestudio&utm_medium=plugin_list) | [Akochan](https://wheelofitem.com/) | App | A browser-based wheel and gachapon overlay for streamers. Each wheel prize can be mapped to its own VTube Studio hotkey, so the model reacts differently depending on what the wheel lands on. Spins can be triggered by viewer tips (Streamlabs, StreamElements, Ko-fi, TikTok, YouTube) or Twitch chat commands, and it runs as an OBS browser source with no install. |
 | [VTS Brain](https://github.com/shayanlatif859/VTS-Brain) | [Shayan Latif](mailto:sal375@drexel.edu) | App | A script for VTube Studio that allows for filtered streaming of the MUSE EEG device, allowing for brainwaves to affect a 2D VTube model. Hotkeys, expressions, and parameters may all be configured to be affected by the EEG input. |
 | [VTSFloat_Meow](https://fushoufish.github.io/VTSFloat_Meow/) | [Fushoufish-咕噜灵波](https://github.com/fushoufish) | App | A lightweight Windows desktop overlay for VTube Studio. |
+| [ARVTubeLink](https://github.com/Kalyn-Voris/ARVTubeLink) | [Kalyn-Voris](https://github.com/Kalyn-Voris) | App | A native Android face tracking app that streams AR Engine blendshape and head pose data to VTube Studio over the WebSocket API, with automatic per-model parameter adaptation. |
 
 # Event API
 
