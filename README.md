@@ -115,6 +115,7 @@ If you're a developer looking for examples/libraries for you to look at that mak
 | [VTS Brain](https://github.com/shayanlatif859/VTS-Brain) | [Shayan Latif](mailto:sal375@drexel.edu) | App | A script for VTube Studio that allows for filtered streaming of the MUSE EEG device, allowing for brainwaves to affect a 2D VTube model. Hotkeys, expressions, and parameters may all be configured to be affected by the EEG input. |
 | [VTSFloat_Meow](https://fushoufish.github.io/VTSFloat_Meow/) | [Fushoufish-咕噜灵波](https://github.com/fushoufish) | App | A lightweight Windows desktop overlay for VTube Studio. |
 | [ARVTubeLink](https://github.com/Kalyn-Voris/ARVTubeLink) | [Kalyn-Voris](https://github.com/Kalyn-Voris) | App | A native Android face tracking app that streams AR Engine blendshape and head pose data to VTube Studio over the WebSocket API, with automatic per-model parameter adaptation. |
+| [OverlayCast Emoji Rain](https://overlaycast.com/create/emoji-rain) | [OverlayCast](https://overlaycast.com/) | App | A browser-source overlay that drops a chosen emoji or picture onto your model inside VTube Studio whenever viewers send it in YouTube, Twitch or Kick chat. It runs as an OBS browser source on the same PC (no install); you click Allow in VTube Studio once. Part of OverlayCast, a paid stream-overlay service with a 30-day free trial. |
 
 # Event API
 
